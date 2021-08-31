@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ParameterSetting</class>
+ <widget class="QDialog" name="ParameterSetting">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>828</width>
+    <height>296</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>参数设置</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../SysMainWindow.qrc">
+    <normaloff>:/SysMainWindow/Resources/settings.ico</normaloff>:/SysMainWindow/Resources/settings.ico</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_5">
+   <item row="2" column="0">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>127</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="title">
+         <string>编码拍照</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_23">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
+           </property>
+           <property name="text">
+            <string>相机选择</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_Camera1">
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>300</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="pushButton_OpenCamera1">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
+           </property>
+           <property name="text">
+            <string>打开相机</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QRadioButton" name="radioButton_FreeRun1">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>自由采集</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QRadioButton" name="radioButton_SoftTrigger1">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>软触发</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QRadioButton" name="radioButton_ExternalTrigger1">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>硬触发</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QGroupBox" name="groupBox_4">
+        <property name="title">
+         <string>整抢拍照</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_24">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
+           </property>
+           <property name="text">
+            <string>相机选择</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_Camera2">
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>300</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="pushButton_OpenCamera2">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
+           </property>
+           <property name="text">
+            <string>打开相机</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QRadioButton" name="radioButton_FreeRun2">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>自由采集</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QRadioButton" name="radioButton_SoftTrigger2">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>软触发</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QRadioButton" name="radioButton_ExternalTrigger2">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>硬触发</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_Info">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1000</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QCheckBox" name="checkBox_Debug">
+     <property name="styleSheet">
+      <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+     </property>
+     <property name="text">
+      <string>调试模式</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="3">
+       <widget class="QPushButton" name="pushButton_Login">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
+color: rgb(0, 170, 0);</string>
+        </property>
+        <property name="text">
+         <string>登录</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_UserName">
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>170</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;微软雅黑&quot;;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>用户名</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="lineEdit_Password">
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>170</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;微软雅黑&quot;;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string>密码</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLineEdit" name="lineEdit_DatabaseName">
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>170</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;微软雅黑&quot;;</string>
+        </property>
+        <property name="placeholderText">
+         <string>数据库</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="pushButton_SaveConfig">
+     <property name="minimumSize">
+      <size>
+       <width>100</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
+     </property>
+     <property name="text">
+      <string>保存配置</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../SysMainWindow.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButton_Login</sender>
+   <signal>clicked()</signal>
+   <receiver>ParameterSetting</receiver>
+   <slot>ConnectDatabase()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>690</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>827</x>
+     <y>37</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_OpenCamera1</sender>
+   <signal>clicked()</signal>
+   <receiver>ParameterSetting</receiver>
+   <slot>Camera1Controller()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>498</x>
+     <y>111</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>824</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_OpenCamera2</sender>
+   <signal>clicked()</signal>
+   <receiver>ParameterSetting</receiver>
+   <slot>Camera2Controller()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>497</x>
+     <y>178</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>827</x>
+     <y>160</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>ConnectDatabase()</slot>
+  <slot>Camera1Controller()</slot>
+  <slot>Camera2Controller()</slot>
+ </slots>
+</ui>

@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="SysMainWindow">
+    <file>Resources/reject.png</file>
+    <file>Resources/allow.png</file>
+    <file>Resources/settings.ico</file>
+    <file>Resources/password.ico</file>
+    <file>Resources/speaker.png</file>
+    <file>Resources/login-icon.png</file>
+    <file>Resources/background.png</file>
+    <file>Resources/81logo.png</file>
+  </qresource>
+</RCC>
