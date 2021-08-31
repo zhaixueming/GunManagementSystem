@@ -66,7 +66,7 @@ void CSystemMangaer::InitVariables()
 	header << QString::fromLocal8Bit("É¾³ı");
 	ui.tableWidget_User->setHorizontalHeaderLabels(header);
 	
-	//Ïä×°Èë¿â²Ù×÷±í
+	//Ïä×°ĞÅÏ¢Èë¿â²Ù×÷±í
 	ui.tableWidget_Box->setColumnCount(12);
 	ui.tableWidget_Box->setSelectionBehavior(QAbstractItemView::SelectRows); //ÕûĞĞÑ¡ÖĞµÄ·½Ê½
 	ui.tableWidget_Box->setEditTriggers(QAbstractItemView::NoEditTriggers);//²»ÄÜ¶Ô±í¸ñÄÚÈİ½øĞĞĞŞ¸Ä
@@ -83,7 +83,7 @@ void CSystemMangaer::InitVariables()
 	header << QString::fromLocal8Bit("É¾³ı");
 	ui.tableWidget_Box->setHorizontalHeaderLabels(header);
 
-	//Ïä×°ĞÅÏ¢±í
+	//Ïä×°ÁĞ±íĞÅÏ¢±í
 	ui.tableWidget_PackedInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.tableWidget_PackedInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	ui.tableWidget_PackedInfo->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
@@ -91,12 +91,12 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_PackedInfo->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_PackedInfo->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
 	//ui.tableWidget_PackedInfo->setColumnCount(7); 
-	ui.tableWidget_PackedInfo->setColumnCount(8);//ĞŞ¸Ä
+	ui.tableWidget_PackedInfo->setColumnCount(8);//ĞŞ¸Ä..
 	header.clear();
 	header << QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë");
 	header << QString::fromLocal8Bit("×°±¸(²¿¼ş)Ãû³Æ") << QString::fromLocal8Bit("µ¥×°±àºÅ");
 	header << QString::fromLocal8Bit("ÖØÒª²¿¼şÈ±Ê§Çé¿ö") << QString::fromLocal8Bit("³ö¿â×´Ì¬");
-	header << QString::fromLocal8Bit("±à¼­") << QString::fromLocal8Bit("É¾³ı");//ĞŞ¸Ä
+	header << QString::fromLocal8Bit("±à¼­") << QString::fromLocal8Bit("É¾³ı");//ĞŞ¸Ä..
 	ui.tableWidget_PackedInfo->setHorizontalHeaderLabels(header);
 	
 	//µ¥×°Èë¿â²Ù×÷±í
@@ -327,6 +327,7 @@ void CSystemMangaer::ModifyBoxPackedInfo()
 	CBoxPacked::GetInstance()->exec();
 }
 
+//É¾³ıÏä×°ĞÅÏ¢
 void CSystemMangaer::DeleteBoxPackedInfo()
 {
 	QPushButton *senderObj = qobject_cast<QPushButton*>(sender());
@@ -367,6 +368,7 @@ void CSystemMangaer::DeleteBoxPackedInfo()
 
 	}
 }
+
 
 void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ¯¡±°´Å¥¡ª¡ª¡·´Ë²Ûº¯Êı
 {
@@ -441,6 +443,8 @@ void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ
 	}
 }
 
+
+//µã»÷×°Ïäµ¥ºÅ,½øÈëÏä×°µ¥ºÅ½çÃæ£¬¿´µ½µÄÊÇÏä×°ÁĞ±í
 void CSystemMangaer::slotClickToolButton()
 {
 	QToolButton *senderObj = qobject_cast<QToolButton*>(sender());
@@ -477,9 +481,16 @@ void CSystemMangaer::slotClickToolButton()
 				QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("±à¼­"));
 				EditButton->setStyleSheet("color:rgb(41,136,41)");
 				EditButton->setMinimumHeight(20);
-				ui.tableWidget_PackedInfo->setCellWidget(row, col-1, EditButton);
+				QPushButton *DeleteButton = new QPushButton(QString::fromLocal8Bit("É¾³ı"));
+				DeleteButton->setStyleSheet("color:rgb(255,0,0)");
+				DeleteButton->setMinimumHeight(20);
+				ui.tableWidget_PackedInfo->setCellWidget(row, col-1, EditButton);//Ô­ÀíÒÔºó²¹³ä£¬ÏÖÔÚ²»ÊÇºÜ¶®
+				ui.tableWidget_PackedInfo->setCellWidget(row, col++, DeleteButton);
 				connect(EditButton, SIGNAL(clicked()), this, SLOT(EditPackedListInfo()));
+				connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeletePackedListInfo()));
 			}
+			ui.tableWidget_PackedInfo->setSortingEnabled(true);
+			ui.tableWidget_PackedInfo->sortByColumn(0, Qt::AscendingOrder);
 		}
 		else
 		{
@@ -497,6 +508,7 @@ void CSystemMangaer::BoxDetailsReturn()//×°ÏäĞÅÏ¢½çÃæ - ¡·ÓÒÏÂ¡°·µ»Ø¡±°´Å¥--¡·´Ë
 	ui.tabWidget->setCurrentIndex(1);
 }
 
+//±à¼­Ïä×°ÁĞ±í
 void CSystemMangaer::EditPackedListInfo()
 {
 	QPushButton *senderObj = qobject_cast<QPushButton*>(sender());
@@ -529,6 +541,42 @@ void CSystemMangaer::EditPackedListInfo()
 	ui.tabWidget->setCurrentIndex(4);
 	m_PreviousIndex = 1;
 }
+
+/////////////É¾³ıÏä×°ÁĞ±í
+void CSystemMangaer::DeletePackedListInfo()
+{
+	QPushButton *senderObj = qobject_cast<QPushButton*>(sender());
+	if (senderObj == nullptr)
+	{
+		return;
+	}
+	int row = senderObj->objectName().toInt();
+	if (QMessageBox::question(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("È·ÊµÒªÉ¾³ıÂğ?"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+	{
+		//QString WenJianHao = ui.tableWidget_PackedInfo->item(row, 0)->text();
+		//QString PingZhengHao = ui.tableWidget_PackedInfo->item(row, 1)->text();
+		//QString *button = (QToolButton*)ui.tableWidget_PackedInfo->cellWidget(row, 0);
+		QString DanHao = ui.tableWidget_PackedInfo->item(row, 0)->text();
+		QString DaiMa = ui.tableWidget_PackedInfo->item(row, 1)->text();
+		QString MingCheng = ui.tableWidget_PackedInfo->item(row, 2)->text();
+		QString sql = "select * from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("×°Ïäµ¥ºÅ = \'") + DanHao + "\'";
+		sql += QString::fromLocal8Bit(" and ×°±¸´úÂë = \'") + DaiMa + "\'";
+		sql += QString::fromLocal8Bit(" and ×°±¸Ãû³Æ = \'") + MingCheng + "\'";
+
+		QString errMsg;
+		QTableData TableData;
+		bool rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
+		if (!rv)
+		{
+			QMessageBox::information(this, QString::fromLocal8Bit("Ïä×°ÁĞ±íÉ¾³ı´íÎó"), errMsg);
+		}
+		else
+		{
+			ui.tableWidget_PackedInfo->removeRow(row);
+		}
+	}
+}
+
 
 void CSystemMangaer::PrintBoxList()//×°ÏäĞÅÏ¢½çÃæµÄ×óÏÂ½ÇµÄ"´òÓ¡×°ÏäÇåµ¥"°´Å¥----¡·´Ë²Ûº¯Êı
 {
@@ -589,6 +637,7 @@ void CSystemMangaer::EditSinglePacked()
 	m_PreviousIndex = 2;
 }
 
+//É¾³ıµ¥×°ĞÅÏ¢
 void CSystemMangaer::DeleteSinglePacked()
 {
 	QPushButton *senderObj = qobject_cast<QPushButton*>(sender());
@@ -610,7 +659,7 @@ void CSystemMangaer::DeleteSinglePacked()
 		bool rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
 		if (!rv)
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("Ïä×°ĞÅÏ¢É¾³ı´íÎó"), errMsg);
+			QMessageBox::information(this, QString::fromLocal8Bit("µ¥×°ĞÅÏ¢É¾³ı´íÎó"), errMsg);
 		}
 		else
 		{

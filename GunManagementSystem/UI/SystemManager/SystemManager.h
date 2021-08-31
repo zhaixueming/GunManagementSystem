@@ -78,6 +78,8 @@ private slots:
 	void BoxDetailsReturn();
 	//编辑箱装列表
 	void EditPackedListInfo();
+	//删除箱装列表
+	void DeletePackedListInfo();
 	//打印装箱清单
 	void PrintBoxList();
 
