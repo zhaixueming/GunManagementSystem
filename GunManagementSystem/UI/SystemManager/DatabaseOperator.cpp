@@ -85,21 +85,21 @@ bool CDatabaseOperator::DisconnectDatabase(QString &errMsg)
 
 bool CDatabaseOperator::execSql(QString sql, QTableData &TableData, QString &errMsg)
 {
-	qDebug() << "exec sql:" << sql;
+	qDebug() << "exec sql:" << sql;//sql查询指令
 	bool rv = false;
-	if (m_db.isOpen())
+	if (m_db.isOpen())//若打开数据可连接
 	{
-		QSqlQuery query(m_db);
-		rv = query.exec(sql);
+		QSqlQuery query(m_db);//查询数据库
+		rv = query.exec(sql);//查询的结果集
 		if (rv)
 		{
-			while (query.next())
+			while (query.next())//next() ：query指向下一条记录，每执行一次该函数，便指向相邻的下一条记录。
 			{
-				int count = query.record().count();
+				int count = query.record().count(); //获取每条记录中属性（即列）的个数
 				QList<QVariant> OneRowData;
 				for (int i = 0; i < count; ++i)
 				{
-					OneRowData.push_back(query.value(i));
+					OneRowData.push_back(query.value(i));//value(int n) ：获得属性的值。其中n表示你查询的第n个属性
 				}
 				TableData.push_back(OneRowData);
 			}

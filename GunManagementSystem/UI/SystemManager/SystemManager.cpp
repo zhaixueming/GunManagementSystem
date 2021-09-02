@@ -91,9 +91,10 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_PackedInfo->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_PackedInfo->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
 	//ui.tableWidget_PackedInfo->setColumnCount(7); 
-	ui.tableWidget_PackedInfo->setColumnCount(8);//ĞŞ¸Ä..
+	//ui.tableWidget_PackedInfo->setColumnCount(8);//ĞŞ¸Ä..
+	ui.tableWidget_PackedInfo->setColumnCount(9);
 	header.clear();
-	header << QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë");
+	header << QString::fromLocal8Bit("ĞòºÅ") <<QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë");
 	header << QString::fromLocal8Bit("×°±¸(²¿¼ş)Ãû³Æ") << QString::fromLocal8Bit("µ¥×°±àºÅ");
 	header << QString::fromLocal8Bit("ÖØÒª²¿¼şÈ±Ê§Çé¿ö") << QString::fromLocal8Bit("³ö¿â×´Ì¬");
 	header << QString::fromLocal8Bit("±à¼­") << QString::fromLocal8Bit("É¾³ı");//ĞŞ¸Ä..
@@ -164,24 +165,25 @@ void CSystemMangaer::AddUser()//ÕËºÅ¹ÜÀí½çÃæ-¡·×óÉÏ¡°ĞÂ½¨¡±°´Å¥--¡·´Ë²Ûº¯Êı
 	CUserManager::GetInstance()->exec();
 }
 
+
 void CSystemMangaer::QueryUserInfo()//ÕËºÅ¹ÜÀí½çÃæµÄÓÒ±ß¡°²éÑ¯¡±°´Å¥---¡·´Ë²Ûº¯Êı
 {
-	QString Name = ui.lineEdit_Name->text();
-	QString Number = ui.lineEdit_OfficerNumber->text();
+	QString Name = ui.lineEdit_Name->text();//ĞÕÃû
+	QString Number = ui.lineEdit_OfficerNumber->text();//¾ü¹ÙÖ¤ºÅ
 	QString sql = "select * from GunManager.dbo.UserTable";
-	if (!Name.isEmpty() && !Number.isEmpty())
+	if (!Name.isEmpty() && !Number.isEmpty())//ÈôÓĞĞÕÃûÓë¾ü¹ÙÖ¤ºÅ
 	{
 		sql += QString::fromLocal8Bit(" where ĞÕÃû like \'%") + Name + QString::fromLocal8Bit("%\' and ¾ü¹ÙÖ¤ºÅ like \'%") + Number + "%\'";
 	}
-	else if (!Name.isEmpty())
+	else if (!Name.isEmpty())//ÈôÓĞĞÕÃû
 	{
 		sql += QString::fromLocal8Bit(" where ĞÕÃû like \'%") + Name + "%\'";
 	}
-	else if (!Number.isEmpty())
+	else if (!Number.isEmpty())//ÈôÓĞ¾ü¹ÙÖ¤ºÅ
 	{
 		sql += QString::fromLocal8Bit(" where ¾ü¹ÙÖ¤ºÅ like \'%") + Number + "%\'";
 	}
-	m_Password.clear();
+	m_Password.clear();//Ö´ĞĞÇå¿ÕÃÜÂëÁĞ±í²Ù×÷
 	QString errMsg;
 	QTableData TableData;
 	bool rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
@@ -208,7 +210,7 @@ void CSystemMangaer::QueryUserInfo()//ÕËºÅ¹ÜÀí½çÃæµÄÓÒ±ß¡°²éÑ¯¡±°´Å¥---¡·´Ë²Ûº¯Ê
 				if (i < 2)
 				{
 					item = new QTableWidgetItem(data);
-					ui.tableWidget_User->setItem(row, col, item);
+					ui.tableWidget_User->setItem(row, col, item);//Îªµ¥Ôª¸ñÉèÖÃItem
 				}
 				else if (i == 2)
 				{
@@ -218,7 +220,7 @@ void CSystemMangaer::QueryUserInfo()//ÕËºÅ¹ÜÀí½çÃæµÄÓÒ±ß¡°²éÑ¯¡±°´Å¥---¡·´Ë²Ûº¯Ê
 				{
 					if (data == "1")
 					{
-						item = new QTableWidgetItem(QIcon(":/SysMainWindow/Resources/allow.png"),NULL);
+						item = new QTableWidgetItem(QIcon(":/SysMainWindow/Resources/allow.png"),NULL);//QTableWidgetItem ¶ÔÏó´æ´¢ÁËµ¥Ôª¸ñµÄËùÓĞÄÚÈİ
 					}
 					else if (data == "0")
 					{
@@ -355,6 +357,8 @@ void CSystemMangaer::DeleteBoxPackedInfo()
 		else
 		{
 			sql = "delete from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("×°Ïäµ¥ºÅ = \'") + DanHao + "\'";
+			//sql+= QString::fromLocal8Bit(" and ĞòºÅ = \'") + PingZhengHao + "\'";
+			//
 			rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
 			if (rv)
 			{
@@ -374,11 +378,12 @@ void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ
 {
 	QString errMsg;
 	QTableData TableData;
-	QString WenJianHao = ui.lineEdit_WenJianHao->text();
-	QString PingZhengHao = ui.lineEdit_PingZhengHao->text();
-	QString DanHao = ui.lineEdit_ZhuangXiangDanHao->text();
-	QString ChuChangRiQi = ui.dateEdit_BoxCC->dateTime().toString("yyyy-M-d");
-	QString ZhuangBeiRiQi = ui.dateEdit_BoxZB->dateTime().toString("yyyy-M-d");
+	QString WenJianHao = ui.lineEdit_WenJianHao->text();//»ñÈ¡ÎÄ¼şºÅ
+	QString PingZhengHao = ui.lineEdit_PingZhengHao->text();//»ñÈ¡Æ¾Ö¤ºÅ
+	QString DanHao = ui.lineEdit_ZhuangXiangDanHao->text();//»ñÈ¡×°Ïäµ¥ºÅ
+	QString ChuChangRiQi = ui.dateEdit_BoxCC->dateTime().toString("yyyy-M-d");//»ñÈ¡³ö³¡ÈÕÆÚ
+	QString ZhuangBeiRiQi = ui.dateEdit_BoxZB->dateTime().toString("yyyy-M-d");//»ñÈ¡×°±¸ÈÕÆÚ
+	//¼ìË÷Êı¾İ¿â
 	QString sql = "select * from GunManager.dbo.BoxPackedTable where";
 	sql += QString::fromLocal8Bit(" ÍËÒÛ±¨·ÏÎÄ¼şºÅ like \'%") + WenJianHao + "%\'";
 	sql += QString::fromLocal8Bit(" and µ÷²¦Æ¾Ö¤ºÅ like \'%") + PingZhengHao + "%\'";
@@ -444,10 +449,10 @@ void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ
 }
 
 
-//µã»÷×°Ïäµ¥ºÅ,½øÈëÏä×°µ¥ºÅ½çÃæ£¬¿´µ½µÄÊÇÏä×°ÁĞ±í
+//µã»÷×°Ïäµ¥ºÅ,½øÈëÏä×°µ¥ºÅ½çÃæ£¬¿´µ½µÄÊÇÏä×°ÁĞ±í,È»ºó½øĞĞ±à¼­ºÍÉ¾³ı²Ù×÷
 void CSystemMangaer::slotClickToolButton()
 {
-	QToolButton *senderObj = qobject_cast<QToolButton*>(sender());
+	QToolButton *senderObj = qobject_cast<QToolButton*>(sender());//
 	if (senderObj == nullptr)
 	{
 		return;
@@ -462,21 +467,43 @@ void CSystemMangaer::slotClickToolButton()
 		if (TableData.size() > 0)
 		{
 			ui.tabWidget->setCurrentIndex(3);
-			int rows = ui.tableWidget_PackedInfo->rowCount();
+			int rows = ui.tableWidget_PackedInfo->rowCount();//±í¸ñĞĞÊı
 			for (int i = 0; i < rows; ++i)
 			{
-				ui.tableWidget_PackedInfo->removeRow(rows);
+				ui.tableWidget_PackedInfo->removeRow(rows);//É¾³ıĞĞ
 			}
-			ui.tableWidget_PackedInfo->setRowCount(TableData.size());
+			ui.tableWidget_PackedInfo->setRowCount(TableData.size());//³¤¶È
+			ui.tableWidget_PackedInfo->setSortingEnabled(false);//ÉèÖÃÎª²»¿É×Ô¶¯ÅÅĞò
+			//for (int row = 0; row < TableData.size(); ++row)
+			//{
+			//	QList<QVariant> RowData = TableData.at(row);//°ÑÏÂ±êÎªrowµÄ´æ´¢Êı¾İ£¬´æÔÚRowDataÖĞ
+			//	int col = 1;
+			//	for (; col < RowData.size()-1; ++col)
+			//	{
+			//		QString data = RowData.at(col).toString();//»ñÈ¡colÎ»ÖÃµÄÊı¾İ
+			//		QTableWidgetItem *item = new QTableWidgetItem(data);
+			//		ui.tableWidget_PackedInfo->setItem(row, col - 1, item);
+			//	}
+			//	QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("±à¼­"));
+			//	EditButton->setStyleSheet("color:rgb(41,136,41)");
+			//	EditButton->setMinimumHeight(20);
+			//	QPushButton *DeleteButton = new QPushButton(QString::fromLocal8Bit("É¾³ı"));
+			//	DeleteButton->setStyleSheet("color:rgb(255,0,0)");
+			//	DeleteButton->setMinimumHeight(20);
+			//	ui.tableWidget_PackedInfo->setCellWidget(row, col-1, EditButton);//Ñ¡ÔñÌØ¶¨µÄÏ¸°û¿Ø¼ş
+			//	ui.tableWidget_PackedInfo->setCellWidget(row, col, DeleteButton);
+			//	connect(EditButton, SIGNAL(clicked()), this, SLOT(EditPackedListInfo()));
+			//	connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeletePackedListInfo()));
+			//}
 			for (int row = 0; row < TableData.size(); ++row)
 			{
-				QList<QVariant> RowData = TableData.at(row);
-				int col = 1;
-				for (; col < RowData.size()-1; ++col)
+				QList<QVariant> RowData = TableData.at(row);//°ÑÏÂ±êÎªrowµÄ´æ´¢Êı¾İ£¬´æÔÚRowDataÖĞ
+				int col = 0;
+				for (; col < RowData.size(); ++col)
 				{
-					QString data = RowData.at(col).toString();
+					QString data = RowData.at(col).toString();//»ñÈ¡colÎ»ÖÃµÄÊı¾İ
 					QTableWidgetItem *item = new QTableWidgetItem(data);
-					ui.tableWidget_PackedInfo->setItem(row, col - 1, item);
+					ui.tableWidget_PackedInfo->setItem(row, col, item);
 				}
 				QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("±à¼­"));
 				EditButton->setStyleSheet("color:rgb(41,136,41)");
@@ -484,13 +511,22 @@ void CSystemMangaer::slotClickToolButton()
 				QPushButton *DeleteButton = new QPushButton(QString::fromLocal8Bit("É¾³ı"));
 				DeleteButton->setStyleSheet("color:rgb(255,0,0)");
 				DeleteButton->setMinimumHeight(20);
-				ui.tableWidget_PackedInfo->setCellWidget(row, col-1, EditButton);//Ô­ÀíÒÔºó²¹³ä£¬ÏÖÔÚ²»ÊÇºÜ¶®
-				ui.tableWidget_PackedInfo->setCellWidget(row, col++, DeleteButton);
+				ui.tableWidget_PackedInfo->setCellWidget(row, col-1, EditButton);//Ñ¡ÔñÌØ¶¨µÄÏ¸°û¿Ø¼ş
+				ui.tableWidget_PackedInfo->setCellWidget(row, col, DeleteButton);
 				connect(EditButton, SIGNAL(clicked()), this, SLOT(EditPackedListInfo()));
 				connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeletePackedListInfo()));
+				
+				
+				//int XuHao = RowData.at(0).toInt();//»ñÈ¡colÎ»ÖÃµÄÊı¾İ
+				////QTableWidgetItem *item = new QTableWidgetItem(XuHao);
+				//////ui.tableWidget_PackedInfo->setItem(row, 0, item);
+				////item->setData(Qt::UserRole, XuHao);
+				//ui.tableWidget_PackedInfo->setItem(row, 0, new QTableWidgetItem(XuHao)); 
+				
 			}
-			ui.tableWidget_PackedInfo->setSortingEnabled(true);
-			ui.tableWidget_PackedInfo->sortByColumn(0, Qt::AscendingOrder);
+			
+			//ui.tableWidget_PackedInfo->setSortingEnabled(true);//ÉèÖÃ×Ô¶¯ÅÅÁĞ
+			//ui.tableWidget_PackedInfo->sortByColumn(0, Qt::AscendingOrder);//°´ÁĞÅÅĞòÄ£Ê½
 		}
 		else
 		{
@@ -542,7 +578,7 @@ void CSystemMangaer::EditPackedListInfo()
 	m_PreviousIndex = 1;
 }
 
-/////////////É¾³ıÏä×°ÁĞ±í
+//É¾³ıÏä×°ÁĞ±í
 void CSystemMangaer::DeletePackedListInfo()
 {
 	QPushButton *senderObj = qobject_cast<QPushButton*>(sender());
@@ -553,15 +589,14 @@ void CSystemMangaer::DeletePackedListInfo()
 	int row = senderObj->objectName().toInt();
 	if (QMessageBox::question(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("È·ÊµÒªÉ¾³ıÂğ?"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
-		//QString WenJianHao = ui.tableWidget_PackedInfo->item(row, 0)->text();
-		//QString PingZhengHao = ui.tableWidget_PackedInfo->item(row, 1)->text();
-		//QString *button = (QToolButton*)ui.tableWidget_PackedInfo->cellWidget(row, 0);
-		QString DanHao = ui.tableWidget_PackedInfo->item(row, 0)->text();
-		QString DaiMa = ui.tableWidget_PackedInfo->item(row, 1)->text();
-		QString MingCheng = ui.tableWidget_PackedInfo->item(row, 2)->text();
-		QString sql = "select * from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("×°Ïäµ¥ºÅ = \'") + DanHao + "\'";
-		sql += QString::fromLocal8Bit(" and ×°±¸´úÂë = \'") + DaiMa + "\'";
-		sql += QString::fromLocal8Bit(" and ×°±¸Ãû³Æ = \'") + MingCheng + "\'";
+		QString XuHao = ui.tableWidget_PackedInfo->item(row, 0)->text();
+		QString BianHao = ui.tableWidget_PackedInfo->item(row, 4)->text();
+		//QMessageBox::information(this, "check", QString::fromLocal8Bit("¿´¿´4ÊÇÉ¶ ") + BianHao);
+		QString sql = "delete from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit(" µ¥×°±àºÅ = \'") + BianHao + "\'";
+		sql += QString::fromLocal8Bit("and ĞòºÅ = \'") + XuHao + "\'";
+		QMessageBox::information(this, "check", QString::fromLocal8Bit("¿´¿´ÊÇÉ¶ ") + XuHao);
+		//QString::number(XuHao.index)
+		qDebug() << BianHao;
 
 		QString errMsg;
 		QTableData TableData;
@@ -591,9 +626,12 @@ void CSystemMangaer::PrintBoxList()//×°ÏäĞÅÏ¢½çÃæµÄ×óÏÂ½ÇµÄ"´òÓ¡×°ÏäÇåµ¥"°´Å¥---
 	{
 		QStringList oneRow;
 		oneRow.push_back(QString::number(i + 1));
-		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 1)->text());
+		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 1)->text());
+		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
+		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
 		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
 		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
+		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 4)->text());
 		oneRow.push_back(QString::fromLocal8Bit("Ö§"));
 		oneRow.push_back("1");
 		content.push_back(oneRow);
@@ -723,8 +761,8 @@ void CSystemMangaer::QuerySinglePacked()//±àÂë¼ìÊÓ½çÃæÏÂ£¬µ¥×°Èë¿â½çÃæÏÂÓÒ±ß"²éÑ
 			QPushButton *DeleteButton = new QPushButton(QString::fromLocal8Bit("É¾³ı"));
 			DeleteButton->setStyleSheet("color:rgb(255,0,0)");
 			DeleteButton->setMinimumHeight(20);
-			ui.tableWidget_Single->setCellWidget(row, col++, EditButton);
-			ui.tableWidget_Single->setCellWidget(row, col++, DeleteButton);
+			ui.tableWidget_Single->setCellWidget(row, col, EditButton);
+			ui.tableWidget_Single->setCellWidget(row, col+1, DeleteButton);
 			connect(EditButton, SIGNAL(clicked()), this, SLOT(EditSinglePacked()));
 			connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeleteSinglePacked()));
 		}
@@ -1212,14 +1250,16 @@ void CSystemMangaer::SaveRecognizeResult()//ÅÄÕÕ¼ìÊÓ½çÃæµÄÓÒÏÂ¡°±£´æ¡±°´Å¥---¡·´
 			if (m_curMsg.type == 1)
 			{
 				QTableWidgetItem *item = new QTableWidgetItem(m_CurDZBianHao);
-				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 3, item);
-				item = new QTableWidgetItem(LostMeg);
+				//ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 3, item);
 				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 4, item);
+				item = new QTableWidgetItem(LostMeg);
+				//ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 4, item);
+				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 5, item);
 			}
 			else if (m_curMsg.type == 2)
 			{
 				QTableWidgetItem *item = new QTableWidgetItem(m_CurDZBianHao);
-				ui.tableWidget_Single->setItem(m_curMsg.index, 4, item);
+				ui.tableWidget_Single->setItem(m_curMsg.index, 5, item);
 			}
 			ImageGrabberReturn();
 		}

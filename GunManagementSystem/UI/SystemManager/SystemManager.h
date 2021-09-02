@@ -44,7 +44,7 @@ private:
 private:
 	Ui::SystemManager ui;
 	bool m_bInitAlogSuccess;
-	s_CurrentMessage m_curMsg;
+	s_CurrentMessage m_curMsg;//当前信息
 	QString m_CurDZBianHao;   //识别的单装编号
 	QString m_QSQingKuang;    //缺失情况
 	QList<QString> m_Password;

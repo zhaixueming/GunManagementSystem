@@ -54,7 +54,7 @@
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_CORE_LIB;QT_GUI_LIB;QT_SQL_LIB;QT_WIDGETS_LIB;QT_PRINTSUPPORT_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);D:\SmartMore\Code\枪支信息管理系统\GunManagementSystem\GunManagementSystem\UI\AdminLogin;D:\SmartMore\Code\枪支信息管理系统\GunManagementSystem\GunManagementSystem\UI\AdminWithEphorLogin;D:\SmartMore\Code\枪支信息管理系统\GunManagementSystem\GunManagementSystem\UI\SystemManager;D:\SmartMore\Code\枪支信息管理系统\GunManagementSystem\GunManagementSystem\UI\SysMainWindow;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(SolutionDir)\GunManagementSystem\UI\AdminLogin;$(SolutionDir)\GunManagementSystem\UI\AdminWithEphorLogin;$(SolutionDir)\GunManagementSystem\UI\SystemManager;$(SolutionDir)\GunManagementSystem\UI\ParameterSetting;$(SolutionDir)\GunManagementSystem\UI\SysMainWindow;$(SolutionDir)\GunManagementSystem\opencv-4.2.0\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -70,7 +70,7 @@
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);D:\SmartMore\Code\枪支信息管理系统\GunManagementSystem\GunManagementSystem\UI\AdminLogin;D:\SmartMore\Code\枪支信息管理系统\GunManagementSystem\GunManagementSystem\UI\AdminWithEphorLogin;D:\SmartMore\Code\枪支信息管理系统\GunManagementSystem\GunManagementSystem\UI\SystemManager;D:\SmartMore\Code\枪支信息管理系统\GunManagementSystem\GunManagementSystem\UI\SysMainWindow;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtPrintSupport;%(AdditionalIncludeDirectories)</IncludePath>
+      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(SolutionDir)\GunManagementSystem\UI\AdminLogin;$(SolutionDir)\GunManagementSystem\UI\AdminWithEphorLogin;$(SolutionDir)\GunManagementSystem\UI\SystemManager;$(SolutionDir)\GunManagementSystem\UI\ParameterSetting;$(SolutionDir)\GunManagementSystem\UI\SysMainWindow;$(SolutionDir)\GunManagementSystem\opencv-4.2.0\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtSql;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtPrintSupport;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_CORE_LIB;QT_GUI_LIB;QT_SQL_LIB;QT_WIDGETS_LIB;QT_PRINTSUPPORT_LIB;%(PreprocessorDefinitions)</Define>
     </QtMoc>
     <QtUic>
@@ -91,6 +91,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <Optimization>Disabled</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
