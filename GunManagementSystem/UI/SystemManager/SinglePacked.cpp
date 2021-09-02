@@ -63,6 +63,7 @@ bool CSinglePacked::CheckSinglePackedRepeat(QString &errMsg)
 	return TableData.size() != 0;
 }
 
+//创建单装信息数据（槽函数：点击添加即可创建新的一条数据）
 void CSinglePacked::ConfirmModification()
 {
 	QString WenJianHao = ui.lineEdit_WenJianHao->text();
@@ -109,6 +110,9 @@ void CSinglePacked::ConfirmModification()
 
 	QString ChuChangTime = ui.dateEdit_ChuChang->date().toString("yyyy-M-d");
 	QString ZhuangBeiTime = ui.dateEdit_ZhuangBei->date().toString("yyyy-M-d");
+	////
+	QString BianHao= QString::fromLocal8Bit("\',\'\',\'\'");
+	QString QueShiQingKuang = QString::fromLocal8Bit("\',\'\',\'\'");
 	QString sql;
 	QString errMsg;
 	bool rv = CheckSinglePackedRepeat(errMsg);
@@ -122,9 +126,16 @@ void CSinglePacked::ConfirmModification()
 		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("单装记录已存在"));
 		return;
 	}
+	//sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'";
+	//sql += ZhuangBeiMing + "\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
+	//sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'1900-1-1\')";
 	sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'";
-	sql += ZhuangBeiMing + "\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
+	sql += ZhuangBeiMing +  "\',\'" + BianHao + "\',\'"+ QueShiQingKuang + "\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
 	sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'1900-1-1\')";
+	//sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'"+ ZhuangBeiMing+"\',\'";
+	//sql += QString::fromLocal8Bit("\'1231\'") + QString::fromLocal8Bit("\'1233\'") + +"\',\'";
+	//sql	+= LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
+	//sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'1900-1-1\')";
 
 	QTableData TableData;
 	rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);

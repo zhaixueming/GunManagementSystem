@@ -72,7 +72,7 @@ private slots:
 	void ModifyBoxPackedInfo();
 	//删除箱装信息
 	void DeleteBoxPackedInfo();
-	//点击装箱单号
+	//点击装箱单号,进入箱装列表操作
 	void slotClickToolButton();
 	//箱装列表返回
 	void BoxDetailsReturn();
