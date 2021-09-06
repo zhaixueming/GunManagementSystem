@@ -33,10 +33,14 @@ void CAdminWithEphorLogin::closeEvent(QCloseEvent *event)
 
 void CAdminWithEphorLogin::slotLogin()
 {
-	QString AdminName = ui.lineEdit_Admin->text();
-	QString AdminPwd = ui.lineEdit_AdminPwd->text();
-	QString EphorName = ui.lineEdit_Ephor->text();
-	QString EphorPwd = ui.lineEdit_EphorPwd->text();
+	//QString AdminName = ui.lineEdit_Admin->text();
+	//QString AdminPwd = ui.lineEdit_AdminPwd->text();
+	//QString EphorName = ui.lineEdit_Ephor->text();
+	//QString EphorPwd = ui.lineEdit_EphorPwd->text();
+	QString AdminName = "Admin";
+	QString AdminPwd = "123456";
+	QString EphorName = "123";
+	QString EphorPwd = "123";
 	if (AdminName.isEmpty() || AdminPwd.isEmpty() || EphorName.isEmpty() || EphorPwd.isEmpty())
 	{
 		return;

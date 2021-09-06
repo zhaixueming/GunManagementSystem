@@ -48,12 +48,13 @@ private:
 	QString m_CurDZBianHao;   //识别的单装编号
 	QString m_QSQingKuang;    //缺失情况
 	QList<QString> m_Password;
-	QStandardItemModel *m_ListViewModel;
+	//QStandardItemModel *m_ListViewModel;
 	//切换到拍照tab之前的状态
 	//1：箱装信息列表
 	//2：单装信息
 	int m_PreviousIndex; 
 private slots:
+	//主界面三个入口链接相应窗口
 	void ReceiveStackWidgetIndex(int index);
 	//添加用户
 	void AddUser();

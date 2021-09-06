@@ -142,6 +142,9 @@ color: rgb(255, 255, 255);</string>
            <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
           </property>
+          <property name="text">
+           <string>Admin</string>
+          </property>
          </widget>
         </item>
         <item row="0" column="2">
@@ -197,6 +200,9 @@ color: rgb(255, 255, 255);</string>
            <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
           </property>
+          <property name="text">
+           <string>123</string>
+          </property>
          </widget>
         </item>
         <item row="1" column="0">
@@ -251,6 +257,9 @@ color: rgb(255, 255, 255);</string>
           <property name="styleSheet">
            <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
+          </property>
+          <property name="text">
+           <string>123456</string>
           </property>
           <property name="echoMode">
            <enum>QLineEdit::Password</enum>
@@ -309,6 +318,9 @@ color: rgb(255, 255, 255);</string>
           <property name="styleSheet">
            <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
+          </property>
+          <property name="text">
+           <string>123</string>
           </property>
           <property name="echoMode">
            <enum>QLineEdit::Password</enum>

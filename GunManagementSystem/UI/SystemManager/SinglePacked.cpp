@@ -110,9 +110,12 @@ void CSinglePacked::ConfirmModification()
 
 	QString ChuChangTime = ui.dateEdit_ChuChang->date().toString("yyyy-M-d");
 	QString ZhuangBeiTime = ui.dateEdit_ZhuangBei->date().toString("yyyy-M-d");
-	////
-	QString BianHao= QString::fromLocal8Bit("\',\'\',\'\'");
-	QString QueShiQingKuang = QString::fromLocal8Bit("\',\'\',\'\'");
+
+	QDateTime curDateTime = QDateTime::currentDateTime();
+	QString JiLuDateTime = curDateTime.toString("yyyy-MM-dd hh:mm:ss");
+	////为下面第二种数据库插值定义变量值
+	/*QString BianHao= QString::fromLocal8Bit(" ");
+	QString QueShiQingKuang = QString::fromLocal8Bit(" ");*/
 	QString sql;
 	QString errMsg;
 	bool rv = CheckSinglePackedRepeat(errMsg);
@@ -126,17 +129,18 @@ void CSinglePacked::ConfirmModification()
 		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("单装记录已存在"));
 		return;
 	}
-	//sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'";
-	//sql += ZhuangBeiMing + "\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
-	//sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'1900-1-1\')";
+	//下面两种方法都可以
 	sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'";
+	sql += ZhuangBeiMing + "\',\'\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
+	sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'"+JiLuDateTime+"\')";//记录时间是创建一条单装数据时的时间
+	/*sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'";
 	sql += ZhuangBeiMing +  "\',\'" + BianHao + "\',\'"+ QueShiQingKuang + "\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
 	sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'1900-1-1\')";
-	//sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'"+ ZhuangBeiMing+"\',\'";
-	//sql += QString::fromLocal8Bit("\'1231\'") + QString::fromLocal8Bit("\'1233\'") + +"\',\'";
-	//sql	+= LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
-	//sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'1900-1-1\')";
-
+*/
+	sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'";
+	sql += ZhuangBeiMing + "\',\'\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
+	sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'" + JiLuDateTime + "\'" + ",\'1900-01-01 00:00:00.000\')";//记录时间是创建一条单装数据时的时间
+	
 	QTableData TableData;
 	rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
 	if (rv)

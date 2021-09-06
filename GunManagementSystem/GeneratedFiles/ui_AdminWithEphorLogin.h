@@ -216,9 +216,13 @@ public:
         groupBox->setTitle(QString());
         label_2->setText(QString());
         label_3->setText(QCoreApplication::translate("AdminWithEphorLogin", "<html><head/><body><p>\347\256\241\347\220\206\345\221\230<br/></p></body></html>", nullptr));
+        lineEdit_Admin->setText(QCoreApplication::translate("AdminWithEphorLogin", "Admin", nullptr));
         label_6->setText(QCoreApplication::translate("AdminWithEphorLogin", "<html><head/><body><p>\347\233\221\347\235\243\345\221\230</p></body></html>", nullptr));
+        lineEdit_Ephor->setText(QCoreApplication::translate("AdminWithEphorLogin", "123", nullptr));
         label_4->setText(QCoreApplication::translate("AdminWithEphorLogin", "<html><head/><body><p>\345\257\206\347\240\201<br/></p></body></html>", nullptr));
+        lineEdit_AdminPwd->setText(QCoreApplication::translate("AdminWithEphorLogin", "123456", nullptr));
         label_5->setText(QCoreApplication::translate("AdminWithEphorLogin", "<html><head/><body><p>\345\257\206\347\240\201<br/></p></body></html>", nullptr));
+        lineEdit_EphorPwd->setText(QCoreApplication::translate("AdminWithEphorLogin", "123", nullptr));
         pushButton_Login->setText(QCoreApplication::translate("AdminWithEphorLogin", "\347\231\273 \345\275\225", nullptr));
     } // retranslateUi
 

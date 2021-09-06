@@ -21,7 +21,6 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTabWidget>
@@ -81,22 +80,22 @@ public:
     QGridLayout *gridLayout_2;
     QTabWidget *tabWidget_Information;
     QWidget *tab_Info1;
-    QGridLayout *gridLayout_15;
     QPushButton *pushButton_ExportExcel;
-    QSpacerItem *horizontalSpacer_4;
-    QGridLayout *gridLayout_13;
-    QLineEdit *lineEdit_BFWenJianHao;
-    QLineEdit *lineEdit_DBPingZhengHao;
-    QLineEdit *lineEdit_XZDanHao;
-    QLineEdit *lineEdit_ZBDaima;
-    QLineEdit *lineEdit_ZBMingCheng;
-    QLabel *label_12;
-    QDateEdit *dateEdit_InfoCC;
-    QLabel *label_11;
-    QDateEdit *dateEdit_InfoZB;
-    QPushButton *pushButton_QueryInfo;
     QTableWidget *tableWidget_Search;
     QLabel *label_29;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout_13;
+    QLineEdit *lineEdit_BFWenJianHao;
+    QLineEdit *lineEdit_ZBDaima;
+    QLabel *label_11;
+    QPushButton *pushButton_QueryInfo;
+    QLabel *label_12;
+    QLineEdit *lineEdit_ZBMingCheng;
+    QLineEdit *lineEdit_XZDanHao;
+    QLineEdit *lineEdit_DZBianHao;
+    QDateEdit *dateEdit_InfoRK;
+    QDateEdit *dateEdit_InfoCK;
+    QLineEdit *lineEdit_DBPingZhengHao;
     QWidget *tab_Info2;
     QGridLayout *gridLayout_16;
     QPushButton *pushButton_Deliver;
@@ -123,9 +122,9 @@ public:
     QGridLayout *gridLayout_8;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_6;
-    MyLabel *label_Image1;
     MyLabel *label_Image2;
     QPushButton *pushButton_CodeGrab;
+    MyLabel *label_Image1;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *pushButton_GunGrab;
     QGroupBox *groupBox_2;
@@ -136,12 +135,15 @@ public:
     QLabel *label_27;
     QLineEdit *lineEdit_XiuZheng;
     QCheckBox *checkBox_QiangGuan;
+    QLineEdit *lineEdit_QiangGuan;
     QCheckBox *checkBox_QiangJi;
+    QLineEdit *lineEdit_QiangJi;
     QCheckBox *checkBox_QiangKuang;
+    QLineEdit *lineEdit_QiangKuang;
     QCheckBox *checkBox_BeiFen;
+    QLineEdit *lineEdit_BeiFen;
     QLabel *label_28;
     QLabel *label_DanHao;
-    QListView *listView;
     QPushButton *pushButton_Save;
     QPushButton *pushButton_Modify;
     QSpacerItem *horizontalSpacer_2;
@@ -461,107 +463,58 @@ public:
         tabWidget_Information->setTabShape(QTabWidget::Triangular);
         tab_Info1 = new QWidget();
         tab_Info1->setObjectName(QString::fromUtf8("tab_Info1"));
-        gridLayout_15 = new QGridLayout(tab_Info1);
-        gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
         pushButton_ExportExcel = new QPushButton(tab_Info1);
         pushButton_ExportExcel->setObjectName(QString::fromUtf8("pushButton_ExportExcel"));
+        pushButton_ExportExcel->setGeometry(QRect(9, 10, 100, 30));
         pushButton_ExportExcel->setMinimumSize(QSize(100, 30));
         pushButton_ExportExcel->setMaximumSize(QSize(100, 30));
         pushButton_ExportExcel->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(0, 170, 0);"));
-
-        gridLayout_15->addWidget(pushButton_ExportExcel, 0, 0, 1, 1);
-
-        horizontalSpacer_4 = new QSpacerItem(66, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_15->addItem(horizontalSpacer_4, 0, 1, 1, 2);
-
-        gridLayout_13 = new QGridLayout();
+        tableWidget_Search = new QTableWidget(tab_Info1);
+        tableWidget_Search->setObjectName(QString::fromUtf8("tableWidget_Search"));
+        tableWidget_Search->setGeometry(QRect(9, 48, 1689, 514));
+        tableWidget_Search->setSortingEnabled(true);
+        label_29 = new QLabel(tab_Info1);
+        label_29->setObjectName(QString::fromUtf8("label_29"));
+        label_29->setGeometry(QRect(121, 532, 80, 30));
+        label_29->setMinimumSize(QSize(80, 30));
+        label_29->setMaximumSize(QSize(80, 30));
+        label_29->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(85, 170, 0);"));
+        gridLayoutWidget = new QWidget(tab_Info1);
+        gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(150, 10, 1550, 40));
+        gridLayout_13 = new QGridLayout(gridLayoutWidget);
         gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
-        lineEdit_BFWenJianHao = new QLineEdit(tab_Info1);
+        gridLayout_13->setContentsMargins(0, 0, 0, 0);
+        lineEdit_BFWenJianHao = new QLineEdit(gridLayoutWidget);
         lineEdit_BFWenJianHao->setObjectName(QString::fromUtf8("lineEdit_BFWenJianHao"));
-        lineEdit_BFWenJianHao->setMinimumSize(QSize(200, 30));
-        lineEdit_BFWenJianHao->setMaximumSize(QSize(200, 30));
+        lineEdit_BFWenJianHao->setMinimumSize(QSize(150, 30));
+        lineEdit_BFWenJianHao->setMaximumSize(QSize(150, 30));
         lineEdit_BFWenJianHao->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
 
         gridLayout_13->addWidget(lineEdit_BFWenJianHao, 0, 0, 1, 1);
 
-        lineEdit_DBPingZhengHao = new QLineEdit(tab_Info1);
-        lineEdit_DBPingZhengHao->setObjectName(QString::fromUtf8("lineEdit_DBPingZhengHao"));
-        lineEdit_DBPingZhengHao->setMinimumSize(QSize(200, 30));
-        lineEdit_DBPingZhengHao->setMaximumSize(QSize(200, 30));
-        lineEdit_DBPingZhengHao->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-
-        gridLayout_13->addWidget(lineEdit_DBPingZhengHao, 0, 1, 1, 1);
-
-        lineEdit_XZDanHao = new QLineEdit(tab_Info1);
-        lineEdit_XZDanHao->setObjectName(QString::fromUtf8("lineEdit_XZDanHao"));
-        lineEdit_XZDanHao->setMinimumSize(QSize(200, 30));
-        lineEdit_XZDanHao->setMaximumSize(QSize(200, 30));
-        lineEdit_XZDanHao->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-
-        gridLayout_13->addWidget(lineEdit_XZDanHao, 0, 2, 1, 1);
-
-        lineEdit_ZBDaima = new QLineEdit(tab_Info1);
+        lineEdit_ZBDaima = new QLineEdit(gridLayoutWidget);
         lineEdit_ZBDaima->setObjectName(QString::fromUtf8("lineEdit_ZBDaima"));
-        lineEdit_ZBDaima->setMinimumSize(QSize(200, 30));
-        lineEdit_ZBDaima->setMaximumSize(QSize(200, 30));
+        lineEdit_ZBDaima->setMinimumSize(QSize(150, 30));
+        lineEdit_ZBDaima->setMaximumSize(QSize(150, 30));
         lineEdit_ZBDaima->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
 
         gridLayout_13->addWidget(lineEdit_ZBDaima, 0, 3, 1, 1);
 
-        lineEdit_ZBMingCheng = new QLineEdit(tab_Info1);
-        lineEdit_ZBMingCheng->setObjectName(QString::fromUtf8("lineEdit_ZBMingCheng"));
-        lineEdit_ZBMingCheng->setMinimumSize(QSize(200, 30));
-        lineEdit_ZBMingCheng->setMaximumSize(QSize(200, 30));
-        lineEdit_ZBMingCheng->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-
-        gridLayout_13->addWidget(lineEdit_ZBMingCheng, 0, 4, 1, 1);
-
-        label_12 = new QLabel(tab_Info1);
-        label_12->setObjectName(QString::fromUtf8("label_12"));
-        label_12->setMaximumSize(QSize(80, 16777215));
-        label_12->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(41, 136, 41);"));
-        label_12->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_13->addWidget(label_12, 0, 5, 1, 1);
-
-        dateEdit_InfoCC = new QDateEdit(tab_Info1);
-        dateEdit_InfoCC->setObjectName(QString::fromUtf8("dateEdit_InfoCC"));
-        dateEdit_InfoCC->setMaximumSize(QSize(140, 16777215));
-        dateEdit_InfoCC->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-        dateEdit_InfoCC->setButtonSymbols(QAbstractSpinBox::UpDownArrows);
-        dateEdit_InfoCC->setCalendarPopup(true);
-        dateEdit_InfoCC->setDate(QDate(1900, 1, 1));
-
-        gridLayout_13->addWidget(dateEdit_InfoCC, 0, 6, 1, 1);
-
-        label_11 = new QLabel(tab_Info1);
+        label_11 = new QLabel(gridLayoutWidget);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         label_11->setMaximumSize(QSize(80, 16777215));
         label_11->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(41, 136, 41);"));
         label_11->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_13->addWidget(label_11, 0, 7, 1, 1);
+        gridLayout_13->addWidget(label_11, 0, 9, 1, 1);
 
-        dateEdit_InfoZB = new QDateEdit(tab_Info1);
-        dateEdit_InfoZB->setObjectName(QString::fromUtf8("dateEdit_InfoZB"));
-        dateEdit_InfoZB->setMaximumSize(QSize(140, 16777215));
-        dateEdit_InfoZB->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-        dateEdit_InfoZB->setButtonSymbols(QAbstractSpinBox::UpDownArrows);
-        dateEdit_InfoZB->setCalendarPopup(true);
-        dateEdit_InfoZB->setDate(QDate(1900, 1, 1));
-
-        gridLayout_13->addWidget(dateEdit_InfoZB, 0, 8, 1, 1);
-
-        pushButton_QueryInfo = new QPushButton(tab_Info1);
+        pushButton_QueryInfo = new QPushButton(gridLayoutWidget);
         pushButton_QueryInfo->setObjectName(QString::fromUtf8("pushButton_QueryInfo"));
         pushButton_QueryInfo->setMinimumSize(QSize(75, 30));
         pushButton_QueryInfo->setMaximumSize(QSize(75, 30));
@@ -569,25 +522,72 @@ public:
 "background-color: rgb(41, 136, 41);\n"
 "color: rgb(255, 255, 255);"));
 
-        gridLayout_13->addWidget(pushButton_QueryInfo, 0, 9, 1, 1);
+        gridLayout_13->addWidget(pushButton_QueryInfo, 0, 11, 1, 1);
 
+        label_12 = new QLabel(gridLayoutWidget);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+        label_12->setMaximumSize(QSize(80, 16777215));
+        label_12->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(41, 136, 41);"));
+        label_12->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_15->addLayout(gridLayout_13, 0, 3, 1, 1);
+        gridLayout_13->addWidget(label_12, 0, 7, 1, 1);
 
-        tableWidget_Search = new QTableWidget(tab_Info1);
-        tableWidget_Search->setObjectName(QString::fromUtf8("tableWidget_Search"));
-        tableWidget_Search->setSortingEnabled(true);
+        lineEdit_ZBMingCheng = new QLineEdit(gridLayoutWidget);
+        lineEdit_ZBMingCheng->setObjectName(QString::fromUtf8("lineEdit_ZBMingCheng"));
+        lineEdit_ZBMingCheng->setMinimumSize(QSize(150, 30));
+        lineEdit_ZBMingCheng->setMaximumSize(QSize(150, 30));
+        lineEdit_ZBMingCheng->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
 
-        gridLayout_15->addWidget(tableWidget_Search, 1, 0, 2, 4);
+        gridLayout_13->addWidget(lineEdit_ZBMingCheng, 0, 5, 1, 1);
 
-        label_29 = new QLabel(tab_Info1);
-        label_29->setObjectName(QString::fromUtf8("label_29"));
-        label_29->setMinimumSize(QSize(80, 30));
-        label_29->setMaximumSize(QSize(80, 30));
-        label_29->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(85, 170, 0);"));
+        lineEdit_XZDanHao = new QLineEdit(gridLayoutWidget);
+        lineEdit_XZDanHao->setObjectName(QString::fromUtf8("lineEdit_XZDanHao"));
+        lineEdit_XZDanHao->setMinimumSize(QSize(150, 30));
+        lineEdit_XZDanHao->setMaximumSize(QSize(150, 30));
+        lineEdit_XZDanHao->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
 
-        gridLayout_15->addWidget(label_29, 2, 2, 1, 2);
+        gridLayout_13->addWidget(lineEdit_XZDanHao, 0, 2, 1, 1);
+
+        lineEdit_DZBianHao = new QLineEdit(gridLayoutWidget);
+        lineEdit_DZBianHao->setObjectName(QString::fromUtf8("lineEdit_DZBianHao"));
+        lineEdit_DZBianHao->setMinimumSize(QSize(150, 30));
+        lineEdit_DZBianHao->setMaximumSize(QSize(150, 30));
+        lineEdit_DZBianHao->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+
+        gridLayout_13->addWidget(lineEdit_DZBianHao, 0, 6, 1, 1);
+
+        dateEdit_InfoRK = new QDateEdit(gridLayoutWidget);
+        dateEdit_InfoRK->setObjectName(QString::fromUtf8("dateEdit_InfoRK"));
+        dateEdit_InfoRK->setMaximumSize(QSize(140, 16777215));
+        dateEdit_InfoRK->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+        dateEdit_InfoRK->setButtonSymbols(QAbstractSpinBox::UpDownArrows);
+        dateEdit_InfoRK->setCalendarPopup(true);
+        dateEdit_InfoRK->setDate(QDate(1900, 1, 1));
+
+        gridLayout_13->addWidget(dateEdit_InfoRK, 0, 8, 1, 1);
+
+        dateEdit_InfoCK = new QDateEdit(gridLayoutWidget);
+        dateEdit_InfoCK->setObjectName(QString::fromUtf8("dateEdit_InfoCK"));
+        dateEdit_InfoCK->setMaximumSize(QSize(140, 16777215));
+        dateEdit_InfoCK->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+        dateEdit_InfoCK->setButtonSymbols(QAbstractSpinBox::UpDownArrows);
+        dateEdit_InfoCK->setCalendarPopup(true);
+        dateEdit_InfoCK->setDate(QDate(1900, 1, 1));
+
+        gridLayout_13->addWidget(dateEdit_InfoCK, 0, 10, 1, 1);
+
+        lineEdit_DBPingZhengHao = new QLineEdit(gridLayoutWidget);
+        lineEdit_DBPingZhengHao->setObjectName(QString::fromUtf8("lineEdit_DBPingZhengHao"));
+        lineEdit_DBPingZhengHao->setMinimumSize(QSize(150, 30));
+        lineEdit_DBPingZhengHao->setMaximumSize(QSize(150, 30));
+        lineEdit_DBPingZhengHao->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+
+        gridLayout_13->addWidget(lineEdit_DBPingZhengHao, 0, 1, 1, 1);
 
         tabWidget_Information->addTab(tab_Info1, QString());
         tab_Info2 = new QWidget();
@@ -716,7 +716,7 @@ public:
 
         tabWidget_Information->addTab(tab_Info2, QString());
 
-        gridLayout_2->addWidget(tabWidget_Information, 0, 0, 1, 1);
+        gridLayout_2->addWidget(tabWidget_Information, 0, 1, 1, 1);
 
         tabWidget->addTab(tab_3, QString());
         tab_4 = new QWidget();
@@ -758,12 +758,6 @@ public:
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         gridLayout_6 = new QGridLayout(groupBox);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
-        label_Image1 = new MyLabel(groupBox);
-        label_Image1->setObjectName(QString::fromUtf8("label_Image1"));
-        label_Image1->setStyleSheet(QString::fromUtf8("background-image: url(:/SysMainWindow/Resources/background.png);"));
-
-        gridLayout_6->addWidget(label_Image1, 0, 0, 1, 2);
-
         label_Image2 = new MyLabel(groupBox);
         label_Image2->setObjectName(QString::fromUtf8("label_Image2"));
         label_Image2->setStyleSheet(QString::fromUtf8("background-image: url(:/SysMainWindow/Resources/background.png);"));
@@ -781,6 +775,12 @@ public:
         pushButton_CodeGrab->setFlat(false);
 
         gridLayout_6->addWidget(pushButton_CodeGrab, 1, 0, 1, 1);
+
+        label_Image1 = new MyLabel(groupBox);
+        label_Image1->setObjectName(QString::fromUtf8("label_Image1"));
+        label_Image1->setStyleSheet(QString::fromUtf8("background-image: url(:/SysMainWindow/Resources/background.png);"));
+
+        gridLayout_6->addWidget(label_Image1, 0, 0, 1, 2);
 
         horizontalSpacer_3 = new QSpacerItem(603, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -858,26 +858,62 @@ public:
 
         gridLayout_7->addWidget(checkBox_QiangGuan, 2, 0, 1, 1);
 
+        lineEdit_QiangGuan = new QLineEdit(groupBox_2);
+        lineEdit_QiangGuan->setObjectName(QString::fromUtf8("lineEdit_QiangGuan"));
+        lineEdit_QiangGuan->setMinimumSize(QSize(150, 30));
+        lineEdit_QiangGuan->setMaximumSize(QSize(500, 30));
+        lineEdit_QiangGuan->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+
+        gridLayout_7->addWidget(lineEdit_QiangGuan, 2, 2, 1, 4);
+
         checkBox_QiangJi = new QCheckBox(groupBox_2);
         checkBox_QiangJi->setObjectName(QString::fromUtf8("checkBox_QiangJi"));
         checkBox_QiangJi->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(85, 170, 0);"));
 
-        gridLayout_7->addWidget(checkBox_QiangJi, 2, 3, 1, 2);
+        gridLayout_7->addWidget(checkBox_QiangJi, 3, 0, 1, 2);
+
+        lineEdit_QiangJi = new QLineEdit(groupBox_2);
+        lineEdit_QiangJi->setObjectName(QString::fromUtf8("lineEdit_QiangJi"));
+        lineEdit_QiangJi->setMinimumSize(QSize(150, 30));
+        lineEdit_QiangJi->setMaximumSize(QSize(500, 30));
+        lineEdit_QiangJi->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+
+        gridLayout_7->addWidget(lineEdit_QiangJi, 3, 2, 1, 4);
 
         checkBox_QiangKuang = new QCheckBox(groupBox_2);
         checkBox_QiangKuang->setObjectName(QString::fromUtf8("checkBox_QiangKuang"));
         checkBox_QiangKuang->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(85, 170, 0);"));
 
-        gridLayout_7->addWidget(checkBox_QiangKuang, 3, 0, 1, 1);
+        gridLayout_7->addWidget(checkBox_QiangKuang, 4, 0, 1, 2);
+
+        lineEdit_QiangKuang = new QLineEdit(groupBox_2);
+        lineEdit_QiangKuang->setObjectName(QString::fromUtf8("lineEdit_QiangKuang"));
+        lineEdit_QiangKuang->setMinimumSize(QSize(150, 30));
+        lineEdit_QiangKuang->setMaximumSize(QSize(500, 30));
+        lineEdit_QiangKuang->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+
+        gridLayout_7->addWidget(lineEdit_QiangKuang, 4, 2, 1, 4);
 
         checkBox_BeiFen = new QCheckBox(groupBox_2);
         checkBox_BeiFen->setObjectName(QString::fromUtf8("checkBox_BeiFen"));
         checkBox_BeiFen->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(85, 170, 0);"));
 
-        gridLayout_7->addWidget(checkBox_BeiFen, 3, 3, 1, 2);
+        gridLayout_7->addWidget(checkBox_BeiFen, 5, 0, 1, 2);
+
+        lineEdit_BeiFen = new QLineEdit(groupBox_2);
+        lineEdit_BeiFen->setObjectName(QString::fromUtf8("lineEdit_BeiFen"));
+        lineEdit_BeiFen->setMinimumSize(QSize(150, 30));
+        lineEdit_BeiFen->setMaximumSize(QSize(500, 30));
+        lineEdit_BeiFen->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+
+        gridLayout_7->addWidget(lineEdit_BeiFen, 5, 2, 1, 4);
 
         label_28 = new QLabel(groupBox_2);
         label_28->setObjectName(QString::fromUtf8("label_28"));
@@ -886,7 +922,7 @@ public:
         label_28->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(85, 170, 0);"));
 
-        gridLayout_7->addWidget(label_28, 4, 0, 1, 2);
+        gridLayout_7->addWidget(label_28, 6, 0, 1, 2);
 
         label_DanHao = new QLabel(groupBox_2);
         label_DanHao->setObjectName(QString::fromUtf8("label_DanHao"));
@@ -895,13 +931,7 @@ public:
         label_DanHao->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(0, 0, 0);"));
 
-        gridLayout_7->addWidget(label_DanHao, 4, 2, 1, 2);
-
-        listView = new QListView(groupBox_2);
-        listView->setObjectName(QString::fromUtf8("listView"));
-        listView->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-
-        gridLayout_7->addWidget(listView, 5, 0, 1, 5);
+        gridLayout_7->addWidget(label_DanHao, 6, 2, 1, 2);
 
         pushButton_Save = new QPushButton(groupBox_2);
         pushButton_Save->setObjectName(QString::fromUtf8("pushButton_Save"));
@@ -910,7 +940,7 @@ public:
         pushButton_Save->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(0, 170, 0);"));
 
-        gridLayout_7->addWidget(pushButton_Save, 6, 0, 1, 1);
+        gridLayout_7->addWidget(pushButton_Save, 7, 0, 1, 1);
 
         pushButton_Modify = new QPushButton(groupBox_2);
         pushButton_Modify->setObjectName(QString::fromUtf8("pushButton_Modify"));
@@ -919,11 +949,11 @@ public:
         pushButton_Modify->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(255, 0, 0);"));
 
-        gridLayout_7->addWidget(pushButton_Modify, 6, 1, 1, 2);
+        gridLayout_7->addWidget(pushButton_Modify, 7, 1, 1, 2);
 
         horizontalSpacer_2 = new QSpacerItem(76, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_7->addItem(horizontalSpacer_2, 6, 3, 1, 1);
+        gridLayout_7->addItem(horizontalSpacer_2, 7, 3, 1, 1);
 
         pushButton_26 = new QPushButton(groupBox_2);
         pushButton_26->setObjectName(QString::fromUtf8("pushButton_26"));
@@ -931,7 +961,7 @@ public:
         pushButton_26->setMaximumSize(QSize(75, 30));
         pushButton_26->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
 
-        gridLayout_7->addWidget(pushButton_26, 6, 4, 1, 2);
+        gridLayout_7->addWidget(pushButton_26, 7, 4, 1, 2);
 
 
         gridLayout_8->addWidget(groupBox_2, 0, 1, 1, 1);
@@ -962,7 +992,7 @@ public:
         QObject::connect(pushButton_Modify, SIGNAL(clicked()), SystemManager, SLOT(DoCorrection()));
         QObject::connect(pushButton_Speaker, SIGNAL(clicked()), SystemManager, SLOT(DoSpeaker()));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(4);
         tabWidget_Storage->setCurrentIndex(0);
         tabWidget_Information->setCurrentIndex(0);
 
@@ -997,15 +1027,17 @@ public:
         tabWidget_Storage->setTabText(tabWidget_Storage->indexOf(tab_Ephor2), QCoreApplication::translate("SystemManager", "\345\215\225\350\243\205\345\205\245\345\272\223", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("SystemManager", "\347\274\226\347\240\201\346\243\200\350\247\206", nullptr));
         pushButton_ExportExcel->setText(QCoreApplication::translate("SystemManager", "\345\257\274\345\207\272Excel", nullptr));
-        lineEdit_BFWenJianHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\351\200\200\345\275\271\346\212\245\345\272\237\346\226\207\344\273\266\345\217\267", nullptr));
-        lineEdit_DBPingZhengHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\260\203\346\213\250\345\207\255\350\257\201\345\217\267", nullptr));
-        lineEdit_XZDanHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\243\205\347\256\261\345\215\225\345\217\267", nullptr));
-        lineEdit_ZBDaima->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\243\205\345\244\207\344\273\243\347\240\201", nullptr));
-        lineEdit_ZBMingCheng->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\243\205\345\244\207\345\220\215\347\247\260", nullptr));
-        label_12->setText(QCoreApplication::translate("SystemManager", "\345\207\272\345\216\202\346\227\266\351\227\264", nullptr));
-        label_11->setText(QCoreApplication::translate("SystemManager", "\350\243\205\345\244\207\346\227\266\351\227\264", nullptr));
-        pushButton_QueryInfo->setText(QCoreApplication::translate("SystemManager", "\346\237\245\350\257\242", nullptr));
         label_29->setText(QString());
+        lineEdit_BFWenJianHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\351\200\200\345\275\271\346\212\245\345\272\237\346\226\207\344\273\266\345\217\267", nullptr));
+        lineEdit_ZBDaima->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\243\205\345\244\207\344\273\243\347\240\201", nullptr));
+        label_11->setText(QCoreApplication::translate("SystemManager", "\345\207\272\345\272\223\346\227\266\351\227\264", nullptr));
+        pushButton_QueryInfo->setText(QCoreApplication::translate("SystemManager", "\346\237\245\350\257\242", nullptr));
+        label_12->setText(QCoreApplication::translate("SystemManager", "\345\205\245\345\272\223\346\227\266\351\227\264", nullptr));
+        lineEdit_ZBMingCheng->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\243\205\345\244\207\345\220\215\347\247\260", nullptr));
+        lineEdit_XZDanHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\243\205\347\256\261\345\215\225\345\217\267", nullptr));
+        lineEdit_DZBianHao->setText(QString());
+        lineEdit_DZBianHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\345\215\225\350\243\205\347\274\226\345\217\267", nullptr));
+        lineEdit_DBPingZhengHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\260\203\346\213\250\345\207\255\350\257\201\345\217\267", nullptr));
         tabWidget_Information->setTabText(tabWidget_Information->indexOf(tab_Info1), QCoreApplication::translate("SystemManager", "\346\237\245\350\257\242", nullptr));
         pushButton_Deliver->setText(QCoreApplication::translate("SystemManager", "\345\207\272\345\272\223", nullptr));
         lineEdit_DeliveryBFWenJianHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\351\200\200\345\275\271\346\212\245\345\272\237\346\226\207\344\273\266\345\217\267", nullptr));
@@ -1022,9 +1054,9 @@ public:
         pushButton_25->setText(QCoreApplication::translate("SystemManager", "\350\277\224\345\233\236", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("SystemManager", "\350\243\205\347\256\261\344\277\241\346\201\257", nullptr));
         groupBox->setTitle(QString());
-        label_Image1->setText(QString());
         label_Image2->setText(QString());
         pushButton_CodeGrab->setText(QCoreApplication::translate("SystemManager", "\347\274\226\347\240\201\346\213\215\347\205\247", nullptr));
+        label_Image1->setText(QString());
         pushButton_GunGrab->setText(QCoreApplication::translate("SystemManager", "\346\225\264\346\236\252\346\213\215\347\205\247", nullptr));
         groupBox_2->setTitle(QString());
         label_26->setText(QCoreApplication::translate("SystemManager", "\345\233\276\345\203\217\350\257\206\345\210\253", nullptr));
@@ -1032,10 +1064,14 @@ public:
         pushButton_Speaker->setText(QString());
         label_27->setText(QCoreApplication::translate("SystemManager", "\344\272\272\345\267\245\344\277\256\346\255\243", nullptr));
         lineEdit_XiuZheng->setPlaceholderText(QString());
-        checkBox_QiangGuan->setText(QCoreApplication::translate("SystemManager", "\346\236\252\347\256\241", nullptr));
+        checkBox_QiangGuan->setText(QCoreApplication::translate("SystemManager", "\346\236\252   \347\256\241", nullptr));
+        lineEdit_QiangGuan->setPlaceholderText(QString());
         checkBox_QiangJi->setText(QCoreApplication::translate("SystemManager", "\346\236\252\346\234\272/\345\245\227\347\255\222", nullptr));
-        checkBox_QiangKuang->setText(QCoreApplication::translate("SystemManager", "\346\234\272\346\236\252\346\241\206", nullptr));
+        lineEdit_QiangJi->setPlaceholderText(QString());
+        checkBox_QiangKuang->setText(QCoreApplication::translate("SystemManager", "\346\234\272 \346\236\252 \346\241\206", nullptr));
+        lineEdit_QiangKuang->setPlaceholderText(QString());
         checkBox_BeiFen->setText(QCoreApplication::translate("SystemManager", "\345\244\207\344\273\275\346\236\252\347\256\241", nullptr));
+        lineEdit_BeiFen->setPlaceholderText(QString());
         label_28->setText(QCoreApplication::translate("SystemManager", "\350\243\205\347\256\261\345\215\225\345\217\267\357\274\232", nullptr));
         label_DanHao->setText(QString());
         pushButton_Save->setText(QCoreApplication::translate("SystemManager", "\344\277\235\345\255\230", nullptr));

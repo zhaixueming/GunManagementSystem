@@ -146,6 +146,7 @@
     <QtUic Include="UI\SysMainWindow\SysMainWindow.ui" />
     <QtUic Include="UI\SystemManager\BoxPacked.ui" />
     <QtUic Include="UI\SystemManager\SinglePacked.ui" />
+    <QtUic Include="UI\SystemManager\SystemManagerbak.ui" />
     <QtUic Include="UI\SystemManager\SystemManager.ui" />
     <QtUic Include="UI\SystemManager\UserManager.ui" />
     <QtUic Include="Widget.ui" />

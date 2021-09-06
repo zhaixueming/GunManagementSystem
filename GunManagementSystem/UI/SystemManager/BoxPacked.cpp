@@ -191,14 +191,24 @@ void CBoxPacked::ConfirmModification()
 	{
 		if (m_Type == 0)
 		{
+			QDateTime curDateTime = QDateTime::currentDateTime();
+			QString JiLuDateTime = curDateTime.toString("yyyy-MM-dd hh:mm:ss");
+
+
 			sql = "insert into GunManager.dbo.BoxPackedDetailsTable values ";
 			int n = ui.spinBox->value();
 			int i = 0;
 			for (; i < n - 1; ++i)
 			{
-				sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\' ,\'1900-1-1\'),");
+				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'1900-1-1\'),");
+				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'")+ JiLuDateTime +"\'),";
+				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'") + JiLuDateTime + "\'" + ",\'1900-01-01 00:00:00.000\'),";//这是ok的
+				sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'") + JiLuDateTime + "\'" + ",\'\'),";
+				
 			}
-			sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'1900-1-1\')");
+			sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'") + JiLuDateTime + "\'" + ",\'\')";
+			//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'") + JiLuDateTime + "\'" + ",\'1900-01-01 00:00:00.000\')";//这是ok的
+			//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing  + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\'") + ",\'" + JiLuDateTime + "\')";
 			rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
 			if (!rv)
 			{
