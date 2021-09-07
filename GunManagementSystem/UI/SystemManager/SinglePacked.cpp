@@ -141,7 +141,7 @@ void CSinglePacked::ConfirmModification()
 	sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'1900-1-1\')";
 */
 	sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'";
-	sql += ZhuangBeiMing + "\',\'\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
+	sql += ZhuangBeiMing + "\',\'\',\'\',\'\',\'\',\'\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
 	sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'" + RuKuDateTime + "\'" + ",\'1900-1-1\')";//记录时间是创建一条单装数据时的时间
 	
 	QTableData TableData;
