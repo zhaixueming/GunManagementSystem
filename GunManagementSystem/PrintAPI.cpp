@@ -14,19 +14,19 @@ PrintAPI::PrintAPI(QObject *parent) :
 {
 }
 
-
+//表A2
 void PrintAPI::PrintGridA2(QVector<QStringList> content)
 {
-	QList<int> ColumnWidth;
-	ColumnWidth.push_back(30);
+	QList<int> ColumnWidth;//int型数据列表
+	ColumnWidth.push_back(30);//在列表最后添加数据30
 	ColumnWidth.push_back(200);
 	ColumnWidth.push_back(100);
 	ColumnWidth.push_back(200);
 	ColumnWidth.push_back(30);
 	ColumnWidth.push_back(30);
 	ColumnWidth.push_back(200);
-	QStringList ColumnNames;
-	ColumnNames << tr("序号") << tr("装备代码") << tr("装备(部件)名称");
+	QStringList ColumnNames;//定义
+	ColumnNames << tr("序号") << tr("装备代码") << tr("装备(部件)名称");//添加
 	ColumnNames << tr("单装编号") << tr("计量单位") << tr("数量") << tr("备注");
 
 
@@ -37,14 +37,16 @@ void PrintAPI::PrintGridA2(QVector<QStringList> content)
 	html.append("<tr><td align='center' style='vertical-align:middle;font-weight:bold;'>");
 	html.append(tr("表A.2 退役报废军械装备装箱清单"));
 	html.append("</td></tr>");
-	html.append("<br><br/>");
+	html.append("<br><br/>");//换行
 
 	//表格开始
 	html.append("<table border='0.5' cellspacing='0' cellpadding='3'>");
+	//html.append("<table border='0.5' cellspacing='0' cellpadding='3' align='center'>");
+	
 	//单位名称
 	html.append("<tr>");
 	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
-		.arg(5));
+		.arg(5));//单元格横跨5列
 	html.append(tr("单位名称:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱号:"));
 	html.append("</td>");
 
@@ -61,17 +63,19 @@ void PrintAPI::PrintGridA2(QVector<QStringList> content)
 	{
 		html.append(QString("<td width='%1' bgcolor='lightgray' align='center' style='vertical-align:middle;'>")
 			.arg(ColumnWidth.at(i)));
-		html.append(ColumnNames.at(i));
+		html.append(ColumnNames.at(i));//序号、装备代码、......
 		html.append("</td>");
 	}
 	html.append("</tr>");
-	for (int i = 0; i < content.size(); ++i)
+	for (int i = 0; i < content.size(); ++i)//从数据库中获取的表A.2数据
 	{
 		html.append("<tr>");
 		QStringList value = content.at(i);
 		for (int j = 0; j < value.size(); j++)
 		{
-			html.append(QString("<td width='%1' align='left' style='vertical-align:middle'>")
+			//html.append(QString("<td width='%1' align='left' style='vertical-align:middle'>")
+			//	.arg(ColumnWidth.at(j)));
+			html.append(QString("<td width='%1' align='center' style='vertical-align:middle'>")//数据在单元格中居中显示
 				.arg(ColumnWidth.at(j)));
 			html.append(value.at(j));
 			html.append("</td>");
@@ -117,7 +121,8 @@ void PrintAPI::PrintGridA2(QVector<QStringList> content)
 	printer.setPageSize(QPrinter::A4);
 	//设置横向纵向及页边距		
 	printer.setOrientation(QPrinter::Landscape);
-	printer.setPageMargins(10, 10, 10, 20, QPrinter::Millimeter);
+	//printer.setPageMargins(10, 10, 10, 20, QPrinter::Millimeter);
+	//printer.setPageMargins(0, 0, 0, 0, QPrinter::Millimeter);
 
 	QPrintPreviewDialog preview(&printer);
 	preview.setWindowTitle("打印预览");
@@ -175,6 +180,7 @@ void PrintAPI::PrintGridA3(QStringList content)
 	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
 		.arg(3));
 	html.append(content.at(2));
+	//html.append(content.at(4));
 	html.append("</td></tr>");
 
 	//第三行
@@ -188,6 +194,7 @@ void PrintAPI::PrintGridA3(QStringList content)
 	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
 		.arg(3));
 	html.append(content.at(3));
+	//html.append(content.at(0));
 	html.append("</td></tr>");
 
 	//第四行
@@ -201,6 +208,7 @@ void PrintAPI::PrintGridA3(QStringList content)
 	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
 		.arg(3));
 	html.append(content.at(4));
+	//html.append(content.at(1));
 	html.append("</td></tr>");
 
 	//第五行
@@ -214,6 +222,7 @@ void PrintAPI::PrintGridA3(QStringList content)
 	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(content.at(5));
+	//html.append(content.at(8));
 	html.append("</td>");
 
 	//装备时间
@@ -225,6 +234,7 @@ void PrintAPI::PrintGridA3(QStringList content)
 	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(content.at(6));
+	//html.append(content.at(9));
 	html.append("</td></tr>");
 
 	//第六行
@@ -238,6 +248,7 @@ void PrintAPI::PrintGridA3(QStringList content)
 	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(content.at(7));
+	//html.append(content.at(6));
 	html.append("</td>");
 
 	//管理单位

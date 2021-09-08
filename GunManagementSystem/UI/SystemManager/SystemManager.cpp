@@ -656,9 +656,10 @@ void CSystemMangaer::PrintBoxList()//×°ÏäÐÅÏ¢½çÃæµÄ×óÏÂ½ÇµÄ"´òÓ¡×°ÏäÇåµ¥"°´Å¥---
 		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 1)->text());
 		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
 		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
+		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 1)->text());
 		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
 		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
-		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 4)->text());
+		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 4)->text());
 		oneRow.push_back(QString::fromLocal8Bit("Ö§"));
 		oneRow.push_back("1");
 		content.push_back(oneRow);
@@ -820,7 +821,7 @@ void CSystemMangaer::QuerySinglePacked()//¡°±àÂë¼ìÊÓ¡±½çÃæÏÂ£¬µ¥×°Èë¿â½çÃæÏÂÓÒ±ß
 void CSystemMangaer::PrintSinglePacked()//±àÂë¼ìÊÓ½çÃæ->"µ¥×°Èë¿â"½çÃæ,×óÏÂ½Ç¡°´òÓ¡µ¥×°¿¨Æ¬¡±°´Å¥--¡·´Ë²Ûº¯Êý
 {
 	// ´´½¨´òÓ¡»ú¶ÔÏó
-	int row = ui.tableWidget_Single->currentRow();
+	int row = ui.tableWidget_Single->currentRow();//currentRowÎªµ±Ç°itemµÄËùÔÚÐÐµÄÐÐºÅ£¬´Ó0¿ªÊ¼¡£
 	if (row < 0)
 	{
 		QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("ÇëÑ¡ÔñÒª´òÓ¡µÄÊý¾Ý"));
@@ -828,16 +829,18 @@ void CSystemMangaer::PrintSinglePacked()//±àÂë¼ìÊÓ½çÃæ->"µ¥×°Èë¿â"½çÃæ,×óÏÂ½Ç¡°´
 	}
 
 	QStringList content;
-	content.push_back(ui.tableWidget_Single->item(row, 0)->text());//ÍËÒÛ±¨·ÏÎÄ¼þºÅ
-	content.push_back(ui.tableWidget_Single->item(row, 1)->text());//µ÷²¦Æ¾Ö¤ºÅ
 	content.push_back(ui.tableWidget_Single->item(row, 2)->text());//×°±¸´úÂë
 	content.push_back(ui.tableWidget_Single->item(row, 3)->text());//×°±¸Ãû³Æ
 	content.push_back(ui.tableWidget_Single->item(row, 4)->text());//µ¥×°±àºÅ
-	content.push_back(ui.tableWidget_Single->item(row, 5)->text());//ÖØÒª²¿¼þÈ±Ê§Çé¿ö
-	content.push_back(ui.tableWidget_Single->item(row, 6)->text());//Á¥Êôµ¥Î»
-	content.push_back(ui.tableWidget_Single->item(row, 7)->text());//¹ÜÀíµ¥Î»
-	content.push_back(ui.tableWidget_Single->item(row, 8)->text());//³ö³§Ê±¼ä
-	content.push_back(ui.tableWidget_Single->item(row, 9)->text());//×°±¸Ê±¼ä
+	content.push_back(ui.tableWidget_Single->item(row, 0)->text());//ÍËÒÛ±¨·ÏÎÄ¼þºÅ
+	content.push_back(ui.tableWidget_Single->item(row, 1)->text());//µ÷²¦Æ¾Ö¤ºÅ
+	content.push_back(ui.tableWidget_Single->item(row, 12)->text());//³ö³§Ê±¼ä
+	content.push_back(ui.tableWidget_Single->item(row, 13)->text());//×°±¸Ê±¼ä
+	content.push_back(ui.tableWidget_Single->item(row, 10)->text());//Á¥Êôµ¥Î»
+	content.push_back(ui.tableWidget_Single->item(row, 11)->text());//¹ÜÀíµ¥Î»
+
+	//content.push_back(ui.tableWidget_Single->item(row, 5)->text());//ÖØÒª²¿¼þÈ±Ê§Çé¿ö
+
 
 
 	PrintAPI::Instance()->PrintGridA3(content);
@@ -1358,12 +1361,15 @@ void CSystemMangaer::ImageGrabberReturn()//ÅÄÕÕ¼ìÊÓ½çÃæ-¡·ÓÒÏÂ¡°·µ»Ø¡±°´Å¥--¡·´Ë
 
 void CSystemMangaer::ExportExcel()//ÐÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°µ¼³öExcel¡±°´Å¥-----¡·´Ë²Ûº¯Êý
 {
-	int rows = ui.tableWidget_Search->rowCount();
+	int rows = ui.tableWidget_Search->rowCount();//»ñµÃtableWidget_SearchµÄÐÐÊý
 	if (rows == 0)
 	{
 		return;
 	}
-	QString filepath = QFileDialog::getSaveFileName(this, ("Save as..."),QString(), tr("EXCEL files (*.xls *.xlsx)"));
+	//QFile file("d:/temp.csv");
+	//file.open();
+	//file.save
+	QString filepath = QFileDialog::getSaveFileName(this, ("Save as..."),QString(), tr("EXCEL files (*.xls *.xlsx)"));//»ñÈ¡±£´æÂ·¾¶
 	if (filepath.isEmpty())
 	{
 		return;
