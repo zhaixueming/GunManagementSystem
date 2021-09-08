@@ -140,7 +140,8 @@ void CSystemMangaer::InitVariables()
 	header << QString::fromLocal8Bit(" ÍËÒÛ±¨·ÏÎÄ¼þºÅ ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
 	header << QString::fromLocal8Bit("  ×°Ïäµ¥ºÅ  ") << QString::fromLocal8Bit("  ×°±¸´úÂë  ") << QString::fromLocal8Bit("  ×°±¸(²¿¼þ)Ãû³Æ  ");
 	header << QString::fromLocal8Bit("  µ¥×°±àºÅ  ") << QString::fromLocal8Bit("  ³ö³§Ê±¼ä  ") << QString::fromLocal8Bit("  ×°±¸Ê±¼ä  ");
-	header << QString::fromLocal8Bit("  ¼ìÊÓ×´Ì¬  ") << QString::fromLocal8Bit("  ³ö¿â×´Ì¬  ") << QString::fromLocal8Bit("  Èë¿âÊ±¼ä  ") << QString::fromLocal8Bit("  ³ö¿âÊ±¼ä  ") << QString::fromLocal8Bit("Ñ¡Ôñ");
+	header << QString::fromLocal8Bit("  ¼ìÊÓ×´Ì¬  ") << QString::fromLocal8Bit("  ³ö¿â×´Ì¬  ") << QString::fromLocal8Bit("  Èë¿âÊ±¼ä  ");
+	header << QString::fromLocal8Bit("¼ìÊÓÊ±¼ä") << QString::fromLocal8Bit("  ³ö¿âÊ±¼ä  ") << QString::fromLocal8Bit("Ñ¡Ôñ");
 	ui.tableWidget_Search->setHorizontalHeaderLabels(header);
 	//³ö¿â±í
 	ui.tableWidget_Delivery->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -967,7 +968,7 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 	//sql += " and " + QString::fromLocal8Bit("t1.×°±¸Ãû³Æ like \'%") + ui.lineEdit_ZBMingCheng->text() + "%\'";
 
 	//QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼þºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t2.³ö¿â×´Ì¬,t2.¼ÇÂ¼Ê±¼ä");
-	QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼þºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t2.³ö¿â×´Ì¬,t2.Èë¿âÊ±¼ä,t2.³ö¿âÊ±¼ä");
+	QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼þºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t2.³ö¿â×´Ì¬,t2.Èë¿âÊ±¼ä,t2.¼ìÊÓÊ±¼ä,t2.³ö¿âÊ±¼ä");
 	sql += " from GunManager.dbo.BoxPackedTable t1 right join GunManager.dbo.BoxPackedDetailsTable t2 on";
 	sql += QString::fromLocal8Bit(" t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t1.×°±¸´úÂë = t2.×°±¸´úÂë and t1.×°±¸Ãû³Æ = t2.×°±¸Ãû³Æ");
 	sql += " where " + QString::fromLocal8Bit("t1.ÍËÒÛ±¨·ÏÎÄ¼þºÅ like \'%") + ui.lineEdit_BFWenJianHao->text() + "%\'";
@@ -984,6 +985,8 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 	//QString ChuKuRiQi = ui.dateEdit_InfoCK->dateTime().toString("yyyy-M-d");
 	QString ChuKuRiQi = ui.dateEdit_InfoCK->dateTime().toString("yyyy-M-d");
 	QString ChuKuRiQi_end = ui.dateEdit_InfoCK_end->dateTime().toString("yyyy-M-d");
+	QString JianShiRiqQi = ui.dateEdit_InfoJS->dateTime().toString("yyyy-M-d");
+	QString JianShiRiqQi_end = ui.dateEdit_InfoJS_end->dateTime().toString("yyyy-M-d");
 
 
 	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'1995-9-5\' AND \'1995-9-7\' and t2.³ö¿âÊ±¼ä BETWEEN \'1995-12-12\' AND \'1996-9-7\'");
@@ -1006,10 +1009,17 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 		//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä = \'") + RuKuRiQi + "\'";
 		sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'") + RuKuRiQi + "\' AND \'" + RuKuRiQi_end + "\'";
 	}
+
+	if (JianShiRiqQi != "1900-1-1" && JianShiRiqQi_end != "1900-1-1")
+	{
+		sql += " and " + QString::fromLocal8Bit("t2.¼ìÊÓÊ±¼ä BETWEEN \'") + JianShiRiqQi + "\'AND \'" + JianShiRiqQi_end + "\'";
+	}
+
 	if (ChuKuRiQi != "1900-1-1" && ChuKuRiQi_end != "1900-1-1")
 	{
 		sql += " and " + QString::fromLocal8Bit("t2.³ö¿âÊ±¼ä BETWEEN \'") + ChuKuRiQi + "\' AND \'" + ChuKuRiQi_end + "\'";
 	}
+
 	QTableData PackedTableData;
 	QTableData SingleTableData;
 	QString errMsg;
@@ -1022,7 +1032,7 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 
 	sql.clear();
 	//sql = QString::fromLocal8Bit("select ÍËÒÛ±¨·ÏÎÄ¼þºÅ,µ÷²¦Æ¾Ö¤ºÅ,\'-\' as Ïä×°µ¥ºÅ,×°±¸´úÂë,×°±¸Ãû³Æ,µ¥×°±àºÅ,³ö³§Ê±¼ä,×°±¸Ê±¼ä,³ö¿â×´Ì¬,¼ÇÂ¼Ê±¼ä from GunManager.dbo.SinglePackedTable");
-	sql = QString::fromLocal8Bit("select ÍËÒÛ±¨·ÏÎÄ¼þºÅ,µ÷²¦Æ¾Ö¤ºÅ,\'-\' as Ïä×°µ¥ºÅ,×°±¸´úÂë,×°±¸Ãû³Æ,µ¥×°±àºÅ,³ö³§Ê±¼ä,×°±¸Ê±¼ä,³ö¿â×´Ì¬,Èë¿âÊ±¼ä,³ö¿âÊ±¼ä from GunManager.dbo.SinglePackedTable");
+	sql = QString::fromLocal8Bit("select ÍËÒÛ±¨·ÏÎÄ¼þºÅ,µ÷²¦Æ¾Ö¤ºÅ,\'-\' as Ïä×°µ¥ºÅ,×°±¸´úÂë,×°±¸Ãû³Æ,µ¥×°±àºÅ,³ö³§Ê±¼ä,×°±¸Ê±¼ä,³ö¿â×´Ì¬,Èë¿âÊ±¼ä,¼ìÊÓÊ±¼ä,³ö¿âÊ±¼ä from GunManager.dbo.SinglePackedTable");
 	sql += " where " + QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÎÄ¼þºÅ like \'%") + ui.lineEdit_BFWenJianHao->text() + "%\'";
 	sql += " and " + QString::fromLocal8Bit("µ÷²¦Æ¾Ö¤ºÅ like \'%") + ui.lineEdit_DBPingZhengHao->text() + "%\'";
 	sql += " and " + QString::fromLocal8Bit("×°±¸´úÂë like \'%") + ui.lineEdit_ZBDaima->text() + "%\'";
@@ -1049,7 +1059,13 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 		
 		sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä BETWEEN \'") + RuKuRiQi + "\' AND \'" + RuKuRiQi_end + "\'";
 	}
-	if (ChuKuRiQi != "1900-1-1" && ChuKuRiQi_end!="1900-1-1")
+
+	if (JianShiRiqQi != "1900-1-1" && JianShiRiqQi_end != "1900-1-1")
+	{
+		sql += " and " + QString::fromLocal8Bit("¼ìÊÓÊ±¼ä BETWEEN \'") + JianShiRiqQi + "\'AND \'" + JianShiRiqQi_end + "\'";
+	}
+
+	if (ChuKuRiQi != "1900-1-1" && ChuKuRiQi_end != "1900-1-1")
 	{
 		sql += " and " + QString::fromLocal8Bit("³ö¿âÊ±¼ä BETWEEN \'") + ChuKuRiQi + "\'AND \'" + ChuKuRiQi_end + "\'";
 	}
@@ -1108,19 +1124,24 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 		item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);//±í¸ñÎÄ×Ö¾ÓÖÐ
 		ui.tableWidget_Search->setItem(row, col + 2, item);
 
-		//³ö¿âÊ±¼ä
+		//¼ìÊÓÊ±¼ä
 		data = RowData.at(col + 2).toString();
 		data = data.replace("T", " ");
-
 		item = new QTableWidgetItem(data);
 		item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);//±í¸ñÎÄ×Ö¾ÓÖÐ
 		//ui.tableWidget_Search->setItem(row, col+2, item);
 		ui.tableWidget_Search->setItem(row, col + 3, item);
 
+		//³ö¿âÊ±¼ä
+		data = RowData.at(col + 3).toString();
+		data = data.replace("T", " ");
+		item = new QTableWidgetItem(data);
+		item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);//±í¸ñÎÄ×Ö¾ÓÖÐ
+		ui.tableWidget_Search->setItem(row, col + 4, item);
+
 		//¸´Ñ¡¿ò
 		QCheckBox *checkBox = new QCheckBox(QString::fromLocal8Bit("¹´Ñ¡"));
-		//ui.tableWidget_Search->setCellWidget(row, col + 3, checkBox);
-		ui.tableWidget_Search->setCellWidget(row, col+4, checkBox);
+		ui.tableWidget_Search->setCellWidget(row, col+5, checkBox);
 	}
 	ui.tableWidget_Search->setSortingEnabled(true);
 	ui.tableWidget_Search->sortByColumn(0, Qt::AscendingOrder);
@@ -1616,6 +1637,9 @@ void CSystemMangaer::SaveRecognizeResult()
 	QPushButton *okbtn = new QPushButton(QString::fromLocal8Bit("È·¶¨"));
 	QPushButton *cancelbtn = new QPushButton(QString::fromLocal8Bit("È¡Ïû"));
 	QMessageBox *mymsgbox = new QMessageBox;//´´½¨Ò»¸öÏûÏ¢¿ò
+	
+	QDateTime curDateTime = QDateTime::currentDateTime();
+	QString JianShiDateTime = curDateTime.toString("yyyy-M-d");//»ñÈ¡µ±Ç°ÈÕÆÚ£¬²¢×ª»»Îª×Ö·û´®
 
 	mymsgbox->setIcon(QMessageBox::Warning);
 	mymsgbox->setWindowTitle(QString::fromLocal8Bit("ÊÇ·ñ±£´æ?"));
@@ -1639,6 +1663,7 @@ void CSystemMangaer::SaveRecognizeResult()
 			sql += QString::fromLocal8Bit(",Ç¹»÷»òÌ×Í²ºÅ = \'") + m_QiangJiHao + "\'";
 			sql += QString::fromLocal8Bit(",»úÇ¹¿òºÅ = \'") + m_QiangKuangHao + "\'";
 			sql += QString::fromLocal8Bit(",±¸·ÝÇ¹¹ÜºÅ = \'") + m_BeiFenHao + "\'";
+			sql += QString::fromLocal8Bit(",¼ìÊÓÊ±¼ä = \'") + JianShiDateTime + "\'";
 			sql += QString::fromLocal8Bit("where GunManager.dbo.BoxPackedDetailsTable.ÐòºÅ = ") + QString::number(m_curMsg.index);
             sql += QString::fromLocal8Bit(" and GunManager.dbo.BoxPackedDetailsTable.×°Ïäµ¥ºÅ = \'") + m_curMsg.PackedNum + "\'";//m_curMsg.PackedNum=DanHao
 			//sql += QString::fromLocal8Bit(" where GunManager.dbo.BoxPackedDetailsTable.ÐòºÅ = ") + QString::number(m_curMsg.index);
@@ -1654,6 +1679,7 @@ void CSystemMangaer::SaveRecognizeResult()
 			sql += QString::fromLocal8Bit(",Ç¹»÷»òÌ×Í²ºÅ = \'") + m_QiangJiHao + "\'";
 			sql += QString::fromLocal8Bit(",»úÇ¹¿òºÅ = \'") + m_QiangKuangHao + "\'";
 			sql += QString::fromLocal8Bit(",±¸·ÝÇ¹¹ÜºÅ = \'") + m_BeiFenHao + "\'";
+			sql += QString::fromLocal8Bit(",¼ìÊÓÊ±¼ä = \'") + JianShiDateTime + "\'";
 			sql += QString::fromLocal8Bit(" where ÍËÒÛ±¨·ÏÎÄ¼þºÅ = \'") + m_curMsg.BFWenJianHao + "\'";
 			sql += QString::fromLocal8Bit(" and µ÷²¦Æ¾Ö¤ºÅ = \'") + m_curMsg.DBPingZhengHao + "\'";
 			sql += QString::fromLocal8Bit(" and ×°±¸´úÂë = \'") + m_curMsg.ZBDaiMa + "\'";

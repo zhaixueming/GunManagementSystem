@@ -206,10 +206,10 @@ void CBoxPacked::ConfirmModification()
 				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'")+ JiLuDateTime +"\'),";
 				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'") + JiLuDateTime + "\'" + ",\'1900-01-01 00:00:00.000\'),";//这是ok的
 				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'1900-1-1\'),";
-				sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'1900-1-1\'),";
+				sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'\',\'\'),";
 				
 			}
-			sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'1900-1-1\')";
+			sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'\',\'\')";
 			//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'") + JiLuDateTime + "\'" + ",\'1900-01-01 00:00:00.000\')";//这是ok的
 			//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing  + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\'") + ",\'" + JiLuDateTime + "\')";
 			rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
