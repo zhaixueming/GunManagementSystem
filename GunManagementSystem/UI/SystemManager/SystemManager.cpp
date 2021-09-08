@@ -983,10 +983,18 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 	//QString ChuChangRiQi = ui.dateEdit_InfoRK->dateTime().toString("yyyy-M-d");
 	//QString ZhuangBeiRiQi = ui.dateEdit_InfoCK->dateTime().toString("yyyy-M-d");
 	QString RuKuRiQi = ui.dateEdit_InfoRK->dateTime().toString("yyyy-M-d");
+	QString RuKuRiQi_end = ui.dateEdit_InfoRK_end->dateTime().toString("yyyy-M-d");
 	//QString RuKuRiQi = ui.dateEdit_InfoRK->dateTime().toString("yyyy-M-d");
 	//QString ChuKuRiQi = ui.dateEdit_InfoCK->dateTime().toString("yyyy-M-d");
 	QString ChuKuRiQi = ui.dateEdit_InfoCK->dateTime().toString("yyyy-M-d");
+	QString ChuKuRiQi_end = ui.dateEdit_InfoCK_end->dateTime().toString("yyyy-M-d");
 
+
+	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'1995-9-5\' AND \'1995-9-7\' and t2.³ö¿âÊ±¼ä BETWEEN \'1995-12-12\' AND \'1996-9-7\'");
+	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'1995-9-5\' AND \'1995-9-7\'");
+	//sql += " and " + QString::fromLocal8Bit("t2.³ö¿âÊ±¼ä BETWEEN \'") + ChuKuRiQi + "\' AND \'" + ChuKuRiQi_end + "\'";
+	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'") + RuKuRiQi + "\' AND \'" + RuKuRiQi_end + "\'";
+	//sql += " and " + QString::fromLocal8Bit("t2.³ö¿âÊ±¼ä BETWEEN \'") + ChuKuRiQi + "\' AND \'" + ChuKuRiQi_end + "\'";
 	if (RuKuRiQi != "1900-1-1")
 	{
 		sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä = \'") + RuKuRiQi + "\'";
@@ -1014,8 +1022,12 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 	sql += " and " + QString::fromLocal8Bit("×°±¸Ãû³Æ like \'%") + ui.lineEdit_ZBMingCheng->text() + "%\'";
 	sql += " and " + QString::fromLocal8Bit("µ¥×°±àºÅ like \'%") + ui.lineEdit_DZBianHao->text() + "%\'";//Ìí¼ÓµÄµ¥×°±àºÅ²éÑ¯
 	
-	sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä = \'") + RuKuRiQi + "\'";
-	sql += " and " + QString::fromLocal8Bit("³ö¿âÊ±¼ä = \'") + ChuKuRiQi + "\'";
+	//sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä = \'") + RuKuRiQi + "\'";
+	//sql += " and " + QString::fromLocal8Bit("³ö¿âÊ±¼ä = \'") + ChuKuRiQi + "\'";
+
+
+	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'1995-9-5\' AND \'1995-9-7\' and t2.³ö¿âÊ±¼ä BETWEEN \'1995-12-12\' AND \'1996-9-7\'");
+	//sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä BETWEEN \'1995-09-05\' AND \'1995-09-07\'");
 
 
 	if (RuKuRiQi != "1900-01-01")
@@ -1026,6 +1038,8 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 	{
 		sql += " and " + QString::fromLocal8Bit("³ö¿âÊ±¼ä = \'") + ChuKuRiQi + "\'";
 	}
+
+
 	rv = CDatabaseOperator::GetInstance()->execSql(sql, SingleTableData, errMsg);
 	if (!rv)
 	{
