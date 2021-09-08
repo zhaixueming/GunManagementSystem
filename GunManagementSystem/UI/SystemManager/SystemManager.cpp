@@ -656,10 +656,9 @@ void CSystemMangaer::PrintBoxList()//×°ÏäÐÅÏ¢½çÃæµÄ×óÏÂ½ÇµÄ"´òÓ¡×°ÏäÇåµ¥"°´Å¥---
 		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 1)->text());
 		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
 		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
-		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 1)->text());
 		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
 		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
-		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 4)->text());
+		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 4)->text());
 		oneRow.push_back(QString::fromLocal8Bit("Ö§"));
 		oneRow.push_back("1");
 		content.push_back(oneRow);
@@ -821,7 +820,7 @@ void CSystemMangaer::QuerySinglePacked()//¡°±àÂë¼ìÊÓ¡±½çÃæÏÂ£¬µ¥×°Èë¿â½çÃæÏÂÓÒ±ß
 void CSystemMangaer::PrintSinglePacked()//±àÂë¼ìÊÓ½çÃæ->"µ¥×°Èë¿â"½çÃæ,×óÏÂ½Ç¡°´òÓ¡µ¥×°¿¨Æ¬¡±°´Å¥--¡·´Ë²Ûº¯Êý
 {
 	// ´´½¨´òÓ¡»ú¶ÔÏó
-	int row = ui.tableWidget_Single->currentRow();//currentRowÎªµ±Ç°itemµÄËùÔÚÐÐµÄÐÐºÅ£¬´Ó0¿ªÊ¼¡£
+	int row = ui.tableWidget_Single->currentRow();
 	if (row < 0)
 	{
 		QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("ÇëÑ¡ÔñÒª´òÓ¡µÄÊý¾Ý"));
@@ -829,18 +828,16 @@ void CSystemMangaer::PrintSinglePacked()//±àÂë¼ìÊÓ½çÃæ->"µ¥×°Èë¿â"½çÃæ,×óÏÂ½Ç¡°´
 	}
 
 	QStringList content;
+	content.push_back(ui.tableWidget_Single->item(row, 0)->text());//ÍËÒÛ±¨·ÏÎÄ¼þºÅ
+	content.push_back(ui.tableWidget_Single->item(row, 1)->text());//µ÷²¦Æ¾Ö¤ºÅ
 	content.push_back(ui.tableWidget_Single->item(row, 2)->text());//×°±¸´úÂë
 	content.push_back(ui.tableWidget_Single->item(row, 3)->text());//×°±¸Ãû³Æ
 	content.push_back(ui.tableWidget_Single->item(row, 4)->text());//µ¥×°±àºÅ
-	content.push_back(ui.tableWidget_Single->item(row, 0)->text());//ÍËÒÛ±¨·ÏÎÄ¼þºÅ
-	content.push_back(ui.tableWidget_Single->item(row, 1)->text());//µ÷²¦Æ¾Ö¤ºÅ
-	content.push_back(ui.tableWidget_Single->item(row, 12)->text());//³ö³§Ê±¼ä
-	content.push_back(ui.tableWidget_Single->item(row, 13)->text());//×°±¸Ê±¼ä
-	content.push_back(ui.tableWidget_Single->item(row, 10)->text());//Á¥Êôµ¥Î»
-	content.push_back(ui.tableWidget_Single->item(row, 11)->text());//¹ÜÀíµ¥Î»
-
-	//content.push_back(ui.tableWidget_Single->item(row, 5)->text());//ÖØÒª²¿¼þÈ±Ê§Çé¿ö
-
+	content.push_back(ui.tableWidget_Single->item(row, 5)->text());//ÖØÒª²¿¼þÈ±Ê§Çé¿ö
+	content.push_back(ui.tableWidget_Single->item(row, 6)->text());//Á¥Êôµ¥Î»
+	content.push_back(ui.tableWidget_Single->item(row, 7)->text());//¹ÜÀíµ¥Î»
+	content.push_back(ui.tableWidget_Single->item(row, 8)->text());//³ö³§Ê±¼ä
+	content.push_back(ui.tableWidget_Single->item(row, 9)->text());//×°±¸Ê±¼ä
 
 
 	PrintAPI::Instance()->PrintGridA3(content);
@@ -979,7 +976,6 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 	sql += " and " + QString::fromLocal8Bit("t1.×°±¸´úÂë like \'%") + ui.lineEdit_ZBDaima->text() + "%\'";
 	sql += " and " + QString::fromLocal8Bit("t1.×°±¸Ãû³Æ like \'%") + ui.lineEdit_ZBMingCheng->text() + "%\'";
 	sql += " and " + QString::fromLocal8Bit("t2.µ¥×°±àºÅ like \'%") + ui.lineEdit_DZBianHao->text() + "%\'";//Ìí¼ÓµÄµ¥×°±àºÅ²éÑ¯
-	//sql += " and " + QString::fromLocal8Bit("t1.¼ÇÂ¼Ê±¼ä = \'") + RuKuRiQi + "\'";
 	//QString ChuChangRiQi = ui.dateEdit_InfoRK->dateTime().toString("yyyy-M-d");
 	//QString ZhuangBeiRiQi = ui.dateEdit_InfoCK->dateTime().toString("yyyy-M-d");
 	QString RuKuRiQi = ui.dateEdit_InfoRK->dateTime().toString("yyyy-M-d");
@@ -991,17 +987,28 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 
 
 	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'1995-9-5\' AND \'1995-9-7\' and t2.³ö¿âÊ±¼ä BETWEEN \'1995-12-12\' AND \'1996-9-7\'");
-	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'1995-9-5\' AND \'1995-9-7\'");
-	//sql += " and " + QString::fromLocal8Bit("t2.³ö¿âÊ±¼ä BETWEEN \'") + ChuKuRiQi + "\' AND \'" + ChuKuRiQi_end + "\'";
+	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'")+ RuKuRiQi+"\' AND \'2025-9-7\'");
+	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'1995-9-5\' AND \'2025-9-7\'");
+	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'") + RuKuRiQi + "\' AND \'" + RuKuRiQi_end + "\'";
 	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'") + RuKuRiQi + "\' AND \'" + RuKuRiQi_end + "\'";
 	//sql += " and " + QString::fromLocal8Bit("t2.³ö¿âÊ±¼ä BETWEEN \'") + ChuKuRiQi + "\' AND \'" + ChuKuRiQi_end + "\'";
-	if (RuKuRiQi != "1900-1-1")
+	//if (RuKuRiQi != "1900-1-1"&& RuKuRiQi_end != "1900-1-1")
+	//{
+	//	sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä = \'") + RuKuRiQi + "\'";
+	//}
+	//if (ChuKuRiQi != "1900-1-1")
+	//{
+	//	sql += " and " + QString::fromLocal8Bit("t2.³ö¿âÊ±¼ä = \'") + ChuKuRiQi + "\'";
+	//}
+
+	if (RuKuRiQi != "1900-1-1"&& RuKuRiQi_end != "1900-1-1")
 	{
-		sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä = \'") + RuKuRiQi + "\'";
+		//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä = \'") + RuKuRiQi + "\'";
+		sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'") + RuKuRiQi + "\' AND \'" + RuKuRiQi_end + "\'";
 	}
-	if (ChuKuRiQi != "1900-1-1")
+	if (ChuKuRiQi != "1900-1-1" && ChuKuRiQi_end != "1900-1-1")
 	{
-		sql += " and " + QString::fromLocal8Bit("t2.³ö¿âÊ±¼ä = \'") + ChuKuRiQi + "\'";
+		sql += " and " + QString::fromLocal8Bit("t2.³ö¿âÊ±¼ä BETWEEN \'") + ChuKuRiQi + "\' AND \'" + ChuKuRiQi_end + "\'";
 	}
 	QTableData PackedTableData;
 	QTableData SingleTableData;
@@ -1022,21 +1029,29 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 	sql += " and " + QString::fromLocal8Bit("×°±¸Ãû³Æ like \'%") + ui.lineEdit_ZBMingCheng->text() + "%\'";
 	sql += " and " + QString::fromLocal8Bit("µ¥×°±àºÅ like \'%") + ui.lineEdit_DZBianHao->text() + "%\'";//Ìí¼ÓµÄµ¥×°±àºÅ²éÑ¯
 	
-	//sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä = \'") + RuKuRiQi + "\'";
-	//sql += " and " + QString::fromLocal8Bit("³ö¿âÊ±¼ä = \'") + ChuKuRiQi + "\'";
-
-
 	//sql += " and " + QString::fromLocal8Bit("t2.Èë¿âÊ±¼ä BETWEEN \'1995-9-5\' AND \'1995-9-7\' and t2.³ö¿âÊ±¼ä BETWEEN \'1995-12-12\' AND \'1996-9-7\'");
-	//sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä BETWEEN \'1995-09-05\' AND \'1995-09-07\'");
+	//sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä BETWEEN \'1995-09-05\' AND \'1998-09-07\'");
+	//sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä BETWEEN \'") + RuKuRiQi + "\' AND \'" + RuKuRiQi_end + "\'";
 
 
-	if (RuKuRiQi != "1900-01-01")
+	//if (RuKuRiQi != "1900-01-01")
+	//{
+	//	sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä = \'") + RuKuRiQi + "\'";
+	//	
+	//}
+	//if (ChuKuRiQi != "1900-01-01")
+	//{
+	//	sql += " and " + QString::fromLocal8Bit("³ö¿âÊ±¼ä = \'") + ChuKuRiQi + "\'";
+	//}
+
+	if (RuKuRiQi != "1900-1-1" && RuKuRiQi_end != "1900-1-1")
 	{
-		sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä = \'") + RuKuRiQi + "\'";
+		
+		sql += " and " + QString::fromLocal8Bit("Èë¿âÊ±¼ä BETWEEN \'") + RuKuRiQi + "\' AND \'" + RuKuRiQi_end + "\'";
 	}
-	if (ChuKuRiQi != "1900-01-01")
+	if (ChuKuRiQi != "1900-1-1" && ChuKuRiQi_end!="1900-1-1")
 	{
-		sql += " and " + QString::fromLocal8Bit("³ö¿âÊ±¼ä = \'") + ChuKuRiQi + "\'";
+		sql += " and " + QString::fromLocal8Bit("³ö¿âÊ±¼ä BETWEEN \'") + ChuKuRiQi + "\'AND \'" + ChuKuRiQi_end + "\'";
 	}
 
 
@@ -1375,15 +1390,12 @@ void CSystemMangaer::ImageGrabberReturn()//ÅÄÕÕ¼ìÊÓ½çÃæ-¡·ÓÒÏÂ¡°·µ»Ø¡±°´Å¥--¡·´Ë
 
 void CSystemMangaer::ExportExcel()//ÐÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°µ¼³öExcel¡±°´Å¥-----¡·´Ë²Ûº¯Êý
 {
-	int rows = ui.tableWidget_Search->rowCount();//»ñµÃtableWidget_SearchµÄÐÐÊý
+	int rows = ui.tableWidget_Search->rowCount();
 	if (rows == 0)
 	{
 		return;
 	}
-	//QFile file("d:/temp.csv");
-	//file.open();
-	//file.save
-	QString filepath = QFileDialog::getSaveFileName(this, ("Save as..."),QString(), tr("EXCEL files (*.xls *.xlsx)"));//»ñÈ¡±£´æÂ·¾¶
+	QString filepath = QFileDialog::getSaveFileName(this, ("Save as..."),QString(), tr("EXCEL files (*.xls *.xlsx)"));
 	if (filepath.isEmpty())
 	{
 		return;
