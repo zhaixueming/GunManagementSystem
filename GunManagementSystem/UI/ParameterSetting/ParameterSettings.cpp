@@ -1,5 +1,7 @@
 #include <Windows.h>
 #include "ParameterSettings.h"
+#include"QFileDialog"
+#include"Config.h"
 
 //参数设置对话框
 
@@ -14,6 +16,7 @@ CParameterSettings::CParameterSettings(QDialog *parent /* = NULL */)
 	this->setFixedSize(this->size());
 	InitVariables();
 	InitConnections();
+	LoadConfig();
 }
 
 CParameterSettings::~CParameterSettings()
@@ -32,8 +35,10 @@ CParameterSettings *CParameterSettings::GetInstance()//单例模式
 void CParameterSettings::InitVariables()
 {
 	m_bConnected = false;//初始化为f
+	//打开相机pBt
 	ui.pushButton_OpenCamera1->setEnabled(false);
 	ui.pushButton_OpenCamera2->setEnabled(false);
+	//触发类型选择
 	m_BtnGroup1 = new QButtonGroup();
 	m_BtnGroup1->addButton(ui.radioButton_FreeRun1, 1);
 	m_BtnGroup1->addButton(ui.radioButton_SoftTrigger1, 2);
@@ -41,7 +46,7 @@ void CParameterSettings::InitVariables()
 
 	ui.radioButton_FreeRun1->setEnabled(false);
 	ui.radioButton_SoftTrigger1->setEnabled(false);
-	ui.radioButton_SoftTrigger1->setChecked(true);
+	ui.radioButton_SoftTrigger1->setChecked(true);//默认为软触发
 	ui.radioButton_ExternalTrigger1->setEnabled(false);
 
 	m_BtnGroup2 = new QButtonGroup();
@@ -56,14 +61,14 @@ void CParameterSettings::InitVariables()
 
 
 
-	m_CameraCapture1 = new CImageCapture();//捕获图像
-	m_CameraCapture1->start();
-	m_CameraCapture2 = new CImageCapture();
+	m_CameraCapture1 = new CImageCapture();//捕获编码图像
+	m_CameraCapture1->start();//开启线程
+	m_CameraCapture2 = new CImageCapture();//捕获整枪图像
 	m_CameraCapture2->start();
-	m_bOpenCamera1 = false;
+	m_bOpenCamera1 = false;//初始化为False
 	m_bOpenCamera2 = false;
-	m_Camera1Type = 2;
-	m_Camera2Type = 2;
+	m_Camera1Type = 2;//初始化为2
+	m_Camera2Type = 2;//初始化为2
 	InitCameraInfo();
 }
 
@@ -148,7 +153,7 @@ bool CParameterSettings::OpenCamera(MV_CC_DEVICE_INFO device_info,int index)
 {
 	if (index == 1)
 	{
-		int nRet = m_MvCamera1.Open(&device_info);//.2创建句柄,打开设备
+		int nRet = m_MvCamera1.Open(&device_info);//.2创建句柄,打开设备   int Open(MV_CC_DEVICE_INFO* pstDeviceInfo);
 		if (nRet != MV_OK)
 		{
 			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("打开相机失败:") + QString::number(nRet));
@@ -260,7 +265,7 @@ bool CParameterSettings::SetFreeFrame(int index)
 	}
 	return true;
 }
-
+//软触发
 bool CParameterSettings::SetSoftTrigger(int index)
 {
 	if (index == 1 && m_bOpenCamera1)
@@ -295,7 +300,7 @@ bool CParameterSettings::SetSoftTrigger(int index)
 	}
 	return true;
 }
-
+//硬触发
 bool CParameterSettings::SetExternalTrigger(int index)
 {
 	if (index == 1 && m_bOpenCamera1)
@@ -331,7 +336,7 @@ bool CParameterSettings::SetExternalTrigger(int index)
 	return true;
 }
 
-//软触发
+
 bool CParameterSettings::SoftTriggerOnce(int index, QString &errMsg)
 {
 	if (index == 1 && m_bOpenCamera1)
@@ -366,6 +371,192 @@ bool CParameterSettings::SoftTriggerOnce(int index, QString &errMsg)
 }
 
 
+
+
+QString CParameterSettings::GetSavePath()
+{
+	QString SavePath = ui.lineEdit_SaveImagePath->text();
+	if (!SavePath.isEmpty())
+	{
+		return SavePath;
+	}
+	else
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置路径信息"));
+		//return;
+	}
+}
+
+//浏览存放路径
+void CParameterSettings::BrowseSavePath()
+{
+	QString filePath = QFileDialog::getExistingDirectory(this, "Open Image Save Path", QCoreApplication::applicationDirPath());
+	if (!filePath.isEmpty())
+	{
+		ui.lineEdit_SaveImagePath->setText(filePath);
+	}
+	else
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置路径信息"));
+	}
+
+}
+
+void CParameterSettings::SaveConfig()
+{
+	QString IniPath = QCoreApplication::applicationDirPath() + "/parameter_cfg.ini";//创建一个ini文件
+	CConfig *cfg = new CConfig(IniPath);
+	
+	if (m_bOpenCamera1)
+	{
+		QString m_Camera1Name = ui.comboBox_Camera1->currentText();
+		cfg->Write(CAMERA_SECTION, CAMERA_NAME1, m_Camera1Name);
+	}
+
+	if (m_bOpenCamera2)
+	{
+		QString m_Camera2Name = ui.comboBox_Camera2->currentText();
+		cfg->Write(CAMERA_SECTION, CAMERA_NAME2, m_Camera2Name);
+	}
+	//编码相机的保存路径
+	QString SavePath = ui.lineEdit_SaveImagePath->text();
+	if (!SavePath.isEmpty())
+	{
+		cfg->Write(DATA_SECTION, IMAGE_SAVE_PATH, SavePath);
+
+	}
+
+	//数据库
+	bool bconnected = CDatabaseOperator::GetInstance()->GetConnectStatus();
+	cfg->Write(DATABASE, HOSTNAME, bconnected);
+	if (bconnected)
+	{
+		QString DatabaseName = ui.lineEdit_DatabaseName->text();
+		QString UserName = ui.lineEdit_UserName->text();
+		QString Password = ui.lineEdit_Password->text();
+		
+		cfg->Write(DATABASE, DATABASE_NAME, DatabaseName);
+		cfg->Write(DATABASE, USER_NAME, UserName);
+		cfg->Write(DATABASE, PASSWORD, Password);
+	}
+
+}
+
+
+//void CParameterSettings::LoadConfig()
+//{
+//	QString IniPath = QCoreApplication::applicationDirPath() + "/parameter_cfg.ini";
+//	CConfig *cfg = new CConfig(IniPath);
+//	m_Camera1Name = cfg->GetString(CAMERA_SECTION, CAMERA_NAME1);
+//	if (!m_Camera1Name.isEmpty())
+//	{
+//		for (int i = 0; i < ui.comboBox_Camera1->count(); ++i)
+//		{
+//			QString CurrentName = ui.comboBox_Camera1->itemText(i);
+//			if (CurrentName == m_Camera1Name)
+//			{
+//				QString errMsg;
+//				m_bOpenCamera1 = OpenCamera(*m_stDevList.pDeviceInfo[i],1);
+//				if (!m_bOpenCamera1)
+//				{
+//					return;
+//				}
+//				m_CameraCapture1.SetCameraHandle(m_MvCamera1);
+//				m_CameraCapture1.SetCameraStatus(true);
+//				ui.spinBox_Exposure->setEnabled(true);
+//				//ui.spinBox_Gain->setEnabled(true);
+//				ui.pushButton_OpenCamera1->setText(QString::fromLocal8Bit("关闭相机"));
+//				break;
+//			}
+//		}
+//	}
+//}
+void CParameterSettings::LoadConfig()
+{
+	QString IniPath = QCoreApplication::applicationDirPath() + "/parameter_cfg.ini";
+	//CConfig *cfg = new CConfig(IniPath);
+	QFileInfo info;
+	if (info.exists(IniPath))
+	{
+		CConfig *cfg = new CConfig(IniPath);
+
+		//相机1名字
+		QString m_Camera1Name = cfg->GetString(CAMERA_SECTION, CAMERA_NAME1);
+		qDebug() << "load config camera1 name:" << m_Camera1Name;
+		printf("load config camera1 name:%s\n", m_Camera1Name.toStdString().c_str());
+		if (!m_Camera1Name.isEmpty())
+		{
+			int index = ui.comboBox_Camera1->findText(m_Camera1Name);
+			qDebug() << "camera1 comboBox index: " << index;
+			printf("camera1 comBox index:%d\n", index);
+			if (index != -1)
+			{
+				ui.comboBox_Camera1->setCurrentIndex(index);
+				Camera1Controller();//打开相机1
+			}
+
+		}
+		//相机2名字
+		QString m_Camera2Name = cfg->GetString(CAMERA_SECTION, CAMERA_NAME2);
+		qDebug() << "load config camera2 name:" << m_Camera2Name;
+		printf("load config camera2 name:%s\n", m_Camera2Name.toStdString().c_str());
+		if (!m_Camera2Name.isEmpty())
+		{
+			int index = ui.comboBox_Camera2->findText(m_Camera2Name);
+			qDebug() << "camera2 comboBox index: " << index;
+			printf("camera2 comBox index:%d\n", index);
+			if (index != -1)
+			{
+				ui.comboBox_Camera2->setCurrentIndex(index);
+				Camera2Controller();//打开相机1
+			}
+
+		}
+
+		//数据库
+		bool rv = cfg->GetBool(DATABASE, HOSTNAME);
+		qDebug() << "load config database connected:" << rv;
+		if (rv)
+		{
+			QString databasename = cfg->GetString(DATABASE, DATABASE_NAME);
+			qDebug() << "load config database name:" << databasename;
+			printf("load config database name:%s\n", databasename.toStdString().c_str());
+			ui.lineEdit_DatabaseName->setText(databasename);
+
+			QString username = cfg->GetString(DATABASE, USER_NAME);
+			qDebug() << "load config database username:" << username;
+			printf("load config database username:%s\n", username.toStdString().c_str());
+			ui.lineEdit_UserName->setText(username);
+
+			QString password = cfg->GetString(DATABASE, PASSWORD);
+			qDebug() << "load config database password:" << password;
+			printf("load config database password:%s\n", password);
+			ConnectDatabase();
+
+		}
+
+		//保存路径
+		bool bSavePath = cfg->GetBool(DATA_SECTION, IMAGE_SAVE_PATH);
+		qDebug() << "load config save path: " << bSavePath;
+		printf("load config save path:%d\n", bSavePath);
+		if (bSavePath)
+		{
+			QString SavePath = cfg->GetString(DATA_SECTION, IMAGE_SAVE_PATH);
+			qDebug() << "load config save path:" << SavePath;
+			printf("load config save path:%s\n", SavePath.toStdString().c_str());
+			if (!SavePath.isEmpty())
+			{
+				ui.lineEdit_SaveImagePath->setText(SavePath);
+				
+			}
+		}
+
+
+	}
+	
+}
+
+
 //关闭所有相机
 void CParameterSettings::closeAllCamera()
 {
@@ -389,7 +580,7 @@ void CParameterSettings::closeAllCamera()
 //槽函数：参数设置界面的编码拍照中的“打开相机”触发后——》此槽函数
 void CParameterSettings::Camera1Controller()
 {
-	QString name = ui.comboBox_Camera1->currentText();//当前文本的值
+	QString name = ui.comboBox_Camera1->currentText();//获取相机的名字
 	int index = ui.comboBox_Camera1->currentIndex();
 	if (m_bOpenCamera1)
 	{

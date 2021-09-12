@@ -53,6 +53,9 @@ private:
 	//1：箱装信息列表
 	//2：单装信息
 	int m_PreviousIndex; 
+
+	Mat CodeImage;
+	Mat GunImage;
 private slots:
 	//主界面三个入口链接相应窗口
 	void ReceiveStackWidgetIndex(int index);

@@ -143,9 +143,9 @@ void SysMainWindow::slotInfoManager()//“信息管理”按钮---》此槽函数
 	}
 }
 
-void SysMainWindow::keyPressEvent(QKeyEvent *ev)//按F11弹出参数设置口令窗口,按F12弹出关于窗口
+void SysMainWindow::keyPressEvent(QKeyEvent *ev)//按Ctrl+F11弹出参数设置口令窗口,按Ctrl+F12弹出关于窗口
 {
-	if ((ev->modifiers() == Qt::ControlModifier) && (ev->key() == Qt::Key_F11))
+	if ((ev->modifiers() == Qt::ControlModifier) && (ev->key() == Qt::Key_F11))//Qt::ControlModifier按下Ctrl键
 	{
 		//弹出参数设置口令窗口
 		CSettingsLogin::GetInstance()->ClearInformation();

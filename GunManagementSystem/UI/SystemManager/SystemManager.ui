@@ -706,471 +706,459 @@ color: rgb(41, 136, 41);</string>
           <attribute name="title">
            <string>查询</string>
           </attribute>
-          <widget class="QLabel" name="label_29">
-           <property name="geometry">
-            <rect>
-             <x>115</x>
-             <y>532</y>
-             <width>80</width>
-             <height>30</height>
-            </rect>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>80</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>80</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
-color: rgb(85, 170, 0);</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-          <widget class="QWidget" name="">
-           <property name="geometry">
-            <rect>
-             <x>9</x>
-             <y>10</y>
-             <width>1431</width>
-             <height>571</height>
-            </rect>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_12">
-              <item>
-               <widget class="QPushButton" name="pushButton_ExportExcel">
-                <property name="minimumSize">
-                 <size>
-                  <width>100</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>100</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
+          <layout class="QFormLayout" name="formLayout">
+           <item row="0" column="0" colspan="2">
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_12">
+               <item>
+                <widget class="QPushButton" name="pushButton_ExportExcel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
 color: rgb(0, 170, 0);</string>
-                </property>
-                <property name="text">
-                 <string>导出Excel</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout">
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout">
-                  <item>
-                   <widget class="QLineEdit" name="lineEdit_BFWenJianHao">
-                    <property name="minimumSize">
-                     <size>
-                      <width>130</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(255, 255, 255);
+                 </property>
+                 <property name="text">
+                  <string>导出Excel</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout">
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_BFWenJianHao">
+                     <property name="minimumSize">
+                      <size>
+                       <width>130</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
-                    </property>
-                    <property name="placeholderText">
-                     <string>退役报废文件号</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="lineEdit_DBPingZhengHao">
-                    <property name="minimumSize">
-                     <size>
-                      <width>130</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(255, 255, 255);
+                     </property>
+                     <property name="placeholderText">
+                      <string>退役报废文件号</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_DBPingZhengHao">
+                     <property name="minimumSize">
+                      <size>
+                       <width>130</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
-                    </property>
-                    <property name="placeholderText">
-                     <string>调拨凭证号</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="lineEdit_XZDanHao">
-                    <property name="minimumSize">
-                     <size>
-                      <width>130</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(255, 255, 255);
+                     </property>
+                     <property name="placeholderText">
+                      <string>调拨凭证号</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_XZDanHao">
+                     <property name="minimumSize">
+                      <size>
+                       <width>130</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
-                    </property>
-                    <property name="placeholderText">
-                     <string>装箱单号</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="lineEdit_ZBDaima">
-                    <property name="minimumSize">
-                     <size>
-                      <width>130</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(255, 255, 255);
+                     </property>
+                     <property name="placeholderText">
+                      <string>装箱单号</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_ZBDaima">
+                     <property name="minimumSize">
+                      <size>
+                       <width>130</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
-                    </property>
-                    <property name="placeholderText">
-                     <string>装备代码</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="lineEdit_ZBMingCheng">
-                    <property name="minimumSize">
-                     <size>
-                      <width>130</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(255, 255, 255);
+                     </property>
+                     <property name="placeholderText">
+                      <string>装备代码</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_ZBMingCheng">
+                     <property name="minimumSize">
+                      <size>
+                       <width>130</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
-                    </property>
-                    <property name="placeholderText">
-                     <string>装备名称</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="lineEdit_DZBianHao">
-                    <property name="minimumSize">
-                     <size>
-                      <width>130</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(255, 255, 255);
+                     </property>
+                     <property name="placeholderText">
+                      <string>装备名称</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_DZBianHao">
+                     <property name="minimumSize">
+                      <size>
+                       <width>130</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="placeholderText">
-                     <string>单装编号</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_11">
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_3">
-                    <item>
-                     <widget class="QLabel" name="label_12">
-                      <property name="maximumSize">
-                       <size>
-                        <width>80</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="placeholderText">
+                      <string>单装编号</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_11">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_3">
+                     <item>
+                      <widget class="QLabel" name="label_12">
+                       <property name="maximumSize">
+                        <size>
+                         <width>80</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
 color: rgb(41, 136, 41);</string>
-                      </property>
-                      <property name="text">
-                       <string>入库时间</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QDateEdit" name="dateEdit_InfoRK">
-                      <property name="maximumSize">
-                       <size>
-                        <width>140</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
-                      </property>
-                      <property name="buttonSymbols">
-                       <enum>QAbstractSpinBox::UpDownArrows</enum>
-                      </property>
-                      <property name="calendarPopup">
-                       <bool>true</bool>
-                      </property>
-                      <property name="date">
-                       <date>
-                        <year>1900</year>
-                        <month>1</month>
-                        <day>1</day>
-                       </date>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label">
-                      <property name="text">
-                       <string>——</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QDateEdit" name="dateEdit_InfoRK_end">
-                      <property name="maximumSize">
-                       <size>
-                        <width>140</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
-                      </property>
-                      <property name="buttonSymbols">
-                       <enum>QAbstractSpinBox::UpDownArrows</enum>
-                      </property>
-                      <property name="calendarPopup">
-                       <bool>true</bool>
-                      </property>
-                      <property name="date">
-                       <date>
-                        <year>1900</year>
-                        <month>1</month>
-                        <day>1</day>
-                       </date>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_4">
-                    <item>
-                     <widget class="QLabel" name="label_13">
-                      <property name="maximumSize">
-                       <size>
-                        <width>80</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
+                       </property>
+                       <property name="text">
+                        <string>入库时间</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QDateEdit" name="dateEdit_InfoRK">
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
+                       </property>
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::UpDownArrows</enum>
+                       </property>
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                       <property name="date">
+                        <date>
+                         <year>1900</year>
+                         <month>1</month>
+                         <day>1</day>
+                        </date>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label">
+                       <property name="text">
+                        <string>——</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QDateEdit" name="dateEdit_InfoRK_end">
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
+                       </property>
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::UpDownArrows</enum>
+                       </property>
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                       <property name="date">
+                        <date>
+                         <year>1900</year>
+                         <month>1</month>
+                         <day>1</day>
+                        </date>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_4">
+                     <item>
+                      <widget class="QLabel" name="label_13">
+                       <property name="maximumSize">
+                        <size>
+                         <width>80</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
 color: rgb(41, 136, 41);</string>
-                      </property>
-                      <property name="text">
-                       <string>检视时间</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QDateEdit" name="dateEdit_InfoJS">
-                      <property name="maximumSize">
-                       <size>
-                        <width>140</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
-                      </property>
-                      <property name="buttonSymbols">
-                       <enum>QAbstractSpinBox::UpDownArrows</enum>
-                      </property>
-                      <property name="calendarPopup">
-                       <bool>true</bool>
-                      </property>
-                      <property name="date">
-                       <date>
-                        <year>1900</year>
-                        <month>1</month>
-                        <day>1</day>
-                       </date>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_2">
-                      <property name="text">
-                       <string>——</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QDateEdit" name="dateEdit_InfoJS_end">
-                      <property name="maximumSize">
-                       <size>
-                        <width>140</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
-                      </property>
-                      <property name="buttonSymbols">
-                       <enum>QAbstractSpinBox::UpDownArrows</enum>
-                      </property>
-                      <property name="calendarPopup">
-                       <bool>true</bool>
-                      </property>
-                      <property name="date">
-                       <date>
-                        <year>1900</year>
-                        <month>1</month>
-                        <day>1</day>
-                       </date>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_5">
-                    <item>
-                     <widget class="QLabel" name="label_11">
-                      <property name="maximumSize">
-                       <size>
-                        <width>80</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
+                       </property>
+                       <property name="text">
+                        <string>检视时间</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QDateEdit" name="dateEdit_InfoJS">
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
+                       </property>
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::UpDownArrows</enum>
+                       </property>
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                       <property name="date">
+                        <date>
+                         <year>1900</year>
+                         <month>1</month>
+                         <day>1</day>
+                        </date>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_2">
+                       <property name="text">
+                        <string>——</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QDateEdit" name="dateEdit_InfoJS_end">
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
+                       </property>
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::UpDownArrows</enum>
+                       </property>
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                       <property name="date">
+                        <date>
+                         <year>1900</year>
+                         <month>1</month>
+                         <day>1</day>
+                        </date>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_5">
+                     <item>
+                      <widget class="QLabel" name="label_11">
+                       <property name="maximumSize">
+                        <size>
+                         <width>80</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
 color: rgb(41, 136, 41);</string>
-                      </property>
-                      <property name="text">
-                       <string>出库时间</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QDateEdit" name="dateEdit_InfoCK">
-                      <property name="maximumSize">
-                       <size>
-                        <width>140</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
-                      </property>
-                      <property name="buttonSymbols">
-                       <enum>QAbstractSpinBox::UpDownArrows</enum>
-                      </property>
-                      <property name="calendarPopup">
-                       <bool>true</bool>
-                      </property>
-                      <property name="date">
-                       <date>
-                        <year>1900</year>
-                        <month>1</month>
-                        <day>1</day>
-                       </date>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_3">
-                      <property name="text">
-                       <string>——</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QDateEdit" name="dateEdit_InfoCK_end">
-                      <property name="maximumSize">
-                       <size>
-                        <width>140</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
-                      </property>
-                      <property name="buttonSymbols">
-                       <enum>QAbstractSpinBox::UpDownArrows</enum>
-                      </property>
-                      <property name="calendarPopup">
-                       <bool>true</bool>
-                      </property>
-                      <property name="date">
-                       <date>
-                        <year>1900</year>
-                        <month>1</month>
-                        <day>1</day>
-                       </date>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_QueryInfo">
-                <property name="minimumSize">
-                 <size>
-                  <width>75</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>75</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
+                       </property>
+                       <property name="text">
+                        <string>出库时间</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QDateEdit" name="dateEdit_InfoCK">
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
+                       </property>
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::UpDownArrows</enum>
+                       </property>
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                       <property name="date">
+                        <date>
+                         <year>1900</year>
+                         <month>1</month>
+                         <day>1</day>
+                        </date>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_3">
+                       <property name="text">
+                        <string>——</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QDateEdit" name="dateEdit_InfoCK_end">
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
+                       </property>
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::UpDownArrows</enum>
+                       </property>
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                       <property name="date">
+                        <date>
+                         <year>1900</year>
+                         <month>1</month>
+                         <day>1</day>
+                        </date>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_QueryInfo">
+                 <property name="minimumSize">
+                  <size>
+                   <width>75</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>75</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
 background-color: rgb(41, 136, 41);
 color: rgb(255, 255, 255);</string>
-                </property>
-                <property name="text">
-                 <string>查询</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="QTableWidget" name="tableWidget_Search">
-              <property name="sortingEnabled">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
+                 </property>
+                 <property name="text">
+                  <string>查询</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QTableWidget" name="tableWidget_Search">
+               <property name="sortingEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="label_29">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
          <widget class="QWidget" name="tab_Info2">
           <attribute name="title">
@@ -2114,31 +2102,6 @@ color: rgb(255, 0, 0);</string>
   <tabstop>pushButton_Deliver</tabstop>
   <tabstop>tabWidget</tabstop>
   <tabstop>tableWidget_Search</tabstop>
-  <tabstop>pushButton_ExportExcel_2</tabstop>
-  <tabstop>tableWidget_Search_2</tabstop>
-  <tabstop>pushButton_QueryInfo_2</tabstop>
-  <tabstop>lineEdit_BFWenJianHao_2</tabstop>
-  <tabstop>lineEdit_DBPingZhengHao_2</tabstop>
-  <tabstop>lineEdit_XZDanHao_2</tabstop>
-  <tabstop>lineEdit_ZBDaima_2</tabstop>
-  <tabstop>lineEdit_ZBMingCheng_2</tabstop>
-  <tabstop>lineEdit_DZBianHao_2</tabstop>
-  <tabstop>dateEdit_InfoRK_5</tabstop>
-  <tabstop>dateEdit_InfoRK_6</tabstop>
-  <tabstop>dateEdit_InfoRK_7</tabstop>
-  <tabstop>dateEdit_InfoRK_8</tabstop>
-  <tabstop>dateEdit_InfoCK_3</tabstop>
-  <tabstop>dateEdit_InfoCK_4</tabstop>
-  <tabstop>pushButton_Deliver_2</tabstop>
-  <tabstop>lineEdit_DeliveryBFWenJianHao_2</tabstop>
-  <tabstop>lineEdit_DeliveryDBPingZhengHao_2</tabstop>
-  <tabstop>lineEdit_DeliveryXZDanHao_2</tabstop>
-  <tabstop>lineEdit_DeliveryZBDaima_2</tabstop>
-  <tabstop>lineEdit_DeliveryZBMingCheng_2</tabstop>
-  <tabstop>dateEdit_DeliveryCC_2</tabstop>
-  <tabstop>dateEdit_DeliveryZB_2</tabstop>
-  <tabstop>pushButton_QueryDeliver_2</tabstop>
-  <tabstop>tableWidget_Delivery_2</tabstop>
   <tabstop>pushButton_AddUser</tabstop>
  </tabstops>
  <resources>

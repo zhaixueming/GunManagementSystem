@@ -76,6 +76,7 @@ public:
     {
         SettingLogin->setWindowTitle(QCoreApplication::translate("SettingLogin", "\345\217\243\344\273\244", nullptr));
         label_20->setText(QCoreApplication::translate("SettingLogin", "\345\217\243\344\273\244", nullptr));
+        lineEdit->setText(QCoreApplication::translate("SettingLogin", "qwerty123456", nullptr));
         lineEdit->setPlaceholderText(QString());
         pushButton_23->setText(QCoreApplication::translate("SettingLogin", "\347\241\256\350\256\244", nullptr));
     } // retranslateUi

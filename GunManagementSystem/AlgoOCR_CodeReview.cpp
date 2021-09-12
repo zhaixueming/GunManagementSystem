@@ -29,7 +29,9 @@ CAlgoCodeReview *CAlgoCodeReview::GetInstance()
 bool CAlgoCodeReview::InitAlgo()
 {
 	QString path = QCoreApplication::applicationDirPath();
-	path += "/module/ocrVersion_1.smartmore";
+	//path += "/module/ocrVersion_1.smartmore";
+	path += "/module/OCRVersion.smartmore";
+	
 	QByteArray ba = path.toLocal8Bit();
 	char *file = ba.data();
 	ResultCode rv = m_OcrModule.Init(file, 1, 0);

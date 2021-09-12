@@ -128,6 +128,7 @@
     <ClCompile Include="UI\ParameterSetting\ParameterSettings.cpp" />
     <ClCompile Include="UI\SysMainWindow\SysMainWindow.cpp" />
     <ClCompile Include="UI\SystemManager\BoxPacked.cpp" />
+    <ClCompile Include="UI\SystemManager\Config.cpp" />
     <ClCompile Include="UI\SystemManager\DatabaseOperator.cpp" />
     <ClCompile Include="UI\SystemManager\SinglePacked.cpp" />
     <ClCompile Include="UI\SystemManager\SystemManager.cpp" />
@@ -145,11 +146,11 @@
     <QtUic Include="UI\ParameterSetting\SettingsLogin.ui" />
     <QtUic Include="UI\SysMainWindow\SysMainWindow.ui" />
     <QtUic Include="UI\SystemManager\BoxPacked.ui" />
+    <QtUic Include="UI\SystemManager\ParameterSettings_bak.ui" />
     <QtUic Include="UI\SystemManager\SinglePacked.ui" />
     <QtUic Include="UI\SystemManager\SystemManagerbak.ui" />
     <QtUic Include="UI\SystemManager\SystemManager.ui" />
     <QtUic Include="UI\SystemManager\UserManager.ui" />
-    <QtUic Include="Widget.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="UI\AdminLogin\AdminLogin.h" />
@@ -183,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="UI\SystemManager\Config.h" />
     <QtMoc Include="PrintAPI.h" />
     <QtMoc Include="AlgoOCR_CodeReview.h" />
     <ClInclude Include="HikCamrea\MvCamera.h" />

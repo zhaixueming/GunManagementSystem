@@ -1,0 +1,2 @@
+(2021-09-09 15:26:11 周四)          Debug: File:(d:\hsy\????????\gunmanagementsystem\gunmanagementsystem\ui\systemmanager\databaseoperator.cpp) Line:(87) exec sql: "select * from GunManager.dbo.UserTable where 姓名 = '123' and 军官证号 = '123'"
+(2021-09-09 15:26:14 周四)          Debug: File:(d:\hsy\????????\gunmanagementsystem\gunmanagementsystem\ui\systemmanager\databaseoperator.cpp) Line:(87) exec sql: "select * from GunManager.dbo.SinglePackedTable where 退役报废文件号 like '%%' and 调拨凭证号 like '%%' and 装备代码 like '%%'"

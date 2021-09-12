@@ -26,6 +26,10 @@ private:
 private:
 	void run();
 	cv::Mat Convert2Mat(MV_FRAME_OUT_INFO_EX* pstImageInfo, unsigned char * pData);
+	cv::Mat img;
+	cv::Mat curImage;
+
+
 signals:
 	void SendCaptureImage(Mat img);
 };

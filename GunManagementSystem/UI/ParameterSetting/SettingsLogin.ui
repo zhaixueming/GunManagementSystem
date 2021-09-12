@@ -58,6 +58,9 @@
       <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;微软雅黑&quot;;</string>
      </property>
+     <property name="text">
+      <string>qwerty123456</string>
+     </property>
      <property name="echoMode">
       <enum>QLineEdit::Password</enum>
      </property>

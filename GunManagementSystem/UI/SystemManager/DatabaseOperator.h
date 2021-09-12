@@ -19,7 +19,7 @@ public:
 	QString GetDatabaseName();
 	bool DisconnectDatabase(QString &errMsg);
 	bool execSql(QString sql, QTableData &TableData,QString &errMsg);
-	bool GetConnectStatus() { return m_bConnected; }
+	bool GetConnectStatus() { return m_bConnected; }//
 	~CDatabaseOperator();
 private:
 	CDatabaseOperator(QObject *parent = NULL);
@@ -40,5 +40,5 @@ private:
 	static CDatabaseOperator *m_Instance;
 	static GarbageCollection m_Collection;
 	QSqlDatabase m_db;
-	bool m_bConnected;
+	bool m_bConnected;//连接成功标志
 };

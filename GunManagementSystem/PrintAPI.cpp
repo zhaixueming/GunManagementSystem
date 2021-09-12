@@ -419,6 +419,7 @@ void PrintAPI::PrintA4(QString title, QString subTitle, QList<QString> columnNam
 	preview.exec();
 }
 
+//表A.4 退役报废军械装备（部件）交接汇总表
 void PrintAPI::PrintA4(QString title, QList<QString> columnNames, QList<int> columnWidths,
 	QStringList subTitle1, QStringList subTitle2,
 	QStringList content, bool landscape, bool check,

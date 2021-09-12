@@ -8,6 +8,8 @@
 #include <QtPrintSupport/QPrintPreviewDialog>
 #include <QFileDialog>
 #include <QTextEdit>
+#include "ParameterSettings.h"
+#include "qdatetime.h"
 
 CSystemMangaer::CSystemMangaer(QDialog *parent /* = NULL */)
 	:QDialog(parent)
@@ -135,7 +137,7 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_Search->horizontalHeader()->setFont(font);
 	ui.tableWidget_Search->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_Search->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
-	ui.tableWidget_Search->setColumnCount(13);
+	ui.tableWidget_Search->setColumnCount(14);
 	header.clear();
 	header << QString::fromLocal8Bit(" ÍËÒÛ±¨·ÏÎÄ¼şºÅ ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
 	header << QString::fromLocal8Bit("  ×°Ïäµ¥ºÅ  ") << QString::fromLocal8Bit("  ×°±¸´úÂë  ") << QString::fromLocal8Bit("  ×°±¸(²¿¼ş)Ãû³Æ  ");
@@ -535,8 +537,8 @@ void CSystemMangaer::slotClickToolButton()
 				DeleteButton->setMinimumHeight(20);
 				//ui.tableWidget_PackedInfo->setCellWidget(row, col - 1, EditButton);
 				//ui.tableWidget_PackedInfo->setCellWidget(row, col, DeleteButton);
-				ui.tableWidget_PackedInfo->setCellWidget(row, col - 2, EditButton);
-				ui.tableWidget_PackedInfo->setCellWidget(row, col-1, DeleteButton);
+				ui.tableWidget_PackedInfo->setCellWidget(row, col - 3, EditButton);
+				ui.tableWidget_PackedInfo->setCellWidget(row, col-2, DeleteButton);
 				connect(EditButton, SIGNAL(clicked()), this, SLOT(EditPackedListInfo()));
 				connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeletePackedListInfo()));
 			}
@@ -808,8 +810,8 @@ void CSystemMangaer::QuerySinglePacked()//¡°±àÂë¼ìÊÓ¡±½çÃæÏÂ£¬µ¥×°Èë¿â½çÃæÏÂÓÒ±ß
 			DeleteButton->setMinimumHeight(20);
 			//ui.tableWidget_Single->setCellWidget(row, col, EditButton);
 			//ui.tableWidget_Single->setCellWidget(row, col+1, DeleteButton);
-			ui.tableWidget_Single->setCellWidget(row, col-1, EditButton);
-			ui.tableWidget_Single->setCellWidget(row, col, DeleteButton);
+			ui.tableWidget_Single->setCellWidget(row, col-2, EditButton);
+			ui.tableWidget_Single->setCellWidget(row, col-1, DeleteButton);
 			connect(EditButton, SIGNAL(clicked()), this, SLOT(EditSinglePacked()));
 			connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeleteSinglePacked()));
 		}
@@ -834,12 +836,11 @@ void CSystemMangaer::PrintSinglePacked()//±àÂë¼ìÊÓ½çÃæ->"µ¥×°Èë¿â"½çÃæ,×óÏÂ½Ç¡°´
 	content.push_back(ui.tableWidget_Single->item(row, 2)->text());//×°±¸´úÂë
 	content.push_back(ui.tableWidget_Single->item(row, 3)->text());//×°±¸Ãû³Æ
 	content.push_back(ui.tableWidget_Single->item(row, 4)->text());//µ¥×°±àºÅ
-	content.push_back(ui.tableWidget_Single->item(row, 5)->text());//ÖØÒª²¿¼şÈ±Ê§Çé¿ö
-	content.push_back(ui.tableWidget_Single->item(row, 6)->text());//Á¥Êôµ¥Î»
-	content.push_back(ui.tableWidget_Single->item(row, 7)->text());//¹ÜÀíµ¥Î»
-	content.push_back(ui.tableWidget_Single->item(row, 8)->text());//³ö³§Ê±¼ä
-	content.push_back(ui.tableWidget_Single->item(row, 9)->text());//×°±¸Ê±¼ä
-
+	//content.push_back(ui.tableWidget_Single->item(row, 5)->text());//ÖØÒª²¿¼şÈ±Ê§Çé¿ö
+	content.push_back(ui.tableWidget_Single->item(row, 10)->text());//Á¥Êôµ¥Î»
+	content.push_back(ui.tableWidget_Single->item(row, 11)->text());//¹ÜÀíµ¥Î»
+	content.push_back(ui.tableWidget_Single->item(row, 12)->text());//³ö³§Ê±¼ä
+	content.push_back(ui.tableWidget_Single->item(row, 13)->text());//×°±¸Ê±¼ä
 
 	PrintAPI::Instance()->PrintGridA3(content);
 }
@@ -1147,98 +1148,6 @@ void CSystemMangaer::QueryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖĞÓÒ±ßµÄ"²éÑ
 	ui.tableWidget_Search->sortByColumn(0, Qt::AscendingOrder);
 }
 
-/*
-void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ±ßµÄ"²éÑ¯"°´Å¥---¡·´Ë²Ûº¯Êı
-{
-	QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t1.×°ÏäÊıÁ¿,t2.¼ÇÂ¼Ê±¼ä");
-	sql += " from GunManager.dbo.BoxPackedTable t1 right join GunManager.dbo.BoxPackedDetailsTable t2 on";
-	sql += QString::fromLocal8Bit(" t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t1.×°±¸´úÂë = t2.×°±¸´úÂë and t1.×°±¸Ãû³Æ = t2.×°±¸Ãû³Æ");
-	sql += " where " + QString::fromLocal8Bit("t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ like \'%") + ui.lineEdit_DeliveryBFWenJianHao->text() + "%\'";
-	sql += " and " + QString::fromLocal8Bit("t1.µ÷²¦Æ¾Ö¤ºÅ like \'%") + ui.lineEdit_DeliveryDBPingZhengHao->text() + "%\'";
-	sql += " and " + QString::fromLocal8Bit("t1.×°Ïäµ¥ºÅ like \'%") + ui.lineEdit_DeliveryXZDanHao->text() + "%\'";
-	sql += " and " + QString::fromLocal8Bit("t1.×°±¸´úÂë like \'%") + ui.lineEdit_DeliveryZBDaima->text() + "%\'";
-	sql += " and " + QString::fromLocal8Bit("t1.×°±¸Ãû³Æ like \'%") + ui.lineEdit_DeliveryZBMingCheng->text() + "%\'";
-	sql += " and " + QString::fromLocal8Bit("t2.µ¥×°±àºÅ != \'\'");
-	sql += " and " + QString::fromLocal8Bit("t2.³ö¿â×´Ì¬ = \'Î´³ö¿â\'");
-	QString DeliveryCC = ui.dateEdit_DeliveryCC->dateTime().toString("yyyy-M-d");
-	if (DeliveryCC != "1900-1-1")
-	{
-		sql += " and " + QString::fromLocal8Bit("t1.³ö³§Ê±¼ä = \'") + DeliveryCC + "\'";
-	}
-	QString DeliveryZB = ui.dateEdit_DeliveryZB->dateTime().toString("yyyy-M-d");
-	if (DeliveryZB != "1900-1-1")
-	{
-		sql += " and " + QString::fromLocal8Bit("t1.×°±¸Ê±¼ä = \'") + DeliveryZB + "\'";
-	}
-
-	QTableData PackedTableData;
-	QTableData SingleTableData;
-	QString errMsg;
-	bool rv = CDatabaseOperator::GetInstance()->execSql(sql, PackedTableData, errMsg);
-	if (!rv)
-	{
-		QMessageBox::information(this, QString::fromLocal8Bit("Ïä×°ĞÅÏ¢²éÑ¯Ê§°Ü"), errMsg);
-		return;
-	}
-
-	sql.clear();
-	sql = QString::fromLocal8Bit("select ÍËÒÛ±¨·ÏÎÄ¼şºÅ,µ÷²¦Æ¾Ö¤ºÅ,\'-\' as Ïä×°µ¥ºÅ,×°±¸´úÂë,×°±¸Ãû³Æ,µ¥×°±àºÅ,³ö³§Ê±¼ä,×°±¸Ê±¼ä,\'-\' as Ïä×°ÊıÁ¿,¼ÇÂ¼Ê±¼ä from GunManager.dbo.SinglePackedTable");
-	sql += " where " + QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÎÄ¼şºÅ like \'%") + ui.lineEdit_DeliveryBFWenJianHao->text() + "%\'";
-	sql += " and " + QString::fromLocal8Bit("µ÷²¦Æ¾Ö¤ºÅ like \'%") + ui.lineEdit_DeliveryDBPingZhengHao->text() + "%\'";
-	sql += " and " + QString::fromLocal8Bit("×°±¸´úÂë like \'%") + ui.lineEdit_DeliveryZBDaima->text() + "%\'";
-	sql += " and " + QString::fromLocal8Bit("×°±¸Ãû³Æ like \'%") + ui.lineEdit_DeliveryZBMingCheng->text() + "%\'";
-	sql += " and " + QString::fromLocal8Bit("µ¥×°±àºÅ != \'\'");
-	sql += " and " + QString::fromLocal8Bit("³ö¿â×´Ì¬ = \'Î´³ö¿â\'");
-	if (DeliveryCC != "1900-1-1")
-	{
-		sql += " and " + QString::fromLocal8Bit("³ö³§Ê±¼ä = \'") + DeliveryCC + "\'";
-	}
-	if (DeliveryZB != "1900-1-1")
-	{
-		sql += " and " + QString::fromLocal8Bit("×°±¸Ê±¼ä = \'") + DeliveryZB + "\'";
-	}
-
-	rv = CDatabaseOperator::GetInstance()->execSql(sql, SingleTableData, errMsg);
-	if (!rv)
-	{
-		QMessageBox::information(this, QString::fromLocal8Bit("µ¥×°ĞÅÏ¢²éÑ¯Ê§°Ü"), errMsg);
-		return;
-	}
-	QTableData AllTableData;
-	AllTableData.append(PackedTableData);
-	AllTableData.append(SingleTableData);
-
-	int rows = ui.tableWidget_Delivery->rowCount();
-	for (int i = 0; i < rows; ++i)
-	{
-		ui.tableWidget_Delivery->removeRow(0);
-	}
-	ui.tableWidget_Delivery->setRowCount(AllTableData.size());
-	ui.tableWidget_Delivery->setSortingEnabled(false);
-	for (int row = 0; row < AllTableData.size(); ++row)
-	{
-		QList<QVariant> RowData = AllTableData.at(row);
-		int col = 0;
-		for (; col < RowData.size() - 1; ++col)
-		{
-			QString data = RowData.at(col).toString();
-			QTableWidgetItem *item = new QTableWidgetItem(data);
-			item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-			ui.tableWidget_Delivery->setItem(row, col, item);
-		}
-		//¼ÇÂ¼Ê±¼ä
-		QString data = RowData.at(col).toString();
-		data = data.replace("T", " ");
-		QTableWidgetItem *item = new QTableWidgetItem(data);
-		item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-		ui.tableWidget_Delivery->setItem(row, col++, item);
-		QCheckBox *checkBox = new QCheckBox(QString::fromLocal8Bit("¹´Ñ¡"));
-		ui.tableWidget_Delivery->setCellWidget(row, col, checkBox);
-	}
-	ui.tableWidget_Delivery->setSortingEnabled(true);
-	ui.tableWidget_Delivery->sortByColumn(0, Qt::AscendingOrder);
-}
-*/
 
 void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ±ßµÄ"²éÑ¯"°´Å¥---¡·´Ë²Ûº¯Êı
 {
@@ -1331,71 +1240,132 @@ void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ
 	ui.tableWidget_Delivery->sortByColumn(0, Qt::AscendingOrder);
 }
 
-void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥-----¡·´Ë²Ûº¯Êı
+//void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥-----¡·´Ë²Ûº¯Êı
+//{
+//	int rows = ui.tableWidget_Delivery->rowCount();
+//	int cols = ui.tableWidget_Delivery->columnCount();
+//	for (int i = 0; i < rows; ++i)
+//	{
+//		QCheckBox *box = (QCheckBox *)ui.tableWidget_Delivery->cellWidget(i, cols - 1);
+//		if (box != NULL && box->isChecked())
+//		{
+//			QString sql;
+//			QString BFWenJianHao = ui.tableWidget_Delivery->item(i, 0)->text();
+//			QString DBPingZhengHao = ui.tableWidget_Delivery->item(i, 1)->text();
+//			QString ZBDaiMa = ui.tableWidget_Delivery->item(i, 3)->text();//×°±¸µ¥ºÅ
+//			QString ZBMingCheng = ui.tableWidget_Delivery->item(i, 4)->text();//×°±¸Ãû³Æ
+//			QString DZBianHao = ui.tableWidget_Delivery->item(i, 5)->text();//µ¥×°±àºÅ
+//			QString XZDanHao = ui.tableWidget_Delivery->item(i, 2)->text();  //Ïä×°µ¥ºÅ
+//			//×°Ïäµ¥ºÅÎª"-",ÔòÎªµ¥×°Èë¿â£¬½«µ¥×°Èë¿â±íÖĞ´Ë¼ÇÂ¼ĞŞ¸ÄÎª"ÒÑ³ö¿â"
+//			//×°Ïäµ¥ºÅÓĞÖµ£¬ÔòÎªÏä×°Èë¿â£¬½«Ïä×°Èë¿âĞÅÏ¢±íÖĞ¼ÇÂ¼ĞŞ¸ÄÎª"ÒÑ³ö¿â"
+//
+//			//³ö¿âÊ±¼ä
+//			/*QDateTime curDateTime = QDateTime::currentDateTime();
+//			QString ChuKuDateTime = curDateTime.toString("yyyy-MM-dd hh:mm:ss");*/
+//
+//			QDateTime curDateTime = QDateTime::currentDateTime();
+//			QString ChuKuDateTime = curDateTime.toString("yyyy-M-d");
+//			if (XZDanHao == "-")//µ¥×°Èë¿â
+//			{
+//
+//				//sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â' where");
+//				sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â',³ö¿âÊ±¼ä= \'")+ChuKuDateTime+"\' where";
+//				sql += QString::fromLocal8Bit(" ÍËÒÛ±¨·ÏÎÄ¼şºÅ = ") + BFWenJianHao;
+//				sql += QString::fromLocal8Bit(" and µ÷²¦Æ¾Ö¤ºÅ = ") + DBPingZhengHao;
+//				sql += QString::fromLocal8Bit(" and ×°±¸´úÂë = ") + ZBDaiMa;
+//				sql += QString::fromLocal8Bit(" and ×°±¸Ãû³Æ = ") + ZBMingCheng;
+//				sql += QString::fromLocal8Bit(" and µ¥×°±àºÅ = ") + DZBianHao;
+//				QString errMsg;
+//				bool rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
+//				if (!rv)
+//				{
+//					QMessageBox::information(this, QString::fromLocal8Bit("µ¥×°Èë¿â"), errMsg);
+//					return;
+//				}
+//			}
+//			else
+//			{
+//				//sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â' where");
+//				sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â',³ö¿âÊ±¼ä= \'") + ChuKuDateTime + "\' where";
+//				sql += QString::fromLocal8Bit(" GunManager.dbo.BoxPackedDetailsTable.µ¥×°±àºÅ in (select µ¥×°±àºÅ from");
+//				sql += QString::fromLocal8Bit(" GunManager.dbo.BoxPackedTable t1,GunManager.dbo.BoxPackedDetailsTable t2");
+//				sql += QString::fromLocal8Bit(" where t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ = ") + BFWenJianHao;
+//				sql += QString::fromLocal8Bit(" and t1.µ÷²¦Æ¾Ö¤ºÅ = ") + DBPingZhengHao;
+//				sql += QString::fromLocal8Bit(" and t1.×°Ïäµ¥ºÅ = ") + XZDanHao;
+//				sql += QString::fromLocal8Bit(" and t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t2.µ¥×°±àºÅ = \'") + DZBianHao + "\')";
+//				QString errMsg;
+//				bool rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
+//				if (!rv)
+//				{
+//					QMessageBox::information(this, QString::fromLocal8Bit("Ïä×°Èë¿â"), errMsg);
+//					return;
+//				}
+//			}
+//		}
+//	}
+//	PrintAPI::Instance()->PrintGridA9();
+//}
+
+void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°µ¼³öExcel¡±°´Å¥-----¡·´Ë²Ûº¯Êı
 {
 	int rows = ui.tableWidget_Delivery->rowCount();
-	int cols = ui.tableWidget_Delivery->columnCount();
-	for (int i = 0; i < rows; ++i)
+	if (rows == 0)
 	{
-		QCheckBox *box = (QCheckBox *)ui.tableWidget_Delivery->cellWidget(i, cols - 1);
-		if (box != NULL && box->isChecked())
+		return;
+	}
+	QString filepath = QFileDialog::getSaveFileName(this, ("Save as..."), QString(), tr("EXCEL files (*.xls *.xlsx)"));
+	if (filepath.isEmpty())
+	{
+		return;
+	}
+	qDebug() << "Export excel:" << filepath.toStdString().c_str();
+
+	int row = ui.tableWidget_Delivery->rowCount();
+	int col = ui.tableWidget_Delivery->columnCount();
+	QList<QString> list;
+	//Ìí¼ÓÁĞ±êÌâ  
+	QString HeaderRow;
+
+	for (int i = 0; i < col - 1; i++)//×îºóÒ»ÁĞµÄÑ¡ÔñÏîÉáÈ¥
+	{
+		QString header = ui.tableWidget_Delivery->horizontalHeaderItem(i)->text().toStdString().c_str();
+		if (header.indexOf("\n") != -1);
 		{
-			QString sql;
-			QString BFWenJianHao = ui.tableWidget_Delivery->item(i, 0)->text();
-			QString DBPingZhengHao = ui.tableWidget_Delivery->item(i, 1)->text();
-			QString ZBDaiMa = ui.tableWidget_Delivery->item(i, 3)->text();//×°±¸µ¥ºÅ
-			QString ZBMingCheng = ui.tableWidget_Delivery->item(i, 4)->text();//×°±¸Ãû³Æ
-			QString DZBianHao = ui.tableWidget_Delivery->item(i, 5)->text();//µ¥×°±àºÅ
-			QString XZDanHao = ui.tableWidget_Delivery->item(i, 2)->text();  //Ïä×°µ¥ºÅ
-			//×°Ïäµ¥ºÅÎª"-",ÔòÎªµ¥×°Èë¿â£¬½«µ¥×°Èë¿â±íÖĞ´Ë¼ÇÂ¼ĞŞ¸ÄÎª"ÒÑ³ö¿â"
-			//×°Ïäµ¥ºÅÓĞÖµ£¬ÔòÎªÏä×°Èë¿â£¬½«Ïä×°Èë¿âĞÅÏ¢±íÖĞ¼ÇÂ¼ĞŞ¸ÄÎª"ÒÑ³ö¿â"
-
-			//³ö¿âÊ±¼ä
-			/*QDateTime curDateTime = QDateTime::currentDateTime();
-			QString ChuKuDateTime = curDateTime.toString("yyyy-MM-dd hh:mm:ss");*/
-
-			QDateTime curDateTime = QDateTime::currentDateTime();
-			QString ChuKuDateTime = curDateTime.toString("yyyy-M-d");
-			if (XZDanHao == "-")//µ¥×°Èë¿â
+			header = header.replace("\n", "");
+		}
+		HeaderRow.append(header + "\t");
+	}
+	list.push_back(HeaderRow);
+	for (int i = 0; i < row; i++)
+	{
+		QCheckBox *box = (QCheckBox*)ui.tableWidget_Delivery->cellWidget(i, col - 1);
+		if (box->isChecked())
+		{
+			QString rowStr = "";
+			for (int j = 0; j < col - 1; j++)
 			{
-
-				//sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â' where");
-				sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â',³ö¿âÊ±¼ä= \'")+ChuKuDateTime+"\' where";
-				sql += QString::fromLocal8Bit(" ÍËÒÛ±¨·ÏÎÄ¼şºÅ = ") + BFWenJianHao;
-				sql += QString::fromLocal8Bit(" and µ÷²¦Æ¾Ö¤ºÅ = ") + DBPingZhengHao;
-				sql += QString::fromLocal8Bit(" and ×°±¸´úÂë = ") + ZBDaiMa;
-				sql += QString::fromLocal8Bit(" and ×°±¸Ãû³Æ = ") + ZBMingCheng;
-				sql += QString::fromLocal8Bit(" and µ¥×°±àºÅ = ") + DZBianHao;
-				QString errMsg;
-				bool rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
-				if (!rv)
-				{
-					QMessageBox::information(this, QString::fromLocal8Bit("µ¥×°Èë¿â"), errMsg);
-					return;
-				}
+				rowStr += ui.tableWidget_Delivery->item(i, j)->text() + "\t";
 			}
-			else
-			{
-				//sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â' where");
-				sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â',³ö¿âÊ±¼ä= \'") + ChuKuDateTime + "\' where";
-				sql += QString::fromLocal8Bit(" GunManager.dbo.BoxPackedDetailsTable.µ¥×°±àºÅ in (select µ¥×°±àºÅ from");
-				sql += QString::fromLocal8Bit(" GunManager.dbo.BoxPackedTable t1,GunManager.dbo.BoxPackedDetailsTable t2");
-				sql += QString::fromLocal8Bit(" where t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ = ") + BFWenJianHao;
-				sql += QString::fromLocal8Bit(" and t1.µ÷²¦Æ¾Ö¤ºÅ = ") + DBPingZhengHao;
-				sql += QString::fromLocal8Bit(" and t1.×°Ïäµ¥ºÅ = ") + XZDanHao;
-				sql += QString::fromLocal8Bit(" and t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t2.µ¥×°±àºÅ = \'") + DZBianHao + "\')";
-				QString errMsg;
-				bool rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
-				if (!rv)
-				{
-					QMessageBox::information(this, QString::fromLocal8Bit("Ïä×°Èë¿â"), errMsg);
-					return;
-				}
-			}
+			list.push_back(rowStr);
 		}
 	}
-	PrintAPI::Instance()->PrintGridA9();
+	QTextEdit textEdit;
+	for (int i = 0; i < list.size(); i++)
+	{
+		textEdit.append(list.at(i));
+	}
+
+	QFile file(filepath);
+	if (file.open(QFile::WriteOnly | QIODevice::Text))
+	{
+		QTextStream ts(&file);
+		ts.setCodec("GB2312");//Õâ¸öµØ·½´ó¼Ò×Ô¼ºÅĞ¶ÏÊÇ·ñÓÃ¡°utf-8¡±
+		ts << textEdit.document()->toPlainText();
+		file.close();
+		QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("µ¼³öexcel³É¹¦"));
+	}
 }
+
 
 void CSystemMangaer::ImageGrabberReturn()//ÅÄÕÕ¼ìÊÓ½çÃæ-¡·ÓÒÏÂ¡°·µ»Ø¡±°´Å¥--¡·´Ë²Ûº¯Êı
 {
@@ -1428,7 +1398,8 @@ void CSystemMangaer::ExportExcel()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°µ¼³öExcel
 	QList<QString> list;
 	//Ìí¼ÓÁĞ±êÌâ  
 	QString HeaderRow;
-	for (int i = 0; i < col-1; i++)
+	
+	for (int i = 0; i < col-1; i++)//×îºóÒ»ÁĞµÄÑ¡ÔñÏîÉáÈ¥
 	{
 		QString header = ui.tableWidget_Search->horizontalHeaderItem(i)->text().toStdString().c_str();
 		if (header.indexOf("\n") != -1);
@@ -1518,7 +1489,7 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 			ui.lineEdit_BeiFen->setText("");
 
 			QString result;
-			cvtColor(image, image, COLOR_GRAY2BGR);
+			//cvtColor(image, image, COLOR_GRAY2BGR);
 			bool bAlgoSuccess = CAlgoCodeReview::GetInstance()->RunAlog(image, result);//µ÷ÓÃOCR¼ì²âÄ£¿é
 			if (bAlgoSuccess)
 			{
@@ -1527,11 +1498,13 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 				DoSpeaker();//ÓÒ±ßµÄĞ¡Áåîõ¶ÁÈ¡½á¹û
 			}
 		}
+		CodeImage = image.clone();
 		QImage img = matToQImage(image);//µ÷ÓÃmatToQImageº¯Êı£¬»ñÈ¡Í¼ÏñÊı¾İ£¬ĞĞ¡£ÁĞ£¬¸ñÊ½µÈ
 		ui.label_Image1->SetImage(img);
 	}
 	else if (index == 2)
 	{
+		GunImage = image.clone();
 		QImage img = matToQImage(image);//µ÷ÓÃmatToQImageº¯Êı£¬»ñÈ¡Í¼ÏñÊı¾İ£¬ĞĞ¡£ÁĞ£¬¸ñÊ½µÈ
 		ui.label_Image2->SetImage(img);//¡°ÅÄÕÕ¼ìÊÓ¡±½çÃæ£¬ÖĞ¼äÁ½¸öÏÔÊ¾¿ò¼ÓÉÏÏÂÃæµÄÁ½¸ö°´Å¥
 	}
@@ -1650,7 +1623,30 @@ void CSystemMangaer::SaveRecognizeResult()
 	mymsgbox->show();
 
 	mymsgbox->exec();//×èÈûµÈ´ıÓÃ»§ÊäÈë
+
+    //´æ·ÅÍ¼Æ¬
+	QString path = CParameterSettings::GetInstance()->GetSavePath();
+	path += "/" + QDateTime::currentDateTime().toString("yyyy-MM-dd") + "/" + m_CurDZBianHao;
+	QDir dir;
+	bool rv = dir.mkpath(path);
+	if (!rv)
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("´´½¨Â·¾¶Ê§°Ü"));
+		return;
+	}
+
+	QString CodeImagePath = path + "/code.bmp";
+	QByteArray ba = CodeImagePath.toLocal8Bit();
+	char *file = ba.data();
+	imwrite(file, CodeImage);
+
+	QString GunImagePath = path + "/gun.bmp";
+	ba = GunImagePath.toLocal8Bit();
+	file = ba.data();
+	imwrite(file, GunImage);
+
 	//QString XuHao = QString::number(m_curMsg.index);
+
 	if (mymsgbox->clickedButton() == okbtn)//µã»÷ÁËOK°´Å¥
 	{
 		QString sql;

@@ -158,13 +158,16 @@ void CImageCapture::run()
 			int nRet = m_MvCamera.GetOneFrameTimeout(m_pGrabBuf, nDataSize, &stImageInfo, 1000);
 			if (nRet == MV_OK)
 			{
-				cv::Mat img = Convert2Mat(&stImageInfo, m_pGrabBuf);
+				//cv::Mat img = Convert2Mat(&stImageInfo, m_pGrabBuf);
+				img = Convert2Mat(&stImageInfo, m_pGrabBuf);
 				if (img.data == NULL)
 				{
 					continue;
 				}
-				cv::Mat curImage = img.clone();
+				//cv::Mat curImage = img.clone();
+				curImage = img.clone();
 				emit SendCaptureImage(curImage);
+				
 			}
 		}
 		else
