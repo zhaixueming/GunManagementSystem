@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QDateTime>
 #include "SettingsLogin.h"
+#include <QTextToSpeech>
 
 
 //输出日志
@@ -59,6 +60,24 @@ SysMainWindow::SysMainWindow(QWidget *parent)
 {
 	ui.setupUi(this);
 	qInstallMessageHandler(outputMessage);//输出详细日志
+
+
+	//QTextToSpeech *m_speech = new QTextToSpeech();
+	//QStringList list = QTextToSpeech::availableEngines();
+	////m_speech->setLocale(QLocale::English);//设置语言环境
+	//m_speech->setLocale(QLocale("Microsoft KangKang"));//设置语言环境
+	//m_speech->setRate(0.0);//设置语速-1.0到1.0
+	//m_speech->setPitch(1.0);//设置音高-1.0到1.0
+	//m_speech->setVolume(1.0);//设置音量0.0-1.0
+
+	//QVector<QLocale> dd = m_speech->availableLocales();
+	//QVector<QVoice> vv = m_speech->availableVoices();
+	//	m_speech->say("hello world");
+	//	m_speech->say("zcf，i love you");
+	//	m_speech->say("现在语音聊天机器人是一度火热，网上也有其他编程软件的语音聊天机器人");
+	//
+
+
 	this->setFixedSize(this->size());//禁止拖放窗体
 	InitVariables();//初始化变量
 	InitConnections();//初始化信号槽函数

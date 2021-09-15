@@ -56,6 +56,8 @@ private:
 
 	Mat CodeImage;
 	Mat GunImage;
+	//void Remainder();
+	void ExportGridA9();
 private slots:
 	//主界面三个入口链接相应窗口
 	void ReceiveStackWidgetIndex(int index);
@@ -102,6 +104,8 @@ private slots:
 	void QueryInformations();
 	//出库信息查询
 	void QueryDeliveryInformations();
+	//显示库存
+	void Remainder();
 	//拍照检视返回按钮
 	void ImageGrabberReturn();
 	//导出excel

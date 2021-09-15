@@ -48,6 +48,7 @@ private:
 	bool SetExternalTrigger(int index);
 
 	void LoadConfig();/////////////
+	
 
 private slots:
 

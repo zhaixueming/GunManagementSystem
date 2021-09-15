@@ -27,7 +27,6 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include <mylabel.h>
 
@@ -83,11 +82,8 @@ public:
     QFormLayout *formLayout_2;
     QTabWidget *tabWidget_Information;
     QWidget *tab_Info1;
-    QFormLayout *formLayout;
-    QVBoxLayout *verticalLayout_2;
-    QHBoxLayout *horizontalLayout_12;
-    QPushButton *pushButton_ExportExcel;
-    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout_14;
+    QGridLayout *gridLayout_2;
     QHBoxLayout *horizontalLayout;
     QLineEdit *lineEdit_BFWenJianHao;
     QLineEdit *lineEdit_DBPingZhengHao;
@@ -95,17 +91,20 @@ public:
     QLineEdit *lineEdit_ZBDaima;
     QLineEdit *lineEdit_ZBMingCheng;
     QLineEdit *lineEdit_DZBianHao;
+    QPushButton *pushButton_ExportExcel;
     QHBoxLayout *horizontalLayout_11;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_12;
     QDateEdit *dateEdit_InfoRK;
     QLabel *label;
     QDateEdit *dateEdit_InfoRK_end;
+    QSpacerItem *horizontalSpacer_4;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_13;
     QDateEdit *dateEdit_InfoJS;
     QLabel *label_2;
     QDateEdit *dateEdit_InfoJS_end;
+    QSpacerItem *horizontalSpacer_6;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_11;
     QDateEdit *dateEdit_InfoCK;
@@ -116,9 +115,7 @@ public:
     QLabel *label_29;
     QWidget *tab_Info2;
     QGridLayout *gridLayout_13;
-    QPushButton *pushButton_Deliver;
     QHBoxLayout *horizontalLayout_2;
-    QSpacerItem *horizontalSpacer_6;
     QLineEdit *lineEdit_DeliveryBFWenJianHao;
     QLineEdit *lineEdit_DeliveryDBPingZhengHao;
     QLineEdit *lineEdit_DeliveryXZDanHao;
@@ -129,6 +126,9 @@ public:
     QLabel *label_9;
     QDateEdit *dateEdit_DeliveryZB;
     QPushButton *pushButton_QueryDeliver;
+    QLabel *label_4;
+    QPushButton *pushButton_Deliver;
+    QLabel *label_Remainder;
     QTableWidget *tableWidget_Delivery;
     QWidget *tab_4;
     QGridLayout *gridLayout_5;
@@ -171,7 +171,7 @@ public:
     {
         if (SystemManager->objectName().isEmpty())
             SystemManager->setObjectName(QString::fromUtf8("SystemManager"));
-        SystemManager->resize(1755, 668);
+        SystemManager->resize(1890, 663);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/SysMainWindow/Resources/login-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         SystemManager->setWindowIcon(icon);
@@ -481,23 +481,10 @@ public:
         tabWidget_Information->setTabShape(QTabWidget::Triangular);
         tab_Info1 = new QWidget();
         tab_Info1->setObjectName(QString::fromUtf8("tab_Info1"));
-        formLayout = new QFormLayout(tab_Info1);
-        formLayout->setObjectName(QString::fromUtf8("formLayout"));
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        horizontalLayout_12 = new QHBoxLayout();
-        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
-        pushButton_ExportExcel = new QPushButton(tab_Info1);
-        pushButton_ExportExcel->setObjectName(QString::fromUtf8("pushButton_ExportExcel"));
-        pushButton_ExportExcel->setMinimumSize(QSize(100, 30));
-        pushButton_ExportExcel->setMaximumSize(QSize(100, 30));
-        pushButton_ExportExcel->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(0, 170, 0);"));
-
-        horizontalLayout_12->addWidget(pushButton_ExportExcel);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        gridLayout_14 = new QGridLayout(tab_Info1);
+        gridLayout_14->setObjectName(QString::fromUtf8("gridLayout_14"));
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         lineEdit_BFWenJianHao = new QLineEdit(tab_Info1);
@@ -549,7 +536,16 @@ public:
         horizontalLayout->addWidget(lineEdit_DZBianHao);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        gridLayout_2->addLayout(horizontalLayout, 0, 0, 1, 1);
+
+        pushButton_ExportExcel = new QPushButton(tab_Info1);
+        pushButton_ExportExcel->setObjectName(QString::fromUtf8("pushButton_ExportExcel"));
+        pushButton_ExportExcel->setMinimumSize(QSize(100, 0));
+        pushButton_ExportExcel->setMaximumSize(QSize(100, 100));
+        pushButton_ExportExcel->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(0, 170, 0);"));
+
+        gridLayout_2->addWidget(pushButton_ExportExcel, 0, 1, 1, 1);
 
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
@@ -576,6 +572,7 @@ public:
 
         label = new QLabel(tab_Info1);
         label->setObjectName(QString::fromUtf8("label"));
+        label->setMaximumSize(QSize(30, 16777215));
 
         horizontalLayout_3->addWidget(label);
 
@@ -591,6 +588,10 @@ public:
 
 
         horizontalLayout_11->addLayout(horizontalLayout_3);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_11->addItem(horizontalSpacer_4);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
@@ -615,6 +616,7 @@ public:
 
         label_2 = new QLabel(tab_Info1);
         label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setMaximumSize(QSize(30, 16777215));
 
         horizontalLayout_4->addWidget(label_2);
 
@@ -630,6 +632,10 @@ public:
 
 
         horizontalLayout_11->addLayout(horizontalLayout_4);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_11->addItem(horizontalSpacer_6);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
@@ -654,6 +660,7 @@ public:
 
         label_3 = new QLabel(tab_Info1);
         label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setMaximumSize(QSize(30, 16777215));
 
         horizontalLayout_5->addWidget(label_3);
 
@@ -671,32 +678,26 @@ public:
         horizontalLayout_11->addLayout(horizontalLayout_5);
 
 
-        verticalLayout->addLayout(horizontalLayout_11);
-
-
-        horizontalLayout_12->addLayout(verticalLayout);
+        gridLayout_2->addLayout(horizontalLayout_11, 1, 0, 1, 1);
 
         pushButton_QueryInfo = new QPushButton(tab_Info1);
         pushButton_QueryInfo->setObjectName(QString::fromUtf8("pushButton_QueryInfo"));
-        pushButton_QueryInfo->setMinimumSize(QSize(75, 30));
+        pushButton_QueryInfo->setMinimumSize(QSize(100, 30));
         pushButton_QueryInfo->setMaximumSize(QSize(75, 30));
         pushButton_QueryInfo->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "background-color: rgb(41, 136, 41);\n"
 "color: rgb(255, 255, 255);"));
 
-        horizontalLayout_12->addWidget(pushButton_QueryInfo);
+        gridLayout_2->addWidget(pushButton_QueryInfo, 1, 1, 1, 1);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_12);
+        gridLayout_14->addLayout(gridLayout_2, 0, 0, 1, 1);
 
         tableWidget_Search = new QTableWidget(tab_Info1);
         tableWidget_Search->setObjectName(QString::fromUtf8("tableWidget_Search"));
         tableWidget_Search->setSortingEnabled(true);
 
-        verticalLayout_2->addWidget(tableWidget_Search);
-
-
-        formLayout->setLayout(0, QFormLayout::SpanningRole, verticalLayout_2);
+        gridLayout_14->addWidget(tableWidget_Search, 1, 0, 1, 1);
 
         label_29 = new QLabel(tab_Info1);
         label_29->setObjectName(QString::fromUtf8("label_29"));
@@ -705,31 +706,15 @@ public:
         label_29->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(85, 170, 0);"));
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, label_29);
+        gridLayout_14->addWidget(label_29, 2, 0, 1, 1);
 
         tabWidget_Information->addTab(tab_Info1, QString());
         tab_Info2 = new QWidget();
         tab_Info2->setObjectName(QString::fromUtf8("tab_Info2"));
         gridLayout_13 = new QGridLayout(tab_Info2);
         gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
-        pushButton_Deliver = new QPushButton(tab_Info2);
-        pushButton_Deliver->setObjectName(QString::fromUtf8("pushButton_Deliver"));
-        pushButton_Deliver->setMinimumSize(QSize(75, 30));
-        pushButton_Deliver->setMaximumSize(QSize(75, 30));
-        pushButton_Deliver->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(255, 255, 0);\n"
-"background-color: rgb(255, 0, 0);\n"
-""));
-        pushButton_Deliver->setFlat(false);
-
-        gridLayout_13->addWidget(pushButton_Deliver, 0, 0, 1, 1);
-
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer_6);
-
         lineEdit_DeliveryBFWenJianHao = new QLineEdit(tab_Info2);
         lineEdit_DeliveryBFWenJianHao->setObjectName(QString::fromUtf8("lineEdit_DeliveryBFWenJianHao"));
         lineEdit_DeliveryBFWenJianHao->setMinimumSize(QSize(200, 30));
@@ -824,13 +809,43 @@ public:
         horizontalLayout_2->addWidget(pushButton_QueryDeliver);
 
 
-        gridLayout_13->addLayout(horizontalLayout_2, 0, 1, 1, 1);
+        gridLayout_13->addLayout(horizontalLayout_2, 0, 5, 1, 1);
+
+        label_4 = new QLabel(tab_Info2);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font.setPointSize(12);
+        label_4->setFont(font);
+
+        gridLayout_13->addWidget(label_4, 0, 1, 1, 1);
+
+        pushButton_Deliver = new QPushButton(tab_Info2);
+        pushButton_Deliver->setObjectName(QString::fromUtf8("pushButton_Deliver"));
+        pushButton_Deliver->setMinimumSize(QSize(75, 30));
+        pushButton_Deliver->setMaximumSize(QSize(75, 30));
+        pushButton_Deliver->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(255, 255, 0);\n"
+"background-color: rgb(255, 0, 0);\n"
+""));
+        pushButton_Deliver->setFlat(false);
+
+        gridLayout_13->addWidget(pushButton_Deliver, 0, 0, 1, 1);
+
+        label_Remainder = new QLabel(tab_Info2);
+        label_Remainder->setObjectName(QString::fromUtf8("label_Remainder"));
+        label_Remainder->setMinimumSize(QSize(100, 30));
+        label_Remainder->setFont(font);
+        label_Remainder->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 170, 127);\\ncolor: rgb(0, 0, 255);"));
+        label_Remainder->setAlignment(Qt::AlignCenter);
+
+        gridLayout_13->addWidget(label_Remainder, 0, 2, 1, 1);
 
         tableWidget_Delivery = new QTableWidget(tab_Info2);
         tableWidget_Delivery->setObjectName(QString::fromUtf8("tableWidget_Delivery"));
         tableWidget_Delivery->setSortingEnabled(true);
 
-        gridLayout_13->addWidget(tableWidget_Delivery, 1, 0, 1, 2);
+        gridLayout_13->addWidget(tableWidget_Delivery, 1, 0, 1, 6);
 
         tabWidget_Information->addTab(tab_Info2, QString());
 
@@ -1168,19 +1183,20 @@ public:
         QObject::connect(pushButton_QuerySinglePacked, SIGNAL(clicked()), SystemManager, SLOT(QuerySinglePacked()));
         QObject::connect(pushButton_PrintSinglePacked, SIGNAL(clicked()), SystemManager, SLOT(PrintSinglePacked()));
         QObject::connect(pushButton_16, SIGNAL(clicked()), SystemManager, SLOT(PrintBoxList()));
-        QObject::connect(pushButton_QueryInfo, SIGNAL(clicked()), SystemManager, SLOT(QueryInformations()));
         QObject::connect(pushButton_CodeGrab, SIGNAL(clicked()), SystemManager, SLOT(SoftTriggerCodeCamera()));
         QObject::connect(pushButton_GunGrab, SIGNAL(clicked()), SystemManager, SLOT(SoftTriggerWholeCamera()));
-        QObject::connect(pushButton_ExportExcel, SIGNAL(clicked()), SystemManager, SLOT(ExportExcel()));
-        QObject::connect(pushButton_QueryDeliver, SIGNAL(clicked()), SystemManager, SLOT(QueryDeliveryInformations()));
-        QObject::connect(pushButton_Deliver, SIGNAL(clicked()), SystemManager, SLOT(DoDelivery()));
         QObject::connect(pushButton_Save, SIGNAL(clicked()), SystemManager, SLOT(SaveRecognizeResult()));
         QObject::connect(pushButton_Modify, SIGNAL(clicked()), SystemManager, SLOT(DoCorrection()));
         QObject::connect(pushButton_Speaker, SIGNAL(clicked()), SystemManager, SLOT(DoSpeaker()));
+        QObject::connect(pushButton_ExportExcel, SIGNAL(clicked()), SystemManager, SLOT(ExportExcel()));
+        QObject::connect(pushButton_QueryInfo, SIGNAL(clicked()), SystemManager, SLOT(QueryInformations()));
+        QObject::connect(pushButton_QueryDeliver, SIGNAL(clicked()), SystemManager, SLOT(QueryDeliveryInformations()));
+        QObject::connect(pushButton_Deliver, SIGNAL(clicked()), SystemManager, SLOT(DoDelivery()));
+        QObject::connect(pushButton_QueryDeliver, SIGNAL(clicked()), SystemManager, SLOT(Remainder()));
 
         tabWidget->setCurrentIndex(2);
-        tabWidget_Storage->setCurrentIndex(0);
-        tabWidget_Information->setCurrentIndex(0);
+        tabWidget_Storage->setCurrentIndex(1);
+        tabWidget_Information->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(SystemManager);
@@ -1212,7 +1228,6 @@ public:
         pushButton_PrintSinglePacked->setText(QCoreApplication::translate("SystemManager", "\346\211\223\345\215\260\345\215\225\350\243\205\345\215\241\347\211\207", nullptr));
         tabWidget_Storage->setTabText(tabWidget_Storage->indexOf(tab_Ephor2), QCoreApplication::translate("SystemManager", "\345\215\225\350\243\205\345\205\245\345\272\223", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("SystemManager", "\347\274\226\347\240\201\346\243\200\350\247\206", nullptr));
-        pushButton_ExportExcel->setText(QCoreApplication::translate("SystemManager", "\345\257\274\345\207\272Excel", nullptr));
         lineEdit_BFWenJianHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\351\200\200\345\275\271\346\212\245\345\272\237\346\226\207\344\273\266\345\217\267", nullptr));
         lineEdit_DBPingZhengHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\260\203\346\213\250\345\207\255\350\257\201\345\217\267", nullptr));
         lineEdit_XZDanHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\243\205\347\256\261\345\215\225\345\217\267", nullptr));
@@ -1220,6 +1235,7 @@ public:
         lineEdit_ZBMingCheng->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\243\205\345\244\207\345\220\215\347\247\260", nullptr));
         lineEdit_DZBianHao->setText(QString());
         lineEdit_DZBianHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\345\215\225\350\243\205\347\274\226\345\217\267", nullptr));
+        pushButton_ExportExcel->setText(QCoreApplication::translate("SystemManager", "\345\257\274\345\207\272Excel", nullptr));
         label_12->setText(QCoreApplication::translate("SystemManager", "\345\205\245\345\272\223\346\227\266\351\227\264", nullptr));
         label->setText(QCoreApplication::translate("SystemManager", "\342\200\224\342\200\224", nullptr));
         label_13->setText(QCoreApplication::translate("SystemManager", "\346\243\200\350\247\206\346\227\266\351\227\264", nullptr));
@@ -1229,7 +1245,6 @@ public:
         pushButton_QueryInfo->setText(QCoreApplication::translate("SystemManager", "\346\237\245\350\257\242", nullptr));
         label_29->setText(QString());
         tabWidget_Information->setTabText(tabWidget_Information->indexOf(tab_Info1), QCoreApplication::translate("SystemManager", "\346\237\245\350\257\242", nullptr));
-        pushButton_Deliver->setText(QCoreApplication::translate("SystemManager", "\345\207\272\345\272\223", nullptr));
         lineEdit_DeliveryBFWenJianHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\351\200\200\345\275\271\346\212\245\345\272\237\346\226\207\344\273\266\345\217\267", nullptr));
         lineEdit_DeliveryDBPingZhengHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\260\203\346\213\250\345\207\255\350\257\201\345\217\267", nullptr));
         lineEdit_DeliveryXZDanHao->setPlaceholderText(QCoreApplication::translate("SystemManager", "\350\243\205\347\256\261\345\215\225\345\217\267", nullptr));
@@ -1238,6 +1253,9 @@ public:
         label_10->setText(QCoreApplication::translate("SystemManager", "\345\207\272\345\216\202\346\227\266\351\227\264", nullptr));
         label_9->setText(QCoreApplication::translate("SystemManager", "\350\243\205\345\244\207\346\227\266\351\227\264", nullptr));
         pushButton_QueryDeliver->setText(QCoreApplication::translate("SystemManager", "\346\237\245\350\257\242", nullptr));
+        label_4->setText(QCoreApplication::translate("SystemManager", "\345\272\223\345\255\230\357\274\232", nullptr));
+        pushButton_Deliver->setText(QCoreApplication::translate("SystemManager", "\345\207\272\345\272\223", nullptr));
+        label_Remainder->setText(QString());
         tabWidget_Information->setTabText(tabWidget_Information->indexOf(tab_Info2), QCoreApplication::translate("SystemManager", "\345\207\272\345\272\223", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("SystemManager", "\344\277\241\346\201\257\347\256\241\347\220\206", nullptr));
         pushButton_16->setText(QCoreApplication::translate("SystemManager", "\346\211\223\345\215\260\350\243\205\347\256\261\346\270\205\345\215\225", nullptr));

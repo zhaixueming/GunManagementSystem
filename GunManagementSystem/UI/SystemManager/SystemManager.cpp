@@ -74,15 +74,28 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_Box->setSelectionBehavior(QAbstractItemView::SelectRows); //ÕûĞĞÑ¡ÖĞµÄ·½Ê½
 	ui.tableWidget_Box->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
 	ui.tableWidget_Box->setEditTriggers(QAbstractItemView::NoEditTriggers);//²»ÄÜ¶Ô±í¸ñÄÚÈİ½øĞĞĞŞ¸Ä
-	//ui.tableWidget_Box->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);//ĞĞ±íÍ·£¬ÉèÖÃ×ÔÊÊÓ¦Ä£Ê½£¬ÓÃ»§¿ÉÉèÖÃ£¬Ò²¿É±»³ÌĞòÉèÖÃ³ÉÄ¬ÈÏ´óĞ¡
-	ui.tableWidget_Box->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	ui.tableWidget_Box->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);//ĞĞ±íÍ·£¬ÉèÖÃ×ÔÊÊÓ¦Ä£Ê½£¬ÓÃ»§¿ÉÉèÖÃ£¬Ò²¿É±»³ÌĞòÉèÖÃ³ÉÄ¬ÈÏ´óĞ¡
+	ui.tableWidget_Box->horizontalHeader()->setStretchLastSection(true);//×îºóÒ»ÁĞÌîÂú¿Ø¼ş
+	//ui.tableWidget_Box->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	ui.tableWidget_Box->horizontalHeader()->setFont(font);//ÉèÖÃ×ÖÌå
 	ui.tableWidget_Box->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_Box->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
-
+	ui.tableWidget_Box->setColumnCount(12);
+	ui.tableWidget_Box->setColumnWidth(0, 170);
+	ui.tableWidget_Box->setColumnWidth(1, 170);
+	ui.tableWidget_Box->setColumnWidth(2, 170);
+	ui.tableWidget_Box->setColumnWidth(3, 170);
+	ui.tableWidget_Box->setColumnWidth(4, 170);
+	ui.tableWidget_Box->setColumnWidth(5, 190);
+	ui.tableWidget_Box->setColumnWidth(6, 190);
+	ui.tableWidget_Box->setColumnWidth(7, 120);
+	ui.tableWidget_Box->setColumnWidth(8, 120);
+	ui.tableWidget_Box->setColumnWidth(9, 120);
+	ui.tableWidget_Box->setColumnWidth(10, 120);
+	ui.tableWidget_Box->setColumnWidth(11, 120);
 	header.clear();
-	header << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï\nÎÄ¼şºÅ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
-	header << QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë") << QString::fromLocal8Bit("×°±¸(²¿¼ş)\nÃû³Æ");
+	header << QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÎÄ¼şºÅ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
+	header << QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë") << QString::fromLocal8Bit("×°±¸(²¿¼ş)Ãû³Æ");
 	header << QString::fromLocal8Bit("Á¥Êôµ¥Î»") << QString::fromLocal8Bit("¹ÜÀíµ¥Î»") << QString::fromLocal8Bit("³ö³§Ê±¼ä");
 	header << QString::fromLocal8Bit("×°±¸Ê±¼ä") << QString::fromLocal8Bit("×°ÏäÊıÁ¿") << QString::fromLocal8Bit("±à¼­");
 	header << QString::fromLocal8Bit("É¾³ı");
@@ -92,13 +105,26 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_PackedInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.tableWidget_PackedInfo->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
 	ui.tableWidget_PackedInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	ui.tableWidget_PackedInfo->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	//ui.tableWidget_PackedInfo->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	ui.tableWidget_PackedInfo->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);//ĞĞ±íÍ·£¬ÉèÖÃ×ÔÊÊÓ¦Ä£Ê½£¬ÓÃ»§¿ÉÉèÖÃ£¬Ò²¿É±»³ÌĞòÉèÖÃ³ÉÄ¬ÈÏ´óĞ¡
+	ui.tableWidget_PackedInfo->horizontalHeader()->setStretchLastSection(true);//×îºóÒ»ÁĞÌîÂú¿Ø¼ş
 	ui.tableWidget_PackedInfo->horizontalHeader()->setFont(font);
 	ui.tableWidget_PackedInfo->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_PackedInfo->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
-	//ui.tableWidget_PackedInfo->setColumnCount(7); 
-	//ui.tableWidget_PackedInfo->setColumnCount(8);//ĞŞ¸Ä..
 	ui.tableWidget_PackedInfo->setColumnCount(12);
+	ui.tableWidget_PackedInfo->setColumnCount(12);
+	ui.tableWidget_PackedInfo->setColumnWidth(0, 170);
+	ui.tableWidget_PackedInfo->setColumnWidth(1, 170);
+	ui.tableWidget_PackedInfo->setColumnWidth(2, 170);
+	ui.tableWidget_PackedInfo->setColumnWidth(3, 170);
+	ui.tableWidget_PackedInfo->setColumnWidth(4, 170);
+	ui.tableWidget_PackedInfo->setColumnWidth(5, 200);
+	ui.tableWidget_PackedInfo->setColumnWidth(6, 200);
+	ui.tableWidget_PackedInfo->setColumnWidth(7, 120);
+	ui.tableWidget_PackedInfo->setColumnWidth(8, 120);
+	ui.tableWidget_PackedInfo->setColumnWidth(9, 120);
+	ui.tableWidget_PackedInfo->setColumnWidth(10, 120);
+	ui.tableWidget_PackedInfo->setColumnWidth(11, 120);
 	header.clear();
 	header <<QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë") << QString::fromLocal8Bit("×°±¸(²¿¼ş)Ãû³Æ");
 	header << QString::fromLocal8Bit("µ¥×°±àºÅ")<< QString::fromLocal8Bit("ÖØÒª²¿¼şÈ±Ê§Çé¿ö")<<QString::fromLocal8Bit("Ç¹¹ÜºÅ");
@@ -110,16 +136,33 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_Single->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.tableWidget_Single->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
 	ui.tableWidget_Single->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	ui.tableWidget_Single->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	//ui.tableWidget_Single->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	ui.tableWidget_Single->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive); //¿ÉÀ­Éì
+	ui.tableWidget_Single->horizontalHeader()->setStretchLastSection(true);//×îºóÒ»ÁĞÌîÂú¿Ø¼ş
 	ui.tableWidget_Single->horizontalHeader()->setFont(font);
 	ui.tableWidget_Single->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_Single->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
-	//ui.tableWidget_Single->setColumnCount(12);
-	//ui.tableWidget_Single->setColumnCount(13);
 	ui.tableWidget_Single->setColumnCount(17);
+	ui.tableWidget_Single->setColumnWidth(0, 110);
+	ui.tableWidget_Single->setColumnWidth(1, 160);
+	ui.tableWidget_Single->setColumnWidth(2, 110);
+	ui.tableWidget_Single->setColumnWidth(3, 110);
+	ui.tableWidget_Single->setColumnWidth(4, 110);
+	ui.tableWidget_Single->setColumnWidth(5, 160);
+	ui.tableWidget_Single->setColumnWidth(6, 100);
+	ui.tableWidget_Single->setColumnWidth(7, 130);
+	ui.tableWidget_Single->setColumnWidth(8, 100);
+	ui.tableWidget_Single->setColumnWidth(9, 100);
+	ui.tableWidget_Single->setColumnWidth(10, 110);
+	ui.tableWidget_Single->setColumnWidth(11, 110);
+	ui.tableWidget_Single->setColumnWidth(12, 100);
+	ui.tableWidget_Single->setColumnWidth(13, 100);
+	ui.tableWidget_Single->setColumnWidth(14, 100);
+	ui.tableWidget_Single->setColumnWidth(15, 60);
+	ui.tableWidget_Single->setColumnWidth(16, 60);
 	header.clear();
-	header << QString::fromLocal8Bit(" ÍËÒÛ±¨·Ï\nÎÄ¼şºÅ ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
-	header << QString::fromLocal8Bit("  ×°±¸´úÂë  ") << QString::fromLocal8Bit("  ×°±¸(²¿¼ş)\nÃû³Æ  ") << QString::fromLocal8Bit("  µ¥×°±àºÅ  ") << QString::fromLocal8Bit("  ÖØÒª²¿¼şÈ±Ê§Çé¿ö  ");
+	header << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï\nÎÄ¼şºÅ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
+	header << QString::fromLocal8Bit("  ×°±¸´úÂë  ") << QString::fromLocal8Bit("×°±¸(²¿¼ş)\nÃû³Æ") << QString::fromLocal8Bit("  µ¥×°±àºÅ  ") << QString::fromLocal8Bit("  ÖØÒª²¿¼şÈ±Ê§Çé¿ö  ");
 	header << QString::fromLocal8Bit("Ç¹¹ÜºÅ") << QString::fromLocal8Bit("Ç¹»ú»òÌ×Í²ºÅ") << QString::fromLocal8Bit("»úÇ¹¿òºÅ") << QString::fromLocal8Bit("±¸·İÇ¹¹ÜºÅ");
 	header << QString::fromLocal8Bit("  Á¥Êôµ¥Î»  ") << QString::fromLocal8Bit("  ¹ÜÀíµ¥Î»  ") << QString::fromLocal8Bit("  ³ö³§Ê±¼ä  ");
 	header << QString::fromLocal8Bit("  ×°±¸Ê±¼ä  ") << QString::fromLocal8Bit("³ö¿â×´Ì¬") << QString::fromLocal8Bit("±à¼­") << QString::fromLocal8Bit("É¾³ı");
@@ -133,11 +176,27 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_Search->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.tableWidget_Search->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
 	ui.tableWidget_Search->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	ui.tableWidget_Search->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	//ui.tableWidget_Search->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	ui.tableWidget_Search->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive); //¿ÉÀ­Éì
+	ui.tableWidget_Search->horizontalHeader()->setStretchLastSection(true);//×îºóÒ»ÁĞÌîÂú¿Ø¼ş
 	ui.tableWidget_Search->horizontalHeader()->setFont(font);
 	ui.tableWidget_Search->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_Search->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
 	ui.tableWidget_Search->setColumnCount(14);
+	ui.tableWidget_Search->setColumnWidth(0, 170);
+	ui.tableWidget_Search->setColumnWidth(1, 180);
+	ui.tableWidget_Search->setColumnWidth(2, 110);
+	ui.tableWidget_Search->setColumnWidth(3, 110);
+	ui.tableWidget_Search->setColumnWidth(4, 140);
+	ui.tableWidget_Search->setColumnWidth(5, 110);
+	ui.tableWidget_Search->setColumnWidth(6, 110);
+	ui.tableWidget_Search->setColumnWidth(7, 130);
+	ui.tableWidget_Search->setColumnWidth(8, 110);
+	ui.tableWidget_Search->setColumnWidth(9, 110);
+	ui.tableWidget_Search->setColumnWidth(10, 110);
+	ui.tableWidget_Search->setColumnWidth(11, 110);
+	ui.tableWidget_Search->setColumnWidth(12, 110);
+	ui.tableWidget_Search->setColumnWidth(13, 110);
 	header.clear();
 	header << QString::fromLocal8Bit(" ÍËÒÛ±¨·ÏÎÄ¼şºÅ ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
 	header << QString::fromLocal8Bit("  ×°Ïäµ¥ºÅ  ") << QString::fromLocal8Bit("  ×°±¸´úÂë  ") << QString::fromLocal8Bit("  ×°±¸(²¿¼ş)Ãû³Æ  ");
@@ -145,15 +204,34 @@ void CSystemMangaer::InitVariables()
 	header << QString::fromLocal8Bit("  ¼ìÊÓ×´Ì¬  ") << QString::fromLocal8Bit("  ³ö¿â×´Ì¬  ") << QString::fromLocal8Bit("  Èë¿âÊ±¼ä  ");
 	header << QString::fromLocal8Bit("¼ìÊÓÊ±¼ä") << QString::fromLocal8Bit("  ³ö¿âÊ±¼ä  ") << QString::fromLocal8Bit("Ñ¡Ôñ");
 	ui.tableWidget_Search->setHorizontalHeaderLabels(header);
+
 	//³ö¿â±í
+	
 	ui.tableWidget_Delivery->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.tableWidget_Delivery->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
 	ui.tableWidget_Delivery->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	ui.tableWidget_Delivery->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	//ui.tableWidget_Delivery->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	ui.tableWidget_Delivery->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive); //¿ÉÀ­Éì
+	ui.tableWidget_Delivery->horizontalHeader()->setStretchLastSection(true);//×îºóÒ»ÁĞÌîÂú¿Ø¼ş
 	ui.tableWidget_Delivery->horizontalHeader()->setFont(font);
 	ui.tableWidget_Delivery->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_Delivery->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
 	ui.tableWidget_Delivery->setColumnCount(15);
+	ui.tableWidget_Delivery->setColumnWidth(0, 170);
+	ui.tableWidget_Delivery->setColumnWidth(1,180);
+	ui.tableWidget_Delivery->setColumnWidth(2, 110);
+	ui.tableWidget_Delivery->setColumnWidth(3, 110);
+	ui.tableWidget_Delivery->setColumnWidth(4, 130);
+	ui.tableWidget_Delivery->setColumnWidth(5, 110);
+	ui.tableWidget_Delivery->setColumnWidth(6, 110);
+	ui.tableWidget_Delivery->setColumnWidth(7, 130);
+	ui.tableWidget_Delivery->setColumnWidth(8, 110);
+	ui.tableWidget_Delivery->setColumnWidth(9, 110);
+	ui.tableWidget_Delivery->setColumnWidth(10, 110);
+	ui.tableWidget_Delivery->setColumnWidth(11, 110);
+	ui.tableWidget_Delivery->setColumnWidth(12, 110);
+	ui.tableWidget_Delivery->setColumnWidth(13, 110);
+	ui.tableWidget_Delivery->setColumnWidth(14, 110);
 	header.clear();
 	header << QString::fromLocal8Bit(" ÍËÒÛ±¨·ÏÎÄ¼şºÅ ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
 	header << QString::fromLocal8Bit("  ×°Ïäµ¥ºÅ  ") << QString::fromLocal8Bit("  ×°±¸´úÂë  ") << QString::fromLocal8Bit("  ×°±¸(²¿¼ş)Ãû³Æ  ") << QString::fromLocal8Bit("  µ¥×°±àºÅ  ");
@@ -161,6 +239,8 @@ void CSystemMangaer::InitVariables()
 	header << QString::fromLocal8Bit("  ³ö³§Ê±¼ä  ") << QString::fromLocal8Bit("  ×°±¸Ê±¼ä  ");
 	header << QString::fromLocal8Bit("  ×°ÏäÊıÁ¿  ") << QString::fromLocal8Bit("  Èë¿âÊ±¼ä  ") << QString::fromLocal8Bit("Ñ¡Ôñ");
 	ui.tableWidget_Delivery->setHorizontalHeaderLabels(header);
+	//ui.tableWidget_Delivery->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
 }
 
 void CSystemMangaer::InitConnections()
@@ -454,6 +534,7 @@ void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ
 				else
 				{
 					QTableWidgetItem *item = new QTableWidgetItem(data);
+					item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 					ui.tableWidget_Box->setItem(row, col, item);
 				}
 			}
@@ -528,6 +609,7 @@ void CSystemMangaer::slotClickToolButton()
 				{
 					QString data = RowData.at(col).toString();
 					QTableWidgetItem *item = new QTableWidgetItem(data);
+					item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 					ui.tableWidget_PackedInfo->setItem(row, col - 1, item);
 				}
 				QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("±à¼­"));
@@ -801,6 +883,7 @@ void CSystemMangaer::QuerySinglePacked()//¡°±àÂë¼ìÊÓ¡±½çÃæÏÂ£¬µ¥×°Èë¿â½çÃæÏÂÓÒ±ß
 			{
 				QString data = RowData.at(col).toString();
 				QTableWidgetItem *item = new QTableWidgetItem(data);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 				ui.tableWidget_Single->setItem(row, col, item);
 			}
 			QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("±à¼­"));
@@ -851,17 +934,7 @@ void CSystemMangaer::QueryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖĞÓÒ±ßµÄ"²éÑ
 {
 	//select t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t1.ÒÑ¼ìÊÓ as ×´Ì¬,t2.¼ÇÂ¼Ê±¼ä
 	//from BoxPackedTable t1 right join BoxPackedDetailsTable t2 on t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t1.×°±¸´úÂë = t2.×°±¸´úÂë and t1.×°±¸Ãû³Æ = t2.×°±¸Ãû³Æ
-	
-	//QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t2.³ö¿â×´Ì¬,t2.¼ÇÂ¼Ê±¼ä");
-	//sql += " from GunManager.dbo.BoxPackedTable t1 right join GunManager.dbo.BoxPackedDetailsTable t2 on";
-	//sql += QString::fromLocal8Bit(" t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t1.×°±¸´úÂë = t2.×°±¸´úÂë and t1.×°±¸Ãû³Æ = t2.×°±¸Ãû³Æ");
-	//sql += " where " + QString::fromLocal8Bit("t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ like \'%") + ui.lineEdit_BFWenJianHao->text() + "%\'";
-	//sql += " and " + QString::fromLocal8Bit("t1.µ÷²¦Æ¾Ö¤ºÅ like \'%") + ui.lineEdit_DBPingZhengHao->text() + "%\'";
-	//sql += " and " + QString::fromLocal8Bit("t1.×°Ïäµ¥ºÅ like \'%") + ui.lineEdit_XZDanHao->text() + "%\'";
-	//sql += " and " + QString::fromLocal8Bit("t1.×°±¸´úÂë like \'%") + ui.lineEdit_ZBDaima->text() + "%\'";
-	//sql += " and " + QString::fromLocal8Bit("t1.×°±¸Ãû³Æ like \'%") + ui.lineEdit_ZBMingCheng->text() + "%\'";
 
-	//QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t2.³ö¿â×´Ì¬,t2.¼ÇÂ¼Ê±¼ä");
 	QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t2.³ö¿â×´Ì¬,t2.Èë¿âÊ±¼ä,t2.¼ìÊÓÊ±¼ä,t2.³ö¿âÊ±¼ä");
 	sql += " from GunManager.dbo.BoxPackedTable t1 right join GunManager.dbo.BoxPackedDetailsTable t2 on";
 	sql += QString::fromLocal8Bit(" t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t1.×°±¸´úÂë = t2.×°±¸´úÂë and t1.×°±¸Ãû³Æ = t2.×°±¸Ãû³Æ");
@@ -1010,6 +1083,7 @@ void CSystemMangaer::QueryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖĞÓÒ±ßµÄ"²éÑ
 		item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 		ui.tableWidget_Search->setItem(row, col+1, item);
 		//ui.tableWidget_Search->setItem(row, col, item);
+		
 
 		//Èë¿âÊ±¼ä
 		data = RowData.at(col + 1).toString();
@@ -1034,16 +1108,26 @@ void CSystemMangaer::QueryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖĞÓÒ±ßµÄ"²éÑ
 		ui.tableWidget_Search->setItem(row, col + 4, item);
 
 		//¸´Ñ¡¿ò
+		//QCheckBox *checkBox = new QCheckBox(QString::fromLocal8Bit("¹´Ñ¡"));
+		//ui.tableWidget_Search->setCellWidget(row, col+5, checkBox);
 		QCheckBox *checkBox = new QCheckBox(QString::fromLocal8Bit("¹´Ñ¡"));
-		ui.tableWidget_Search->setCellWidget(row, col+5, checkBox);
+		QHBoxLayout *hLayout = new QHBoxLayout();
+		QWidget *widget = new QWidget(ui.tableWidget_Search);
+		hLayout->addWidget(checkBox);
+		hLayout->setMargin(0);                          // ±ØĞëÌí¼Ó, ·ñÔòCheckBox²»ÄÜÕı³£ÏÔÊ¾
+		hLayout->setAlignment(checkBox, Qt::AlignCenter);
+		widget->setLayout(hLayout);
+		ui.tableWidget_Search->setCellWidget(row, col + 5, widget);
 	}
 	ui.tableWidget_Search->setSortingEnabled(true);
 	ui.tableWidget_Search->sortByColumn(0, Qt::AscendingOrder);
+	
 }
 
 
 void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ±ßµÄ"²éÑ¯"°´Å¥---¡·´Ë²Ûº¯Êı
 {
+
 	QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t2.Ç¹¹ÜºÅ,t2.Ç¹»÷»òÌ×Í²ºÅ,t2.»úÇ¹¿òºÅ,t2.±¸·İÇ¹¹ÜºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t1.×°ÏäÊıÁ¿,t2.Èë¿âÊ±¼ä");
 	sql += " from GunManager.dbo.BoxPackedTable t1 right join GunManager.dbo.BoxPackedDetailsTable t2 on";
 	sql += QString::fromLocal8Bit(" t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t1.×°±¸´úÂë = t2.×°±¸´úÂë and t1.×°±¸Ãû³Æ = t2.×°±¸Ãû³Æ");
@@ -1126,216 +1210,279 @@ void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ
 		QTableWidgetItem *item = new QTableWidgetItem(data);
 		item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 		ui.tableWidget_Delivery->setItem(row, col++, item);
+
+		//¹´Ñ¡¿ò
+		/*QCheckBox *checkBox = new QCheckBox(QString::fromLocal8Bit("¹´Ñ¡"));
+		ui.tableWidget_Delivery->setCellWidget(row, col, checkBox);*/
+		  //ÔÚQtableWidgetÖĞÌí¼ÓQCheckBox²¢Ê¹Æä¾ÓÖĞÏÔÊ¾
 		QCheckBox *checkBox = new QCheckBox(QString::fromLocal8Bit("¹´Ñ¡"));
-		ui.tableWidget_Delivery->setCellWidget(row, col, checkBox);
+		QHBoxLayout *hLayout = new QHBoxLayout();
+		QWidget *widget = new QWidget(ui.tableWidget_Delivery);
+		hLayout->addWidget(checkBox);
+		hLayout->setMargin(0);                          // ±ØĞëÌí¼Ó, ·ñÔòCheckBox²»ÄÜÕı³£ÏÔÊ¾
+		hLayout->setAlignment(checkBox, Qt::AlignCenter);
+		widget->setLayout(hLayout);
+		ui.tableWidget_Delivery->setCellWidget(row, col, widget);
 	}
 	ui.tableWidget_Delivery->setSortingEnabled(true);
 	ui.tableWidget_Delivery->sortByColumn(0, Qt::AscendingOrder);
+	//Remainder();
 }
 
-  //µ¼³öÎªxls¸ñÊ½£¬È«³Ì¼ÇÂ¼±í
-//void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥-----¡·´Ë²Ûº¯Êı
-//{
-//	int rows = ui.tableWidget_Delivery->rowCount();
-//	int cols = ui.tableWidget_Delivery->columnCount();
-//	for (int i = 0; i < rows; ++i)
-//	{
-//		QCheckBox *box = (QCheckBox *)ui.tableWidget_Delivery->cellWidget(i, cols - 1);
-//		if (box != NULL && box->isChecked())
-//		{
-//			QString sql;
-//			QString BFWenJianHao = ui.tableWidget_Delivery->item(i, 0)->text();
-//			QString DBPingZhengHao = ui.tableWidget_Delivery->item(i, 1)->text();
-//			QString ZBDaiMa = ui.tableWidget_Delivery->item(i, 3)->text();//×°±¸µ¥ºÅ
-//			QString ZBMingCheng = ui.tableWidget_Delivery->item(i, 4)->text();//×°±¸Ãû³Æ
-//			QString DZBianHao = ui.tableWidget_Delivery->item(i, 5)->text();//µ¥×°±àºÅ
-//			QString XZDanHao = ui.tableWidget_Delivery->item(i, 2)->text();  //Ïä×°µ¥ºÅ
-//			//×°Ïäµ¥ºÅÎª"-",ÔòÎªµ¥×°Èë¿â£¬½«µ¥×°Èë¿â±íÖĞ´Ë¼ÇÂ¼ĞŞ¸ÄÎª"ÒÑ³ö¿â"
-//			//×°Ïäµ¥ºÅÓĞÖµ£¬ÔòÎªÏä×°Èë¿â£¬½«Ïä×°Èë¿âĞÅÏ¢±íÖĞ¼ÇÂ¼ĞŞ¸ÄÎª"ÒÑ³ö¿â"
-//
-//			//³ö¿âÊ±¼ä
-//			/*QDateTime curDateTime = QDateTime::currentDateTime();
-//			QString ChuKuDateTime = curDateTime.toString("yyyy-MM-dd hh:mm:ss");*/
-//
-//			QDateTime curDateTime = QDateTime::currentDateTime();
-//			QString ChuKuDateTime = curDateTime.toString("yyyy-M-d");
-//			if (XZDanHao == "-")//µ¥×°Èë¿â
-//			{
-//
-//				//sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â' where");
-//				sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â',³ö¿âÊ±¼ä= \'")+ChuKuDateTime+"\' where";
-//				sql += QString::fromLocal8Bit(" ÍËÒÛ±¨·ÏÎÄ¼şºÅ = ") + BFWenJianHao;
-//				sql += QString::fromLocal8Bit(" and µ÷²¦Æ¾Ö¤ºÅ = ") + DBPingZhengHao;
-//				sql += QString::fromLocal8Bit(" and ×°±¸´úÂë = ") + ZBDaiMa;
-//				sql += QString::fromLocal8Bit(" and ×°±¸Ãû³Æ = ") + ZBMingCheng;
-//				sql += QString::fromLocal8Bit(" and µ¥×°±àºÅ = ") + DZBianHao;
-//				QString errMsg;
-//				bool rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
-//				if (!rv)
-//				{
-//					QMessageBox::information(this, QString::fromLocal8Bit("µ¥×°Èë¿â"), errMsg);
-//					return;
-//				}
-//			}
-//			else
-//			{
-//				//sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â' where");
-//				sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â',³ö¿âÊ±¼ä= \'") + ChuKuDateTime + "\' where";
-//				sql += QString::fromLocal8Bit(" GunManager.dbo.BoxPackedDetailsTable.µ¥×°±àºÅ in (select µ¥×°±àºÅ from");
-//				sql += QString::fromLocal8Bit(" GunManager.dbo.BoxPackedTable t1,GunManager.dbo.BoxPackedDetailsTable t2");
-//				sql += QString::fromLocal8Bit(" where t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ = ") + BFWenJianHao;
-//				sql += QString::fromLocal8Bit(" and t1.µ÷²¦Æ¾Ö¤ºÅ = ") + DBPingZhengHao;
-//				sql += QString::fromLocal8Bit(" and t1.×°Ïäµ¥ºÅ = ") + XZDanHao;
-//				sql += QString::fromLocal8Bit(" and t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t2.µ¥×°±àºÅ = \'") + DZBianHao + "\')";
-//				QString errMsg;
-//				bool rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
-//				if (!rv)
-//				{
-//					QMessageBox::information(this, QString::fromLocal8Bit("Ïä×°Èë¿â"), errMsg);
-//					return;
-//				}
-//			}
-//		}
-//	}
-//	PrintAPI::Instance()->PrintGridA9();
-//}
-
- //µ¼³öxls¸ñÊ½£¬³ö¿â±í
-void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥-----¡·´Ë²Ûº¯Êı
+  
+void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥-----¡·´Ë²Ûº¯Êı
 {
 	int rows = ui.tableWidget_Delivery->rowCount();
-	if (rows == 0)
+	int cols = ui.tableWidget_Delivery->columnCount();
+	for (int i = 0; i < rows; ++i)
 	{
-		return;
-	}
-	QString filepath = QFileDialog::getSaveFileName(this, ("Save as..."), QString(), tr("EXCEL files (*.xls *.xlsx)"));
-	if (filepath.isEmpty())
-	{
-		QMessageBox::critical(0, tr("´íÎó"), tr("Òª±£´æµÄÎÄ¼şÃû²»ÄÜÎª¿Õ£¡"));
-		return;
-	}
-	qDebug() << "Export excel:" << filepath.toStdString().c_str();
+		//QCheckBox *box = (QCheckBox *)ui.tableWidget_Delivery->cellWidget(i, cols - 1);
+		QWidget *widget = (QWidget *)ui.tableWidget_Delivery->cellWidget(i, cols - 1);
+		QCheckBox *box = (QCheckBox *)widget->children().at(1);
+		if (box != NULL && box->isChecked())
+		{
+			QString sql;
+			QString BFWenJianHao = ui.tableWidget_Delivery->item(i, 0)->text();
+			QString DBPingZhengHao = ui.tableWidget_Delivery->item(i, 1)->text();//Æ¾Ö¤ºÅ
+			QString ZBDaiMa = ui.tableWidget_Delivery->item(i, 3)->text();//×°±¸µ¥ºÅ
+			QString ZBMingCheng = ui.tableWidget_Delivery->item(i, 4)->text();//×°±¸Ãû³Æ
+			QString DZBianHao = ui.tableWidget_Delivery->item(i, 5)->text();//µ¥×°±àºÅ
+			QString ZXDanHao = ui.tableWidget_Delivery->item(i, 2)->text();  //×°Ïäµ¥ºÅ
+			//×°Ïäµ¥ºÅÎª"-",ÔòÎªµ¥×°Èë¿â£¬½«µ¥×°Èë¿â±íÖĞ´Ë¼ÇÂ¼ĞŞ¸ÄÎª"ÒÑ³ö¿â"
+			//×°Ïäµ¥ºÅÓĞÖµ£¬ÔòÎªÏä×°Èë¿â£¬½«Ïä×°Èë¿âĞÅÏ¢±íÖĞ¼ÇÂ¼ĞŞ¸ÄÎª"ÒÑ³ö¿â"
 
-	int row = ui.tableWidget_Delivery->rowCount();
-	int col = ui.tableWidget_Delivery->columnCount();
-	QList<QString> list;
-	//Ìí¼ÓÁĞ±êÌâ  
-	QString HeaderRow;
-	for (int i = 0; i < col - 1; i++)//±íÍ·£¬Å×Æú×îºóÒ»ÁĞ
-	{
-		QString header = ui.tableWidget_Delivery->horizontalHeaderItem(i)->text().toStdString().c_str();
-		if (header.indexOf("\n") != -1);
-		{
-			header = header.replace("\n", "");
-		}
-		HeaderRow.append(header + "\t");
-	}
-	list.push_back(HeaderRow);
-	for (int i = 0; i < row; i++)
-	{
-		QCheckBox *box = (QCheckBox*)ui.tableWidget_Delivery->cellWidget(i, col - 1);
-		if (box->isChecked())
-		{
-			QString rowStr = "";
-			for (int j = 0; j < col - 1; j++)//Êı¾İ
+			//³ö¿âÊ±¼ä
+			/*QDateTime curDateTime = QDateTime::currentDateTime();
+			QString ChuKuDateTime = curDateTime.toString("yyyy-MM-dd hh:mm:ss");*/
+
+			QDateTime curDateTime = QDateTime::currentDateTime();
+			QString ChuKuDateTime = curDateTime.toString("yyyy-M-d");
+			if (ZXDanHao == "-")//µ¥×°Èë¿â
 			{
-				rowStr += ui.tableWidget_Delivery->item(i, j)->text() + "\t";
+
+				//sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â' where");
+				sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â',³ö¿âÊ±¼ä= \'")+ChuKuDateTime+"\' where";
+				sql += QString::fromLocal8Bit(" ÍËÒÛ±¨·ÏÎÄ¼şºÅ = ") + "\'" + BFWenJianHao +"\'";
+				sql += QString::fromLocal8Bit(" and µ÷²¦Æ¾Ö¤ºÅ = ") + "\'" + DBPingZhengHao + "\'";
+				sql += QString::fromLocal8Bit(" and ×°±¸´úÂë = ") + "\'" + ZBDaiMa + "\'";
+				sql += QString::fromLocal8Bit(" and ×°±¸Ãû³Æ = ") + "\'"+ZBMingCheng + "\'";
+				sql += QString::fromLocal8Bit(" and µ¥×°±àºÅ = ") + "\'"+DZBianHao + "\'";
+				QString errMsg;
+				bool rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
+				if (!rv)
+				{
+					QMessageBox::information(this, QString::fromLocal8Bit("µ¥×°Èë¿â"), errMsg);
+					return;
+				}
 			}
-			list.push_back(rowStr);
+			else
+			{
+				//sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â' where");
+				sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â',³ö¿âÊ±¼ä= \'") + ChuKuDateTime + "\' where";
+				sql += QString::fromLocal8Bit(" GunManager.dbo.BoxPackedDetailsTable.µ¥×°±àºÅ in (select µ¥×°±àºÅ from");
+				sql += QString::fromLocal8Bit(" GunManager.dbo.BoxPackedTable t1,GunManager.dbo.BoxPackedDetailsTable t2");
+				sql += QString::fromLocal8Bit(" where t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ = ") + "\'" + BFWenJianHao + "\'";
+				sql += QString::fromLocal8Bit(" and t1.µ÷²¦Æ¾Ö¤ºÅ = ") + "\'" + DBPingZhengHao + "\'";
+				sql += QString::fromLocal8Bit(" and t1.×°Ïäµ¥ºÅ = ") + "\'" + ZXDanHao + "\'";
+				sql += QString::fromLocal8Bit(" and t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t2.µ¥×°±àºÅ = \'") + DZBianHao + "\')";
+				QString errMsg;
+				bool rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
+				if (!rv)
+				{
+					QMessageBox::information(this, QString::fromLocal8Bit("Ïä×°Èë¿â"), errMsg);
+					return;
+				}
+			}
 		}
 	}
-	//½«±í¸ñÄÚÈİÌí¼Óµ½¸»ÎÄ±¾ÖĞ
-	QTextEdit textEdit;
-	for (int i = 0; i < list.size(); i++)
-	{
-		textEdit.append(list.at(i));
-	}
-	//Ğ´ÈëÎÄ¼şÖĞ
-	QFile file(filepath);
-	if (file.open(QFile::WriteOnly | QIODevice::Text))
-	{
-		QTextStream ts(&file);
-		ts.setCodec("GB2312");//Õâ¸öµØ·½´ó¼Ò×Ô¼ºÅĞ¶ÏÊÇ·ñÓÃ¡°utf-8¡±
-		ts << textEdit.document()->toPlainText();
-		file.close();
-		QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("µ¼³öexcel³É¹¦"));
-	}
+	//PrintAPI::Instance()->PrintGridA9();
+	//Remainder();
+	ExportGridA9();
+
 }
 
- //µ¼³öÎªcsv¸ñÊ½£¬È«³ÌµÇ¼Ç±í
-//void CSystemMangaer::DoDelivery()
+void CSystemMangaer::Remainder()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°²éÑ¯¡±°´Å¥ºó£¬ÏÔÊ¾¿â´æÊıÁ¿
+{
+	QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼şºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t2.Ç¹¹ÜºÅ,t2.Ç¹»÷»òÌ×Í²ºÅ,t2.»úÇ¹¿òºÅ,t2.±¸·İÇ¹¹ÜºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t1.×°ÏäÊıÁ¿,t2.Èë¿âÊ±¼ä");
+	sql += " from GunManager.dbo.BoxPackedTable t1 right join GunManager.dbo.BoxPackedDetailsTable t2 on";
+	sql += QString::fromLocal8Bit(" t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t1.×°±¸´úÂë = t2.×°±¸´úÂë and t1.×°±¸Ãû³Æ = t2.×°±¸Ãû³Æ");
+	sql += " where " + QString::fromLocal8Bit("t2.³ö¿â×´Ì¬ = \'Î´³ö¿â\'");
+	//QString sql = QString::fromLocal8Bit("select * from GunManager.dbo.SinglePackedTable");
+	//sql += " where " + QString::fromLocal8Bit("³ö¿â×´Ì¬ = \'Î´³ö¿â\'");
+
+	QTableData PackedTableData;
+	QTableData SingleTableData;
+	QString errMsg;
+	bool rv = CDatabaseOperator::GetInstance()->execSql(sql, PackedTableData, errMsg);
+	if (!rv)
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("Ïä×°ĞÅÏ¢²éÑ¯Ê§°Ü"), errMsg);
+		return;
+	}
+
+	sql.clear();
+	
+	sql = QString::fromLocal8Bit("select * from GunManager.dbo.SinglePackedTable");
+	sql += " where " + QString::fromLocal8Bit("³ö¿â×´Ì¬ = \'Î´³ö¿â\'");
+	/*sql = QString::fromLocal8Bit("select * from GunManager.dbo.SinglePackedTable");
+	sql += " where " + QString::fromLocal8Bit("³ö¿â×´Ì¬= \'") + QString::fromLocal8Bit("Î´³ö¿â\'");*/
+
+	rv = CDatabaseOperator::GetInstance()->execSql(sql, SingleTableData, errMsg);
+	if (!rv)
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("µ¥×°ĞÅÏ¢²éÑ¯Ê§°Ü"), errMsg);
+		return;
+	}
+	QTableData AllTableData;
+	AllTableData.append(PackedTableData);
+	AllTableData.append(SingleTableData);
+    int count_Remainder =AllTableData.size();
+	QString count = QString::number(count_Remainder);
+	ui.label_Remainder->setText(count);
+
+}
+
+//µ¼³öÎªcsv¸ñÊ½£¬È«³ÌµÇ¼Ç±í
+void CSystemMangaer::ExportGridA9()
+{
+	//»ñÈ¡´´½¨µÄcsvÎÄ¼ş
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath(),tr("Files (*.csv)"));
+	if (fileName.isEmpty())
+	{
+		return;
+	}
+
+	// ´ò¿ª.csvÎÄ¼ş
+	QFile file(fileName);
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+	{
+		qDebug() << "Open file failed!";
+		return;
+	}
+
+	//int row = ui.tableWidget_Delivery->rowCount();//±í¸ñ×ÜĞĞÊı
+	//int col = ui.tableWidget_Delivery->columnCount();
+
+	QTextStream out(&file);
+	//QString str;
+   //±íÍ· 
+	out << QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÇ¹ĞµÏú»Ù´¦ÀíÇé¿öÈ«¹ı³ÌµÇ¼Ç±í\n");
+	//µÚÒ»ĞĞ
+	out << QString::fromLocal8Bit("Ç¹ĞµÃû³Æ,,,,,,,,,")<< QString::fromLocal8Bit("µ¥Î»,,") << QString::fromLocal8Bit("ÊıÁ¿,,") << QString::fromLocal8Bit("À´Ô´,,,,,,") << QString::fromLocal8Bit("ÎÄ¼şºÅ,,\n");
+
+	//µÚ¶şĞĞ
+	out << QString::fromLocal8Bit("ĞòºÅ,")<< QString::fromLocal8Bit("Ç¹ĞµºÅÂë,,,,")<< QString::fromLocal8Bit("¼ì²é²ğ½â¼ÇÂ¼,,,,") << QString::fromLocal8Bit("»ÙĞÎ×°Ïä¼ÇÂ¼,,,,") << QString::fromLocal8Bit("×°Ğ¶ÔËÊä¼ÇÂ¼,,,,,,") << QString::fromLocal8Bit("Í¶Â¯ÈÛÁ¶¼ÇÂ¼,,,,") << QString::fromLocal8Bit("±¸×¢\n");
+	//µÚÈıĞĞ
+	out << QString::fromLocal8Bit(",Ö÷Ç¹ºÅ,") << QString::fromLocal8Bit("Ç¹¹ÜºÅ,") << QString::fromLocal8Bit("»úÇ¹ºÅ»òÌ×Í²ºÅ,") << QString::fromLocal8Bit("»úÇ¹¿òºÅ,");
+	out << QString::fromLocal8Bit("ÈÕÆÚ,") << QString::fromLocal8Bit("¼ì²éÈË,") << QString::fromLocal8Bit("²ğ½âÈË,") << QString::fromLocal8Bit("¼à¶½ÈË,");
+	out << QString::fromLocal8Bit("ÈÕÆÚ,") << QString::fromLocal8Bit("Ïä(À¦)ºÅ,") << QString::fromLocal8Bit("»ÙĞÎ×°ÏäÈË,") << QString::fromLocal8Bit("¼à¶½ÈË,");
+	out << QString::fromLocal8Bit("ÈÕÆÚ,") << QString::fromLocal8Bit("ÔËÊä³µºÅ,") << QString::fromLocal8Bit("×°³µÈË,") << QString::fromLocal8Bit("ÑºÔËÈË,") << QString::fromLocal8Bit("Ğ¶³µÈË,") << QString::fromLocal8Bit("¼à¶½ÈË,");
+	out << QString::fromLocal8Bit("ÈÕÆÚ,") << QString::fromLocal8Bit("µãÑéÈË,") << QString::fromLocal8Bit("ºË²éÈË,") << QString::fromLocal8Bit("¼àÏúÈË\n");
+
+	//for (int i = 0; i < col; i++)
+	//{
+	//	//out << QString::fromLocal8Bit("ÍËÒÛ") << "\n";
+	//	//out << ui.tableWidget_Delivery->header(i, Qt::Horizontal, Qt::DisplayRole).toString() << ",";
+	//	if (i == (col - 1))
+	//	{
+	//		out << "\n";
+	//	}
+	//}
+
+	//»ñÈ¡±í¸ñÄÚÈİ
+	int row = ui.tableWidget_Delivery->rowCount();//±í¸ñ×ÜĞĞÊı
+	int col = ui.tableWidget_Delivery->columnCount();
+	for (int i = 0; i < row; i++)
+	{
+		//QCheckBox *box = (QCheckBox*)ui.tableWidget_Delivery->cellWidget(i, col - 1);
+		QWidget *widget = (QWidget *)ui.tableWidget_Delivery->cellWidget(i, col - 1);
+		QCheckBox *box = (QCheckBox *)widget->children().at(1);
+		if (box->isChecked())
+		{
+			QString rowStr = "";//str
+			out << ",";
+			for (int j = 6; j < col - 5; j++)
+			{
+				
+				rowStr = ui.tableWidget_Delivery->item(i, j)->text();
+				out << rowStr << ",";// Ğ´ÈëÎÄ¼ş
+			}
+			//out << "\n" << ",";
+			out << "\n" ;
+		}
+		
+	}
+	QMessageBox::information(this, QString::fromLocal8Bit("µ¼³öÊı¾İ³É¹¦"), QString::fromLocal8Bit("ĞÅÏ¢ÒÑ±£´æÔÚ%1£¡").arg(fileName), QString::fromLocal8Bit("È·¶¨"));
+	file.close();
+
+}
+
+
+ //µ¼³öxls¸ñÊ½£¬³ö¿â±í
+//void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥-----¡·´Ë²Ûº¯Êı
 //{
-//	//»ñÈ¡´´½¨µÄcsvÎÄ¼ş
-//	QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath(),tr("Files (*.csv)"));
-//	if (fileName.isEmpty())
+//	int rows = ui.tableWidget_Delivery->rowCount();
+//	if (rows == 0)
 //	{
 //		return;
 //	}
-//
-//	// ´ò¿ª.csvÎÄ¼ş
-//	QFile file(fileName);
-//	if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+//	QString filepath = QFileDialog::getSaveFileName(this, ("Save as..."), QString(), tr("EXCEL files (*.xls *.xlsx)"));
+//	if (filepath.isEmpty())
 //	{
-//		qDebug() << "Open file failed!";
+//		QMessageBox::critical(0, tr("´íÎó"), tr("Òª±£´æµÄÎÄ¼şÃû²»ÄÜÎª¿Õ£¡"));
 //		return;
 //	}
+//	qDebug() << "Export excel:" << filepath.toStdString().c_str();
 //
-//	//int row = ui.tableWidget_Delivery->rowCount();//±í¸ñ×ÜĞĞÊı
-//	//int col = ui.tableWidget_Delivery->columnCount();
-//
-//	QTextStream out(&file);
-//	//QString str;
-//   //±íÍ· 
-//	out << QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÇ¹ĞµÏú»Ù´¦ÀíÇé¿öÈ«¹ı³ÌµÇ¼Ç±í\n");
-//	//µÚÒ»ĞĞ
-//	out << QString::fromLocal8Bit("Ç¹ĞµÃû³Æ,,,,,,,,,")<< QString::fromLocal8Bit("µ¥Î»,,") << QString::fromLocal8Bit("ÊıÁ¿,,") << QString::fromLocal8Bit("À´Ô´,,,,,,") << QString::fromLocal8Bit("ÎÄ¼şºÅ,,\n");
-//
-//	//µÚ¶şĞĞ
-//	out << QString::fromLocal8Bit("ĞòºÅ,")<< QString::fromLocal8Bit("Ç¹ĞµºÅÂë,,,,")<< QString::fromLocal8Bit("¼ì²é²ğ½â¼ÇÂ¼,,,,") << QString::fromLocal8Bit("»ÙĞÎ×°Ïä¼ÇÂ¼,,,,") << QString::fromLocal8Bit("×°Ğ¶ÔËÊä¼ÇÂ¼,,,,,,") << QString::fromLocal8Bit("Í¶Â¯ÈÛÁ¶¼ÇÂ¼,,,,") << QString::fromLocal8Bit("±¸×¢\n");
-//	//µÚÈıĞĞ
-//	out << QString::fromLocal8Bit(",Ö÷Ç¹ºÅ,") << QString::fromLocal8Bit("Ç¹¹ÜºÅ,") << QString::fromLocal8Bit("»úÇ¹ºÅ»òÌ×Í²ºÅ,") << QString::fromLocal8Bit("»úÇ¹¿òºÅ,");
-//	out << QString::fromLocal8Bit("ÈÕÆÚ,") << QString::fromLocal8Bit("¼ì²éÈË,") << QString::fromLocal8Bit("²ğ½âÈË,") << QString::fromLocal8Bit("¼à¶½ÈË,");
-//	out << QString::fromLocal8Bit("ÈÕÆÚ,") << QString::fromLocal8Bit("Ïä(À¦)ºÅ,") << QString::fromLocal8Bit("»ÙĞÎ×°ÏäÈË,") << QString::fromLocal8Bit("¼à¶½ÈË,");
-//	out << QString::fromLocal8Bit("ÈÕÆÚ,") << QString::fromLocal8Bit("ÔËÊä³µºÅ,") << QString::fromLocal8Bit("×°³µÈË,") << QString::fromLocal8Bit("ÑºÔËÈË,") << QString::fromLocal8Bit("Ğ¶³µÈË,") << QString::fromLocal8Bit("¼à¶½ÈË,");
-//	out << QString::fromLocal8Bit("ÈÕÆÚ,") << QString::fromLocal8Bit("µãÑéÈË,") << QString::fromLocal8Bit("ºË²éÈË,") << QString::fromLocal8Bit("¼àÏúÈË\n");
-//
-//	//for (int i = 0; i < col; i++)
-//	//{
-//	//	//out << QString::fromLocal8Bit("ÍËÒÛ") << "\n";
-//	//	//out << ui.tableWidget_Delivery->header(i, Qt::Horizontal, Qt::DisplayRole).toString() << ",";
-//	//	if (i == (col - 1))
-//	//	{
-//	//		out << "\n";
-//	//	}
-//	//}
-//
-//	//»ñÈ¡±í¸ñÄÚÈİ
-//	int row = ui.tableWidget_Delivery->rowCount();//±í¸ñ×ÜĞĞÊı
+//	int row = ui.tableWidget_Delivery->rowCount();
 //	int col = ui.tableWidget_Delivery->columnCount();
+//	QList<QString> list;
+//	Ìí¼ÓÁĞ±êÌâ  
+//	QString HeaderRow;
+//	for (int i = 0; i < col - 1; i++)//±íÍ·£¬Å×Æú×îºóÒ»ÁĞ
+//	{
+//		QString header = ui.tableWidget_Delivery->horizontalHeaderItem(i)->text().toStdString().c_str();
+//		if (header.indexOf("\n") != -1);
+//		{
+//			header = header.replace("\n", "");
+//		}
+//		HeaderRow.append(header + "\t");
+//	}
+//	list.push_back(HeaderRow);
 //	for (int i = 0; i < row; i++)
 //	{
 //		QCheckBox *box = (QCheckBox*)ui.tableWidget_Delivery->cellWidget(i, col - 1);
 //		if (box->isChecked())
 //		{
-//			QString rowStr = "";//str
-//			out << ",";
-//			for (int j = 6; j < col - 5; j++)
+//			QString rowStr = "";
+//			for (int j = 0; j < col - 1; j++)//Êı¾İ
 //			{
-//				
-//				rowStr = ui.tableWidget_Delivery->item(i, j)->text();
-//				out << rowStr << ",";// Ğ´ÈëÎÄ¼ş
+//				rowStr += ui.tableWidget_Delivery->item(i, j)->text() + "\t";
 //			}
-//			//out << "\n" << ",";
-//			out << "\n" ;
+//			list.push_back(rowStr);
 //		}
-//		
 //	}
-//	QMessageBox::information(this, QString::fromLocal8Bit("µ¼³öÊı¾İ³É¹¦"), QString::fromLocal8Bit("ĞÅÏ¢ÒÑ±£´æÔÚ%1£¡").arg(fileName), QString::fromLocal8Bit("È·¶¨"));
-//	file.close();
-//
+//	½«±í¸ñÄÚÈİÌí¼Óµ½¸»ÎÄ±¾ÖĞ
+//	QTextEdit textEdit;
+//	for (int i = 0; i < list.size(); i++)
+//	{
+//		textEdit.append(list.at(i));
+//	}
+//	Ğ´ÈëÎÄ¼şÖĞ
+//	QFile file(filepath);
+//	if (file.open(QFile::WriteOnly | QIODevice::Text))
+//	{
+//		QTextStream ts(&file);
+//		ts.setCodec("GB2312");//Õâ¸öµØ·½´ó¼Ò×Ô¼ºÅĞ¶ÏÊÇ·ñÓÃ¡°utf-8¡±
+//		ts << textEdit.document()->toPlainText();
+//		file.close();
+//		QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("µ¼³öexcel³É¹¦"));
+//	}
 //}
 
-//ĞŞ¸Ä
+
+
+//ĞŞ¸Ä£¬×¼±¸µ¼³öxlsµÄÈ«³Ì¼ÇÂ¼±í
 //void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥-----¡·´Ë²Ûº¯Êı
 //{
 //	QString fileName = QFileDialog::getSaveFileName(this, QStringLiteral("±£´æ"),
@@ -1381,12 +1528,13 @@ void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥
 //				columnName.append(":");
 //				columnName.append(QChar(i + 'A'));
 //				col = worksheet->querySubObject("Columns(const QString&)", columnName);
-//				ui.tableWidget_Delivery->horizontalHeader()
+//				//ui.tableWidget_Delivery->horizontalHeader()
 //				col->setProperty("ColumnWidth", ui.tableWidget_Delivery->columnWidth(i) / 6);
 //				cell = worksheet->querySubObject("Cells(int,int)", 2, i + 1);
 //
 //				//QTableView »ñÈ¡±í¸ñÍ·²¿ÎÄ×ÖĞÅÏ¢
-//				columnName = ui.tableWidget_Delivery->horizontalHeader(i, Qt::Horizontal, Qt::DisplayRole);
+//				//columnName = ui.tableWidget_Delivery->header(i, Qt::Horizontal, Qt::DisplayRole).toString();
+//				//columnName = ui.tableWidget_Delivery->horizontalHeader();
 //				cell->dynamicCall("SetValue(const QString&)", columnName);
 //				cell->querySubObject("Font")->setProperty("Bold", true);
 //				cell->querySubObject("Interior")->setProperty("Color", QColor(191, 191, 191));
@@ -1398,8 +1546,9 @@ void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥
 //			{
 //				for (j = 0; j < colount; j++)
 //				{
-//					QModelIndex index = m_model->index(i, j);
-//					QString strdata = m_model->data(index).toString();
+//					//QModelIndex index = ui.tableWidget_Delivery->index(i, j);
+//					//QString strdata = m_model->data(index).toString();
+//					QString strdata = ui.tableWidget_Delivery->item(i, j)->text();
 //					worksheet->querySubObject("Cells(int,int)", i + 3, j + 1)->dynamicCall("SetValue(const QString&)", strdata);
 //				}
 //			}
@@ -1407,14 +1556,14 @@ void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥
 //			QString lrange;
 //			lrange.append("A2:");
 //			lrange.append(colount - 1 + 'A');
-//			lrange.append(QString::number(m_model->rowCount() + 2));
+//			lrange.append(QString::number(ui.tableWidget_Delivery->rowCount() + 2));
 //			range = worksheet->querySubObject("Range(const QString&)", lrange);
 //			range->querySubObject("Borders")->setProperty("LineStyle", QString::number(1));
 //			range->querySubObject("Borders")->setProperty("Color", QColor(0, 0, 0));
 //			//µ÷ÕûÊı¾İÇøĞĞ¸ß
 //			QString rowsName;
 //			rowsName.append("2:");
-//			rowsName.append(QString::number(m_model->rowCount() + 2));
+//			rowsName.append(QString::number(ui.tableWidget_Delivery->rowCount() + 2));
 //			range = worksheet->querySubObject("Range(const QString&)", rowsName);
 //			range->setProperty("RowHeight", 20);
 //			workbook->dynamicCall("SaveAs(const QString&)", QDir::toNativeSeparators(fileName));//±£´æÖÁfileName
@@ -1423,8 +1572,7 @@ void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥
 //			delete excel;
 //			excel = NULL;
 //
-//			if (QMessageBox::question(this, QStringLiteral("Íê³É"), QStringLiteral("ÎÄ¼şÒÑ¾­µ¼³ö£¬ÊÇ·ñÏÖÔÚ´ò¿ª£¿"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
-//				QDesktopServices::openUrl(QUrl("file:///" + QDir::toNativeSeparators(fileName)));
+//			if (QMessageBox::question(this, QStringLiteral("Íê³É"), QStringLiteral("ÎÄ¼şÒÑ¾­µ¼³ö£¬ÊÇ·ñÏÖÔÚ´ò¿ª£¿"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes);
 //			else
 //				QMessageBox::warning(NULL, QStringLiteral("´íÎó"), QStringLiteral("Î´ÄÜ´´½¨ Excel ¶ÔÏó£¬Çë°²×° Microsoft Excel¡£"), QMessageBox::Apply);
 //		}
@@ -1476,7 +1624,13 @@ void CSystemMangaer::ExportExcel()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°µ¼³öExcel
 	list.push_back(HeaderRow);
 	for (int i = 0; i < row; i++)
 	{
-		QCheckBox *box = (QCheckBox*)ui.tableWidget_Search->cellWidget(i, col-1);
+		//QCheckBox *box = (QCheckBox*)ui.tableWidget_Search->cellWidget(i, col-1);
+
+		QWidget *widget = (QWidget *)ui.tableWidget_Search->cellWidget(i, col - 1);
+		QCheckBox *box = (QCheckBox *)widget->children().at(1);
+		//box->setChecked(true);
+
+
 		if (box->isChecked())
 		{
 			QString rowStr = "";
@@ -1703,12 +1857,12 @@ void CSystemMangaer::SaveRecognizeResult()
 	QString CodeImagePath = path + "/code.bmp";
 	QByteArray ba = CodeImagePath.toLocal8Bit();
 	char *file = ba.data();
-	imwrite(file, CodeImage);
+	//imwrite(file, CodeImage);
 
 	QString GunImagePath = path + "/gun.bmp";
 	ba = GunImagePath.toLocal8Bit();
 	file = ba.data();
-	imwrite(file, GunImage);
+	//imwrite(file, GunImage);
 
 	//QString XuHao = QString::number(m_curMsg.index);
 
