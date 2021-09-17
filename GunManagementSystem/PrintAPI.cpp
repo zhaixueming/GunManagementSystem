@@ -18,13 +18,13 @@ PrintAPI::PrintAPI(QObject *parent) :
 void PrintAPI::PrintGridA2(QVector<QStringList> content)
 {
 	QList<int> ColumnWidth;
-	ColumnWidth.push_back(30);
+	ColumnWidth.push_back(60);
+	ColumnWidth.push_back(190);
+	ColumnWidth.push_back(120);
 	ColumnWidth.push_back(200);
-	ColumnWidth.push_back(100);
-	ColumnWidth.push_back(200);
-	ColumnWidth.push_back(30);
-	ColumnWidth.push_back(30);
-	ColumnWidth.push_back(200);
+	ColumnWidth.push_back(50);
+	ColumnWidth.push_back(60);
+	ColumnWidth.push_back(190);
 	QStringList ColumnNames;
 	ColumnNames << tr("序号") << tr("装备代码") << tr("装备(部件)名称");
 	ColumnNames << tr("单装编号") << tr("计量单位") << tr("数量") << tr("备注");
@@ -49,9 +49,9 @@ void PrintAPI::PrintGridA2(QVector<QStringList> content)
 	html.append("</td>");
 
 	//时间
-	html.append(QString("<td align='right' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
 		.arg(2));
-	html.append(tr("时间:&nbsp;&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;日"));
+	html.append(tr("时间:&nbsp;&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日"));
 	html.append("</td>");
 	html.append("</tr>");
 
@@ -71,7 +71,7 @@ void PrintAPI::PrintGridA2(QVector<QStringList> content)
 		QStringList value = content.at(i);
 		for (int j = 0; j < value.size(); j++)
 		{
-			html.append(QString("<td width='%1' align='left' style='vertical-align:middle'>")
+			html.append(QString("<td width='%1' align='center' style='vertical-align:middle'>")
 				.arg(ColumnWidth.at(j)));
 			html.append(value.at(j));
 			html.append("</td>");
@@ -134,10 +134,10 @@ void PrintAPI::PrintGridA3(QStringList content)
 	}
 
 	QList<int> ColumnWidth;
-	ColumnWidth.push_back(100);
-	ColumnWidth.push_back(200);
-	ColumnWidth.push_back(100);
-	ColumnWidth.push_back(200);
+	ColumnWidth.push_back(150);
+	ColumnWidth.push_back(250);
+	ColumnWidth.push_back(150);
+	ColumnWidth.push_back(250);
 	QStringList ColumnNames;
 	ColumnNames << tr("装备代码") << content.at(0) << tr("装备(部件)名称") << content.at(1);
 	//清空原有数据,确保每次都是新的数据
@@ -157,7 +157,7 @@ void PrintAPI::PrintGridA3(QStringList content)
 	html.append("<tr>");
 	for (int i = 0; i < ColumnWidth.size(); i++)
 	{
-		html.append(QString("<td width='%1' align='left' style='vertical-align:middle;'>")
+		html.append(QString("<td width='%1' align='center' style='vertical-align:middle;'>")
 			.arg(ColumnWidth.at(i)));
 		html.append(ColumnNames.at(i));
 		html.append("</td>");
@@ -167,12 +167,12 @@ void PrintAPI::PrintGridA3(QStringList content)
 	//第二行
 	//单装编号
 	html.append("<tr>");
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(tr("单装编号"));
 	html.append("</td>");
 
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(3));
 	html.append(content.at(2));
 	html.append("</td></tr>");
@@ -180,12 +180,12 @@ void PrintAPI::PrintGridA3(QStringList content)
 	//第三行
 	//退役报废文件号
 	html.append("<tr>");
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(tr("退役报废文件号"));
 	html.append("</td>");
 
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(3));
 	html.append(content.at(3));
 	html.append("</td></tr>");
@@ -193,12 +193,12 @@ void PrintAPI::PrintGridA3(QStringList content)
 	//第四行
 	//退役报废装备处理调拨凭证号
 	html.append("<tr>");
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(tr("退役报废装备处理调拨凭证号"));
 	html.append("</td>");
 
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(3));
 	html.append(content.at(4));
 	html.append("</td></tr>");
@@ -206,23 +206,23 @@ void PrintAPI::PrintGridA3(QStringList content)
 	//第五行
 	//出厂时间
 	html.append("<tr>");
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(tr("出厂时间"));
 	html.append("</td>");
 
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(content.at(5));
 	html.append("</td>");
 
 	//装备时间
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(tr("装备时间"));
 	html.append("</td>");
 
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(content.at(6));
 	html.append("</td></tr>");
@@ -230,23 +230,23 @@ void PrintAPI::PrintGridA3(QStringList content)
 	//第六行
 	//隶属单位
 	html.append("<tr>");
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(tr("隶属单位"));
 	html.append("</td>");
 
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(content.at(7));
 	html.append("</td>");
 
 	//管理单位
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(tr("管理单位"));
 	html.append("</td>");
 
-	html.append(QString("<td align='left' style='vertical-align:middle;' colspan='%1'>")
+	html.append(QString("<td align='center' style='vertical-align:middle;' colspan='%1'>")
 		.arg(1));
 	html.append(content.at(8));
 	html.append("</td></tr>");

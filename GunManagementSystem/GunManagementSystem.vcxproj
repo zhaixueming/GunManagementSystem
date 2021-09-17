@@ -146,7 +146,6 @@
     <QtUic Include="UI\ParameterSetting\SettingsLogin.ui" />
     <QtUic Include="UI\SysMainWindow\SysMainWindow.ui" />
     <QtUic Include="UI\SystemManager\BoxPacked.ui" />
-    <QtUic Include="UI\SystemManager\ParameterSettings_bak.ui" />
     <QtUic Include="UI\SystemManager\SinglePacked.ui" />
     <QtUic Include="UI\SystemManager\SystemManager.ui" />
     <QtUic Include="UI\SystemManager\UserManager.ui" />

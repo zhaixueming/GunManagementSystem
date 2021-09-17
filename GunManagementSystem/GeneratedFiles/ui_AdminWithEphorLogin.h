@@ -33,11 +33,11 @@ public:
     QSpacerItem *horizontalSpacer_2;
     QGridLayout *gridLayout_2;
     QLabel *label_3;
-    QLineEdit *lineEdit_Admin;
+    QLineEdit *lineEdit_Operator;
     QLabel *label_6;
     QLineEdit *lineEdit_Ephor;
     QLabel *label_4;
-    QLineEdit *lineEdit_AdminPwd;
+    QLineEdit *lineEdit_OperatorPwd;
     QLabel *label_5;
     QLineEdit *lineEdit_EphorPwd;
     QSpacerItem *horizontalSpacer_3;
@@ -93,16 +93,16 @@ public:
 
         gridLayout_2->addWidget(label_3, 0, 0, 1, 1);
 
-        lineEdit_Admin = new QLineEdit(groupBox);
-        lineEdit_Admin->setObjectName(QString::fromUtf8("lineEdit_Admin"));
-        sizePolicy.setHeightForWidth(lineEdit_Admin->sizePolicy().hasHeightForWidth());
-        lineEdit_Admin->setSizePolicy(sizePolicy);
-        lineEdit_Admin->setMinimumSize(QSize(171, 30));
-        lineEdit_Admin->setMaximumSize(QSize(171, 30));
-        lineEdit_Admin->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+        lineEdit_Operator = new QLineEdit(groupBox);
+        lineEdit_Operator->setObjectName(QString::fromUtf8("lineEdit_Operator"));
+        sizePolicy.setHeightForWidth(lineEdit_Operator->sizePolicy().hasHeightForWidth());
+        lineEdit_Operator->setSizePolicy(sizePolicy);
+        lineEdit_Operator->setMinimumSize(QSize(171, 30));
+        lineEdit_Operator->setMaximumSize(QSize(171, 30));
+        lineEdit_Operator->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
 
-        gridLayout_2->addWidget(lineEdit_Admin, 0, 1, 1, 1);
+        gridLayout_2->addWidget(lineEdit_Operator, 0, 1, 1, 1);
 
         label_6 = new QLabel(groupBox);
         label_6->setObjectName(QString::fromUtf8("label_6"));
@@ -137,17 +137,17 @@ public:
 
         gridLayout_2->addWidget(label_4, 1, 0, 1, 1);
 
-        lineEdit_AdminPwd = new QLineEdit(groupBox);
-        lineEdit_AdminPwd->setObjectName(QString::fromUtf8("lineEdit_AdminPwd"));
-        sizePolicy.setHeightForWidth(lineEdit_AdminPwd->sizePolicy().hasHeightForWidth());
-        lineEdit_AdminPwd->setSizePolicy(sizePolicy);
-        lineEdit_AdminPwd->setMinimumSize(QSize(171, 30));
-        lineEdit_AdminPwd->setMaximumSize(QSize(171, 30));
-        lineEdit_AdminPwd->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+        lineEdit_OperatorPwd = new QLineEdit(groupBox);
+        lineEdit_OperatorPwd->setObjectName(QString::fromUtf8("lineEdit_OperatorPwd"));
+        sizePolicy.setHeightForWidth(lineEdit_OperatorPwd->sizePolicy().hasHeightForWidth());
+        lineEdit_OperatorPwd->setSizePolicy(sizePolicy);
+        lineEdit_OperatorPwd->setMinimumSize(QSize(171, 30));
+        lineEdit_OperatorPwd->setMaximumSize(QSize(171, 30));
+        lineEdit_OperatorPwd->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-        lineEdit_AdminPwd->setEchoMode(QLineEdit::Password);
+        lineEdit_OperatorPwd->setEchoMode(QLineEdit::Password);
 
-        gridLayout_2->addWidget(lineEdit_AdminPwd, 1, 1, 1, 1);
+        gridLayout_2->addWidget(lineEdit_OperatorPwd, 1, 1, 1, 1);
 
         label_5 = new QLabel(groupBox);
         label_5->setObjectName(QString::fromUtf8("label_5"));
@@ -199,8 +199,8 @@ public:
 
         gridLayout->addWidget(groupBox, 0, 0, 1, 1);
 
-        QWidget::setTabOrder(lineEdit_Admin, lineEdit_AdminPwd);
-        QWidget::setTabOrder(lineEdit_AdminPwd, lineEdit_Ephor);
+        QWidget::setTabOrder(lineEdit_Operator, lineEdit_OperatorPwd);
+        QWidget::setTabOrder(lineEdit_OperatorPwd, lineEdit_Ephor);
         QWidget::setTabOrder(lineEdit_Ephor, lineEdit_EphorPwd);
         QWidget::setTabOrder(lineEdit_EphorPwd, pushButton_Login);
 
@@ -215,14 +215,14 @@ public:
         AdminWithEphorLogin->setWindowTitle(QCoreApplication::translate("AdminWithEphorLogin", "\350\272\253\344\273\275\351\252\214\350\257\201", nullptr));
         groupBox->setTitle(QString());
         label_2->setText(QString());
-        label_3->setText(QCoreApplication::translate("AdminWithEphorLogin", "<html><head/><body><p>\347\256\241\347\220\206\345\221\230<br/></p></body></html>", nullptr));
-        lineEdit_Admin->setText(QCoreApplication::translate("AdminWithEphorLogin", "Admin", nullptr));
+        label_3->setText(QCoreApplication::translate("AdminWithEphorLogin", "<html><head/><body><p>\346\223\215\344\275\234\345\221\230</p></body></html>", nullptr));
+        lineEdit_Operator->setText(QString());
         label_6->setText(QCoreApplication::translate("AdminWithEphorLogin", "<html><head/><body><p>\347\233\221\347\235\243\345\221\230</p></body></html>", nullptr));
-        lineEdit_Ephor->setText(QCoreApplication::translate("AdminWithEphorLogin", "123", nullptr));
+        lineEdit_Ephor->setText(QString());
         label_4->setText(QCoreApplication::translate("AdminWithEphorLogin", "<html><head/><body><p>\345\257\206\347\240\201<br/></p></body></html>", nullptr));
-        lineEdit_AdminPwd->setText(QCoreApplication::translate("AdminWithEphorLogin", "123456", nullptr));
+        lineEdit_OperatorPwd->setText(QString());
         label_5->setText(QCoreApplication::translate("AdminWithEphorLogin", "<html><head/><body><p>\345\257\206\347\240\201<br/></p></body></html>", nullptr));
-        lineEdit_EphorPwd->setText(QCoreApplication::translate("AdminWithEphorLogin", "123", nullptr));
+        lineEdit_EphorPwd->setText(QString());
         pushButton_Login->setText(QCoreApplication::translate("AdminWithEphorLogin", "\347\231\273 \345\275\225", nullptr));
     } // retranslateUi
 

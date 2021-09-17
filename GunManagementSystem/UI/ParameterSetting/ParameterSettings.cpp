@@ -13,8 +13,16 @@ CParameterSettings::CParameterSettings(QDialog *parent /* = NULL */)
 	:QDialog(parent)
 {
 	ui.setupUi(this);
-	this->setFixedSize(this->size());
+	this->setFixedSize(this->size()); 
+	ui.pushButton_Login->setStyleSheet("QPushButton{font: 75 15pt '微软雅黑';background-color:rgb(190, 190, 190);color: rgb(34, 139, 34);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_SaveConfig->setStyleSheet("QPushButton{font: 75 15pt '微软雅黑';background-color:rgb(190, 190, 190);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+
 	InitVariables();
+
 	InitConnections();
 	LoadConfig();
 }
@@ -46,8 +54,8 @@ void CParameterSettings::InitVariables()
 
 	ui.radioButton_FreeRun1->setEnabled(false);
 	ui.radioButton_SoftTrigger1->setEnabled(false);
-	ui.radioButton_SoftTrigger1->setChecked(true);//默认为软触发
 	ui.radioButton_ExternalTrigger1->setEnabled(false);
+	ui.radioButton_ExternalTrigger1->setChecked(true);//默认为硬触发
 
 	m_BtnGroup2 = new QButtonGroup();
 	m_BtnGroup2->addButton(ui.radioButton_FreeRun2, 1);
@@ -56,8 +64,8 @@ void CParameterSettings::InitVariables()
 
 	ui.radioButton_FreeRun2->setEnabled(false);
 	ui.radioButton_SoftTrigger2->setEnabled(false);
-	ui.radioButton_SoftTrigger2->setChecked(true);
 	ui.radioButton_ExternalTrigger2->setEnabled(false);
+	ui.radioButton_ExternalTrigger2->setChecked(true);//默认为硬触发
 
 
 
@@ -616,7 +624,8 @@ void CParameterSettings::Camera1Controller()
 			m_CameraCapture1->SetCameraHandle(m_MvCamera1);
 			m_CameraCapture1->SetCameraStatus(true);
 			m_Camera1Name = name;
-			ui.radioButton_FreeRun1->setEnabled(true);
+			//ui.radioButton_FreeRun1->setEnabled(true);
+			ui.radioButton_FreeRun1->setEnabled(false);//自由采集不启用
 			ui.radioButton_SoftTrigger1->setEnabled(true);
 			ui.radioButton_ExternalTrigger1->setEnabled(true);
 			ui.pushButton_OpenCamera1->setText(QString::fromLocal8Bit("关闭相机"));
@@ -664,7 +673,9 @@ void CParameterSettings::Camera2Controller()
 			m_CameraCapture2->SetCameraHandle(m_MvCamera2);
 			m_CameraCapture2->SetCameraStatus(true);
 			m_Camera2Name = name;
-			ui.radioButton_FreeRun2->setEnabled(true);
+			//ui.radioButton_FreeRun2->setEnabled(true);
+			ui.radioButton_FreeRun2->setEnabled(false);//自由采集不启用
+
 			ui.radioButton_SoftTrigger2->setEnabled(true);
 			ui.radioButton_ExternalTrigger2->setEnabled(true);
 			ui.pushButton_OpenCamera2->setText(QString::fromLocal8Bit("关闭相机"));

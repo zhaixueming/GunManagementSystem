@@ -26,7 +26,7 @@ public:
     QGridLayout *gridLayout;
     QLabel *label_20;
     QLineEdit *lineEdit;
-    QPushButton *pushButton_23;
+    QPushButton *pushButton_QueDing;
 
     void setupUi(QDialog *SettingLogin)
     {
@@ -56,18 +56,18 @@ public:
 
         gridLayout->addWidget(lineEdit, 0, 1, 1, 1);
 
-        pushButton_23 = new QPushButton(SettingLogin);
-        pushButton_23->setObjectName(QString::fromUtf8("pushButton_23"));
-        pushButton_23->setMinimumSize(QSize(50, 30));
-        pushButton_23->setMaximumSize(QSize(50, 30));
-        pushButton_23->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+        pushButton_QueDing = new QPushButton(SettingLogin);
+        pushButton_QueDing->setObjectName(QString::fromUtf8("pushButton_QueDing"));
+        pushButton_QueDing->setMinimumSize(QSize(50, 30));
+        pushButton_QueDing->setMaximumSize(QSize(50, 30));
+        pushButton_QueDing->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(0, 170, 0);"));
 
-        gridLayout->addWidget(pushButton_23, 0, 2, 1, 1);
+        gridLayout->addWidget(pushButton_QueDing, 0, 2, 1, 1);
 
 
         retranslateUi(SettingLogin);
-        QObject::connect(pushButton_23, SIGNAL(clicked()), SettingLogin, SLOT(Login()));
+        QObject::connect(pushButton_QueDing, SIGNAL(clicked()), SettingLogin, SLOT(Login()));
 
         QMetaObject::connectSlotsByName(SettingLogin);
     } // setupUi
@@ -78,7 +78,7 @@ public:
         label_20->setText(QCoreApplication::translate("SettingLogin", "\345\217\243\344\273\244", nullptr));
         lineEdit->setText(QCoreApplication::translate("SettingLogin", "qwerty123456", nullptr));
         lineEdit->setPlaceholderText(QString());
-        pushButton_23->setText(QCoreApplication::translate("SettingLogin", "\347\241\256\350\256\244", nullptr));
+        pushButton_QueDing->setText(QCoreApplication::translate("SettingLogin", "\347\241\256\350\256\244", nullptr));
     } // retranslateUi
 
 };

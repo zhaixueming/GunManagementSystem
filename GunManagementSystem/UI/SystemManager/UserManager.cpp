@@ -7,6 +7,9 @@ CUserManager::CUserManager(QDialog *parent /* = NULL */)
 	:QDialog(parent)
 {
 	ui.setupUi(this);
+	ui.pushButton_QueDing->setStyleSheet("QPushButton{font: 75 15pt '微软雅黑';background-color:rgb(190, 190, 190);color: rgb(34, 139, 34);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
 	this->setFixedSize(this->size());//不可缩放
 	m_Type = -1;
 }
@@ -129,8 +132,8 @@ bool CUserManager::CheckRepeat(QString &errMsg)
 	QString Number = ui.lineEdit_JunGuanZheng->text();//获取输入的军官证号
 	QString sql = "select * from GunManager.dbo.UserTable where " + QString::fromLocal8Bit("姓名 = \'") + UserName + "\' and ";//添加到数据库中姓名及军官证号
 	sql += QString::fromLocal8Bit("军官证号 = \'") + Number + "\'";
-	QTableData TableData;//self 数据库表 结构体 QList
-	bool rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);//调用数据库操作函数在数据库增删改查
+	QTableData TableData;
+	bool rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
 	return TableData.size() != 0;//返回数据库是否为空
 }
 

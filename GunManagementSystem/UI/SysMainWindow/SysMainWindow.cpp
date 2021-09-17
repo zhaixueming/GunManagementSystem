@@ -124,7 +124,11 @@ void SysMainWindow::slotAccountManager()//“账号管理”按钮---》此槽函数
 	}
 	emit SendStackWidgetIndex(0);//发射--》账号管理 按钮
 	CAdminLogin::GetInstance()->ClearInfor();
-	if (1 == CAdminLogin::GetInstance()->exec())
+	/*if (1 == CAdminLogin::GetInstance()->exec())
+	{
+		m_SystemManager.exec();
+	}*/
+	if (CAdminLogin::GetInstance()->exec()==QDialog::Accepted)
 	{
 		m_SystemManager.exec();
 	}

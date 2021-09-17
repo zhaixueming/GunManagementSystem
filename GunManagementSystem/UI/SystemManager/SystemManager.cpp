@@ -15,13 +15,14 @@ CSystemMangaer::CSystemMangaer(QDialog *parent /* = NULL */)
 	:QDialog(parent)
 {
 	ui.setupUi(this);
-	Qt::WindowFlags flags = Qt::Dialog;
-	flags |= Qt::MaximizeUsingFullscreenGeometryHint;
-// 	flags |= Qt::WindowMinimizeButtonHint;
-// 	flags |= Qt::WindowMaximizeButtonHint;
-// 	flags |= Qt::WindowCloseButtonHint;
-	this->showMaximized();
-	setWindowFlags(flags);
+	this->setWindowFlags(Qt::Dialog | Qt::WindowMinMaxButtonsHint | Qt::WindowCloseButtonHint);
+	//Qt::WindowFlags flags = Qt::Dialog;
+	////flags |= Qt::MaximizeUsingFullscreenGeometryHint;
+ //	flags |= Qt::WindowMinimizeButtonHint;//×îĞ¡
+ //	flags |= Qt::WindowMaximizeButtonHint;//×î´ó
+ //	flags |= Qt::WindowCloseButtonHint;//¹Ø±Õ
+	//this->showMaximized();
+	//setWindowFlags(flags);
 	InitVariables();
 	InitConnections();
 }
@@ -33,7 +34,7 @@ CSystemMangaer::~CSystemMangaer()
 
 void CSystemMangaer::InitVariables()
 {
-	ui.tabWidget->tabBar()->hide();
+	ui.tabWidget->tabBar()->hide();//5.0ÒÔÉÏ ÔÚ5.0ÒÔÏÂµÄtabBar()ÊÇÊÜ±£»¤µÄ£¬ÊÇprotectedµÄ£¬²»±»Íâ²¿µ÷ÓÃ
 
 	m_bInitAlogSuccess = CAlgoCodeReview::GetInstance()->InitAlgo();//vimoOCRÄ£¿é
 	if (!m_bInitAlogSuccess)
@@ -51,6 +52,65 @@ void CSystemMangaer::InitVariables()
                                   QTabBar::tab::selected{background-color:rgb(0,170,0);color:rgb(255,255,0);font:25pt 'Î¢ÈíÑÅºÚ'}\
                                   QTabBar::tab{ width:150 }\
  				                 QTabBar::tab{ height:40 }");
+	//checkboxÊôĞÔ
+	//ui.checkBox_QiangGuan->setStyleSheet("QCheckBox::indicator:checked{image:url(:/SysMainWindow/Resources/allow.png);}");
+	//ui.checkBox_QiangGuan->setStyleSheet("QCheckBox::indicator{width:50px;height:50px;}");
+	/*ui.checkBox_QiangGuan->setStyleSheet("QCheckBox::indicator{width: 177px;height: 66px;color: rgb(0, 0, 0);}");
+	ui.checkBox_QiangGuan->setStyleSheet("QCheckBox::indicator:unchecked{image: url(image : url(:D:/documents/smartmoreitem/GunManagementSystem1/GunManagementSystem/GunManagementSystem/Resources/allow.png));}");
+		*/
+
+	//°´Å¥ÊôĞÔ
+	ui.pushButton_AddUser->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color: rgb(255, 5, 5);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(255, 0, 0); color: rgb(255, 255, 0);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_QueryUser->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color: rgb(41, 136, 41);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(40, 136, 40); color: rgb(255, 255, 255);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_QueryBox->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color: rgb(41, 136, 41);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(40, 136, 40); color: rgb(255, 255, 255);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_AddBox->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color: rgb(255, 5, 5);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(255, 0, 0); color: rgb(255, 255, 0);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_PrintBox->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color:rgb(0, 205, 0);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(0, 205, 0); color: rgb(255, 255, 0);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_BoxDetailsReturn->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color:rgb(190, 190, 190);color: rgb(0, 0, 0);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_InageGrabberReturn->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color:rgb(190, 190, 190);color: rgb(0, 0, 0);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_Modify->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color:rgb(190, 190, 190);color: rgb(255, 0, 0);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_Save->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color:rgb(190, 190, 190);color: rgb(34, 139, 34);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_QuerySinglePacked->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color: rgb(41, 136, 41);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(40, 136, 40); color: rgb(255, 255, 255);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_AddSinglePacked->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color: rgb(255, 5, 5);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(255, 0, 0); color: rgb(255, 255, 0);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_PrintSinglePacked->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color:rgb(0, 205, 0);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(0, 205, 0); color: rgb(255, 255, 0);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_QueryDeliver->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color: rgb(41, 136, 41);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(40, 136, 40); color: rgb(255, 255, 255);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_Deliver->setStyleSheet("QPushButton{font: 75 15pt 'Î¢ÈíÑÅºÚ';background-color: rgb(255, 5, 5);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(255, 0, 0); color: rgb(255, 255, 0);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_QueryInfo->setStyleSheet("QPushButton{font: 75 20pt 'Î¢ÈíÑÅºÚ';background-color: rgb(41, 136, 41);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(40, 136, 40); color: rgb(255, 255, 255);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	ui.pushButton_ExportExcel->setStyleSheet("QPushButton{font: 75 20pt 'Î¢ÈíÑÅºÚ';background-color:rgb(0, 205, 0);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:rgb(0, 205, 0); color: rgb(255, 255, 0);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+
+
+	
 
 	//ÉèÖÃÓÃ»§¹ÜÀíÁĞ±í
 	QFont font("Î¢ÈíÑÅºÚ", 12);
@@ -309,9 +369,11 @@ void CSystemMangaer::QueryUserInfo()//ÕËºÅ¹ÜÀí½çÃæµÄÓÒ±ß¡°²éÑ¯¡±°´Å¥---¡·´Ë²Ûº¯Ê
 			{
 				QString data = RowData.at(col).toString();
 				QTableWidgetItem *item;
+				//item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 				if (i < 2)
 				{
 					item = new QTableWidgetItem(data);
+					item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 					ui.tableWidget_User->setItem(row, col, item);//Îªµ¥Ôª¸ñÉèÖÃItem
 				}
 				else if (i == 2)
@@ -320,13 +382,25 @@ void CSystemMangaer::QueryUserInfo()//ÕËºÅ¹ÜÀí½çÃæµÄÓÒ±ß¡°²éÑ¯¡±°´Å¥---¡·´Ë²Ûº¯Ê
 				}
 				else if (i > 2)
 				{
+					
 					if (data == "1")
 					{
 						item = new QTableWidgetItem(QIcon(":/SysMainWindow/Resources/allow.png"),NULL);//QTableWidgetItem ¶ÔÏó´æ´¢ÁËµ¥Ôª¸ñµÄËùÓĞÄÚÈİ
+						
+						/*QLabel *label = new QLabel();
+						label->setPixmap(QPixmap(":/SysMainWindow/Resources/allow.png"));
+						label->setFixedSize(QSize(this->width(),this->height()));
+						label->setAlignment(Qt::AlignHCenter);
+						ui.tableWidget_User->setCellWidget(row, col - 1, label);*/
 					}
 					else if (data == "0")
 					{
 						item = new QTableWidgetItem(QIcon(":/SysMainWindow/Resources/reject.png"),NULL);
+						
+						/*QLabel *label = new QLabel();
+						label->setPixmap(QPixmap(":/SysMainWindow/Resources/reject.png"));
+						label->setAlignment(Qt::AlignHCenter);
+						ui.tableWidget_User->setCellWidget(row, col - 1, label);*/
 					}
 					ui.tableWidget_User->setItem(row, col - 1, item);
 				}
@@ -531,6 +605,7 @@ void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ
 					ui.tableWidget_Box->setCellWidget(row, col, Button);
 					connect(Button, SIGNAL(clicked()), this, SLOT(slotClickToolButton()));
 				}
+				
 				else
 				{
 					QTableWidgetItem *item = new QTableWidgetItem(data);
@@ -581,26 +656,6 @@ void CSystemMangaer::slotClickToolButton()
 			ui.tableWidget_PackedInfo->setRowCount(TableData.size());//³¤¶È
 			ui.tableWidget_PackedInfo->setSortingEnabled(false);//ÉèÖÃÎª²»¿É×Ô¶¯ÅÅĞò
 
-			//for (int row = 0; row < TableData.size(); ++row)
-			//{
-			//	QList<QVariant> RowData = TableData.at(row);//°ÑÏÂ±êÎªrowµÄ´æ´¢Êı¾İ£¬´æÔÚRowDataÖĞ
-			//	int col = 0;
-			//	for (; col < RowData.size(); ++col)
-			//	{
-			//		QString data = RowData.at(col).toString();//»ñÈ¡colÎ»ÖÃµÄÊı¾İ
-			//		QTableWidgetItem *item = new QTableWidgetItem(data);
-			//		ui.tableWidget_PackedInfo->setItem(row, col, item);
-			//	}
-			//	QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("±à¼­"));
-			//	EditButton->setStyleSheet("color:rgb(41,136,41)");
-			//	EditButton->setMinimumHeight(20);
-			//	QPushButton *DeleteButton = new QPushButton(QString::fromLocal8Bit("É¾³ı"));
-			//	DeleteButton->setStyleSheet("color:rgb(255,0,0)");
-			//	DeleteButton->setMinimumHeight(20);
-			//	ui.tableWidget_PackedInfo->setCellWidget(row, col-1, EditButton);//Ñ¡ÔñÌØ¶¨µÄÏ¸°û¿Ø¼ş
-			//	ui.tableWidget_PackedInfo->setCellWidget(row, col, DeleteButton);
-			//	connect(EditButton, SIGNAL(clicked()), this, SLOT(EditPackedListInfo()));
-			//	connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeletePackedListInfo()));
 			for (int row = 0; row < TableData.size(); ++row)
 			{
 				QList<QVariant> RowData = TableData.at(row);//Ã¿Ò»ĞĞÊı¾İÓĞ¼¸ÁĞ
@@ -699,7 +754,6 @@ void CSystemMangaer::DeletePackedListInfo()
 	if (QMessageBox::question(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("È·ÊµÒªÉ¾³ıÂğ?"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
 		m_curMsg.index = row+1;
-		//QString XuHao = ui.tableWidget_PackedInfo->item(row, 0)->text();
 		QString DanHao = ui.tableWidget_PackedInfo->item(row, 0)->text();
 		QString BianHao = ui.tableWidget_PackedInfo->item(row, 3)->text();
 		//QMessageBox::information(this, "check", QString::fromLocal8Bit("¿´¿´4ÊÇÉ¶ ") + BianHao);
@@ -1222,7 +1276,7 @@ void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ
 		hLayout->setMargin(0);                          // ±ØĞëÌí¼Ó, ·ñÔòCheckBox²»ÄÜÕı³£ÏÔÊ¾
 		hLayout->setAlignment(checkBox, Qt::AlignCenter);
 		widget->setLayout(hLayout);
-		ui.tableWidget_Delivery->setCellWidget(row, col, widget);
+		ui.tableWidget_Delivery->setCellWidget(row, col, widget);//row£¬col µ¥Ôª¸ñÄÚ
 	}
 	ui.tableWidget_Delivery->setSortingEnabled(true);
 	ui.tableWidget_Delivery->sortByColumn(0, Qt::AscendingOrder);
@@ -1259,8 +1313,6 @@ void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥
 			QString ChuKuDateTime = curDateTime.toString("yyyy-M-d");
 			if (ZXDanHao == "-")//µ¥×°Èë¿â
 			{
-
-				//sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â' where");
 				sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â',³ö¿âÊ±¼ä= \'")+ChuKuDateTime+"\' where";
 				sql += QString::fromLocal8Bit(" ÍËÒÛ±¨·ÏÎÄ¼şºÅ = ") + "\'" + BFWenJianHao +"\'";
 				sql += QString::fromLocal8Bit(" and µ÷²¦Æ¾Ö¤ºÅ = ") + "\'" + DBPingZhengHao + "\'";
@@ -1277,7 +1329,6 @@ void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥
 			}
 			else
 			{
-				//sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â' where");
 				sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set ³ö¿â×´Ì¬ = 'ÒÑ³ö¿â',³ö¿âÊ±¼ä= \'") + ChuKuDateTime + "\' where";
 				sql += QString::fromLocal8Bit(" GunManager.dbo.BoxPackedDetailsTable.µ¥×°±àºÅ in (select µ¥×°±àºÅ from");
 				sql += QString::fromLocal8Bit(" GunManager.dbo.BoxPackedTable t1,GunManager.dbo.BoxPackedDetailsTable t2");
@@ -1295,10 +1346,7 @@ void CSystemMangaer::DoDelivery()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥
 			}
 		}
 	}
-	//PrintAPI::Instance()->PrintGridA9();
-	//Remainder();
 	ExportGridA9();
-
 }
 
 void CSystemMangaer::Remainder()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°²éÑ¯¡±°´Å¥ºó£¬ÏÔÊ¾¿â´æÊıÁ¿
@@ -1412,7 +1460,8 @@ void CSystemMangaer::ExportGridA9()
 		}
 		
 	}
-	QMessageBox::information(this, QString::fromLocal8Bit("µ¼³öÊı¾İ³É¹¦"), QString::fromLocal8Bit("ĞÅÏ¢ÒÑ±£´æÔÚ%1£¡").arg(fileName), QString::fromLocal8Bit("È·¶¨"));
+	QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("³ö¿â³É¹¦£¡"));
+	//QMessageBox::information(this, QString::fromLocal8Bit("µ¼³öÊı¾İ³É¹¦"), QString::fromLocal8Bit("ĞÅÏ¢ÒÑ±£´æÔÚ%1£¡").arg(fileName), QString::fromLocal8Bit("È·¶¨"));
 	file.close();
 
 }
@@ -1651,7 +1700,8 @@ void CSystemMangaer::ExportExcel()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°µ¼³öExcel
 	if (file.open(QFile::WriteOnly | QIODevice::Text))
 	{
 		QTextStream ts(&file);
-		ts.setCodec("GB2312");//Õâ¸öµØ·½´ó¼Ò×Ô¼ºÅĞ¶ÏÊÇ·ñÓÃ¡°utf-8¡±
+		//ts.setCodec("GB2312");//Õâ¸öµØ·½´ó¼Ò×Ô¼ºÅĞ¶ÏÊÇ·ñÓÃ¡°utf-8¡±
+		ts.setCodec("utf-8");
 		ts << textEdit.document()->toPlainText();
 		file.close();
 		QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("µ¼³öexcel³É¹¦"));
@@ -1854,12 +1904,15 @@ void CSystemMangaer::SaveRecognizeResult()
 		return;
 	}
 
-	QString CodeImagePath = path + "/code.bmp";
+	//QString CodeImagePath = path + "/code.bmp";
+	QString CodeImagePath = path + "/code.jpg";
 	QByteArray ba = CodeImagePath.toLocal8Bit();
 	char *file = ba.data();
 	//imwrite(file, CodeImage);
 
-	QString GunImagePath = path + "/gun.bmp";
+
+	//QString GunImagePath = path + "/gun.bmp";
+	QString GunImagePath = path + "/gun.jpg";
 	ba = GunImagePath.toLocal8Bit();
 	file = ba.data();
 	//imwrite(file, GunImage);

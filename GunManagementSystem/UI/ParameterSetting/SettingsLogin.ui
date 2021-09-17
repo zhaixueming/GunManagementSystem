@@ -70,7 +70,7 @@ font: 14pt &quot;微软雅黑&quot;;</string>
     </widget>
    </item>
    <item row="0" column="2">
-    <widget class="QPushButton" name="pushButton_23">
+    <widget class="QPushButton" name="pushButton_QueDing">
      <property name="minimumSize">
       <size>
        <width>50</width>
@@ -99,7 +99,7 @@ color: rgb(0, 170, 0);</string>
  </resources>
  <connections>
   <connection>
-   <sender>pushButton_23</sender>
+   <sender>pushButton_QueDing</sender>
    <signal>clicked()</signal>
    <receiver>SettingLogin</receiver>
    <slot>Login()</slot>
