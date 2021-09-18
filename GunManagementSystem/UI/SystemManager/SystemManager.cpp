@@ -140,7 +140,8 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_Box->horizontalHeader()->setFont(font);//ÉèÖÃ×ÖÌå
 	ui.tableWidget_Box->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_Box->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
-	ui.tableWidget_Box->setColumnCount(12);
+	//ui.tableWidget_Box->setColumnCount(12);
+	ui.tableWidget_Box->setColumnCount(13);
 	ui.tableWidget_Box->setColumnWidth(0, 170);
 	ui.tableWidget_Box->setColumnWidth(1, 170);
 	ui.tableWidget_Box->setColumnWidth(2, 170);
@@ -148,16 +149,17 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_Box->setColumnWidth(4, 170);
 	ui.tableWidget_Box->setColumnWidth(5, 190);
 	ui.tableWidget_Box->setColumnWidth(6, 190);
-	ui.tableWidget_Box->setColumnWidth(7, 120);
-	ui.tableWidget_Box->setColumnWidth(8, 120);
-	ui.tableWidget_Box->setColumnWidth(9, 120);
-	ui.tableWidget_Box->setColumnWidth(10, 120);
-	ui.tableWidget_Box->setColumnWidth(11, 120);
+	ui.tableWidget_Box->setColumnWidth(7, 110);
+	ui.tableWidget_Box->setColumnWidth(8, 110);
+	ui.tableWidget_Box->setColumnWidth(9, 100);
+	ui.tableWidget_Box->setColumnWidth(10, 110);
+	ui.tableWidget_Box->setColumnWidth(11, 80);
+	ui.tableWidget_Box->setColumnWidth(12, 80);
 	header.clear();
 	header << QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÎÄ¼şºÅ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
 	header << QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë") << QString::fromLocal8Bit("×°±¸(²¿¼ş)Ãû³Æ");
 	header << QString::fromLocal8Bit("Á¥Êôµ¥Î»") << QString::fromLocal8Bit("¹ÜÀíµ¥Î»") << QString::fromLocal8Bit("³ö³§Ê±¼ä");
-	header << QString::fromLocal8Bit("×°±¸Ê±¼ä") << QString::fromLocal8Bit("×°ÏäÊıÁ¿") << QString::fromLocal8Bit("±à¼­");
+	header << QString::fromLocal8Bit("×°±¸Ê±¼ä") << QString::fromLocal8Bit("×°ÏäÊıÁ¿") << QString::fromLocal8Bit("Èë¿âÊ±¼ä") << QString::fromLocal8Bit("±à¼­");
 	header << QString::fromLocal8Bit("É¾³ı");
 	ui.tableWidget_Box->setHorizontalHeaderLabels(header);
 
@@ -194,8 +196,8 @@ void CSystemMangaer::InitVariables()
 	
 	//µ¥×°Èë¿â²Ù×÷±í
 	ui.tableWidget_Single->setSelectionBehavior(QAbstractItemView::SelectRows);
-	ui.tableWidget_Single->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
-	ui.tableWidget_Single->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	ui.tableWidget_Single->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);//±íÍ·¾ÓÖĞ
+	ui.tableWidget_Single->setEditTriggers(QAbstractItemView::NoEditTriggers);//±í¸ñÄÚÈİ²»¿É¸ü¸Ä
 	//ui.tableWidget_Single->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	ui.tableWidget_Single->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive); //¿ÉÀ­Éì
 	ui.tableWidget_Single->horizontalHeader()->setStretchLastSection(true);//×îºóÒ»ÁĞÌîÂú¿Ø¼ş
@@ -483,7 +485,7 @@ void CSystemMangaer::AddBoxPacked()//±àÂë¼ìÊÓ½çÃæ-¡·¡°Ïä×°Èë¿â¡±½çÃæµÄ×óÉÏ¡°ĞÂ½¨
 	CBoxPacked::GetInstance()->exec();
 }
 
-//ĞŞ¸ÄÏä×°Èë¿âĞÅÏ¢
+//Ïä×°Èë¿â--µã»÷±à¼­--ĞŞ¸ÄĞÅÏ¢
 void CSystemMangaer::ModifyBoxPackedInfo()
 {
 	QPushButton *senderObj = qobject_cast<QPushButton*>(sender());
@@ -503,6 +505,7 @@ void CSystemMangaer::ModifyBoxPackedInfo()
 	data.push_back(ui.tableWidget_Box->item(row, 7)->text());  //³ö³§Ê±¼ä
 	data.push_back(ui.tableWidget_Box->item(row, 8)->text());  //×°±¸Ê±¼ä
 	data.push_back(ui.tableWidget_Box->item(row, 9)->text());  //×°ÏäÊıÁ¿
+	//data.push_back(ui.tableWidget_Box->item(row, 10)->text());//Èë¿âÊ±¼ä
 	CBoxPacked::GetInstance()->SetOperatorType(1, data);
 	CBoxPacked::GetInstance()->exec();
 }
@@ -619,6 +622,7 @@ void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ
 					ui.tableWidget_Box->setItem(row, col, item);
 
 				}
+
 				else
 				{
 					QTableWidgetItem *item = new QTableWidgetItem(data);
