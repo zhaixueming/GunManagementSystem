@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>305</width>
+    <width>451</width>
     <height>368</height>
    </rect>
   </property>
@@ -23,151 +23,98 @@
      <property name="title">
       <string>权限</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_5">
+     <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
-       <widget class="QCheckBox" name="checkBox_ShiBieCaoZuo">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
-        </property>
-        <property name="text">
-         <string>识别操作</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>51</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="2">
-       <widget class="QCheckBox" name="checkBox_ShiBieJianDu">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
-        </property>
-        <property name="text">
-         <string>识别监督</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QCheckBox" name="checkBox_RuKuCaoZuo">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
-        </property>
-        <property name="text">
-         <string>入库操作</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QCheckBox" name="checkBox_RuKuJianDu">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
-        </property>
-        <property name="text">
-         <string>入库监督</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QCheckBox" name="checkBox_ChuKuCaoZuo">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
-        </property>
-        <property name="text">
-         <string>出库操作</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QCheckBox" name="checkBox_ChuKuJianDu">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
-        </property>
-        <property name="text">
-         <string>出库监督</string>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="checkBox_BianMaJianShiCaoZuo">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
+          </property>
+          <property name="text">
+           <string>编码检视操作</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="checkBox_BianMaJianShiJianDu">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
+          </property>
+          <property name="text">
+           <string>编码检视监督</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="checkBox_XinXiGuanLiCaoZuo">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
+          </property>
+          <property name="text">
+           <string>信息管理操作</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="checkBox_XinXiGuanLiJianDu">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;</string>
+          </property>
+          <property name="text">
+           <string>信息管理监督</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -510,6 +457,20 @@ color: rgb(41, 136, 41);</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>checkBox_BianMaJianShiCaoZuo</tabstop>
+  <tabstop>checkBox_BianMaJianShiJianDu</tabstop>
+  <tabstop>checkBox_XinXiGuanLiCaoZuo</tabstop>
+  <tabstop>checkBox_XinXiGuanLiJianDu</tabstop>
+  <tabstop>lineEdit_XingMing</tabstop>
+  <tabstop>lineEdit_JunGuanZheng</tabstop>
+  <tabstop>lineEdit_JiuMiMa</tabstop>
+  <tabstop>lineEdit_MiMa</tabstop>
+  <tabstop>lineEdit_QueRenMiMa</tabstop>
+  <tabstop>checkBox_XianShi</tabstop>
+  <tabstop>checkBox_XiuGaiMiMa</tabstop>
+  <tabstop>pushButton_QueDing</tabstop>
+ </tabstops>
  <resources>
   <include location="../../SysMainWindow.qrc"/>
  </resources>
@@ -521,7 +482,7 @@ color: rgb(41, 136, 41);</string>
    <slot>SetModifyPasswordChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>214</x>
+     <x>360</x>
      <y>358</y>
     </hint>
     <hint type="destinationlabel">
@@ -537,7 +498,7 @@ color: rgb(41, 136, 41);</string>
    <slot>ConfirmModification()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>295</x>
+     <x>441</x>
      <y>358</y>
     </hint>
     <hint type="destinationlabel">

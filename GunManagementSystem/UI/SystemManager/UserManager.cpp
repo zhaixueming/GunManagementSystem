@@ -28,16 +28,33 @@ CUserManager *CUserManager::GetInstance()
 	return m_Instance;
 }
 
+////清空设置
+//void CUserManager::ClearController()
+//{
+//	//权限
+//	ui.checkBox_ShiBieCaoZuo->setChecked(false);
+//	ui.checkBox_ShiBieJianDu->setChecked(false);
+//	ui.checkBox_RuKuCaoZuo->setChecked(false);
+//	ui.checkBox_RuKuJianDu->setChecked(false);
+//	ui.checkBox_ChuKuCaoZuo->setChecked(false);
+//	ui.checkBox_ChuKuJianDu->setChecked(false);
+//	//清空
+//	ui.lineEdit_XingMing->setText("");
+//	ui.lineEdit_JunGuanZheng->setText("");
+//	ui.lineEdit_MiMa->setText("");
+//	ui.lineEdit_QueRenMiMa->setText("");
+//}
+
 //清空设置
 void CUserManager::ClearController()
 {
 	//权限
-	ui.checkBox_ShiBieCaoZuo->setChecked(false);
-	ui.checkBox_ShiBieJianDu->setChecked(false);
-	ui.checkBox_RuKuCaoZuo->setChecked(false);
-	ui.checkBox_RuKuJianDu->setChecked(false);
-	ui.checkBox_ChuKuCaoZuo->setChecked(false);
-	ui.checkBox_ChuKuJianDu->setChecked(false);
+	ui.checkBox_BianMaJianShiCaoZuo->setChecked(false);
+	ui.checkBox_BianMaJianShiJianDu->setChecked(false);
+	ui.checkBox_XinXiGuanLiCaoZuo->setChecked(false);
+	ui.checkBox_XinXiGuanLiJianDu->setChecked(false);
+	/*ui.checkBox_ChuKuCaoZuo->setChecked(false);
+	ui.checkBox_ChuKuJianDu->setChecked(false);*/
 	//清空
 	ui.lineEdit_XingMing->setText("");
 	ui.lineEdit_JunGuanZheng->setText("");
@@ -66,7 +83,7 @@ void CUserManager::SetControllerEnabled(bool bEnabled)
 //
 void CUserManager::SetData(QList<QVariant> data)
 {
-	if (data.size() != 9)
+	if (data.size() != 7)
 	{
 		return;
 	}
@@ -77,17 +94,17 @@ void CUserManager::SetData(QList<QVariant> data)
 	QString Password = data.at(2).toString();
 	ui.lineEdit_JiuMiMa->setText(Password);//旧密码框中设置（string）
 	bool checked = data.at(3).toBool();
-	ui.checkBox_ShiBieCaoZuo->setChecked(checked);//选中或不选中“识别操作”复选框
+	ui.checkBox_BianMaJianShiCaoZuo->setChecked(checked);//选中或不选中“编码检视操作”复选框
 	checked = data.at(4).toBool();
-	ui.checkBox_ShiBieJianDu->setChecked(checked);//选中或不选中“识别监督”复选框
+	ui.checkBox_BianMaJianShiJianDu->setChecked(checked);//选中或不选中“编码检视监督”复选框
 	checked = data.at(5).toBool();
-	ui.checkBox_RuKuCaoZuo->setChecked(checked);//选中或不选中“入库操作”复选框
+	ui.checkBox_XinXiGuanLiCaoZuo->setChecked(checked);//选中或不选中“信息管理操作”复选框
 	checked = data.at(6).toBool();
-	ui.checkBox_RuKuJianDu->setChecked(checked);//选中或不选中“入库监督”复选框
-	checked = data.at(7).toBool();
-	ui.checkBox_ChuKuCaoZuo->setChecked(checked);//选中或不选中“出库操作”复选框
-	checked = data.at(8).toBool();
-	ui.checkBox_ChuKuJianDu->setChecked(checked);//选中或不选中"出库监督"复选框
+	ui.checkBox_XinXiGuanLiJianDu->setChecked(checked);//选中或不选中“信息管理监督”复选框
+	/*checked = data.at(7).toBool();*/
+	//ui.checkBox_ChuKuCaoZuo->setChecked(checked);//选中或不选中“出库操作”复选框
+	//checked = data.at(8).toBool();
+	//ui.checkBox_ChuKuJianDu->setChecked(checked);//选中或不选中"出库监督"复选框
 }
 
 
@@ -184,17 +201,13 @@ void CUserManager::ConfirmModification()
 
 		sql = "insert into " + CDatabaseOperator::GetInstance()->GetDatabaseName();
 		sql += ".dbo.UserTable values(\'" + UserName + "\',\'" + Number + "\',\'" + Password + "\',";
-		bool check = ui.checkBox_ShiBieCaoZuo->isChecked();//复选框如果被选中，返回1，否则返回0
+		bool check = ui.checkBox_BianMaJianShiCaoZuo->isChecked();//复选框如果被选中，返回1，否则返回0
 		sql += check ? "1," : "0,";
-		check = ui.checkBox_ShiBieJianDu->isChecked();//复选框如果被选中，返回1，否则返回0
+		check = ui.checkBox_BianMaJianShiJianDu->isChecked();//复选框如果被选中，返回1，否则返回0
 		sql += check ? "1," : "0,";
-		check = ui.checkBox_RuKuCaoZuo->isChecked();
+		check = ui.checkBox_XinXiGuanLiCaoZuo->isChecked();
 		sql += check ? "1," : "0,";
-		check = ui.checkBox_RuKuJianDu->isChecked();
-		sql += check ? "1," : "0,";
-		check = ui.checkBox_ChuKuCaoZuo->isChecked();
-		sql += check ? "1," : "0,";
-		check = ui.checkBox_ChuKuJianDu->isChecked();
+		check = ui.checkBox_XinXiGuanLiJianDu->isChecked();
 		sql += check ? "1)" : "0)";
 	}
 	else if (m_Type == 1)
@@ -222,18 +235,14 @@ void CUserManager::ConfirmModification()
 			Password = NewPassword;//更新密码
 		}
 		sql = "update GunManager.dbo.UserTable set UserTable." + QString::fromLocal8Bit("密码 = ") + "\'" + Password + "\',";
-		bool check = ui.checkBox_ShiBieCaoZuo->isChecked();
-		sql += "UserTable." + QString::fromLocal8Bit("识别操作 = ") + (check ? "1," : "0,");
-		check = ui.checkBox_ShiBieJianDu->isChecked();
-		sql += "UserTable." + QString::fromLocal8Bit("识别监督 = ") + (check ? "1," : "0,");
-		check = ui.checkBox_RuKuCaoZuo->isChecked();
-		sql += "UserTable." + QString::fromLocal8Bit("入库操作 = ") + (check ? "1," : "0,");
-		check = ui.checkBox_RuKuJianDu->isChecked();
-		sql += "UserTable." + QString::fromLocal8Bit("入库监督 = ") + (check ? "1," : "0,");
-		check = ui.checkBox_ChuKuCaoZuo->isChecked();
-		sql += "UserTable." + QString::fromLocal8Bit("出库操作 = ") + (check ? "1," : "0,");
-		check = ui.checkBox_ChuKuJianDu->isChecked();
-		sql += "UserTable." + QString::fromLocal8Bit("出库监督 = ") + (check ? "1" : "0");
+		bool check = ui.checkBox_BianMaJianShiCaoZuo->isChecked();
+		sql += "UserTable." + QString::fromLocal8Bit("编码检视操作 = ") + (check ? "1," : "0,");
+		check = ui.checkBox_BianMaJianShiJianDu->isChecked();
+		sql += "UserTable." + QString::fromLocal8Bit("编码检视监督 = ") + (check ? "1," : "0,");
+		check = ui.checkBox_XinXiGuanLiCaoZuo->isChecked();
+		sql += "UserTable." + QString::fromLocal8Bit("信息管理操作 = ") + (check ? "1," : "0,");
+		check = ui.checkBox_XinXiGuanLiJianDu->isChecked();
+		sql += "UserTable." + QString::fromLocal8Bit("信息管理监督 = ") + (check ? "1" : "0");
 		sql += " where " + QString::fromLocal8Bit("姓名= \'") + UserName + QString::fromLocal8Bit("\' and 军官证号 = \'") + Number + "\'";
 	}
 	

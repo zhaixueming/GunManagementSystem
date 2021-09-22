@@ -73,6 +73,136 @@ void CAdminWithEphorLogin::closeEvent(QCloseEvent *event)
 //	}
 //}
 
+bool CAdminWithEphorLogin::CheckCodeOperator(QString &errMsg)
+{
+	QTableData OperatorTableData;
+	QTableData EphorTableData;
+	QString OperatorName = ui.lineEdit_Operator->text();
+	QString OperatorPwd = ui.lineEdit_OperatorPwd->text();
+	QString EphorName = ui.lineEdit_Ephor->text();
+	QString EphorPwd = ui.lineEdit_EphorPwd->text();
+	QString OperatorsSql = QString::fromLocal8Bit("select * from GunManager.dbo.UserTable where 军官证号 = \'") + OperatorName + "\'";
+	OperatorsSql += QString::fromLocal8Bit(" and 密码 = \'") + OperatorPwd + "\'";
+
+	QString EphorSql = QString::fromLocal8Bit("select * from GunManager.dbo.UserTable where 军官证号 = \'") + EphorName + "\'";
+	EphorSql += QString::fromLocal8Bit(" and 密码 = \'") + EphorPwd + "\'";
+
+	QString dbErrMsg;
+	bool rv = CDatabaseOperator::GetInstance()->execSql(OperatorsSql, OperatorTableData, dbErrMsg);
+	if (!rv)
+	{
+		errMsg = QString::fromLocal8Bit("查询编码检视操作权限错误:") + dbErrMsg;
+		return false; 
+	}
+	else if (OperatorTableData.size() == 0)
+	{
+		errMsg = QString::fromLocal8Bit("编码检视操作员账号或密码错误，请重新输入!"); 
+		return false;
+	}
+	else if (OperatorTableData.size() == 1)
+	{
+		QList<QVariant > OneRowData = OperatorTableData.at(0);
+		bool bOK = OneRowData.at(3).toBool();
+		if(!bOK)
+		{
+			errMsg = QString::fromLocal8Bit("此军官无编码检视操作权限");
+		}
+		else
+		{
+			rv = CDatabaseOperator::GetInstance()->execSql(EphorSql, EphorTableData, dbErrMsg);
+			if (!rv)
+			{
+				errMsg = QString::fromLocal8Bit("查询编码检视监督权限错误:") + dbErrMsg;
+				return false;
+			}
+			else if (EphorTableData.size() == 0)
+			{
+				errMsg = QString::fromLocal8Bit("编码检视督权员账号或密码错误，请重新输入!");
+				return false;
+			}
+			else if (EphorTableData.size() == 1)
+			{
+				QList<QVariant > OneRowData = EphorTableData.at(0);
+				bool bOK = OneRowData.at(4).toBool();
+				if (!bOK)
+				{
+					errMsg = QString::fromLocal8Bit("此军官无编码检视督权权限");
+				}
+				else
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
+bool CAdminWithEphorLogin::CheckInfoOperpator(QString &errMsg)
+{
+	QTableData OperatorTableData;
+	QTableData EphorTableData;
+	QString OperatorName = ui.lineEdit_Operator->text();
+	QString OperatorPwd = ui.lineEdit_OperatorPwd->text();
+	QString EphorName = ui.lineEdit_Ephor->text();
+	QString EphorPwd = ui.lineEdit_EphorPwd->text();
+	QString OperatorsSql = QString::fromLocal8Bit("select * from GunManager.dbo.UserTable where 军官证号 = \'") + OperatorName + "\'";
+	OperatorsSql += QString::fromLocal8Bit(" and 密码 = \'") + OperatorPwd + "\'";
+
+	QString EphorSql = QString::fromLocal8Bit("select * from GunManager.dbo.UserTable where 军官证号 = \'") + EphorName + "\'";
+	EphorSql += QString::fromLocal8Bit(" and 密码 = \'") + EphorPwd + "\'";
+
+	QString dbErrMsg;
+	bool rv = CDatabaseOperator::GetInstance()->execSql(OperatorsSql, OperatorTableData, dbErrMsg);
+	if (!rv)
+	{
+		errMsg = QString::fromLocal8Bit("查询信息管理操作权限错误:") + dbErrMsg;
+		return false;
+	}
+	else if (OperatorTableData.size() == 0)
+	{
+		errMsg = QString::fromLocal8Bit("信息管理操作员账号或密码错误，请重新输入!");
+		return false;
+	}
+	else if (OperatorTableData.size() == 1)
+	{
+		QList<QVariant > OneRowData = OperatorTableData.at(0);
+		bool bOK = OneRowData.at(5).toBool();
+		if (!bOK)
+		{
+			errMsg = QString::fromLocal8Bit("此军官无信息管理操作权限");
+		}
+		else
+		{
+			rv = CDatabaseOperator::GetInstance()->execSql(EphorSql, EphorTableData, dbErrMsg);
+			if (!rv)
+			{
+				errMsg = QString::fromLocal8Bit("查询信息管理监督权限错误:") + dbErrMsg;
+				return false;
+			}
+			else if (EphorTableData.size() == 0)
+			{
+				errMsg = QString::fromLocal8Bit("信息管理督权员账号或密码错误，请重新输入!");
+				return false;
+			}
+			else if (EphorTableData.size() == 1)
+			{
+				QList<QVariant > OneRowData = EphorTableData.at(0);
+				bool bOK = OneRowData.at(6).toBool();
+				if (!bOK)
+				{
+					errMsg = QString::fromLocal8Bit("此军官信息管理督权权限");
+				}
+				else
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
 void CAdminWithEphorLogin::slotLogin()
 {
 	QString OperatorName = ui.lineEdit_Operator->text();
@@ -85,65 +215,37 @@ void CAdminWithEphorLogin::slotLogin()
 		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("请输入账号和密码！"));
 		return;
 	}
-	/*else if (OperatorName == EphorName && OperatorPwd == EphorPwd)
-	{
-		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("登录信息错误！"));
-		return;
-	}*/
 	else
 	{
-		QTableData OperatorTableData;
-		QTableData EphorTableData;
+		//编码检视
 		QString errMsg;
-		QString sql = QString::fromLocal8Bit("select * from GunManager.dbo.UserTable where 军官证号 = \'") + OperatorName + "\'";
-		sql += QString::fromLocal8Bit(" and 密码 = \'") + OperatorPwd + "\'";
-		sql += QString::fromLocal8Bit(" and (识别操作 = 1");
-		sql += QString::fromLocal8Bit(" or 入库操作 = 1");
-		sql += QString::fromLocal8Bit(" or 出库操作 = 1)");
-		bool rv = CDatabaseOperator::GetInstance()->execSql(sql, OperatorTableData, errMsg);
-		if (!rv)
+		bool rv = false;
+		if (m_Flag == 1)
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("错误"), errMsg);
-			return;
+			rv = CheckCodeOperator(errMsg);
+			if (!rv)
+			{
+				QMessageBox::information(this, QString::fromLocal8Bit("提示"), errMsg);
+				return;
+			}
 		}
-		else if (OperatorTableData.size() == 0)
+		else if (m_Flag == 2)
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("操作员账号或密码错误，请重新输入！"));
-			return;
+			rv = CheckInfoOperpator(errMsg);
+			if (!rv)
+			{
+				QMessageBox::information(this, QString::fromLocal8Bit("提示"), errMsg);
+				return;
+			}
 		}
-		sql.clear();
-	    sql = QString::fromLocal8Bit("select * from GunManager.dbo.UserTable where 军官证号 = \'") + EphorName + "\'";
-		sql += QString::fromLocal8Bit(" and 密码 = \'") + EphorPwd + "\'";
-		sql += QString::fromLocal8Bit(" and (识别监督 = 1");
-		sql += QString::fromLocal8Bit(" or 入库监督 = 1");
-		sql += QString::fromLocal8Bit(" or 出库监督 = 1)");
-
-		rv = CDatabaseOperator::GetInstance()->execSql(sql, EphorTableData, errMsg);
-		QTableData AllTableData;
-		AllTableData.append(OperatorTableData);
-		AllTableData.append(EphorTableData);
-		if (!rv)
-		{
-			QMessageBox::information(this, QString::fromLocal8Bit("错误"), errMsg);
-			return;
-		}
-
-		else if (EphorTableData.size() == 0)
-		{
-			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("监督员账号或密码错误，请重新输入！"));
-			return;
-		}
-
-		else if(AllTableData.size()==2)
-		{
-			done(1);
-		}
-		//done(1);
 	}
-
+	done(1);
 }
 
-
+void CAdminWithEphorLogin::SetLoginFlag(int flag)
+{
+	m_Flag = flag;
+}
 
 void CAdminWithEphorLogin::ClearInfor()
 {

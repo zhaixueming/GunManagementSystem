@@ -142,10 +142,15 @@ void SysMainWindow::slotCodeReview()//“编码检视”按钮---》此槽函数
  		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库未连接"));
  		return;
  	}
+
+
 	emit SendStackWidgetIndex(1);//
 	CAdminWithEphorLogin::GetInstance()->ClearInfor();
+	CAdminWithEphorLogin::GetInstance()->SetLoginFlag(1);
 	if (1 == CAdminWithEphorLogin::GetInstance()->exec())
 	{
+		//QString OperatorName= CAdminWithEphorLogin::
+
 		m_SystemManager.exec();
 	}
 }
@@ -158,12 +163,15 @@ void SysMainWindow::slotInfoManager()//“信息管理”按钮---》此槽函数
  		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库未连接"));
  		return;
  	}
+
 	emit SendStackWidgetIndex(2);
 	CAdminWithEphorLogin::GetInstance()->ClearInfor();
+	CAdminWithEphorLogin::GetInstance()->SetLoginFlag(2);
 	if (1 == CAdminWithEphorLogin::GetInstance()->exec())
 	{
 		m_SystemManager.exec();
 	}
+
 }
 
 void SysMainWindow::keyPressEvent(QKeyEvent *ev)//按Ctrl+F11弹出参数设置口令窗口,按Ctrl+F12弹出关于窗口

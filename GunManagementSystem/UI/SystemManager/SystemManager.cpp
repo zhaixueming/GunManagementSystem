@@ -112,21 +112,47 @@ void CSystemMangaer::InitVariables()
 
 	
 
+	////ÉèÖÃÓÃ»§¹ÜÀíÁÐ±í
+	//QFont font("Î¢ÈíÑÅºÚ", 12);
+	//ui.tableWidget_User->setSelectionBehavior(QAbstractItemView::SelectRows);
+	//ui.tableWidget_User->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);//±íÍ·×ÖÌå¾ÓÖÐ
+	//ui.tableWidget_User->setEditTriggers(QAbstractItemView::NoEditTriggers);//µ¥Ôª¸ñ²»¿É±à¼­
+	//ui.tableWidget_User->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);//²»¿ÉÀ­Éì
+	//ui.tableWidget_User->horizontalHeader()->setFont(font);//ÉèÖÃ×ÖÌå£¬´óÐ¡
+	//ui.tableWidget_User->horizontalHeader()->setHighlightSections(false);//È¥³ý±íÍ·¸ßÁÁ
+	//ui.tableWidget_User->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");//ÉèÖÃ±íÍ·ºÍ×ÖÌåÑÕÉ«
+	//ui.tableWidget_User->setColumnCount(10);
+	//QStringList header;
+	//header << QString::fromLocal8Bit("ÐÕÃû") << QString::fromLocal8Bit("¾ü¹ÙÖ¤ºÅ") << QString::fromLocal8Bit("Ê¶±ð²Ù×÷");
+	//header << QString::fromLocal8Bit("Ê¶±ð¼à¶½") << QString::fromLocal8Bit("Èë¿â²Ù×÷") << QString::fromLocal8Bit("Èë¿â¼à¶½");
+	//header << QString::fromLocal8Bit("³ö¿â²Ù×÷") << QString::fromLocal8Bit("³ö¿â¼à¶½") << QString::fromLocal8Bit("±à¼­");
+	//header << QString::fromLocal8Bit("É¾³ý");
+	//ui.tableWidget_User->setHorizontalHeaderLabels(header);
+
 	//ÉèÖÃÓÃ»§¹ÜÀíÁÐ±í
 	QFont font("Î¢ÈíÑÅºÚ", 12);
 	ui.tableWidget_User->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.tableWidget_User->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);//±íÍ·×ÖÌå¾ÓÖÐ
 	ui.tableWidget_User->setEditTriggers(QAbstractItemView::NoEditTriggers);//µ¥Ôª¸ñ²»¿É±à¼­
-	ui.tableWidget_User->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);//²»¿ÉÀ­Éì
+	//ui.tableWidget_User->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);//²»¿ÉÀ­Éì
+	ui.tableWidget_Box->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);//ÐÐ±íÍ·£¬ÉèÖÃ×ÔÊÊÓ¦Ä£Ê½£¬ÓÃ»§¿ÉÉèÖÃ£¬Ò²¿É±»³ÌÐòÉèÖÃ³ÉÄ¬ÈÏ´óÐ¡
+	ui.tableWidget_Box->horizontalHeader()->setStretchLastSection(true);//×îºóÒ»ÁÐÌîÂú¿Ø¼þ
 	ui.tableWidget_User->horizontalHeader()->setFont(font);//ÉèÖÃ×ÖÌå£¬´óÐ¡
 	ui.tableWidget_User->horizontalHeader()->setHighlightSections(false);//È¥³ý±íÍ·¸ßÁÁ
 	ui.tableWidget_User->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");//ÉèÖÃ±íÍ·ºÍ×ÖÌåÑÕÉ«
-	ui.tableWidget_User->setColumnCount(10);
+	ui.tableWidget_User->setColumnCount(8);
+	ui.tableWidget_User->setColumnWidth(0, 200);
+	ui.tableWidget_User->setColumnWidth(1, 200);
+	ui.tableWidget_User->setColumnWidth(2, 200);
+	ui.tableWidget_User->setColumnWidth(3, 200);
+	ui.tableWidget_User->setColumnWidth(4, 200);
+	ui.tableWidget_User->setColumnWidth(5, 200);
+	ui.tableWidget_User->setColumnWidth(6, 200);
+	ui.tableWidget_User->setColumnWidth(7, 200);
 	QStringList header;
-	header << QString::fromLocal8Bit("ÐÕÃû") << QString::fromLocal8Bit("¾ü¹ÙÖ¤ºÅ") << QString::fromLocal8Bit("Ê¶±ð²Ù×÷");
-	header << QString::fromLocal8Bit("Ê¶±ð¼à¶½") << QString::fromLocal8Bit("Èë¿â²Ù×÷") << QString::fromLocal8Bit("Èë¿â¼à¶½");
-	header << QString::fromLocal8Bit("³ö¿â²Ù×÷") << QString::fromLocal8Bit("³ö¿â¼à¶½") << QString::fromLocal8Bit("±à¼­");
-	header << QString::fromLocal8Bit("É¾³ý");
+	header << QString::fromLocal8Bit("ÐÕÃû") << QString::fromLocal8Bit("¾ü¹ÙÖ¤ºÅ") << QString::fromLocal8Bit("±àÂë¼ìÊÓ²Ù×÷");
+	header << QString::fromLocal8Bit("±àÂë¼ìÊÓ¼à¶½") << QString::fromLocal8Bit("ÐÅÏ¢¹ÜÀí²Ù×÷") << QString::fromLocal8Bit("ÐÅÏ¢¹ÜÀí¼à¶½");
+	header << QString::fromLocal8Bit("±à¼­")<<QString::fromLocal8Bit("É¾³ý");
 	ui.tableWidget_User->setHorizontalHeaderLabels(header);
 	
 	//Ïä×°ÐÅÏ¢Èë¿â²Ù×÷±í
@@ -380,7 +406,7 @@ void CSystemMangaer::QueryUserInfo()//ÕËºÅ¹ÜÀí½çÃæµÄÓÒ±ß¡°²éÑ¯¡±°´Å¥---¡·´Ë²Ûº¯Ê
 				}
 				else if (i == 2)
 				{
-					m_Password.push_back(data);//ÔÚ×îºóÌí¼ÓÔªËØ
+					m_Password.push_back(data);
 				}
 				else if (i > 2)
 				{
@@ -445,8 +471,8 @@ void CSystemMangaer::ModifyUser()
 	RowData.push_back(ui.tableWidget_User->item(row, 3)->text());
 	RowData.push_back(ui.tableWidget_User->item(row, 4)->text());
 	RowData.push_back(ui.tableWidget_User->item(row, 5)->text());
-	RowData.push_back(ui.tableWidget_User->item(row, 6)->text());
-	RowData.push_back(ui.tableWidget_User->item(row, 7)->text());
+	//RowData.push_back(ui.tableWidget_User->item(row, 6)->text());
+	//RowData.push_back(ui.tableWidget_User->item(row, 7)->text());
 	CUserManager::GetInstance()->SetOperatorType(1, RowData);
 	CUserManager::GetInstance()->exec();
 }
