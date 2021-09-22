@@ -148,6 +148,13 @@ void CBoxPacked::ConfirmModification()
 
 	QString ChuChangTime = ui.dateEdit_ChuChang->date().toString("yyyy-M-d");
 	QString ZhuangBeiTime = ui.dateEdit_ZhuangBei->date().toString("yyyy-M-d");
+	if (ChuChangTime > ZhuangBeiTime)
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("出厂时间不能晚于装备时间"));
+		return;
+	}
+
+	QString JianShiZhuangTai = QString::fromLocal8Bit("未检视");
 	QString Number = ui.spinBox->text();
 
 	QDateTime curDateTime = QDateTime::currentDateTime();
@@ -208,21 +215,19 @@ void CBoxPacked::ConfirmModification()
 			QString JiLuDateTime = curDateTime.toString("yyyy-MM-dd hh:mm:ss");*/
 			//QDateTime curDateTime = QDateTime::currentDateTime();
 			//QString RuKuDateTime = curDateTime.toString("yyyy-M-d");//获取当前日期，并转换为字符串
+			
 
 			sql = "insert into GunManager.dbo.BoxPackedDetailsTable values ";
 			int n = ui.spinBox->value();
 			int i = 0;
 			for (; i < n - 1; ++i)
 			{
-		
-				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'") + JiLuDateTime + "\'" + ",\'1900-01-01 00:00:00.000\'),";//这是ok的
-				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'1900-1-1\'),";
-				sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'\',\'\'),";
-				
+				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'\',\'\'," + "\'"+ JianShiZhuangTai + "\'),";
+				sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",null,null," + "\'" + JianShiZhuangTai + "\'),";
 			}
-			sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'\',\'\')";
-			//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\',\'") + JiLuDateTime + "\'" + ",\'1900-01-01 00:00:00.000\')";//这是ok的
-			//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing  + QString::fromLocal8Bit("\',\'\',\'\',\'未出库\'") + ",\'" + JiLuDateTime + "\')";
+			//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'\',\'\',"+ "\'" + JianShiZhuangTai+ "\')";
+			sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",null,null," + "\'" + JianShiZhuangTai + "\')";
+			
 			rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
 			if (!rv)
 			{

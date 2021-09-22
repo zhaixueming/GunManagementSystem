@@ -113,6 +113,12 @@ void CSinglePacked::ConfirmModification()
 
 	QString ChuChangTime = ui.dateEdit_ChuChang->date().toString("yyyy-M-d");
 	QString ZhuangBeiTime = ui.dateEdit_ZhuangBei->date().toString("yyyy-M-d");
+	if (ChuChangTime > ZhuangBeiTime)
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("出厂时间不能晚于装备时间"));
+		return;
+	}
+	QString JianShiZhuangTai = QString::fromLocal8Bit("未检视");
 
 	/*QDateTime curDateTime = QDateTime::currentDateTime();
 	QString JiLuDateTime = curDateTime.toString("yyyy-MM-dd hh:mm:ss");*/
@@ -121,6 +127,7 @@ void CSinglePacked::ConfirmModification()
 	////为下面第二种数据库插值定义变量值
 	/*QString BianHao= QString::fromLocal8Bit(" ");
 	QString QueShiQingKuang = QString::fromLocal8Bit(" ");*/
+
 	QString sql;
 	QString errMsg;
 	bool rv = CheckSinglePackedRepeat(errMsg);
@@ -139,13 +146,11 @@ void CSinglePacked::ConfirmModification()
 	//sql += ZhuangBeiMing + "\',\'\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
 	//sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'"+JiLuDateTime + "\'" + ",\'1900-01-01 00:00:00.000\')";//记录时间是创建一条单装数据时的时间
 
-	/*sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'";
-	sql += ZhuangBeiMing +  "\',\'" + BianHao + "\',\'"+ QueShiQingKuang + "\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
-	sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'1900-1-1\')";
-*/
 	sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'";
 	sql += ZhuangBeiMing + "\',\'\',\'\',\'\',\'\',\'\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
-	sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'" + RuKuDateTime + "\'" + ",\'\',\'\')";//记录时间是创建一条单装数据时的时间
+	//sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'" + RuKuDateTime + "\'" + ")";//记录时间是创建一条单装数据时的时间
+	//sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'" + RuKuDateTime + "\'" + ",\'\',\'\'," + "\'" + JianShiZhuangTai+ "\')";
+	sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'" + RuKuDateTime + "\'" + ",null,null," + "\'" + JianShiZhuangTai + "\')";
 	
 	QTableData TableData;
 	rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);

@@ -19,20 +19,22 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_UserManager
 {
 public:
-    QGridLayout *gridLayout;
-    QGroupBox *groupBox_3;
     QGridLayout *gridLayout_3;
+    QGroupBox *groupBox_3;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout_2;
     QCheckBox *checkBox_BianMaJianShiCaoZuo;
     QCheckBox *checkBox_BianMaJianShiJianDu;
     QCheckBox *checkBox_XinXiGuanLiCaoZuo;
     QCheckBox *checkBox_XinXiGuanLiJianDu;
+    QGridLayout *gridLayout;
     QLabel *label_27;
     QLineEdit *lineEdit_XingMing;
     QLabel *label_29;
@@ -51,19 +53,21 @@ public:
     {
         if (UserManager->objectName().isEmpty())
             UserManager->setObjectName(QString::fromUtf8("UserManager"));
-        UserManager->resize(451, 368);
+        UserManager->resize(351, 368);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/SysMainWindow/Resources/login-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         UserManager->setWindowIcon(icon);
-        gridLayout = new QGridLayout(UserManager);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout_3 = new QGridLayout(UserManager);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         groupBox_3 = new QGroupBox(UserManager);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        gridLayout_3 = new QGridLayout(groupBox_3);
-        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        gridLayout_2 = new QGridLayout();
+        layoutWidget = new QWidget(groupBox_3);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 30, 301, 68));
+        gridLayout_2 = new QGridLayout(layoutWidget);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        checkBox_BianMaJianShiCaoZuo = new QCheckBox(groupBox_3);
+        gridLayout_2->setContentsMargins(0, 0, 0, 0);
+        checkBox_BianMaJianShiCaoZuo = new QCheckBox(layoutWidget);
         checkBox_BianMaJianShiCaoZuo->setObjectName(QString::fromUtf8("checkBox_BianMaJianShiCaoZuo"));
         checkBox_BianMaJianShiCaoZuo->setMinimumSize(QSize(150, 30));
         checkBox_BianMaJianShiCaoZuo->setMaximumSize(QSize(200, 30));
@@ -71,7 +75,7 @@ public:
 
         gridLayout_2->addWidget(checkBox_BianMaJianShiCaoZuo, 0, 0, 1, 1);
 
-        checkBox_BianMaJianShiJianDu = new QCheckBox(groupBox_3);
+        checkBox_BianMaJianShiJianDu = new QCheckBox(layoutWidget);
         checkBox_BianMaJianShiJianDu->setObjectName(QString::fromUtf8("checkBox_BianMaJianShiJianDu"));
         checkBox_BianMaJianShiJianDu->setMinimumSize(QSize(200, 30));
         checkBox_BianMaJianShiJianDu->setMaximumSize(QSize(200, 30));
@@ -79,7 +83,7 @@ public:
 
         gridLayout_2->addWidget(checkBox_BianMaJianShiJianDu, 0, 1, 1, 1);
 
-        checkBox_XinXiGuanLiCaoZuo = new QCheckBox(groupBox_3);
+        checkBox_XinXiGuanLiCaoZuo = new QCheckBox(layoutWidget);
         checkBox_XinXiGuanLiCaoZuo->setObjectName(QString::fromUtf8("checkBox_XinXiGuanLiCaoZuo"));
         checkBox_XinXiGuanLiCaoZuo->setMinimumSize(QSize(200, 30));
         checkBox_XinXiGuanLiCaoZuo->setMaximumSize(QSize(200, 30));
@@ -87,7 +91,7 @@ public:
 
         gridLayout_2->addWidget(checkBox_XinXiGuanLiCaoZuo, 1, 0, 1, 1);
 
-        checkBox_XinXiGuanLiJianDu = new QCheckBox(groupBox_3);
+        checkBox_XinXiGuanLiJianDu = new QCheckBox(layoutWidget);
         checkBox_XinXiGuanLiJianDu->setObjectName(QString::fromUtf8("checkBox_XinXiGuanLiJianDu"));
         checkBox_XinXiGuanLiJianDu->setMinimumSize(QSize(200, 30));
         checkBox_XinXiGuanLiJianDu->setMaximumSize(QSize(200, 30));
@@ -96,11 +100,10 @@ public:
         gridLayout_2->addWidget(checkBox_XinXiGuanLiJianDu, 1, 1, 1, 1);
 
 
-        gridLayout_3->addLayout(gridLayout_2, 0, 0, 1, 1);
+        gridLayout_3->addWidget(groupBox_3, 0, 0, 1, 3);
 
-
-        gridLayout->addWidget(groupBox_3, 0, 0, 1, 4);
-
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         label_27 = new QLabel(UserManager);
         label_27->setObjectName(QString::fromUtf8("label_27"));
         label_27->setMinimumSize(QSize(80, 30));
@@ -110,7 +113,7 @@ public:
 "color: rgb(41, 136, 41);"));
         label_27->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(label_27, 1, 0, 1, 1);
+        gridLayout->addWidget(label_27, 0, 0, 1, 1);
 
         lineEdit_XingMing = new QLineEdit(UserManager);
         lineEdit_XingMing->setObjectName(QString::fromUtf8("lineEdit_XingMing"));
@@ -120,7 +123,7 @@ public:
 "font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
         lineEdit_XingMing->setReadOnly(false);
 
-        gridLayout->addWidget(lineEdit_XingMing, 1, 1, 1, 3);
+        gridLayout->addWidget(lineEdit_XingMing, 0, 1, 1, 1);
 
         label_29 = new QLabel(UserManager);
         label_29->setObjectName(QString::fromUtf8("label_29"));
@@ -130,7 +133,7 @@ public:
 "color: rgb(41, 136, 41);"));
         label_29->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(label_29, 2, 0, 1, 1);
+        gridLayout->addWidget(label_29, 1, 0, 1, 1);
 
         lineEdit_JunGuanZheng = new QLineEdit(UserManager);
         lineEdit_JunGuanZheng->setObjectName(QString::fromUtf8("lineEdit_JunGuanZheng"));
@@ -141,7 +144,7 @@ public:
         lineEdit_JunGuanZheng->setEchoMode(QLineEdit::Normal);
         lineEdit_JunGuanZheng->setReadOnly(false);
 
-        gridLayout->addWidget(lineEdit_JunGuanZheng, 2, 1, 1, 3);
+        gridLayout->addWidget(lineEdit_JunGuanZheng, 1, 1, 1, 1);
 
         label_JiuMiMa = new QLabel(UserManager);
         label_JiuMiMa->setObjectName(QString::fromUtf8("label_JiuMiMa"));
@@ -151,7 +154,7 @@ public:
 "color: rgb(41, 136, 41);"));
         label_JiuMiMa->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(label_JiuMiMa, 3, 0, 1, 1);
+        gridLayout->addWidget(label_JiuMiMa, 2, 0, 1, 1);
 
         lineEdit_JiuMiMa = new QLineEdit(UserManager);
         lineEdit_JiuMiMa->setObjectName(QString::fromUtf8("lineEdit_JiuMiMa"));
@@ -162,7 +165,7 @@ public:
         lineEdit_JiuMiMa->setEchoMode(QLineEdit::Password);
         lineEdit_JiuMiMa->setReadOnly(true);
 
-        gridLayout->addWidget(lineEdit_JiuMiMa, 3, 1, 1, 3);
+        gridLayout->addWidget(lineEdit_JiuMiMa, 2, 1, 1, 1);
 
         label_26 = new QLabel(UserManager);
         label_26->setObjectName(QString::fromUtf8("label_26"));
@@ -172,7 +175,7 @@ public:
 "color: rgb(41, 136, 41);"));
         label_26->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(label_26, 4, 0, 1, 1);
+        gridLayout->addWidget(label_26, 3, 0, 1, 1);
 
         lineEdit_MiMa = new QLineEdit(UserManager);
         lineEdit_MiMa->setObjectName(QString::fromUtf8("lineEdit_MiMa"));
@@ -182,7 +185,7 @@ public:
 "font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
         lineEdit_MiMa->setEchoMode(QLineEdit::Password);
 
-        gridLayout->addWidget(lineEdit_MiMa, 4, 1, 1, 3);
+        gridLayout->addWidget(lineEdit_MiMa, 3, 1, 1, 1);
 
         label_28 = new QLabel(UserManager);
         label_28->setObjectName(QString::fromUtf8("label_28"));
@@ -192,7 +195,7 @@ public:
 "color: rgb(41, 136, 41);"));
         label_28->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(label_28, 5, 0, 1, 1);
+        gridLayout->addWidget(label_28, 4, 0, 1, 1);
 
         lineEdit_QueRenMiMa = new QLineEdit(UserManager);
         lineEdit_QueRenMiMa->setObjectName(QString::fromUtf8("lineEdit_QueRenMiMa"));
@@ -202,7 +205,10 @@ public:
 "font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
         lineEdit_QueRenMiMa->setEchoMode(QLineEdit::Password);
 
-        gridLayout->addWidget(lineEdit_QueRenMiMa, 5, 1, 1, 3);
+        gridLayout->addWidget(lineEdit_QueRenMiMa, 4, 1, 1, 1);
+
+
+        gridLayout_3->addLayout(gridLayout, 1, 0, 1, 3);
 
         checkBox_XianShi = new QCheckBox(UserManager);
         checkBox_XianShi->setObjectName(QString::fromUtf8("checkBox_XianShi"));
@@ -210,7 +216,7 @@ public:
         checkBox_XianShi->setMaximumSize(QSize(100, 30));
         checkBox_XianShi->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
 
-        gridLayout->addWidget(checkBox_XianShi, 6, 0, 1, 2);
+        gridLayout_3->addWidget(checkBox_XianShi, 2, 0, 1, 1);
 
         checkBox_XiuGaiMiMa = new QCheckBox(UserManager);
         checkBox_XiuGaiMiMa->setObjectName(QString::fromUtf8("checkBox_XiuGaiMiMa"));
@@ -218,7 +224,7 @@ public:
         checkBox_XiuGaiMiMa->setMaximumSize(QSize(100, 30));
         checkBox_XiuGaiMiMa->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
 
-        gridLayout->addWidget(checkBox_XiuGaiMiMa, 6, 2, 1, 1);
+        gridLayout_3->addWidget(checkBox_XiuGaiMiMa, 2, 1, 1, 1);
 
         pushButton_QueDing = new QPushButton(UserManager);
         pushButton_QueDing->setObjectName(QString::fromUtf8("pushButton_QueDing"));
@@ -227,7 +233,7 @@ public:
         pushButton_QueDing->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(41, 136, 41);"));
 
-        gridLayout->addWidget(pushButton_QueDing, 6, 3, 1, 1);
+        gridLayout_3->addWidget(pushButton_QueDing, 2, 2, 1, 1);
 
         QWidget::setTabOrder(checkBox_BianMaJianShiCaoZuo, checkBox_BianMaJianShiJianDu);
         QWidget::setTabOrder(checkBox_BianMaJianShiJianDu, checkBox_XinXiGuanLiCaoZuo);

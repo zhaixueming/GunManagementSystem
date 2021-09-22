@@ -1080,6 +1080,7 @@ public:
 "border:2px groove yellow;\n"
 "border-radius:50px;\n"
 "padding:2px 4px;"));
+        lineEdit_Ocr->setAlignment(Qt::AlignCenter);
         lineEdit_Ocr->setReadOnly(true);
 
         gridLayout_7->addWidget(lineEdit_Ocr, 0, 1, 1, 4);
@@ -1249,7 +1250,7 @@ public:
         QObject::connect(pushButton_Deliver, SIGNAL(clicked()), SystemManager, SLOT(DoDelivery()));
         QObject::connect(pushButton_QueryDeliver, SIGNAL(clicked()), SystemManager, SLOT(Remainder()));
 
-        tabWidget->setCurrentIndex(4);
+        tabWidget->setCurrentIndex(1);
         tabWidget_Storage->setCurrentIndex(0);
         tabWidget_Information->setCurrentIndex(0);
 
