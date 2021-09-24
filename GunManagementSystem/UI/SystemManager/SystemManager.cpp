@@ -626,6 +626,14 @@ void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ
 					item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 					ui.tableWidget_Box->setItem(row, col, item);
 
+					QString WenJianHao = RowData.at(0).toString();
+					QString PingZhengHao = RowData.at(1).toString();
+					sql.clear();
+					sql = "update GunManager.dbo.BoxPackedTable set " + QString::fromLocal8Bit("×°ÏäÊıÁ¿ = countList") + " where " + QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÎÄ¼şºÅ = \'") + WenJianHao + "\' and ";
+					sql += QString::fromLocal8Bit("µ÷²¦Æ¾Ö¤ºÅ = \'") + PingZhengHao + "\' and " + QString::fromLocal8Bit("×°Ïäµ¥ºÅ = \'") + DanHao + "\'";
+					//QTableData TableData;
+					//rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
+
 				}
 
 				else
@@ -802,7 +810,7 @@ void CSystemMangaer::DeletePackedListInfo()
 }
 
 
-void CSystemMangaer::PrintBoxList()//×°ÏäĞÅÏ¢½çÃæµÄ×óÏÂ½ÇµÄ"´òÓ¡×°ÏäÇåµ¥"°´Å¥----¡·´Ë²Ûº¯Êı
+void CSystemMangaer::PrintBoxList()//×°ÏäĞÅÏ¢ÁĞ±í½çÃæµÄ×óÏÂ½ÇµÄ"´òÓ¡×°ÏäÇåµ¥"°´Å¥----¡·´Ë²Ûº¯Êı
 {
 	//todo
 	QVector<QStringList> content;
@@ -815,12 +823,12 @@ void CSystemMangaer::PrintBoxList()//×°ÏäĞÅÏ¢½çÃæµÄ×óÏÂ½ÇµÄ"´òÓ¡×°ÏäÇåµ¥"°´Å¥---
 	{
 		QStringList oneRow;
 		oneRow.push_back(QString::number(i + 1));
-		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 1)->text());
-		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
-		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
+		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 1)->text());
 		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
 		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
-		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 4)->text());
+		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
+		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
+		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 4)->text());
 		oneRow.push_back(QString::fromLocal8Bit("Ö§"));
 		oneRow.push_back("1");
 		content.push_back(oneRow);
@@ -1286,7 +1294,7 @@ void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ
 	}
 
 	sql.clear();
-	sql = QString::fromLocal8Bit("select ÍËÒÛ±¨·ÏÎÄ¼şºÅ,µ÷²¦Æ¾Ö¤ºÅ,\'-\' as Ïä×°µ¥ºÅ,×°±¸´úÂë,×°±¸Ãû³Æ,µ¥×°±àºÅ,Ç¹¹ÜºÅ,Ç¹»÷»òÌ×Í²ºÅ,»úÇ¹¿òºÅ,±¸·İÇ¹¹ÜºÅ,³ö³§Ê±¼ä,×°±¸Ê±¼ä,\'-\' as Ïä×°ÊıÁ¿,Èë¿âÊ±¼ä from GunManager.dbo.SinglePackedTable");
+	sql = QString::fromLocal8Bit("select ÍËÒÛ±¨·ÏÎÄ¼şºÅ,µ÷²¦Æ¾Ö¤ºÅ,\'-\' as ×°Ïäµ¥ºÅ,×°±¸´úÂë,×°±¸Ãû³Æ,µ¥×°±àºÅ,Ç¹¹ÜºÅ,Ç¹»÷»òÌ×Í²ºÅ,»úÇ¹¿òºÅ,±¸·İÇ¹¹ÜºÅ,³ö³§Ê±¼ä,×°±¸Ê±¼ä,\'-\' as ×°ÏäÊıÁ¿,Èë¿âÊ±¼ä from GunManager.dbo.SinglePackedTable");
 	sql += " where " + QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÎÄ¼şºÅ like \'%") + ui.lineEdit_DeliveryBFWenJianHao->text() + "%\'";
 	sql += " and " + QString::fromLocal8Bit("µ÷²¦Æ¾Ö¤ºÅ like \'%") + ui.lineEdit_DeliveryDBPingZhengHao->text() + "%\'";
 	sql += " and " + QString::fromLocal8Bit("×°±¸´úÂë like \'%") + ui.lineEdit_DeliveryZBDaima->text() + "%\'";
@@ -1329,10 +1337,34 @@ void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ
 			QTableWidgetItem *item = new QTableWidgetItem(data);
 			item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 			ui.tableWidget_Delivery->setItem(row, col, item);
+
+			if (col == (RowData.size() - 2))
+			{
+				//×°ÏäÊıÁ¿
+				QString DanHao = RowData.at(2).toString();
+				QString sql = "select * from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("×°Ïäµ¥ºÅ = \'") + DanHao + "\'";
+				QTableData ListTableData;
+				QString errMsgList;
+				bool rv = CDatabaseOperator::GetInstance()->execSql(sql, ListTableData, errMsgList);
+				int countList = ListTableData.size();
+				QString countListStr = QString::number(countList);
+				item = new QTableWidgetItem(countListStr);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+				ui.tableWidget_Delivery->setItem(row, col, item);
+
+				/*QString WenJianHao = RowData.at(0).toString();
+				QString PingZhengHao = RowData.at(1).toString();
+				sql.clear();
+				sql = "update GunManager.dbo.BoxPackedTable set " + QString::fromLocal8Bit("×°ÏäÊıÁ¿ = countList") + " where " + QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÎÄ¼şºÅ = \'") + WenJianHao + "\' and ";
+				sql += QString::fromLocal8Bit("µ÷²¦Æ¾Ö¤ºÅ = \'") + PingZhengHao + "\' and " + QString::fromLocal8Bit("×°Ïäµ¥ºÅ = \'") + DanHao + "\'";*/
+			
+			}
+
 		}
+
 		//Èë¿âÊ±¼ä
 		QString data = RowData.at(col).toString();
-		data = data.replace("T", " ");
+		data = data.replace("T", " ");//Ç°Ì¨È¥³ıºóÌ¨´«¹ıÀ´µÄÊ±¼äÖĞº¬ÓĞT,Èç018-05-02T12:00:00
 		QTableWidgetItem *item = new QTableWidgetItem(data);
 		item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 		ui.tableWidget_Delivery->setItem(row, col++, item);
@@ -1348,7 +1380,8 @@ void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ
 		hLayout->setMargin(0);                          // ±ØĞëÌí¼Ó, ·ñÔòCheckBox²»ÄÜÕı³£ÏÔÊ¾
 		hLayout->setAlignment(checkBox, Qt::AlignCenter);
 		widget->setLayout(hLayout);
-		ui.tableWidget_Delivery->setCellWidget(row, col, widget);//row£¬col µ¥Ôª¸ñÄÚ
+		ui.tableWidget_Delivery->setCellWidget(row, col, widget);
+		//ui.tableWidget_Delivery->setCellWidget(row, col++, widget);
 	}
 	ui.tableWidget_Delivery->setSortingEnabled(true);
 	ui.tableWidget_Delivery->sortByColumn(0, Qt::AscendingOrder);
@@ -1474,16 +1507,20 @@ void CSystemMangaer::ExportGridA9()
 
 	// ´ò¿ª.csvÎÄ¼ş
 	QFile file(fileName);
+
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
 	{
 		qDebug() << "Open file failed!";
 		return;
 	}
-
 	//int row = ui.tableWidget_Delivery->rowCount();//±í¸ñ×ÜĞĞÊı
 	//int col = ui.tableWidget_Delivery->columnCount();
-
 	QTextStream out(&file);
+#ifdef Q_OS_WIN
+	out.setCodec("GBK");
+#else
+	out.setCodec("UTF-8");
+#endif
 	//QString str;
    //±íÍ· 
 	out << QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÇ¹ĞµÏú»Ù´¦ÀíÇé¿öÈ«¹ı³ÌµÇ¼Ç±í\n");
@@ -1534,6 +1571,7 @@ void CSystemMangaer::ExportGridA9()
 	}
 	QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("³ö¿â³É¹¦£¡"));
 	//QMessageBox::information(this, QString::fromLocal8Bit("µ¼³öÊı¾İ³É¹¦"), QString::fromLocal8Bit("ĞÅÏ¢ÒÑ±£´æÔÚ%1£¡").arg(fileName), QString::fromLocal8Bit("È·¶¨"));
+	out.flush();
 	file.close();
 
 }

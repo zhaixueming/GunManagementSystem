@@ -163,7 +163,7 @@ void CBoxPacked::ConfirmModification()
 	QString sql;
 	QString errMsg;
 	bool rv = false;
-	if (m_Type == 0)
+	if (m_Type == 0)//新建
 	{
 		rv = CheckBoxRepeat(errMsg);
 		if (!errMsg.isEmpty())
@@ -192,7 +192,7 @@ void CBoxPacked::ConfirmModification()
 		sql += DaiMa + "\',\'" + ZhuangBeiMing + "\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime+ "\',\'";
 		sql += ZhuangBeiTime + "\'," + Number + ",\'" + RuKuDateTime + "\')";
 	}
-	else if (m_Type == 1)
+	else if (m_Type == 1)//编辑
 	{
 		sql = "update GunManager.dbo.BoxPackedTable set " + QString::fromLocal8Bit("装备代码 = \'") + DaiMa + "\',";
 		sql += QString::fromLocal8Bit("装备名称 = \'") + ZhuangBeiMing + "\'," + QString::fromLocal8Bit("隶属单位 = \'") + LiShuDanWei + "\',";

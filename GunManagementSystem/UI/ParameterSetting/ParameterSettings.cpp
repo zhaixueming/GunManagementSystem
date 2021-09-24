@@ -42,7 +42,7 @@ CParameterSettings *CParameterSettings::GetInstance()//单例模式
 
 void CParameterSettings::InitVariables()
 {
-	m_bConnected = false;//初始化为f
+	m_bConnected = false;//初始化为false
 	//打开相机pBt
 	ui.pushButton_OpenCamera1->setEnabled(false);
 	ui.pushButton_OpenCamera2->setEnabled(false);
@@ -101,13 +101,13 @@ void CParameterSettings::ConnectDatabase()
 	QString Password = ui.lineEdit_Password->text();
 	QString errMsg;
 	bool rv = false;
-	if (m_bConnected)//init=false
+	if (m_bConnected)
 	{
 		rv = CDatabaseOperator::GetInstance()->DisconnectDatabase(errMsg);
 		if (rv)
 		{
 			m_bConnected = false;
-			ui.pushButton_Login->setText(QString::fromLocal8Bit("登录"));
+			ui.pushButton_Login->setText(QString::fromLocal8Bit("连接"));
 		}
 		else
 		{
@@ -117,6 +117,22 @@ void CParameterSettings::ConnectDatabase()
 	}
 	else
 	{
+		if (DatabaseName.isEmpty())
+		{
+			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库名不能为空"));
+			return;
+		}
+		if (UserName.isEmpty())
+		{
+			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("用户名不能为空"));
+			return;
+		}
+		if (Password.isEmpty())
+		{
+			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("密码不能为空"));
+			return;
+		}
+
 		rv = CDatabaseOperator::GetInstance()->ConnectDatabase(DatabaseName, UserName, Password, errMsg);//调用连接数据库函数
 		if (!rv)
 		{

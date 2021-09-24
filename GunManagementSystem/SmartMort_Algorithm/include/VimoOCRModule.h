@@ -15,9 +15,6 @@
 #include "Common.h"
 #include "IOCRModule.h"
 
-using namespace cv;
-using namespace std;
-
 namespace smartmore
 {
     class DLL_API VimoOCRModule : public IOCRModule
@@ -42,6 +39,12 @@ namespace smartmore
             const std::string &input_model_path,
             const bool use_gpu,
             const int device_id) override;
+
+        ResultCode Init(
+            const std::string &input_model_path,
+            const bool use_gpu,
+            const int device_id,
+            const std::string &config_path) override;
 
         /**
             sdk处理

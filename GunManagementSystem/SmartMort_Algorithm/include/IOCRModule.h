@@ -104,6 +104,11 @@ namespace smartmore
                                 const bool use_gpu,
                                 const int device_id) = 0;
 
+        virtual ResultCode Init(const std::string &input_model_path,
+                                const bool use_gpu,
+                                const int device_id,
+                                const std::string &config_path) = 0;
+
         //!
         //! \brief Do inference.
         //!
