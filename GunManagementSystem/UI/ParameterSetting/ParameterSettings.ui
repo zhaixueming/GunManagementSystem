@@ -477,7 +477,7 @@ color: rgb(0, 170, 0);</string>
 font: 14pt &quot;微软雅黑&quot;;</string>
       </property>
       <property name="text">
-       <string>11789</string>
+       <string/>
       </property>
       <property name="placeholderText">
        <string>用户名</string>
@@ -503,7 +503,7 @@ font: 14pt &quot;微软雅黑&quot;;</string>
 font: 14pt &quot;微软雅黑&quot;;</string>
       </property>
       <property name="text">
-       <string>199512</string>
+       <string/>
       </property>
       <property name="echoMode">
        <enum>QLineEdit::Password</enum>
@@ -532,7 +532,7 @@ font: 14pt &quot;微软雅黑&quot;;</string>
 font: 14pt &quot;微软雅黑&quot;;</string>
       </property>
       <property name="text">
-       <string>GunManager</string>
+       <string/>
       </property>
       <property name="placeholderText">
        <string>数据库</string>

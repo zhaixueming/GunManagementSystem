@@ -7,6 +7,7 @@
 #include <QtPrintSupport/QPrinter>
 #include <QtPrintSupport/QPrintPreviewDialog>
 #include <QFileDialog>
+#include <QLoggingCategory>
 #include <QTextEdit>
 #include "ParameterSettings.h"
 #include "qdatetime.h"
@@ -1347,10 +1348,20 @@ void CSystemMangaer::QueryDeliveryInformations()//信息管理界面->“出库”界面中右
 				QString errMsgList;
 				bool rv = CDatabaseOperator::GetInstance()->execSql(sql, ListTableData, errMsgList);
 				int countList = ListTableData.size();
-				QString countListStr = QString::number(countList);
-				item = new QTableWidgetItem(countListStr);
-				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-				ui.tableWidget_Delivery->setItem(row, col, item);
+				if (countList==0)
+				{
+					item = new QTableWidgetItem(QString::fromLocal8Bit("-"));
+					item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+					ui.tableWidget_Delivery->setItem(row, col, item);
+				}
+				else
+				{
+					QString countListStr = QString::number(countList);
+					item = new QTableWidgetItem(countListStr);
+					item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+					ui.tableWidget_Delivery->setItem(row, col, item);
+				}
+				
 
 				/*QString WenJianHao = RowData.at(0).toString();
 				QString PingZhengHao = RowData.at(1).toString();
@@ -1962,7 +1973,7 @@ void CSystemMangaer::SaveRecognizeResult()
 
 	QPushButton *okbtn = new QPushButton(QString::fromLocal8Bit("确定"));
 	QPushButton *cancelbtn = new QPushButton(QString::fromLocal8Bit("取消"));
-	QMessageBox *mymsgbox = new QMessageBox;//创建一个消息框
+	QMessageBox *mymsgbox = new QMessageBox;
 	
 	QDateTime curDateTime = QDateTime::currentDateTime();
 	QString JianShiDateTime = curDateTime.toString("yyyy-M-d");//获取当前日期，并转换为字符串
@@ -2115,6 +2126,7 @@ void CSystemMangaer::DoSpeaker()//拍照检视界面的小铃铛为信号--》此槽函数
 	//m_speech->say(QString::fromLocal8Bit("你好"));//开始合成文本
 	if (m_speech->state() == QTextToSpeech::Ready)
 	{
+		//m_speech->say(ui.lineEdit_Ocr->text());
 		m_speech->say(m_CurDZBianHao);//开始合成文本
 		//m_speech->say("你好");//开始合成文本
 	}

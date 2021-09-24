@@ -293,11 +293,11 @@ public:
         checkBox_Debug->setText(QCoreApplication::translate("ParameterSetting", "\350\260\203\350\257\225\346\250\241\345\274\217", nullptr));
         groupBox_2->setTitle(QString());
         pushButton_Login->setText(QCoreApplication::translate("ParameterSetting", "\347\231\273\345\275\225", nullptr));
-        lineEdit_UserName->setText(QCoreApplication::translate("ParameterSetting", "11789", nullptr));
+        lineEdit_UserName->setText(QString());
         lineEdit_UserName->setPlaceholderText(QCoreApplication::translate("ParameterSetting", "\347\224\250\346\210\267\345\220\215", nullptr));
-        lineEdit_Password->setText(QCoreApplication::translate("ParameterSetting", "199512", nullptr));
+        lineEdit_Password->setText(QString());
         lineEdit_Password->setPlaceholderText(QCoreApplication::translate("ParameterSetting", "\345\257\206\347\240\201", nullptr));
-        lineEdit_DatabaseName->setText(QCoreApplication::translate("ParameterSetting", "GunManager", nullptr));
+        lineEdit_DatabaseName->setText(QString());
         lineEdit_DatabaseName->setPlaceholderText(QCoreApplication::translate("ParameterSetting", "\346\225\260\346\215\256\345\272\223", nullptr));
         pushButton_SaveConfig->setText(QCoreApplication::translate("ParameterSetting", "\344\277\235\345\255\230\351\205\215\347\275\256", nullptr));
         label_Info->setText(QString());

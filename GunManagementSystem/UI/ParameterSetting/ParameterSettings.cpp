@@ -106,43 +106,36 @@ void CParameterSettings::ConnectDatabase()
 		rv = CDatabaseOperator::GetInstance()->DisconnectDatabase(errMsg);
 		if (rv)
 		{
+			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库断开成功"));
 			m_bConnected = false;
 			ui.pushButton_Login->setText(QString::fromLocal8Bit("连接"));
+			ui.lineEdit_DatabaseName->setEnabled(true);
+			ui.lineEdit_UserName->setEnabled(true);
+			ui.lineEdit_Password->setEnabled(true);
 		}
 		else
 		{
-			QMessageBox::information(this, QString::fromLatin1("断开数据库错误"), errMsg);
+			QMessageBox::information(this, QString::fromLatin1("数据库断开失败"), errMsg);
 			qDebug() << "Disconnect database:"<<errMsg;
 		}
 	}
 	else
 	{
-		if (DatabaseName.isEmpty())
-		{
-			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库名不能为空"));
-			return;
-		}
-		if (UserName.isEmpty())
-		{
-			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("用户名不能为空"));
-			return;
-		}
-		if (Password.isEmpty())
-		{
-			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("密码不能为空"));
-			return;
-		}
-
+		
 		rv = CDatabaseOperator::GetInstance()->ConnectDatabase(DatabaseName, UserName, Password, errMsg);//调用连接数据库函数
 		if (!rv)
 		{
+			QMessageBox::information(this, QString::fromLatin1("数据库连接失败"), errMsg);
 			qDebug() << "Disconnect database:" << errMsg;
-			QMessageBox::information(this, QString::fromLatin1("链接数据库错误"), errMsg);
 		}
 		else
 		{
+			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库连接成功"));
 			m_bConnected = true;
 			ui.pushButton_Login->setText(QString::fromLocal8Bit("断开"));
+			ui.lineEdit_DatabaseName->setEnabled(false);
+			ui.lineEdit_UserName->setEnabled(false);
+			ui.lineEdit_Password->setEnabled(false);
 		}
 	}
 }
@@ -395,8 +388,7 @@ bool CParameterSettings::SoftTriggerOnce(int index, QString &errMsg)
 }
 
 
-
-
+//图片路径信息
 QString CParameterSettings::GetSavePath()
 {
 	QString SavePath = ui.lineEdit_SaveImagePath->text();
@@ -406,12 +398,12 @@ QString CParameterSettings::GetSavePath()
 	}
 	else
 	{
-		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置路径信息"));
+		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置存放图片路径信息"));
 		//return;
 	}
 }
 
-//浏览存放路径
+//框中显示存放路径
 void CParameterSettings::BrowseSavePath()
 {
 	QString filePath = QFileDialog::getExistingDirectory(this, "Open Image Save Path", QCoreApplication::applicationDirPath());
@@ -426,6 +418,7 @@ void CParameterSettings::BrowseSavePath()
 
 }
 
+//信息写入到ini文件中
 void CParameterSettings::SaveConfig()
 {
 	QString IniPath = QCoreApplication::applicationDirPath() + "/parameter_cfg.ini";//创建一个ini文件
@@ -495,6 +488,8 @@ void CParameterSettings::SaveConfig()
 //		}
 //	}
 //}
+
+//从本地的ini文件上载信息
 void CParameterSettings::LoadConfig()
 {
 	QString IniPath = QCoreApplication::applicationDirPath() + "/parameter_cfg.ini";
@@ -532,7 +527,7 @@ void CParameterSettings::LoadConfig()
 			if (index != -1)
 			{
 				ui.comboBox_Camera2->setCurrentIndex(index);
-				Camera2Controller();//打开相机1
+				Camera2Controller();//打开相机2
 			}
 
 		}
@@ -555,6 +550,7 @@ void CParameterSettings::LoadConfig()
 			QString password = cfg->GetString(DATABASE, PASSWORD);
 			qDebug() << "load config database password:" << password;
 			printf("load config database password:%s\n", password);
+			ui.lineEdit_Password->setText(password);
 			ConnectDatabase();
 
 		}

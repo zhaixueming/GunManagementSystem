@@ -2,7 +2,8 @@
 
 #include <QObject>
 #include "VimoOCRModule.h"
-
+#include "opencv-4.2.0/include/opencv2/opencv.hpp"
+using namespace cv;
 using namespace smartmore;
 
 class CAlgoCodeReview:public QObject
