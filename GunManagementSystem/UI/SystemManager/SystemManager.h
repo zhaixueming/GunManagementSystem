@@ -56,8 +56,15 @@ private:
 
 	Mat CodeImage;
 	Mat GunImage;
+	Mat DetectImage;
+
 	//void Remainder();
 	void ExportGridA9();
+
+	//bool saveImage1 = false;
+	bool saveImage2=false;
+	
+
 private slots:
 	//主界面三个入口链接相应窗口
 	void ReceiveStackWidgetIndex(int index);

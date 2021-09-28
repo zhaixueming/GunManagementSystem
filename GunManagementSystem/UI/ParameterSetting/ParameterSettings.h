@@ -10,8 +10,18 @@ class CParameterSettings :public QDialog
 public:
 	static CParameterSettings *GetInstance();
     QString GetSavePath();/////////
+
+	//设置硬触发
+	//bool SetExternalTrigger(int index);//修改0927
+
 	bool SoftTriggerOnce(int index,QString &errMsg);
 	void closeAllCamera();
+
+	bool saveCodeImage = false;//修改0927
+	bool saveGunImage = false;//修改0927
+
+
+
 private:
 	CParameterSettings(QDialog *parent = NULL);//私有构造函数，不允许使用者自己生成对象。单例模式
 	~CParameterSettings();
@@ -24,8 +34,13 @@ private:
 	MV_CC_DEVICE_INFO_LIST m_stDevList;//设备信息列表
 	CImageCapture *m_CameraCapture1;
 	CImageCapture *m_CameraCapture2;
+
+
 	bool m_bOpenCamera1;
 	bool m_bOpenCamera2;
+
+
+
 	QString m_Camera1Name;//相机1名字
 	QString m_Camera2Name;
 	int m_Camera1Type;

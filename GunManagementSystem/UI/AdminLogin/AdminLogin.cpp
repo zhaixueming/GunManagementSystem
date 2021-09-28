@@ -36,7 +36,8 @@ void CAdminLogin::slotLogin()//ÕËºÅ²Ù²Ûº¯Êý
 {
 	QString AdminName = ui.lineEdit_Admin->text();
 	QString AdminPwd = ui.lineEdit_AdminPwd->text();
-	if ("Admin" == AdminName && "123456" == AdminPwd || "Admin1" == AdminName && "1234567" == AdminPwd)
+	//if ("Admin" == AdminName && "123456" == AdminPwd || "admin" == AdminName && "bbwq94153" == AdminPwd)
+	if ("admin" == AdminName && "bbwq94153" == AdminPwd)
 	{
 		done(1);
 	}

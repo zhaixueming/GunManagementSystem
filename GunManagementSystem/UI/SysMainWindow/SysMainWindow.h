@@ -29,7 +29,7 @@ protected:
 	void keyPressEvent(QKeyEvent *ev);//¿ÚÁîµ¯´°
 signals:
 	void SendStackWidgetIndex(int index);//µ¯´°
-	void SendSoftTrigger(int index);//µ¯´°
-	void SendCameraImage(int index, Mat image);//Ïà»ú
+	void SendSoftTrigger(int index);//Èí´¥·¢£¬index=1,2
+	void SendCameraImage(int index, Mat image);//·¢ËÍÍ¼Ïñ
 	
 };

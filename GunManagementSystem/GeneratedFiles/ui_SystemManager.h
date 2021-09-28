@@ -1250,7 +1250,7 @@ public:
         QObject::connect(pushButton_Deliver, SIGNAL(clicked()), SystemManager, SLOT(DoDelivery()));
         QObject::connect(pushButton_QueryDeliver, SIGNAL(clicked()), SystemManager, SLOT(Remainder()));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(4);
         tabWidget_Storage->setCurrentIndex(0);
         tabWidget_Information->setCurrentIndex(0);
 

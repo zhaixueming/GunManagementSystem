@@ -55,7 +55,7 @@ void CParameterSettings::InitVariables()
 	ui.radioButton_FreeRun1->setEnabled(false);
 	ui.radioButton_SoftTrigger1->setEnabled(false);
 	ui.radioButton_ExternalTrigger1->setEnabled(false);
-	ui.radioButton_ExternalTrigger1->setChecked(true);//默认为硬触发
+	ui.radioButton_ExternalTrigger1->setChecked(true);//编码拍照，默认选中为硬触发
 
 	m_BtnGroup2 = new QButtonGroup();
 	m_BtnGroup2->addButton(ui.radioButton_FreeRun2, 1);
@@ -65,7 +65,7 @@ void CParameterSettings::InitVariables()
 	ui.radioButton_FreeRun2->setEnabled(false);
 	ui.radioButton_SoftTrigger2->setEnabled(false);
 	ui.radioButton_ExternalTrigger2->setEnabled(false);
-	ui.radioButton_ExternalTrigger2->setChecked(true);//默认为硬触发
+	ui.radioButton_SoftTrigger2->setChecked(true);//整枪拍照，默认选中为软触发
 
 
 
@@ -75,8 +75,8 @@ void CParameterSettings::InitVariables()
 	m_CameraCapture2->start();
 	m_bOpenCamera1 = false;//初始化为False
 	m_bOpenCamera2 = false;
-	m_Camera1Type = 2;//初始化为2
-	m_Camera2Type = 2;//初始化为2
+	m_Camera1Type = 3;//编码拍照初始化为3，硬触发
+	m_Camera2Type = 2;//整枪拍照初始化为2，软触发
 	InitCameraInfo();
 }
 
@@ -94,7 +94,7 @@ void CParameterSettings::InitConnections()
 }
 
 //参数设置界面的数据集的登录界面
-void CParameterSettings::ConnectDatabase()
+void CParameterSettings::ConnectDatabase() 
 {
 	QString DatabaseName = ui.lineEdit_DatabaseName->text();
 	QString UserName = ui.lineEdit_UserName->text();
@@ -320,7 +320,7 @@ bool CParameterSettings::SetSoftTrigger(int index)
 //硬触发
 bool CParameterSettings::SetExternalTrigger(int index)
 {
-	if (index == 1 && m_bOpenCamera1)
+	if (index == 1 && m_bOpenCamera1)//编码拍照
 	{
 		int nRet = m_MvCamera1.SetEnumValue("TriggerMode", MV_TRIGGER_MODE_ON);
 		if (nRet != MV_OK)
@@ -331,9 +331,15 @@ bool CParameterSettings::SetExternalTrigger(int index)
 		nRet = m_MvCamera1.SetEnumValue("TriggerSource", MV_TRIGGER_SOURCE_LINE0);
 		if (nRet != MV_OK)
 		{
+			
 			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("设置触发源失败:") + QString::number(nRet));
 			return false;
 		}
+		else
+		{
+			saveCodeImage = true;//修改0927
+		}
+		
 	}
 	else if (index == 2 && m_bOpenCamera2)
 	{
@@ -349,6 +355,11 @@ bool CParameterSettings::SetExternalTrigger(int index)
 			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("设置触发源失败:") + QString::number(nRet));
 			return false;
 		}
+		else
+		{
+			saveGunImage = true;//修改0927
+		}
+		
 	}
 	return true;
 }
@@ -356,19 +367,26 @@ bool CParameterSettings::SetExternalTrigger(int index)
 
 bool CParameterSettings::SoftTriggerOnce(int index, QString &errMsg)
 {
-	if (index == 1 && m_bOpenCamera1)
+	if (index == 1 && m_bOpenCamera1)//m_bOpenCamera1相机1连接成功
 	{
-		if (m_Camera1Type != 2)//2是触发
+		if (m_Camera1Type != 2)//2是软触发模式
 		{
 			errMsg = QString::fromLocal8Bit("编码拍照相机不是软触发模式");
 			return false;
 		}
 		int nRet = m_MvCamera1.CommandExecute("TriggerSoftware"); //相机SDK执行一次Command型命令
+
 		if (nRet != MV_OK)
 		{
 			errMsg = QString::fromLocal8Bit("软触发失败:") + QString::number(nRet);
 			return false;
+			
 		}
+		else
+		{
+			saveCodeImage = true;//修改0927
+		}
+		
 	}
 	else if (index == 2 && m_bOpenCamera2)//相机2
 	{
@@ -383,6 +401,11 @@ bool CParameterSettings::SoftTriggerOnce(int index, QString &errMsg)
 			errMsg = QString::fromLocal8Bit("软触发失败:") + QString::number(nRet);
 			return false;
 		}
+		else
+		{
+			saveGunImage = true;//修改0927
+		}
+		
 	}
 	return true;
 }
