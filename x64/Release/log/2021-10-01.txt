@@ -1,0 +1,48 @@
+(2021-10-01 10:15:33 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\parametersetting\parametersettings.cpp) Line:(527) load config camera1 name: "MV-CA050-10GM_00F12078738"
+(2021-10-01 10:15:33 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\parametersetting\parametersettings.cpp) Line:(532) camera1 comboBox index:  -1
+(2021-10-01 10:15:33 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\parametersetting\parametersettings.cpp) Line:(543) load config camera2 name: "MV-CE200-10GC_00F73395844"
+(2021-10-01 10:15:33 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\parametersetting\parametersettings.cpp) Line:(548) camera2 comboBox index:  -1
+(2021-10-01 10:15:33 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\parametersetting\parametersettings.cpp) Line:(560) load config database connected: true
+(2021-10-01 10:15:33 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\parametersetting\parametersettings.cpp) Line:(564) load config database name: "GunManager"
+(2021-10-01 10:15:33 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\parametersetting\parametersettings.cpp) Line:(569) load config database username: "sa"
+(2021-10-01 10:15:33 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\parametersetting\parametersettings.cpp) Line:(574) load config database password: "zhai6688/"
+(2021-10-01 10:15:33 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\systemmanager\databaseoperator.cpp) Line:(31) ODBC driver true
+(2021-10-01 10:15:37 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\systemmanager\databaseoperator.cpp) Line:(47) connect database: "GunManager" , "sa"
+(2021-10-01 10:15:37 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\systemmanager\databaseoperator.cpp) Line:(48) ODBC driver? true
+(2021-10-01 10:15:41 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\systemmanager\databaseoperator.cpp) Line:(64) database open success!
+(2021-10-01 10:15:43 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\parametersetting\parametersettings.cpp) Line:(583) load config save path:  true
+(2021-10-01 10:15:43 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\parametersetting\parametersettings.cpp) Line:(588) load config save path: "D:/documents/smartmoreitem/GunManagementSystem1/GunManagementSystem/x64/Release/saveImage"
+(2021-10-01 10:15:51 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\systemmanager\databaseoperator.cpp) Line:(98) exec sql: "select * from GunManager.dbo.UserTable where 军官证号 = '999' and 密码 = '123456'"
+(2021-10-01 10:15:51 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\systemmanager\databaseoperator.cpp) Line:(98) exec sql: "select * from GunManager.dbo.UserTable where 军官证号 = '999' and 密码 = '123456'"
+(2021-10-01 10:15:53 周五)          Debug: File:(d:\documents\smartmoreitem\gunmanagementsystem1\gunmanagementsystem\gunmanagementsystem\ui\systemmanager\databaseoperator.cpp) Line:(98) exec sql: "select * from GunManager.dbo.SinglePackedTable where 退役报废文件号 like '%%' and 调拨凭证号 like '%%' and 装备代码 like '%%'"
+(2021-10-01 10:15:57 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:03 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:03 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:04 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:04 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:04 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:05 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:05 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:05 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:06 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:06 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:06 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:06 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:07 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:07 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:07 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:08 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:08 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:08 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:08 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:09 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:09 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:09 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:10 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:10 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:10 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:10 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:11 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:11 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:11 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.
+(2021-10-01 10:16:11 周五)          Critical: File:() Line:(0) No text-to-speech plug-ins were found.

@@ -196,7 +196,7 @@ void CSystemMangaer::InitVariables()
 	header <<QString::fromLocal8Bit("装箱单号") << QString::fromLocal8Bit("装备代码") << QString::fromLocal8Bit("装备(部件)名称");
 	header << QString::fromLocal8Bit("单装编号")<< QString::fromLocal8Bit("重要部件缺失情况")<<QString::fromLocal8Bit("枪管号");
 	header <<QString::fromLocal8Bit("枪机或套筒号")<<QString::fromLocal8Bit("机枪框号")<<QString::fromLocal8Bit("备份枪管号");
-	header << QString::fromLocal8Bit("出库状态") << QString::fromLocal8Bit("编辑") << QString::fromLocal8Bit("删除");
+	header << QString::fromLocal8Bit("出库状态") << QString::fromLocal8Bit("检视") << QString::fromLocal8Bit("删除");
 	ui.tableWidget_PackedInfo->setHorizontalHeaderLabels(header);
 	
 	//单装入库操作表
@@ -233,7 +233,7 @@ void CSystemMangaer::InitVariables()
 	header << QString::fromLocal8Bit("  装备代码  ") << QString::fromLocal8Bit("装备(部件)\n名称") << QString::fromLocal8Bit("  单装编号  ") << QString::fromLocal8Bit("  重要部件缺失情况  ");
 	header << QString::fromLocal8Bit("枪管号") << QString::fromLocal8Bit("枪机或套筒号") << QString::fromLocal8Bit("机枪框号") << QString::fromLocal8Bit("备份枪管号");
 	header << QString::fromLocal8Bit("  隶属单位  ") << QString::fromLocal8Bit("  管理单位  ") << QString::fromLocal8Bit("  出厂时间  ");
-	header << QString::fromLocal8Bit("  装备时间  ") << QString::fromLocal8Bit("出库状态") << QString::fromLocal8Bit("入库时间") << QString::fromLocal8Bit("编辑") << QString::fromLocal8Bit("删除");
+	header << QString::fromLocal8Bit("  装备时间  ") << QString::fromLocal8Bit("出库状态") << QString::fromLocal8Bit("入库时间") << QString::fromLocal8Bit("检视") << QString::fromLocal8Bit("删除");
 	ui.tableWidget_Single->setHorizontalHeaderLabels(header);
 
 	//拍照检视界面右下角的列表框，此软件好像没用到
@@ -698,7 +698,7 @@ void CSystemMangaer::slotClickToolButton()
 					item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 					ui.tableWidget_PackedInfo->setItem(row, col - 1, item);
 				}
-				QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("编辑"));
+				QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("检视"));
 				EditButton->setStyleSheet("color:rgb(41,136,41)");
 				EditButton->setMinimumHeight(20);
 				QPushButton *DeleteButton = new QPushButton(QString::fromLocal8Bit("删除"));
@@ -971,7 +971,7 @@ void CSystemMangaer::QuerySinglePacked()//“编码检视”界面下，单装入库界面下右边
 				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 				ui.tableWidget_Single->setItem(row, col, item);
 			}
-			QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("编辑"));
+			QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("检视"));
 			EditButton->setStyleSheet("color:rgb(41,136,41)");
 			EditButton->setMinimumHeight(20);
 			QPushButton *DeleteButton = new QPushButton(QString::fromLocal8Bit("删除"));
@@ -1612,7 +1612,7 @@ void CSystemMangaer::ExportGridA9()
 //	for (int i = 0; i < col - 1; i++)//表头，抛弃最后一列
 //	{
 //		QString header = ui.tableWidget_Delivery->horizontalHeaderItem(i)->text().toStdString().c_str();
-//		if (header.indexOf("\n") != -1);
+//		if (header.indexOf("\n") != -1)
 //		{
 //			header = header.replace("\n", "");
 //		}
@@ -1785,7 +1785,7 @@ void CSystemMangaer::ExportExcel()//信息管理界面-》“查询”界面的左上“导出Excel
 	for (int i = 0; i < col-1; i++)//最后一列的选择项舍去
 	{
 		QString header = ui.tableWidget_Search->horizontalHeaderItem(i)->text().toStdString().c_str();
-		if (header.indexOf("\n") != -1);
+		if (header.indexOf("\n") != -1)
 		{
 			header = header.replace("\n", "");
 		}
@@ -1896,7 +1896,7 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 			}
 		}
 		//CodeImage = image.clone();
-		DetectImage = image.clone();
+		//DetectImage = image.clone();
 		QImage img = matToQImage(image);//调用matToQImage函数，获取图像数据，行。列，格式等
 		ui.label_Image1->SetImage(img);
 	}
@@ -2025,17 +2025,17 @@ void CSystemMangaer::SaveRecognizeResult()
 	bool saveImage1 = CParameterSettings::GetInstance()->saveCodeImage;
 	if (saveImage1)
 	{
-		//QString CodeImagePath = path + "/code.jpg";
+		QString CodeImagePath = path + "/code.jpg";
 		//QString CodeImagePath = path + "/code.bmp";
-		QString CodeImagePath = path + "/"+ m_CurDZBianHao+"code.bmp";
+		//QString CodeImagePath = path + "/"+ m_CurDZBianHao+"code.bmp";
 		QByteArray ba = CodeImagePath.toLocal8Bit();
 		char *file = ba.data();
 		imwrite(file, CodeImage);
 
-		QString DetectImagePath = path + "/" + m_CurDZBianHao + "detect.jpg";
+		/*QString DetectImagePath = path + "/" + m_CurDZBianHao + "detect.jpg";
 		ba = DetectImagePath.toLocal8Bit();
 		file = ba.data();
-		imwrite(file, DetectImage);
+		imwrite(file, DetectImage);*/
 
 	}
 	else
@@ -2047,8 +2047,8 @@ void CSystemMangaer::SaveRecognizeResult()
 	//bool saveImage2 = CParameterSettings::GetInstance()->saveGunImage;
 	if (saveImage2)
 	{
-		//QString GunImagePath = path + "/gun.jpg";
-		QString GunImagePath = path + "/"+ m_CurDZBianHao+"gun.jpg";
+		QString GunImagePath = path + "/gun.jpg";
+		//QString GunImagePath = path + "/"+ m_CurDZBianHao+"gun.jpg";
 		QByteArray ba = GunImagePath.toLocal8Bit();
 		char *file = ba.data();
 		imwrite(file, GunImage);

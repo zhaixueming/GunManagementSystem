@@ -167,12 +167,12 @@ void CImageCapture::run()
 				//cv::Mat curImage = img.clone();
 				curImage = img.clone();
 				emit SendCaptureImage(curImage);
-				
+				SaveImageHadle=true;//0929¸Ä
 			}
 		}
 		else
 		{
-			Sleep(10);
+			Sleep(100);
 		}
 	}
 	if (m_pGrabBuf != NULL)
@@ -181,3 +181,9 @@ void CImageCapture::run()
 		m_pGrabBuf = NULL;
 	}
 }
+
+//0929¸Ä
+//bool CImageCapture::SaveImageHadle()
+//{
+//	return true;
+//}

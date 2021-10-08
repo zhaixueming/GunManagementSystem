@@ -16,6 +16,10 @@ public:
 	bool SetCameraHandle(CMvCamera &camera);
 	void SetCameraStatus(bool bOpen);
 	void StopThread();
+
+	bool SaveImageHadle;//0929¸Ä
+
+
 private:
 	CMvCamera m_MvCamera;
 	QMutex m_Mutex;
@@ -23,6 +27,9 @@ private:
 	bool m_bStop;
 	unsigned char*  m_pGrabBuf;
 	unsigned int nDataSize;
+
+	//bool saveFlag=false;;//0929¸Ä
+	
 private:
 	void run();
 	cv::Mat Convert2Mat(MV_FRAME_OUT_INFO_EX* pstImageInfo, unsigned char * pData);
