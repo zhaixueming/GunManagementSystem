@@ -5,7 +5,7 @@
 #include <QTextStream>
 #include <QDateTime>
 #include "SettingsLogin.h"
-#include <QTextToSpeech>
+#include "speech.h"
 
 
 //输出日志
@@ -59,6 +59,10 @@ SysMainWindow::SysMainWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+
+	/*wstring input = L"你好 my name is 你好!";
+	speech(input);*/
+
 	qInstallMessageHandler(outputMessage);//输出详细日志
 
 

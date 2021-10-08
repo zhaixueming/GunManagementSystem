@@ -7,10 +7,12 @@
 #include <QtPrintSupport/QPrinter>
 #include <QtPrintSupport/QPrintPreviewDialog>
 #include <QFileDialog>
-#include <QLoggingCategory>
+//#include <QLoggingCategory>
 #include <QTextEdit>
 #include "ParameterSettings.h"
 #include "qdatetime.h"
+#include "speech.h"
+
 
 CSystemMangaer::CSystemMangaer(QDialog *parent /* = NULL */)
 	:QDialog(parent)
@@ -1916,7 +1918,7 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 				ui.lineEdit_Ocr->setText(result);//拍照检视界面-的右上“图像识别”编辑框，显示结果
 				ui.lineEdit_XiuZheng->setText(result);//修正框也要显示出识别结果
 				m_CurDZBianHao = result;////识别的单装编号也是OCR识别的结果
-				DoSpeaker();//右边的小铃铛读取结果
+				//DoSpeaker();//右边的小铃铛读取结果
 			}
 		}
 		//CodeImage = image.clone();
@@ -2218,24 +2220,48 @@ void CSystemMangaer::DoCorrection()//拍照检视界面->右下角"修正"按钮--》此槽函数
 	}
 	m_CurDZBianHao = result;//最终识别的单装编码
 	ui.lineEdit_Ocr->setText(result);
-	DoSpeaker();
+	//DoSpeaker();
 }
+
+//void CSystemMangaer::DoSpeaker()//拍照检视界面的小铃铛为信号--》此槽函数
+//{
+//	QTextToSpeech *m_speech = new QTextToSpeech();
+//
+//	QVector<QLocale> Locales = m_speech->availableLocales();//获取支持的文本到语音引擎插件的列表
+//	m_speech->setLocale(QLocale::Chinese);//设置语言环境
+//	m_speech->setRate(0.3);//语速：-1----1
+//	m_speech->setPitch(1.0);//音高：-1---1
+//	m_speech->setVolume(1.0);//音量：0---1
+//	//m_speech->say("1234");//开始合成文本
+//	//m_speech->say(QString::fromLocal8Bit("你好"));//开始合成文本
+//	if (m_speech->state() == QTextToSpeech::Ready)
+//	{
+//		//m_speech->say(ui.lineEdit_Ocr->text());
+//		m_speech->say(m_CurDZBianHao);//开始合成文本
+//		//m_speech->say("你好");//开始合成文本
+//	}
+//}
 
 void CSystemMangaer::DoSpeaker()//拍照检视界面的小铃铛为信号--》此槽函数
 {
-	QTextToSpeech *m_speech = new QTextToSpeech();
 
-	QVector<QLocale> Locales = m_speech->availableLocales();//获取支持的文本到语音引擎插件的列表
-	m_speech->setLocale(QLocale::Chinese);//设置语言环境
-	m_speech->setRate(0.3);//语速：-1----1
-	m_speech->setPitch(1.0);//音高：-1---1
-	m_speech->setVolume(1.0);//音量：0---1
-	//m_speech->say("1234");//开始合成文本
-	//m_speech->say(QString::fromLocal8Bit("你好"));//开始合成文本
-	if (m_speech->state() == QTextToSpeech::Ready)
-	{
-		//m_speech->say(ui.lineEdit_Ocr->text());
-		m_speech->say(m_CurDZBianHao);//开始合成文本
-		//m_speech->say("你好");//开始合成文本
-	}
+	
+	wstring str_STL = m_CurDZBianHao.toStdWString();
+	speech(str_STL);
+
+	//QTextToSpeech *m_speech = new QTextToSpeech();
+
+	//QVector<QLocale> Locales = m_speech->availableLocales();//获取支持的文本到语音引擎插件的列表
+	//m_speech->setLocale(QLocale::Chinese);//设置语言环境
+	//m_speech->setRate(0.3);//语速：-1----1
+	//m_speech->setPitch(1.0);//音高：-1---1
+	//m_speech->setVolume(1.0);//音量：0---1
+	////m_speech->say("1234");//开始合成文本
+	////m_speech->say(QString::fromLocal8Bit("你好"));//开始合成文本
+	//if (m_speech->state() == QTextToSpeech::Ready)
+	//{
+	//	//m_speech->say(ui.lineEdit_Ocr->text());
+	//	m_speech->say(m_CurDZBianHao);//开始合成文本
+	//	//m_speech->say("你好");//开始合成文本
+	//}
 }

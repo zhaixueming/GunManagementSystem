@@ -81,6 +81,9 @@
     <ClCompile Include="UI\SystemManager\Config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="speech.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="SysMainWindow.qrc">
@@ -168,6 +171,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UI\SystemManager\Config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="speech.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

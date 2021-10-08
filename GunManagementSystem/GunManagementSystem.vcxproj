@@ -124,6 +124,7 @@
     <ClCompile Include="MyLabel.cpp" />
     <ClCompile Include="PrintAPI.cpp" />
     <ClCompile Include="SettingsLogin.cpp" />
+    <ClCompile Include="speech.cpp" />
     <ClCompile Include="UI\AdminLogin\AdminLogin.cpp" />
     <ClCompile Include="UI\AdminWithEphorLogin\AdminWithEphorLogin.cpp" />
     <ClCompile Include="UI\ParameterSetting\ParameterSettings.cpp" />
@@ -183,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="speech.h" />
     <ClInclude Include="UI\SystemManager\Config.h" />
     <QtMoc Include="PrintAPI.h" />
     <QtMoc Include="AlgoOCR_CodeReview.h" />
