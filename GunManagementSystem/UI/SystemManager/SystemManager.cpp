@@ -485,6 +485,30 @@ void CSystemMangaer::DeleteUser()
 	}
 }
 
+
+//检查是否重复
+bool CSystemMangaer::CheckRepeat(QString &errMsg)
+{
+	QString DanZhuangBianHao = m_CurDZBianHao;
+	QString sql;
+	//QString UserName = ui.lineEdit_XingMing->text();//获取输入的姓名
+	//QString Number = ui.lineEdit_JunGuanZheng->text();//获取输入的军官证号
+	if (m_curMsg.type == 1)//箱装
+	{
+		sql = "select * from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("单装编号 = \'") + DanZhuangBianHao + "\'";//箱装 编号查重
+	}
+	if (m_curMsg.type == 2)//单装
+	{
+		sql = "select * from GunManager.dbo.SinglePackedTable where " + QString::fromLocal8Bit("单装编号 = \'") + DanZhuangBianHao + "\'";//单装 编号查重
+	}
+
+	QTableData TableData;
+	bool rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
+	return TableData.size() != 0;//返回数据库是否为空
+}
+
+
+
 void CSystemMangaer::AddBoxPacked()//编码检视界面-》“箱装入库”界面的左上“新建”按钮--》此槽函数
 {
 	CBoxPacked::GetInstance()->SetOperatorType(0, QList<QVariant>());
@@ -1996,11 +2020,28 @@ void CSystemMangaer::SaveRecognizeResult()
 
 	mymsgbox->exec();//阻塞等待用户输入
 
+
+	//对编码的重复性和匹配性进行检验，若发现数据库中编码重复，立即给出警告提示
+	QString errMsg;
+	bool rv = CheckRepeat(errMsg); //调用 检查是否重复函数
+	if (!errMsg.isEmpty())//判别数据库是否初始化，即是否为空。。。。。我不太懂
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("数据库错误"), errMsg);
+		return;
+	}
+	if (rv)//在数据库中信息是否已经存在单装编号
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("编号记录已存在"));
+		return;
+	}
+
+
 	//存放图片
 	QString path = CParameterSettings::GetInstance()->GetSavePath();
 	path += "/" + QDateTime::currentDateTime().toString("yyyy-MM-dd") + "/" + m_CurDZBianHao;
 	QDir dir;
-	bool rv = dir.mkpath(path);
+	//bool rv = dir.mkpath(path);
+	rv = dir.mkpath(path);
 	if (!rv)
 	{
 		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("创建路径失败"));
@@ -2021,7 +2062,6 @@ void CSystemMangaer::SaveRecognizeResult()
 	/*bool saveImage1 = CParameterSettings::GetInstance()->saveCodeImage;
 	bool saveImage2 = CParameterSettings::GetInstance()->saveGunImage;*/
 	
-
 	bool saveImage1 = CParameterSettings::GetInstance()->saveCodeImage;
 	if (saveImage1)
 	{
@@ -2069,14 +2109,14 @@ void CSystemMangaer::SaveRecognizeResult()
 	//imwrite(file, GunImage);
 
 	
-	
-
-	//QString XuHao = QString::number(m_curMsg.index);
-
+	//检视状态更改
 	if (mymsgbox->clickedButton() == okbtn)//点击了OK按钮
 	{
 		QString JianShiZhuangTai = QString::fromLocal8Bit("已检视");
 		QString sql;
+
+		
+
 		if (m_curMsg.type == 1)//箱装
 		{
 			//更新数据库
@@ -2111,6 +2151,7 @@ void CSystemMangaer::SaveRecognizeResult()
 		}
 		QString errMsg;
 		bool rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
+		rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
 		if (!rv)
 		{
 			QMessageBox::information(this, QString::fromLocal8Bit("数据库执行错误"), errMsg);

@@ -101,10 +101,7 @@ void CUserManager::SetData(QList<QVariant> data)
 	ui.checkBox_XinXiGuanLiCaoZuo->setChecked(checked);//选中或不选中“信息管理操作”复选框
 	checked = data.at(6).toBool();
 	ui.checkBox_XinXiGuanLiJianDu->setChecked(checked);//选中或不选中“信息管理监督”复选框
-	/*checked = data.at(7).toBool();*/
-	//ui.checkBox_ChuKuCaoZuo->setChecked(checked);//选中或不选中“出库操作”复选框
-	//checked = data.at(8).toBool();
-	//ui.checkBox_ChuKuJianDu->setChecked(checked);//选中或不选中"出库监督"复选框
+	
 }
 
 
@@ -171,7 +168,7 @@ void CUserManager::ConfirmModification()
 	}
 	QString sql;
 	QString Password;
-	if (m_Type == 0)
+	if (m_Type == 0)//创建账号
 	{
 		Password = ui.lineEdit_MiMa->text();//获取密码
 		QString ConfirmPassword = ui.lineEdit_QueRenMiMa->text();//获取确认密码
@@ -210,7 +207,7 @@ void CUserManager::ConfirmModification()
 		check = ui.checkBox_XinXiGuanLiJianDu->isChecked();
 		sql += check ? "1)" : "0)";
 	}
-	else if (m_Type == 1)
+	else if (m_Type == 1)//编辑账号
 	{
 		Password = ui.lineEdit_JiuMiMa->text();//获取旧密码
 		if (ui.checkBox_XiuGaiMiMa->isChecked())//如果修改密码复选框被选中

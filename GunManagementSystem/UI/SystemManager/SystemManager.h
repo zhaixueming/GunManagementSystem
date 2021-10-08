@@ -41,6 +41,9 @@ public:
 private:
 	void InitVariables();
 	void InitConnections();
+
+	bool CheckRepeat(QString &errMsg);
+
 private:
 	Ui::SystemManager ui;
 	bool m_bInitAlogSuccess;
