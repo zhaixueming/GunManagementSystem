@@ -45,7 +45,7 @@ public:
     // ch:停止抓图 | en:Stop Grabbing
     int StopGrabbing();
 
-    // ch:主动获取一帧图像数据 | en:Get one frame initiatively
+    // ch:使用内部缓存获取一帧图片 | en:Get one frame initiatively
     int GetImageBuffer(MV_FRAME_OUT* pFrame, int nMsec);
 
     // ch:释放图像缓存 | en:Free image buffer

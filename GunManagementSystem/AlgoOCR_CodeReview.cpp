@@ -26,12 +26,20 @@ CAlgoCodeReview *CAlgoCodeReview::GetInstance()
 	return m_Instance;
 }
 
+
+/**
+			sdk初始化
+			@param  input_model_path ：模型路径
+			@param  USE_GPU             ：是否使用gpu
+			@param  device_id         ：设备id
+			@return 返回码 ：0：成功； 其他值：失败
+		*/
 bool CAlgoCodeReview::InitAlgo()
 {
 	QString path = QCoreApplication::applicationDirPath();
 	//path += "/module/ocrVersion_1.smartmore";
-	path += "/module/OCRVersion.smartmore";
-	
+	//path += "/module/OCRVersion.smartmore"; 
+	path += "/module/model20211011.smartmore";
 	QByteArray ba = path.toLocal8Bit();
 	char *file = ba.data();
 	ResultCode rv = m_OcrModule.Init(file, 1, 0);

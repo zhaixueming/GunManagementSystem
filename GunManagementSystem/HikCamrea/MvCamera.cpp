@@ -21,15 +21,15 @@ int CMvCamera::GetSDKVersion()
 }
 
 // ch:枚举设备 | en:Enumerate Device
-int CMvCamera::EnumDevices(unsigned int nTLayerType, MV_CC_DEVICE_INFO_LIST* pstDevList)
+int CMvCamera::EnumDevices(unsigned int nTLayerType, MV_CC_DEVICE_INFO_LIST* pstDevList) //nTLayerType:(MV_GIGE_DEVICE  0x00000001)    (MV_USB_DEVICE  0x00000004) 
 {
-    return MV_CC_EnumDevices(nTLayerType, pstDevList);
+    return MV_CC_EnumDevices(nTLayerType, pstDevList);//成功 返回MV_OK
 }
 
 // ch:判断设备是否可达 | en:Is the device accessible
-bool CMvCamera::IsDeviceAccessible(MV_CC_DEVICE_INFO* pstDevInfo, unsigned int nAccessMode)
+bool CMvCamera::IsDeviceAccessible(MV_CC_DEVICE_INFO* pstDevInfo, unsigned int nAccessMode) //pstDevInfo [IN] 设备信息结构体  
 {
-    return MV_CC_IsDeviceAccessible(pstDevInfo, nAccessMode);
+    return MV_CC_IsDeviceAccessible(pstDevInfo, nAccessMode); //可达，返回true；不可达，返回false
 }
 
 // ch:打开设备 | en:Open Device
@@ -45,13 +45,13 @@ int CMvCamera::Open(MV_CC_DEVICE_INFO* pstDeviceInfo)
         return MV_E_CALLORDER;
     }
 
-    int nRet  = MV_CC_CreateHandle(&m_hDevHandle, pstDeviceInfo);
+    int nRet  = MV_CC_CreateHandle(&m_hDevHandle, pstDeviceInfo);//创建设备句柄  m_hDevHandle [OUT] 设备句柄   pstDevInfo [IN] 设备信息结构体  
     if (MV_OK != nRet)
     {
         return nRet;
     }
 
-    nRet = MV_CC_OpenDevice(m_hDevHandle);
+    nRet = MV_CC_OpenDevice(m_hDevHandle);//打开设备   m_hDevHandle [IN] 设备句柄     成功，返回MV_OK；失败，返回错误码 。 
     if (MV_OK != nRet)
     {
         MV_CC_DestroyHandle(m_hDevHandle);
@@ -69,7 +69,7 @@ int CMvCamera::Close()
         return MV_E_HANDLE;
     }
 
-    MV_CC_CloseDevice(m_hDevHandle);
+    MV_CC_CloseDevice(m_hDevHandle);  //成功，返回MV_OK；失败，返回错误码 
 
     int nRet = MV_CC_DestroyHandle(m_hDevHandle);
     m_hDevHandle = MV_NULL;
@@ -80,13 +80,13 @@ int CMvCamera::Close()
 // ch:判断相机是否处于连接状态 | en:Is The Device Connected
 bool CMvCamera::IsDeviceConnected()
 {
-    return MV_CC_IsDeviceConnected(m_hDevHandle);
+    return MV_CC_IsDeviceConnected(m_hDevHandle);//设备处于连接状态，返回true；没连接或失去连接，返回false 
 }
 
 // ch:注册图像数据回调 | en:Register Image Data CallBack
-int CMvCamera::RegisterImageCallBack(void(__stdcall* cbOutput)(unsigned char * pData, MV_FRAME_OUT_INFO_EX* pFrameInfo, void* pUser), void* pUser)
+int CMvCamera::RegisterImageCallBack(void(__stdcall* cbOutput)(unsigned char * pData, MV_FRAME_OUT_INFO_EX* pFrameInfo, void* pUser), void* pUser)//handle[IN] 设备句柄  cbOutput[IN] 回调函数指针 pUser[IN] 用户自定义变量
 {
-    return MV_CC_RegisterImageCallBackEx(m_hDevHandle, cbOutput, pUser);
+    return MV_CC_RegisterImageCallBackEx(m_hDevHandle, cbOutput, pUser); //成功，返回MV_OK；失败，返回错误码 
 }
 
 // ch:开启抓图 | en:Start Grabbing
@@ -101,10 +101,10 @@ int CMvCamera::StopGrabbing()
     return MV_CC_StopGrabbing(m_hDevHandle);
 }
 
-// ch:主动获取一帧图像数据 | en:Get one frame initiatively
+// ch:使用内部缓存获取一帧图片 | en:Get one frame initiatively
 int CMvCamera::GetImageBuffer(MV_FRAME_OUT* pFrame, int nMsec)
 {
-    return MV_CC_GetImageBuffer(m_hDevHandle, pFrame, nMsec);
+    return MV_CC_GetImageBuffer(m_hDevHandle, pFrame, nMsec); //m_hDevHandle [IN]设备句柄， [OUT] 图像数据和图像信息， nMsec [IN] 等待超时时间，输入INFINITE时表示无限等待，直到收到一帧数据或者停止取流 
 }
 
 // ch:释放图像缓存 | en:Free image buffer
@@ -113,7 +113,14 @@ int CMvCamera::FreeImageBuffer(MV_FRAME_OUT* pFrame)
     return MV_CC_FreeImageBuffer(m_hDevHandle, pFrame);
 }
 
-// ch:主动获取一帧图像数据 | en:Get one frame initiatively
+// ch:采用超时机制获取一帧图片，SDK内部等待直到有数据时返回  | en:Get one frame initiatively
+/*
+handle [IN] 设备句柄
+pData [OUT] 图像数据接收指针
+nDataSize [IN] 接收缓存大小
+pstFrameInfo [OUT] 图像信息结构体
+nMsec [IN] 等待超时时间
+*/
 int CMvCamera::GetOneFrameTimeout(unsigned char* pData, unsigned int nDataSize, MV_FRAME_OUT_INFO_EX* pFrameInfo, int nMsec)
 {
     return MV_CC_GetOneFrameTimeout(m_hDevHandle, pData, nDataSize, pFrameInfo, nMsec);

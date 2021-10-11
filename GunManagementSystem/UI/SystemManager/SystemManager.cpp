@@ -1908,7 +1908,7 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 			ui.lineEdit_BeiFen->setText("");
 
 			QString result;
-			cvtColor(image, image, COLOR_GRAY2BGR);
+			//cvtColor(image, image, COLOR_GRAY2BGR);
 
 			CodeImage = image.clone();//修改0927
 
@@ -2249,19 +2249,4 @@ void CSystemMangaer::DoSpeaker()//拍照检视界面的小铃铛为信号--》此槽函数
 	wstring str_STL = m_CurDZBianHao.toStdWString();
 	speech(str_STL);
 
-	//QTextToSpeech *m_speech = new QTextToSpeech();
-
-	//QVector<QLocale> Locales = m_speech->availableLocales();//获取支持的文本到语音引擎插件的列表
-	//m_speech->setLocale(QLocale::Chinese);//设置语言环境
-	//m_speech->setRate(0.3);//语速：-1----1
-	//m_speech->setPitch(1.0);//音高：-1---1
-	//m_speech->setVolume(1.0);//音量：0---1
-	////m_speech->say("1234");//开始合成文本
-	////m_speech->say(QString::fromLocal8Bit("你好"));//开始合成文本
-	//if (m_speech->state() == QTextToSpeech::Ready)
-	//{
-	//	//m_speech->say(ui.lineEdit_Ocr->text());
-	//	m_speech->say(m_CurDZBianHao);//开始合成文本
-	//	//m_speech->say("你好");//开始合成文本
-	//}
 }

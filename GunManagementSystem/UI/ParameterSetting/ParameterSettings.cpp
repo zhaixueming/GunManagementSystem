@@ -144,7 +144,9 @@ void CParameterSettings::ConnectDatabase()
 void CParameterSettings::InitCameraInfo()
 {
 	memset(&m_stDevList, 0, sizeof(MV_CC_DEVICE_INFO_LIST));
-	int nRet = CMvCamera::EnumDevices(MV_GIGE_DEVICE, &m_stDevList);//.1枚举设备（GigE设备,设备列表）
+	//int nRet = CMvCamera::EnumDevices(MV_GIGE_DEVICE || MV_USB_DEVICE, &m_stDevList);//.1枚举设备（GigE设备,设备列表）
+	//memset(&m_stDevList, 0, sizeof(MV_CC_DEVICE_INFO_LIST));
+	int nRet = CMvCamera::EnumDevices(MV_USB_DEVICE, &m_stDevList);//.1枚举设备（GigE设备,设备列表）
 	if (MV_OK != nRet)
 	{
 		qDebug() << QString::fromLocal8Bit("枚举相机失败:") << nRet;
@@ -159,8 +161,12 @@ void CParameterSettings::InitCameraInfo()
 	{
 		MV_CC_DEVICE_INFO* pDeviceInfo = m_stDevList.pDeviceInfo[i];//设备信息
 		char strUserName[256] = { 0 };
-		sprintf_s(strUserName, "%s_%s", pDeviceInfo->SpecialInfo.stGigEInfo.chModelName,
-			pDeviceInfo->SpecialInfo.stGigEInfo.chSerialNumber);// chModelName[32]; 型号名称。chSerialNumber[16];序列号
+		/*char strUserName1[256] = { 0 };*/
+		//sprintf_s(strUserName, "%s_%s", pDeviceInfo->SpecialInfo.stGigEInfo.chModelName,
+		//	pDeviceInfo->SpecialInfo.stGigEInfo.chSerialNumber);// chModelName[32]; 型号名称。chSerialNumber[16];序列号
+		sprintf_s(strUserName, "%s_%s", pDeviceInfo->SpecialInfo.stUsb3VInfo.chModelName,
+			pDeviceInfo->SpecialInfo.stUsb3VInfo.chSerialNumber);// chModelName[32]; 型号名称。chSerialNumber[16];序列号
+
 		ui.comboBox_Camera1->addItem(strUserName);//下拉框中添加新数据
 		ui.comboBox_Camera2->addItem(strUserName);
 	}
