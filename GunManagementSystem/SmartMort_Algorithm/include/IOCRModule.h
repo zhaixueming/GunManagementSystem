@@ -51,8 +51,8 @@ namespace smartmore
     //!
     struct TextBlock
     {
-        std::vector<Coordinate> polygon;
-        std::string text;
+        std::vector<Coordinate> polygon; //包含字符包围盒的顶点坐标的链表，按顺时针顺序排列，第一个顶点是包围盒的左上角
+        std::string text;//该包围盒中的字符
         float confidence;
     };
 
@@ -61,7 +61,7 @@ namespace smartmore
     //!
     struct OCRResponse
     {
-        std::vector<TextBlock> blocks;
+        std::vector<TextBlock> blocks;//算法识别到的所有字符包围盒
         QCCode code;
     };
 
