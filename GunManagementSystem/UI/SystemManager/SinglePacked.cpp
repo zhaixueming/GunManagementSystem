@@ -7,12 +7,9 @@ CSinglePacked::CSinglePacked(QDialog *parent /* = NULL */)
 	:QDialog(parent)
 {
 	ui.setupUi(this);
-	this->setFixedSize(this->size());
-	ui.pushButton_QueDing->setStyleSheet("QPushButton{font: 75 15pt '微软雅黑';background-color:rgb(190, 190, 190);color: rgb(34, 139, 34);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
-		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
-		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
-	ui.dateEdit_ChuChang->setDateTime(QDateTime::fromString("1900-1-1", "yyyy-M-d"));
-	ui.dateEdit_ZhuangBei->setDateTime(QDateTime::fromString("1900-1-1", "yyyy-M-d"));
+
+	InitVariables();
+	
 }
 
 CSinglePacked::~CSinglePacked()
@@ -27,6 +24,36 @@ CSinglePacked *CSinglePacked::GetInstance()
 		m_Instance = new CSinglePacked();
 	}
 	return m_Instance;
+}
+
+
+
+void CSinglePacked::InitVariables()
+{
+	qDebug() << "InitVariables";
+	this->setFixedSize(this->size());
+	ui.pushButton_QueDing->setStyleSheet("QPushButton{font: 75 15pt '微软雅黑';background-color:rgb(190, 190, 190);color: rgb(34, 139, 34);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
+		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
+		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+
+	m_GunTypeInfos.insert(QString::fromLocal8Bit("Default"), "default");
+	m_GunTypeInfos.insert(QString::fromLocal8Bit("95式步枪"), "95shibuqiang");
+	m_GunTypeInfos.insert(QString::fromLocal8Bit("95-1式步枪"), "951shibuqiang");
+	m_GunTypeInfos.insert(QString::fromLocal8Bit("54式步枪"), "54shishouqiang");
+	//m_GunTypeInfos.insert(QString::fromLocal8Bit("81式步枪"), "81shibuqiang");
+	//m_GunTypeInfos.insert(QString::fromLocal8Bit("92式步枪"), "92shishouqiang");
+
+	ui.comboBox_GunType->clear();
+	ui.comboBox_GunType->addItem("Default");
+	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("95式步枪"));
+	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("95-1式步枪"));
+	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("54式手枪"));
+	//ui.comboBox_GunType->addItem(QString::fromLocal8Bit("81式步枪"));
+	//ui.comboBox_GunType->addItem(QString::fromLocal8Bit("92式手枪"));
+
+
+	ui.dateEdit_ChuChang->setDateTime(QDateTime::fromString("1900-1-1", "yyyy-M-d"));
+	ui.dateEdit_ZhuangBei->setDateTime(QDateTime::fromString("1900-1-1", "yyyy-M-d"));
 }
 
 void CSinglePacked::SetControllerEnabled(bool enabled)
@@ -48,9 +75,10 @@ void CSinglePacked::SetControllContent(QList<QVariant> data)
 	ui.lineEdit_MingCheng->setText(data.at(4).toString());
 	ui.lineEdit_LiShuDanWei->setText(data.at(5).toString());
 	ui.lineEdit_GuanLiDanWei->setText(data.at(6).toString());
-	QDate DTime = QDate::fromString(data.at(7).toString(), "yyyy/MM/dd");
+	ui.comboBox_GunType->setCurrentText(data.at(7).toString());//枪支类型
+	QDate DTime = QDate::fromString(data.at(8).toString(), "yyyy/MM/dd");
 	ui.dateEdit_ChuChang->setDate(DTime);
-	DTime = QDate::fromString(data.at(8).toString(), "yyyy/MM/dd");
+	DTime = QDate::fromString(data.at(9).toString(), "yyyy/MM/dd");
 	ui.dateEdit_ZhuangBei->setDate(DTime);
 }
 
@@ -120,6 +148,8 @@ void CSinglePacked::ConfirmModification()
 	}
 	QString JianShiZhuangTai = QString::fromLocal8Bit("未检视");
 
+	QString GunType = ui.comboBox_GunType->currentText();//枪支类型
+
 	/*QDateTime curDateTime = QDateTime::currentDateTime();
 	QString JiLuDateTime = curDateTime.toString("yyyy-MM-dd hh:mm:ss");*/
 	QDateTime curDateTime = QDateTime::currentDateTime();
@@ -147,7 +177,7 @@ void CSinglePacked::ConfirmModification()
 	//sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'"+JiLuDateTime + "\'" + ",\'1900-01-01 00:00:00.000\')";//记录时间是创建一条单装数据时的时间
 
 	sql = "insert GunManager.dbo.SinglePackedTable values(\'" + WenJianHao + "\',\'" + PingZhengHao + "\',\'" + DaiMa + "\',\'";
-	sql += ZhuangBeiMing + "\',\'\',\'\',\'\',\'\',\'\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + ChuChangTime + "\',\'";
+	sql += ZhuangBeiMing + "\',\'\',\'\',\'\',\'\',\'\',\'\',\'" + LiShuDanWei + "\',\'" + GuanLiDanWei + "\',\'" + GunType+ "\',\'" + ChuChangTime + "\',\'";
 	//sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'" + RuKuDateTime + "\'" + ")";//记录时间是创建一条单装数据时的时间
 	//sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'" + RuKuDateTime + "\'" + ",\'\',\'\'," + "\'" + JianShiZhuangTai+ "\')";
 	sql += ZhuangBeiTime + "\'," + QString::fromLocal8Bit("\'未出库\'") + ",\'" + RuKuDateTime + "\'" + ",null,null," + "\'" + JianShiZhuangTai + "\')";

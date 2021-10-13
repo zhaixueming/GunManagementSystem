@@ -23,6 +23,7 @@ private:
 		}
 	};
 private:
+	void InitVariables();
 	void SetControllerEnabled(bool enabled);
 	void SetControllContent(QList<QVariant> data);
 	bool CheckSinglePackedRepeat(QString &errMsg);
@@ -30,6 +31,9 @@ private:
 	Ui::SinglePackedDialog ui;
 	static CSinglePacked *m_Instance;
 	static GarbageCollection m_Collection;
+
+	//«π÷ß¿‡–Õ
+	QMap<QString, QString> m_GunTypeInfos;
 private slots:
 	void ConfirmModification();
 };

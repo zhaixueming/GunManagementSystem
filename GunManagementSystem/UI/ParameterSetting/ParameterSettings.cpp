@@ -142,11 +142,12 @@ void CParameterSettings::ConnectDatabase()
 //海康SDK开发流程
 //1.枚举设备 -> 2.创建句柄 -> 3.打开设备 -> 4.开始抓图 -> 5.获取一帧并保存图像 -> 6.停止抓图 -> 7.关闭设备 -> 8.销毁句柄
 void CParameterSettings::InitCameraInfo()
-{
+{    
+	//手持usb ，软触gige
 	memset(&m_stDevList, 0, sizeof(MV_CC_DEVICE_INFO_LIST));
-	//int nRet = CMvCamera::EnumDevices(MV_GIGE_DEVICE || MV_USB_DEVICE, &m_stDevList);//.1枚举设备（GigE设备,设备列表）
+	int nRet = CMvCamera::EnumDevices(MV_GIGE_DEVICE | MV_USB_DEVICE, &m_stDevList);//.1枚举设备（GigE or USB设备,设备列表）
 	//memset(&m_stDevList, 0, sizeof(MV_CC_DEVICE_INFO_LIST));
-	int nRet = CMvCamera::EnumDevices(MV_USB_DEVICE, &m_stDevList);//.1枚举设备（GigE设备,设备列表）
+	//int nRet = CMvCamera::EnumDevices(MV_USB_DEVICE, &m_stDevList);//.1枚举设备（usb设备,设备列表）
 	if (MV_OK != nRet)
 	{
 		qDebug() << QString::fromLocal8Bit("枚举相机失败:") << nRet;
@@ -161,14 +162,22 @@ void CParameterSettings::InitCameraInfo()
 	{
 		MV_CC_DEVICE_INFO* pDeviceInfo = m_stDevList.pDeviceInfo[i];//设备信息
 		char strUserName[256] = { 0 };
-		/*char strUserName1[256] = { 0 };*/
-		//sprintf_s(strUserName, "%s_%s", pDeviceInfo->SpecialInfo.stGigEInfo.chModelName,
-		//	pDeviceInfo->SpecialInfo.stGigEInfo.chSerialNumber);// chModelName[32]; 型号名称。chSerialNumber[16];序列号
+		char strUserName1[256] = { 0 };
 		sprintf_s(strUserName, "%s_%s", pDeviceInfo->SpecialInfo.stUsb3VInfo.chModelName,
-			pDeviceInfo->SpecialInfo.stUsb3VInfo.chSerialNumber);// chModelName[32]; 型号名称。chSerialNumber[16];序列号
+		pDeviceInfo->SpecialInfo.stUsb3VInfo.chSerialNumber);// chModelName[32]; 型号名称。chSerialNumber[16];序列号
+		
+		sprintf_s(strUserName1, "%s_%s", pDeviceInfo->SpecialInfo.stGigEInfo.chModelName,
+		pDeviceInfo->SpecialInfo.stGigEInfo.chSerialNumber);// chModelName[32]; 型号名称。chSerialNumber[16];序列号
 
 		ui.comboBox_Camera1->addItem(strUserName);//下拉框中添加新数据
-		ui.comboBox_Camera2->addItem(strUserName);
+		ui.comboBox_Camera2->addItem(strUserName1);
+
+		/*if(strUserName[0] != '_') 
+			ui.comboBox_Camera1->addItem(strUserName);
+		if (strUserName1[0] != '_')
+			ui.comboBox_Camera2->addItem(strUserName1);*/
+
+		qDebug() << "CameraName;" << strUserName;
 	}
 }
 

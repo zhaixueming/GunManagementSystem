@@ -27,6 +27,16 @@ CAlgoCodeReview *CAlgoCodeReview::GetInstance()
 }
 
 
+//设置枪支模型
+bool CAlgoCodeReview::SetGunModel(e_GunModel type)
+{
+	m_GunModel = type;
+	return true;
+
+}
+
+
+
 
 /**
 			sdk初始化
@@ -38,14 +48,39 @@ CAlgoCodeReview *CAlgoCodeReview::GetInstance()
 bool CAlgoCodeReview::InitAlgo()
 {
 	QString path = QCoreApplication::applicationDirPath();
+
 	//path += "/module/ocrVersion_1.smartmore";
 	//path += "/module/OCRVersion.smartmore"; 
-	path += "/module/model20211011.smartmore";
+
+	//path += "/module/model20211011.smartmore";
+
+	switch (m_GunModel)
+	{
+	case DEFAULT_MODEL:
+		path += "/module/OCRVersion.smartmore";
+		break;
+	case RIFLE_MODEL95:
+		//path += "/module/OCRVersion95.smartmore";
+		path += "/module/model20211011.smartmore";
+		break;
+	case RIFLE_MODEL951:
+		path += "/module/95OCRVersion951.smartmore";
+		break;
+	case PISTOL_MODEL54:
+		path += "/module/OCRVersion54.smartmore";
+		break;
+		//default:
+		//	break;
+	}
+
 	QByteArray ba = path.toLocal8Bit();
 	char *file = ba.data();
 	ResultCode rv = m_OcrModule.Init(file, 1, 0);
 	m_bInitSuccess = rv == ResultCode::Success;
 	return m_bInitSuccess;
+
+
+
 }
 
 

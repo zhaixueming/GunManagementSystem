@@ -1,6 +1,20 @@
 #pragma once
 #include "ui_BoxPacked.h"
 #include "DatabaseOperator.h"
+#include "AlgoOCR_CodeReview.h"
+
+
+//typedef enmu
+//{
+//	DEFUALT=0,
+//	81SHIBUQIANG,
+//	95SHIBUQIANG,
+//	95-1SHIBUQIANG,
+//	54SHISHOUQIANG,
+//	92SHISHOUQIANG
+//}m_GunType;
+
+
 
 class CBoxPacked :public QDialog
 {
@@ -24,6 +38,7 @@ private:
 		}
 	};
 private:
+	void InitVariables();
 	void SetControllerEnabled(bool enabled);
 	void SetControllContent(QList<QVariant> data);
 	bool CheckBoxRepeat(QString &errMsg);
@@ -33,6 +48,14 @@ private:
 	static CBoxPacked *m_Instance;
 	static GarbageCollection m_Collection;
 	int m_Type;
+
+	//枪支类型
+	//QMap<QString, QString> m_GunTypeInfos;
+
 private slots:
+	//连接枪型
+	void ConnectGunType();
+
 	void ConfirmModification();
+	
 };

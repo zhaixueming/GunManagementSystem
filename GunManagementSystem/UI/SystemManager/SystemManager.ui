@@ -1759,205 +1759,6 @@ background-color: rgb(255, 0, 0);
           <string/>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
-          <item row="4" column="2" colspan="4">
-           <widget class="QLineEdit" name="lineEdit_QiangKuang">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>500</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-font: 14pt &quot;微软雅黑&quot;;</string>
-            </property>
-            <property name="placeholderText">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="1" colspan="2">
-           <widget class="QPushButton" name="pushButton_Modify">
-            <property name="minimumSize">
-             <size>
-              <width>75</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>75</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
-color: rgb(255, 0, 0);</string>
-            </property>
-            <property name="text">
-             <string>修正</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="0">
-           <widget class="QPushButton" name="pushButton_Save">
-            <property name="minimumSize">
-             <size>
-              <width>75</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>75</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
-color: rgb(0, 170, 0);</string>
-            </property>
-            <property name="text">
-             <string>保存</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_27">
-            <property name="minimumSize">
-             <size>
-              <width>80</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>80</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
-color: rgb(85, 170, 0);
-width:50px;
-height:50px;</string>
-            </property>
-            <property name="text">
-             <string>人工修正</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0" colspan="2">
-           <widget class="QCheckBox" name="checkBox_BeiFen">
-            <property name="styleSheet">
-             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
-color: rgb(85, 170, 0);</string>
-            </property>
-            <property name="text">
-             <string>备份枪管</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2" colspan="4">
-           <widget class="QLineEdit" name="lineEdit_QiangJi">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>500</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-font: 14pt &quot;微软雅黑&quot;;</string>
-            </property>
-            <property name="placeholderText">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0" colspan="2">
-           <widget class="QLabel" name="label_28">
-            <property name="minimumSize">
-             <size>
-              <width>80</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
-color: rgb(85, 170, 0);</string>
-            </property>
-            <property name="text">
-             <string>装箱单号：</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2" colspan="4">
-           <widget class="QLineEdit" name="lineEdit_QiangGuan">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>500</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-font: 14pt &quot;微软雅黑&quot;;</string>
-            </property>
-            <property name="placeholderText">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="4" colspan="2">
-           <widget class="QPushButton" name="pushButton_InageGrabberReturn">
-            <property name="minimumSize">
-             <size>
-              <width>75</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>75</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
-            </property>
-            <property name="text">
-             <string>返回</string>
-            </property>
-            <property name="shortcut">
-             <string>Esc</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="0">
            <widget class="QLabel" name="label_26">
             <property name="minimumSize">
@@ -2014,57 +1815,6 @@ padding:2px 4px;</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
-           <widget class="QCheckBox" name="checkBox_QiangGuan">
-            <property name="styleSheet">
-             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
-color: rgb(85, 170, 0);
-width:50px;
-height:50px;
-
-</string>
-            </property>
-            <property name="text">
-             <string>枪   管</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="2" colspan="2">
-           <widget class="QLabel" name="label_DanHao">
-            <property name="minimumSize">
-             <size>
-              <width>80</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>200</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
-color: rgb(0, 0, 0);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="3">
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>76</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="0" column="5">
            <widget class="QPushButton" name="pushButton_Speaker">
             <property name="minimumSize">
@@ -2085,8 +1835,105 @@ background-color: rgb(215, 255, 197);
             </property>
            </widget>
           </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_27">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);
+width:50px;
+height:50px;</string>
+            </property>
+            <property name="text">
+             <string>人工修正</string>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="1" colspan="5">
            <widget class="QLineEdit" name="lineEdit_XiuZheng">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;微软雅黑&quot;;</string>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="checkBox_QiangGuan">
+            <property name="styleSheet">
+             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);
+width:50px;
+height:50px;
+
+</string>
+            </property>
+            <property name="text">
+             <string>枪   管</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2" colspan="4">
+           <widget class="QLineEdit" name="lineEdit_QiangGuan">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;微软雅黑&quot;;</string>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QCheckBox" name="checkBox_QiangJi">
+            <property name="styleSheet">
+             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+            </property>
+            <property name="text">
+             <string>枪机/套筒</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2" colspan="4">
+           <widget class="QLineEdit" name="lineEdit_QiangJi">
             <property name="minimumSize">
              <size>
               <width>150</width>
@@ -2119,6 +1966,40 @@ color: rgb(85, 170, 0);</string>
             </property>
            </widget>
           </item>
+          <item row="4" column="2" colspan="4">
+           <widget class="QLineEdit" name="lineEdit_QiangKuang">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;微软雅黑&quot;;</string>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" colspan="2">
+           <widget class="QCheckBox" name="checkBox_BeiFen">
+            <property name="styleSheet">
+             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+            </property>
+            <property name="text">
+             <string>备份枪管</string>
+            </property>
+           </widget>
+          </item>
           <item row="5" column="2" colspan="4">
            <widget class="QLineEdit" name="lineEdit_BeiFen">
             <property name="minimumSize">
@@ -2142,14 +2023,179 @@ font: 14pt &quot;微软雅黑&quot;;</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0" colspan="2">
-           <widget class="QCheckBox" name="checkBox_QiangJi">
+          <item row="6" column="0" colspan="2">
+           <widget class="QLabel" name="label_28">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
 color: rgb(85, 170, 0);</string>
             </property>
             <property name="text">
-             <string>枪机/套筒</string>
+             <string>装箱单号：</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2" colspan="2">
+           <widget class="QLabel" name="label_DanHao">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(0, 0, 0);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0" colspan="2">
+           <widget class="QLabel" name="label_33">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(85, 170, 0);</string>
+            </property>
+            <property name="text">
+             <string>枪支类型：</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="2" colspan="2">
+           <widget class="QLabel" name="label_GunType">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 75 14pt &quot;微软雅黑&quot;;
+color: rgb(0, 0, 0);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QPushButton" name="pushButton_Save">
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
+color: rgb(0, 170, 0);</string>
+            </property>
+            <property name="text">
+             <string>保存</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1" colspan="2">
+           <widget class="QPushButton" name="pushButton_Modify">
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;
+color: rgb(255, 0, 0);</string>
+            </property>
+            <property name="text">
+             <string>修正</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="3">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>76</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="8" column="4" colspan="2">
+           <widget class="QPushButton" name="pushButton_InageGrabberReturn">
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 75 15pt &quot;微软雅黑&quot;;</string>
+            </property>
+            <property name="text">
+             <string>返回</string>
+            </property>
+            <property name="shortcut">
+             <string>Esc</string>
             </property>
            </widget>
           </item>

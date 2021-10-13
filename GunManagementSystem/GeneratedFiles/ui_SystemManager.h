@@ -151,25 +151,27 @@ public:
     QPushButton *pushButton_GunGrab;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_7;
-    QLineEdit *lineEdit_QiangKuang;
-    QPushButton *pushButton_Modify;
-    QPushButton *pushButton_Save;
-    QLabel *label_27;
-    QCheckBox *checkBox_BeiFen;
-    QLineEdit *lineEdit_QiangJi;
-    QLabel *label_28;
-    QLineEdit *lineEdit_QiangGuan;
-    QPushButton *pushButton_InageGrabberReturn;
     QLabel *label_26;
     QLineEdit *lineEdit_Ocr;
-    QCheckBox *checkBox_QiangGuan;
-    QLabel *label_DanHao;
-    QSpacerItem *horizontalSpacer_2;
     QPushButton *pushButton_Speaker;
+    QLabel *label_27;
     QLineEdit *lineEdit_XiuZheng;
-    QCheckBox *checkBox_QiangKuang;
-    QLineEdit *lineEdit_BeiFen;
+    QCheckBox *checkBox_QiangGuan;
+    QLineEdit *lineEdit_QiangGuan;
     QCheckBox *checkBox_QiangJi;
+    QLineEdit *lineEdit_QiangJi;
+    QCheckBox *checkBox_QiangKuang;
+    QLineEdit *lineEdit_QiangKuang;
+    QCheckBox *checkBox_BeiFen;
+    QLineEdit *lineEdit_BeiFen;
+    QLabel *label_28;
+    QLabel *label_DanHao;
+    QLabel *label_33;
+    QLabel *label_GunType;
+    QPushButton *pushButton_Save;
+    QPushButton *pushButton_Modify;
+    QSpacerItem *horizontalSpacer_2;
+    QPushButton *pushButton_InageGrabberReturn;
 
     void setupUi(QDialog *SystemManager)
     {
@@ -981,86 +983,6 @@ public:
         groupBox_2->setMaximumSize(QSize(346, 16777215));
         gridLayout_7 = new QGridLayout(groupBox_2);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
-        lineEdit_QiangKuang = new QLineEdit(groupBox_2);
-        lineEdit_QiangKuang->setObjectName(QString::fromUtf8("lineEdit_QiangKuang"));
-        lineEdit_QiangKuang->setMinimumSize(QSize(150, 30));
-        lineEdit_QiangKuang->setMaximumSize(QSize(500, 30));
-        lineEdit_QiangKuang->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-
-        gridLayout_7->addWidget(lineEdit_QiangKuang, 4, 2, 1, 4);
-
-        pushButton_Modify = new QPushButton(groupBox_2);
-        pushButton_Modify->setObjectName(QString::fromUtf8("pushButton_Modify"));
-        pushButton_Modify->setMinimumSize(QSize(75, 30));
-        pushButton_Modify->setMaximumSize(QSize(75, 30));
-        pushButton_Modify->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(255, 0, 0);"));
-
-        gridLayout_7->addWidget(pushButton_Modify, 7, 1, 1, 2);
-
-        pushButton_Save = new QPushButton(groupBox_2);
-        pushButton_Save->setObjectName(QString::fromUtf8("pushButton_Save"));
-        pushButton_Save->setMinimumSize(QSize(75, 30));
-        pushButton_Save->setMaximumSize(QSize(75, 30));
-        pushButton_Save->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(0, 170, 0);"));
-
-        gridLayout_7->addWidget(pushButton_Save, 7, 0, 1, 1);
-
-        label_27 = new QLabel(groupBox_2);
-        label_27->setObjectName(QString::fromUtf8("label_27"));
-        label_27->setMinimumSize(QSize(80, 30));
-        label_27->setMaximumSize(QSize(80, 30));
-        label_27->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(85, 170, 0);\n"
-"width:50px;\n"
-"height:50px;"));
-
-        gridLayout_7->addWidget(label_27, 1, 0, 1, 1);
-
-        checkBox_BeiFen = new QCheckBox(groupBox_2);
-        checkBox_BeiFen->setObjectName(QString::fromUtf8("checkBox_BeiFen"));
-        checkBox_BeiFen->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(85, 170, 0);"));
-
-        gridLayout_7->addWidget(checkBox_BeiFen, 5, 0, 1, 2);
-
-        lineEdit_QiangJi = new QLineEdit(groupBox_2);
-        lineEdit_QiangJi->setObjectName(QString::fromUtf8("lineEdit_QiangJi"));
-        lineEdit_QiangJi->setMinimumSize(QSize(150, 30));
-        lineEdit_QiangJi->setMaximumSize(QSize(500, 30));
-        lineEdit_QiangJi->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-
-        gridLayout_7->addWidget(lineEdit_QiangJi, 3, 2, 1, 4);
-
-        label_28 = new QLabel(groupBox_2);
-        label_28->setObjectName(QString::fromUtf8("label_28"));
-        label_28->setMinimumSize(QSize(80, 30));
-        label_28->setMaximumSize(QSize(100, 30));
-        label_28->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(85, 170, 0);"));
-
-        gridLayout_7->addWidget(label_28, 6, 0, 1, 2);
-
-        lineEdit_QiangGuan = new QLineEdit(groupBox_2);
-        lineEdit_QiangGuan->setObjectName(QString::fromUtf8("lineEdit_QiangGuan"));
-        lineEdit_QiangGuan->setMinimumSize(QSize(150, 30));
-        lineEdit_QiangGuan->setMaximumSize(QSize(500, 30));
-        lineEdit_QiangGuan->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-
-        gridLayout_7->addWidget(lineEdit_QiangGuan, 2, 2, 1, 4);
-
-        pushButton_InageGrabberReturn = new QPushButton(groupBox_2);
-        pushButton_InageGrabberReturn->setObjectName(QString::fromUtf8("pushButton_InageGrabberReturn"));
-        pushButton_InageGrabberReturn->setMinimumSize(QSize(75, 30));
-        pushButton_InageGrabberReturn->setMaximumSize(QSize(75, 30));
-        pushButton_InageGrabberReturn->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
-
-        gridLayout_7->addWidget(pushButton_InageGrabberReturn, 7, 4, 1, 2);
-
         label_26 = new QLabel(groupBox_2);
         label_26->setObjectName(QString::fromUtf8("label_26"));
         label_26->setMinimumSize(QSize(80, 30));
@@ -1085,30 +1007,6 @@ public:
 
         gridLayout_7->addWidget(lineEdit_Ocr, 0, 1, 1, 4);
 
-        checkBox_QiangGuan = new QCheckBox(groupBox_2);
-        checkBox_QiangGuan->setObjectName(QString::fromUtf8("checkBox_QiangGuan"));
-        checkBox_QiangGuan->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(85, 170, 0);\n"
-"width:50px;\n"
-"height:50px;\n"
-"\n"
-""));
-
-        gridLayout_7->addWidget(checkBox_QiangGuan, 2, 0, 1, 1);
-
-        label_DanHao = new QLabel(groupBox_2);
-        label_DanHao->setObjectName(QString::fromUtf8("label_DanHao"));
-        label_DanHao->setMinimumSize(QSize(80, 30));
-        label_DanHao->setMaximumSize(QSize(200, 30));
-        label_DanHao->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(0, 0, 0);"));
-
-        gridLayout_7->addWidget(label_DanHao, 6, 2, 1, 2);
-
-        horizontalSpacer_2 = new QSpacerItem(76, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_7->addItem(horizontalSpacer_2, 7, 3, 1, 1);
-
         pushButton_Speaker = new QPushButton(groupBox_2);
         pushButton_Speaker->setObjectName(QString::fromUtf8("pushButton_Speaker"));
         pushButton_Speaker->setMinimumSize(QSize(30, 30));
@@ -1120,6 +1018,17 @@ public:
 
         gridLayout_7->addWidget(pushButton_Speaker, 0, 5, 1, 1);
 
+        label_27 = new QLabel(groupBox_2);
+        label_27->setObjectName(QString::fromUtf8("label_27"));
+        label_27->setMinimumSize(QSize(80, 30));
+        label_27->setMaximumSize(QSize(80, 30));
+        label_27->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(85, 170, 0);\n"
+"width:50px;\n"
+"height:50px;"));
+
+        gridLayout_7->addWidget(label_27, 1, 0, 1, 1);
+
         lineEdit_XiuZheng = new QLineEdit(groupBox_2);
         lineEdit_XiuZheng->setObjectName(QString::fromUtf8("lineEdit_XiuZheng"));
         lineEdit_XiuZheng->setMinimumSize(QSize(150, 30));
@@ -1129,12 +1038,64 @@ public:
 
         gridLayout_7->addWidget(lineEdit_XiuZheng, 1, 1, 1, 5);
 
+        checkBox_QiangGuan = new QCheckBox(groupBox_2);
+        checkBox_QiangGuan->setObjectName(QString::fromUtf8("checkBox_QiangGuan"));
+        checkBox_QiangGuan->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(85, 170, 0);\n"
+"width:50px;\n"
+"height:50px;\n"
+"\n"
+""));
+
+        gridLayout_7->addWidget(checkBox_QiangGuan, 2, 0, 1, 1);
+
+        lineEdit_QiangGuan = new QLineEdit(groupBox_2);
+        lineEdit_QiangGuan->setObjectName(QString::fromUtf8("lineEdit_QiangGuan"));
+        lineEdit_QiangGuan->setMinimumSize(QSize(150, 30));
+        lineEdit_QiangGuan->setMaximumSize(QSize(500, 30));
+        lineEdit_QiangGuan->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+
+        gridLayout_7->addWidget(lineEdit_QiangGuan, 2, 2, 1, 4);
+
+        checkBox_QiangJi = new QCheckBox(groupBox_2);
+        checkBox_QiangJi->setObjectName(QString::fromUtf8("checkBox_QiangJi"));
+        checkBox_QiangJi->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(85, 170, 0);"));
+
+        gridLayout_7->addWidget(checkBox_QiangJi, 3, 0, 1, 2);
+
+        lineEdit_QiangJi = new QLineEdit(groupBox_2);
+        lineEdit_QiangJi->setObjectName(QString::fromUtf8("lineEdit_QiangJi"));
+        lineEdit_QiangJi->setMinimumSize(QSize(150, 30));
+        lineEdit_QiangJi->setMaximumSize(QSize(500, 30));
+        lineEdit_QiangJi->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+
+        gridLayout_7->addWidget(lineEdit_QiangJi, 3, 2, 1, 4);
+
         checkBox_QiangKuang = new QCheckBox(groupBox_2);
         checkBox_QiangKuang->setObjectName(QString::fromUtf8("checkBox_QiangKuang"));
         checkBox_QiangKuang->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(85, 170, 0);"));
 
         gridLayout_7->addWidget(checkBox_QiangKuang, 4, 0, 1, 2);
+
+        lineEdit_QiangKuang = new QLineEdit(groupBox_2);
+        lineEdit_QiangKuang->setObjectName(QString::fromUtf8("lineEdit_QiangKuang"));
+        lineEdit_QiangKuang->setMinimumSize(QSize(150, 30));
+        lineEdit_QiangKuang->setMaximumSize(QSize(500, 30));
+        lineEdit_QiangKuang->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+
+        gridLayout_7->addWidget(lineEdit_QiangKuang, 4, 2, 1, 4);
+
+        checkBox_BeiFen = new QCheckBox(groupBox_2);
+        checkBox_BeiFen->setObjectName(QString::fromUtf8("checkBox_BeiFen"));
+        checkBox_BeiFen->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(85, 170, 0);"));
+
+        gridLayout_7->addWidget(checkBox_BeiFen, 5, 0, 1, 2);
 
         lineEdit_BeiFen = new QLineEdit(groupBox_2);
         lineEdit_BeiFen->setObjectName(QString::fromUtf8("lineEdit_BeiFen"));
@@ -1145,12 +1106,71 @@ public:
 
         gridLayout_7->addWidget(lineEdit_BeiFen, 5, 2, 1, 4);
 
-        checkBox_QiangJi = new QCheckBox(groupBox_2);
-        checkBox_QiangJi->setObjectName(QString::fromUtf8("checkBox_QiangJi"));
-        checkBox_QiangJi->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+        label_28 = new QLabel(groupBox_2);
+        label_28->setObjectName(QString::fromUtf8("label_28"));
+        label_28->setMinimumSize(QSize(80, 30));
+        label_28->setMaximumSize(QSize(100, 30));
+        label_28->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 "color: rgb(85, 170, 0);"));
 
-        gridLayout_7->addWidget(checkBox_QiangJi, 3, 0, 1, 2);
+        gridLayout_7->addWidget(label_28, 6, 0, 1, 2);
+
+        label_DanHao = new QLabel(groupBox_2);
+        label_DanHao->setObjectName(QString::fromUtf8("label_DanHao"));
+        label_DanHao->setMinimumSize(QSize(80, 30));
+        label_DanHao->setMaximumSize(QSize(200, 30));
+        label_DanHao->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(0, 0, 0);"));
+
+        gridLayout_7->addWidget(label_DanHao, 6, 2, 1, 2);
+
+        label_33 = new QLabel(groupBox_2);
+        label_33->setObjectName(QString::fromUtf8("label_33"));
+        label_33->setMinimumSize(QSize(80, 30));
+        label_33->setMaximumSize(QSize(100, 30));
+        label_33->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(85, 170, 0);"));
+
+        gridLayout_7->addWidget(label_33, 7, 0, 1, 2);
+
+        label_GunType = new QLabel(groupBox_2);
+        label_GunType->setObjectName(QString::fromUtf8("label_GunType"));
+        label_GunType->setMinimumSize(QSize(80, 30));
+        label_GunType->setMaximumSize(QSize(200, 30));
+        label_GunType->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(0, 0, 0);"));
+
+        gridLayout_7->addWidget(label_GunType, 7, 2, 1, 2);
+
+        pushButton_Save = new QPushButton(groupBox_2);
+        pushButton_Save->setObjectName(QString::fromUtf8("pushButton_Save"));
+        pushButton_Save->setMinimumSize(QSize(75, 30));
+        pushButton_Save->setMaximumSize(QSize(75, 30));
+        pushButton_Save->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(0, 170, 0);"));
+
+        gridLayout_7->addWidget(pushButton_Save, 8, 0, 1, 1);
+
+        pushButton_Modify = new QPushButton(groupBox_2);
+        pushButton_Modify->setObjectName(QString::fromUtf8("pushButton_Modify"));
+        pushButton_Modify->setMinimumSize(QSize(75, 30));
+        pushButton_Modify->setMaximumSize(QSize(75, 30));
+        pushButton_Modify->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(255, 0, 0);"));
+
+        gridLayout_7->addWidget(pushButton_Modify, 8, 1, 1, 2);
+
+        horizontalSpacer_2 = new QSpacerItem(76, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_7->addItem(horizontalSpacer_2, 8, 3, 1, 1);
+
+        pushButton_InageGrabberReturn = new QPushButton(groupBox_2);
+        pushButton_InageGrabberReturn->setObjectName(QString::fromUtf8("pushButton_InageGrabberReturn"));
+        pushButton_InageGrabberReturn->setMinimumSize(QSize(75, 30));
+        pushButton_InageGrabberReturn->setMaximumSize(QSize(75, 30));
+        pushButton_InageGrabberReturn->setStyleSheet(QString::fromUtf8("font: 75 15pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
+
+        gridLayout_7->addWidget(pushButton_InageGrabberReturn, 8, 4, 1, 2);
 
 
         gridLayout_8->addWidget(groupBox_2, 0, 1, 1, 1);
@@ -1342,27 +1362,29 @@ public:
         label_Image1->setText(QString());
         pushButton_GunGrab->setText(QCoreApplication::translate("SystemManager", "\346\225\264\346\236\252\346\213\215\347\205\247", nullptr));
         groupBox_2->setTitle(QString());
-        lineEdit_QiangKuang->setPlaceholderText(QString());
-        pushButton_Modify->setText(QCoreApplication::translate("SystemManager", "\344\277\256\346\255\243", nullptr));
-        pushButton_Save->setText(QCoreApplication::translate("SystemManager", "\344\277\235\345\255\230", nullptr));
+        label_26->setText(QCoreApplication::translate("SystemManager", "\345\233\276\345\203\217\350\257\206\345\210\253", nullptr));
+        lineEdit_Ocr->setPlaceholderText(QString());
+        pushButton_Speaker->setText(QString());
         label_27->setText(QCoreApplication::translate("SystemManager", "\344\272\272\345\267\245\344\277\256\346\255\243", nullptr));
-        checkBox_BeiFen->setText(QCoreApplication::translate("SystemManager", "\345\244\207\344\273\275\346\236\252\347\256\241", nullptr));
-        lineEdit_QiangJi->setPlaceholderText(QString());
-        label_28->setText(QCoreApplication::translate("SystemManager", "\350\243\205\347\256\261\345\215\225\345\217\267\357\274\232", nullptr));
+        lineEdit_XiuZheng->setPlaceholderText(QString());
+        checkBox_QiangGuan->setText(QCoreApplication::translate("SystemManager", "\346\236\252   \347\256\241", nullptr));
         lineEdit_QiangGuan->setPlaceholderText(QString());
+        checkBox_QiangJi->setText(QCoreApplication::translate("SystemManager", "\346\236\252\346\234\272/\345\245\227\347\255\222", nullptr));
+        lineEdit_QiangJi->setPlaceholderText(QString());
+        checkBox_QiangKuang->setText(QCoreApplication::translate("SystemManager", "\346\234\272 \346\236\252 \346\241\206", nullptr));
+        lineEdit_QiangKuang->setPlaceholderText(QString());
+        checkBox_BeiFen->setText(QCoreApplication::translate("SystemManager", "\345\244\207\344\273\275\346\236\252\347\256\241", nullptr));
+        lineEdit_BeiFen->setPlaceholderText(QString());
+        label_28->setText(QCoreApplication::translate("SystemManager", "\350\243\205\347\256\261\345\215\225\345\217\267\357\274\232", nullptr));
+        label_DanHao->setText(QString());
+        label_33->setText(QCoreApplication::translate("SystemManager", "\346\236\252\346\224\257\347\261\273\345\236\213\357\274\232", nullptr));
+        label_GunType->setText(QString());
+        pushButton_Save->setText(QCoreApplication::translate("SystemManager", "\344\277\235\345\255\230", nullptr));
+        pushButton_Modify->setText(QCoreApplication::translate("SystemManager", "\344\277\256\346\255\243", nullptr));
         pushButton_InageGrabberReturn->setText(QCoreApplication::translate("SystemManager", "\350\277\224\345\233\236", nullptr));
 #if QT_CONFIG(shortcut)
         pushButton_InageGrabberReturn->setShortcut(QCoreApplication::translate("SystemManager", "Esc", nullptr));
 #endif // QT_CONFIG(shortcut)
-        label_26->setText(QCoreApplication::translate("SystemManager", "\345\233\276\345\203\217\350\257\206\345\210\253", nullptr));
-        lineEdit_Ocr->setPlaceholderText(QString());
-        checkBox_QiangGuan->setText(QCoreApplication::translate("SystemManager", "\346\236\252   \347\256\241", nullptr));
-        label_DanHao->setText(QString());
-        pushButton_Speaker->setText(QString());
-        lineEdit_XiuZheng->setPlaceholderText(QString());
-        checkBox_QiangKuang->setText(QCoreApplication::translate("SystemManager", "\346\234\272 \346\236\252 \346\241\206", nullptr));
-        lineEdit_BeiFen->setPlaceholderText(QString());
-        checkBox_QiangJi->setText(QCoreApplication::translate("SystemManager", "\346\236\252\346\234\272/\345\245\227\347\255\222", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("SystemManager", "\346\213\215\347\205\247-\346\243\200\350\247\206", nullptr));
     } // retranslateUi
 

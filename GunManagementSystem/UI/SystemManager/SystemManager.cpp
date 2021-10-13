@@ -149,24 +149,25 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_Box->horizontalHeader()->setFont(font);//ÉèÖÃ×ÖÌå
 	ui.tableWidget_Box->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_Box->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
-	ui.tableWidget_Box->setColumnCount(13);
+	ui.tableWidget_Box->setColumnCount(14);
 	ui.tableWidget_Box->setColumnWidth(0, 170);
 	ui.tableWidget_Box->setColumnWidth(1, 170);
 	ui.tableWidget_Box->setColumnWidth(2, 170);
 	ui.tableWidget_Box->setColumnWidth(3, 170);
 	ui.tableWidget_Box->setColumnWidth(4, 170);
-	ui.tableWidget_Box->setColumnWidth(5, 190);
-	ui.tableWidget_Box->setColumnWidth(6, 190);
+	ui.tableWidget_Box->setColumnWidth(5, 150);
+	ui.tableWidget_Box->setColumnWidth(6, 150);
 	ui.tableWidget_Box->setColumnWidth(7, 110);
 	ui.tableWidget_Box->setColumnWidth(8, 110);
-	ui.tableWidget_Box->setColumnWidth(9, 100);
-	ui.tableWidget_Box->setColumnWidth(10, 110);
-	ui.tableWidget_Box->setColumnWidth(11, 80);
+	ui.tableWidget_Box->setColumnWidth(9, 110);
+	ui.tableWidget_Box->setColumnWidth(10, 100);
+	ui.tableWidget_Box->setColumnWidth(11, 110);
 	ui.tableWidget_Box->setColumnWidth(12, 80);
+	ui.tableWidget_Box->setColumnWidth(13, 80);
 	header.clear();
 	header << QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÎÄ¼þºÅ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
 	header << QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë") << QString::fromLocal8Bit("×°±¸(²¿¼þ)Ãû³Æ");
-	header << QString::fromLocal8Bit("Á¥Êôµ¥Î»") << QString::fromLocal8Bit("¹ÜÀíµ¥Î»") << QString::fromLocal8Bit("³ö³§Ê±¼ä");
+	header << QString::fromLocal8Bit("Á¥Êôµ¥Î»") << QString::fromLocal8Bit("¹ÜÀíµ¥Î»") << QString::fromLocal8Bit("Ç¹Ö§ÀàÐÍ") << QString::fromLocal8Bit("³ö³§Ê±¼ä");
 	header << QString::fromLocal8Bit("×°±¸Ê±¼ä") << QString::fromLocal8Bit("×°ÏäÊýÁ¿") << QString::fromLocal8Bit("Èë¿âÊ±¼ä") << QString::fromLocal8Bit("±à¼­");
 	header << QString::fromLocal8Bit("É¾³ý");
 	ui.tableWidget_Box->setHorizontalHeaderLabels(header);
@@ -181,7 +182,7 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_PackedInfo->horizontalHeader()->setFont(font);
 	ui.tableWidget_PackedInfo->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_PackedInfo->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
-	ui.tableWidget_PackedInfo->setColumnCount(12);
+	ui.tableWidget_PackedInfo->setColumnCount(13);
 	ui.tableWidget_PackedInfo->setColumnWidth(0, 170);
 	ui.tableWidget_PackedInfo->setColumnWidth(1, 170);
 	ui.tableWidget_PackedInfo->setColumnWidth(2, 170);
@@ -191,11 +192,12 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_PackedInfo->setColumnWidth(6, 200);
 	ui.tableWidget_PackedInfo->setColumnWidth(7, 120);
 	ui.tableWidget_PackedInfo->setColumnWidth(8, 120);
-	ui.tableWidget_PackedInfo->setColumnWidth(9, 120);
-	ui.tableWidget_PackedInfo->setColumnWidth(10, 120);
-	ui.tableWidget_PackedInfo->setColumnWidth(11, 120);
+	ui.tableWidget_PackedInfo->setColumnWidth(9, 100);
+	ui.tableWidget_PackedInfo->setColumnWidth(10, 100);
+	ui.tableWidget_PackedInfo->setColumnWidth(11, 100);
+	ui.tableWidget_PackedInfo->setColumnWidth(12, 100);
 	header.clear();
-	header <<QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë") << QString::fromLocal8Bit("×°±¸(²¿¼þ)Ãû³Æ");
+	header <<QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë") << QString::fromLocal8Bit("×°±¸(²¿¼þ)Ãû³Æ") << QString::fromLocal8Bit("Ç¹Ö§ÀàÐÍ");
 	header << QString::fromLocal8Bit("µ¥×°±àºÅ")<< QString::fromLocal8Bit("ÖØÒª²¿¼þÈ±Ê§Çé¿ö")<<QString::fromLocal8Bit("Ç¹¹ÜºÅ");
 	header <<QString::fromLocal8Bit("Ç¹»ú»òÌ×Í²ºÅ")<<QString::fromLocal8Bit("»úÇ¹¿òºÅ")<<QString::fromLocal8Bit("±¸·ÝÇ¹¹ÜºÅ");
 	header << QString::fromLocal8Bit("³ö¿â×´Ì¬") << QString::fromLocal8Bit("¼ìÊÓ") << QString::fromLocal8Bit("É¾³ý");
@@ -211,7 +213,7 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_Single->horizontalHeader()->setFont(font);
 	ui.tableWidget_Single->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_Single->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
-	ui.tableWidget_Single->setColumnCount(18);
+	ui.tableWidget_Single->setColumnCount(19);
 	ui.tableWidget_Single->setColumnWidth(0, 110);
 	ui.tableWidget_Single->setColumnWidth(1, 160);
 	ui.tableWidget_Single->setColumnWidth(2, 110);
@@ -224,17 +226,18 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_Single->setColumnWidth(9, 100);
 	ui.tableWidget_Single->setColumnWidth(10, 110);
 	ui.tableWidget_Single->setColumnWidth(11, 110);
-	ui.tableWidget_Single->setColumnWidth(12, 80);
+	ui.tableWidget_Single->setColumnWidth(12, 110);//Ç¹Ö§ÀàÐÍ
 	ui.tableWidget_Single->setColumnWidth(13, 80);
 	ui.tableWidget_Single->setColumnWidth(14, 80);
 	ui.tableWidget_Single->setColumnWidth(15, 80);
-	ui.tableWidget_Single->setColumnWidth(16, 55);
+	ui.tableWidget_Single->setColumnWidth(16, 80);
 	ui.tableWidget_Single->setColumnWidth(17, 55);
+	ui.tableWidget_Single->setColumnWidth(18, 55);
 	header.clear();
 	header << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï\nÎÄ¼þºÅ") << QString::fromLocal8Bit("ÍËÒÛ±¨·Ï×°±¸´¦Àí\nµ÷²¦Æ¾Ö¤ºÅ");
 	header << QString::fromLocal8Bit("  ×°±¸´úÂë  ") << QString::fromLocal8Bit("×°±¸(²¿¼þ)\nÃû³Æ") << QString::fromLocal8Bit("  µ¥×°±àºÅ  ") << QString::fromLocal8Bit("  ÖØÒª²¿¼þÈ±Ê§Çé¿ö  ");
 	header << QString::fromLocal8Bit("Ç¹¹ÜºÅ") << QString::fromLocal8Bit("Ç¹»ú»òÌ×Í²ºÅ") << QString::fromLocal8Bit("»úÇ¹¿òºÅ") << QString::fromLocal8Bit("±¸·ÝÇ¹¹ÜºÅ");
-	header << QString::fromLocal8Bit("  Á¥Êôµ¥Î»  ") << QString::fromLocal8Bit("  ¹ÜÀíµ¥Î»  ") << QString::fromLocal8Bit("  ³ö³§Ê±¼ä  ");
+	header << QString::fromLocal8Bit("  Á¥Êôµ¥Î»  ") << QString::fromLocal8Bit("  ¹ÜÀíµ¥Î»  ") << QString::fromLocal8Bit("  Ç¹Ö§ÀàÐÍ  ") << QString::fromLocal8Bit("  ³ö³§Ê±¼ä  ");
 	header << QString::fromLocal8Bit("  ×°±¸Ê±¼ä  ") << QString::fromLocal8Bit("³ö¿â×´Ì¬") << QString::fromLocal8Bit("Èë¿âÊ±¼ä") << QString::fromLocal8Bit("¼ìÊÓ") << QString::fromLocal8Bit("É¾³ý");
 	ui.tableWidget_Single->setHorizontalHeaderLabels(header);
 
@@ -310,6 +313,9 @@ void CSystemMangaer::InitVariables()
 	header << QString::fromLocal8Bit("  ×°ÏäÊýÁ¿  ") << QString::fromLocal8Bit("  Èë¿âÊ±¼ä  ") << QString::fromLocal8Bit("Ñ¡Ôñ");
 	ui.tableWidget_Delivery->setHorizontalHeaderLabels(header);
 	//ui.tableWidget_Delivery->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+
+
 
 }
 
@@ -534,9 +540,10 @@ void CSystemMangaer::ModifyBoxPackedInfo()
 	data.push_back(ui.tableWidget_Box->item(row, 4)->text());  //×°±¸£¨²¿¼þ£©Ãû³Æ
 	data.push_back(ui.tableWidget_Box->item(row, 5)->text());  //Á¥Êôµ¥Î»
 	data.push_back(ui.tableWidget_Box->item(row, 6)->text());  //¹ÜÀíµ¥Î»
-	data.push_back(ui.tableWidget_Box->item(row, 7)->text());  //³ö³§Ê±¼ä
-	data.push_back(ui.tableWidget_Box->item(row, 8)->text());  //×°±¸Ê±¼ä
-	data.push_back(ui.tableWidget_Box->item(row, 9)->text());  //×°ÏäÊýÁ¿
+	data.push_back(ui.tableWidget_Box->item(row, 7)->text());   //Ç¹Ö§ÀàÐÍ
+	data.push_back(ui.tableWidget_Box->item(row, 8)->text());  //³ö³§Ê±¼ä
+	data.push_back(ui.tableWidget_Box->item(row, 9)->text());  //×°±¸Ê±¼ä
+	data.push_back(ui.tableWidget_Box->item(row, 10)->text());  //×°ÏäÊýÁ¿
 	//data.push_back(ui.tableWidget_Box->item(row, 10)->text());//Èë¿âÊ±¼ä
 	CBoxPacked::GetInstance()->SetOperatorType(1, data);
 	CBoxPacked::GetInstance()->exec();
@@ -767,8 +774,12 @@ void CSystemMangaer::EditPackedListInfo()
 
 	int row = ui.tableWidget_PackedInfo->indexAt(QPoint(senderObj->frameGeometry().x(), senderObj->frameGeometry().y())).row();//ÐÐ
 
-	QString DanHao = ui.tableWidget_PackedInfo->item(row, 0)->text();//»ñÈ¡Ïä×°ÁÐ±íµÄµÚÒ»ÁÐÎªÏä×°µ¥ºÅ
+	QString DanHao = ui.tableWidget_PackedInfo->item(row, 0)->text();//»ñÈ¡Ïä×°ÁÐ±íµÄµÚ1ÁÐÎªÏä×°µ¥ºÅ
 	ui.label_DanHao->setText(DanHao);
+
+	QString QiangZhiType = ui.tableWidget_PackedInfo->item(row, 3)->text();//»ñÈ¡Ïä×°ÁÐ±íµÄµÚ4ÁÐÎªÏä×°µ¥ºÅÏÔÊ¾
+	ui.label_GunType->setText(QiangZhiType);
+
 	ui.lineEdit_Ocr->setText("");//Í¼ÏñÊ¶±ð±à¼­¿ò
 	ui.lineEdit_XiuZheng->setText("");//ÈË¹¤ÐÞÕý±à¼­¿ò
 	ui.checkBox_QiangGuan->setEnabled(true); //¿É±à¼­£¬¼¤»î°´Å¥£¬¿ÉÒÔ´¥·¢ÊÂ¼þ
@@ -878,6 +889,11 @@ void CSystemMangaer::EditSinglePacked()
 		return;
 	}
 	int row = ui.tableWidget_Single->indexAt(QPoint(senderObj->frameGeometry().x(), senderObj->frameGeometry().y())).row();
+
+	QString QiangZhiType = ui.tableWidget_Single->item(row, 12)->text();//»ñÈ¡Ïä×°ÁÐ±íµÄµÚ13ÁÐÎªÏä×°µ¥ºÅÏÔÊ¾
+	ui.label_GunType->setText(QiangZhiType);
+
+
 	ui.label_DanHao->setText("");//µ¥×° Ã»ÓÐÏä×°µ¥ºÅ  ÉèÎª¿Õ
 	ui.lineEdit_Ocr->setText("");
 	ui.lineEdit_XiuZheng->setText("");
@@ -1034,8 +1050,10 @@ void CSystemMangaer::PrintSinglePacked()//±àÂë¼ìÊÓ½çÃæ->"µ¥×°Èë¿â"½çÃæ,×óÏÂ½Ç¡°´
 	//content.push_back(ui.tableWidget_Single->item(row, 5)->text());//ÖØÒª²¿¼þÈ±Ê§Çé¿ö
 	content.push_back(ui.tableWidget_Single->item(row, 10)->text());//Á¥Êôµ¥Î»
 	content.push_back(ui.tableWidget_Single->item(row, 11)->text());//¹ÜÀíµ¥Î»
-	content.push_back(ui.tableWidget_Single->item(row, 12)->text());//³ö³§Ê±¼ä
-	content.push_back(ui.tableWidget_Single->item(row, 13)->text());//×°±¸Ê±¼ä
+	//content.push_back(ui.tableWidget_Single->item(row, 12)->text());//³ö³§Ê±¼ä
+	//content.push_back(ui.tableWidget_Single->item(row, 13)->text());//×°±¸Ê±¼ä
+	content.push_back(ui.tableWidget_Single->item(row, 13)->text());//³ö³§Ê±¼ä
+	content.push_back(ui.tableWidget_Single->item(row, 14)->text());//×°±¸Ê±¼ä
 
 	PrintAPI::Instance()->PrintGridA3(content);
 }

@@ -12,6 +12,7 @@
 #include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
@@ -42,6 +43,8 @@ public:
     QDateEdit *dateEdit_ChuChang;
     QLabel *label_38;
     QDateEdit *dateEdit_ZhuangBei;
+    QLabel *label_36;
+    QComboBox *comboBox_GunType;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton_QueDing;
 
@@ -216,9 +219,24 @@ public:
 
         gridLayout->addWidget(dateEdit_ZhuangBei, 3, 3, 1, 2);
 
-        horizontalSpacer = new QSpacerItem(536, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        label_36 = new QLabel(SinglePackedDialog);
+        label_36->setObjectName(QString::fromUtf8("label_36"));
+        label_36->setMinimumSize(QSize(100, 30));
+        label_36->setMaximumSize(QSize(100, 30));
+        label_36->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+"color: rgb(41, 136, 41);"));
+        label_36->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addItem(horizontalSpacer, 4, 0, 1, 4);
+        gridLayout->addWidget(label_36, 4, 0, 1, 1);
+
+        comboBox_GunType = new QComboBox(SinglePackedDialog);
+        comboBox_GunType->setObjectName(QString::fromUtf8("comboBox_GunType"));
+
+        gridLayout->addWidget(comboBox_GunType, 4, 1, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(223, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 4, 2, 1, 2);
 
         pushButton_QueDing = new QPushButton(SinglePackedDialog);
         pushButton_QueDing->setObjectName(QString::fromUtf8("pushButton_QueDing"));
@@ -255,6 +273,7 @@ public:
         dateEdit_ChuChang->setDisplayFormat(QCoreApplication::translate("SinglePackedDialog", "yyyy-M-d", nullptr));
         label_38->setText(QCoreApplication::translate("SinglePackedDialog", "\350\243\205\345\244\207\346\227\266\351\227\264", nullptr));
         dateEdit_ZhuangBei->setDisplayFormat(QCoreApplication::translate("SinglePackedDialog", "yyyy-M-d", nullptr));
+        label_36->setText(QCoreApplication::translate("SinglePackedDialog", "\347\256\241\347\220\206\345\215\225\344\275\215", nullptr));
         pushButton_QueDing->setText(QCoreApplication::translate("SinglePackedDialog", "\346\267\273\345\212\240", nullptr));
     } // retranslateUi
 

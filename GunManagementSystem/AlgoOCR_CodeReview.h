@@ -6,6 +6,15 @@
 using namespace cv;
 using namespace smartmore;
 
+typedef enum
+{
+	DEFAULT_MODEL,
+	RIFLE_MODEL95,
+	RIFLE_MODEL951,
+	PISTOL_MODEL54
+}e_GunModel;
+
+
 class CAlgoCodeReview:public QObject
 {
 	Q_OBJECT
@@ -14,6 +23,8 @@ public:
 	~CAlgoCodeReview();
 	bool InitAlgo();
 	bool RunAlog(Mat &image,QString &result);
+
+	bool SetGunModel(e_GunModel type);//Ç¹Ö»Ä£ÐÍ
 private:
 	CAlgoCodeReview(QObject *parent = NULL);
 	class GarbageCollection
@@ -33,4 +44,6 @@ private:
 	static GarbageCollection m_Collection;
 	bool m_bInitSuccess;
 	VimoOCRModule m_OcrModule;
+
+	e_GunModel m_GunModel;
 };
