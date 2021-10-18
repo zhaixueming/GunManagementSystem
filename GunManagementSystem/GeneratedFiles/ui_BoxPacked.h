@@ -295,10 +295,11 @@ public:
         QWidget::setTabOrder(lineEdit_DanHao, lineEdit_DaiMa);
         QWidget::setTabOrder(lineEdit_DaiMa, lineEdit_MingCheng);
         QWidget::setTabOrder(lineEdit_MingCheng, lineEdit_LiShuDanWei);
-        QWidget::setTabOrder(lineEdit_LiShuDanWei, dateEdit_ChuChang);
+        QWidget::setTabOrder(lineEdit_LiShuDanWei, lineEdit_GuanLiDanWei);
+        QWidget::setTabOrder(lineEdit_GuanLiDanWei, comboBox_GunType);
+        QWidget::setTabOrder(comboBox_GunType, dateEdit_ChuChang);
         QWidget::setTabOrder(dateEdit_ChuChang, dateEdit_ZhuangBei);
-        QWidget::setTabOrder(dateEdit_ZhuangBei, lineEdit_GuanLiDanWei);
-        QWidget::setTabOrder(lineEdit_GuanLiDanWei, spinBox);
+        QWidget::setTabOrder(dateEdit_ZhuangBei, spinBox);
         QWidget::setTabOrder(spinBox, pushButton_QueDing);
 
         retranslateUi(BoxPackedDialog);

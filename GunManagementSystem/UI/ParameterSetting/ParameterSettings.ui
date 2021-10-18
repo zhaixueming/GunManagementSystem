@@ -598,6 +598,26 @@ font: 14pt &quot;微软雅黑&quot;;</string>
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_DatabaseName</tabstop>
+  <tabstop>lineEdit_UserName</tabstop>
+  <tabstop>lineEdit_Password</tabstop>
+  <tabstop>pushButton_Login</tabstop>
+  <tabstop>comboBox_Camera1</tabstop>
+  <tabstop>pushButton_OpenCamera1</tabstop>
+  <tabstop>radioButton_FreeRun1</tabstop>
+  <tabstop>radioButton_SoftTrigger1</tabstop>
+  <tabstop>radioButton_ExternalTrigger1</tabstop>
+  <tabstop>comboBox_Camera2</tabstop>
+  <tabstop>pushButton_OpenCamera2</tabstop>
+  <tabstop>radioButton_FreeRun2</tabstop>
+  <tabstop>radioButton_SoftTrigger2</tabstop>
+  <tabstop>radioButton_ExternalTrigger2</tabstop>
+  <tabstop>lineEdit_SaveImagePath</tabstop>
+  <tabstop>pushButton_SaveImagePath</tabstop>
+  <tabstop>checkBox_Debug</tabstop>
+  <tabstop>pushButton_SaveConfig</tabstop>
+ </tabstops>
  <resources>
   <include location="../../SysMainWindow.qrc"/>
  </resources>

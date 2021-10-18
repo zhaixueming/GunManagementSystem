@@ -634,9 +634,10 @@ color: rgb(41, 136, 41);</string>
   <tabstop>lineEdit_DaiMa</tabstop>
   <tabstop>lineEdit_MingCheng</tabstop>
   <tabstop>lineEdit_LiShuDanWei</tabstop>
+  <tabstop>lineEdit_GuanLiDanWei</tabstop>
+  <tabstop>comboBox_GunType</tabstop>
   <tabstop>dateEdit_ChuChang</tabstop>
   <tabstop>dateEdit_ZhuangBei</tabstop>
-  <tabstop>lineEdit_GuanLiDanWei</tabstop>
   <tabstop>spinBox</tabstop>
   <tabstop>pushButton_QueDing</tabstop>
  </tabstops>

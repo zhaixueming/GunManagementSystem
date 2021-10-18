@@ -7,6 +7,10 @@ class CSinglePacked :public QDialog
 	Q_OBJECT
 public:
 	static CSinglePacked *GetInstance();
+
+	//连接 单装 枪支类型
+	QString ConnectGunType2();
+
 	~CSinglePacked();
 private:
 	CSinglePacked(QDialog *parent = NULL);

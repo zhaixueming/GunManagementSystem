@@ -21,6 +21,7 @@ typedef struct
 	QString BFWenJianHao; //数据库表-SinglePackedTable-退役报废文件号
 	QString DBPingZhengHao;//数据库表-SinglePackedTable-调拨凭证号
 	QString ZBDaiMa;//数据库表-SinglePackedTable-装备代码
+
 	void clear()
 	{
 		type = 0;
@@ -29,6 +30,7 @@ typedef struct
 		BFWenJianHao.clear();
 		DBPingZhengHao.clear();
 		ZBDaiMa.clear();
+
 	}
 }s_CurrentMessage;
 
@@ -37,12 +39,18 @@ class CSystemMangaer :public QDialog
 	Q_OBJECT
 public:
 	CSystemMangaer(QDialog *parent = NULL);
+
+
 	~CSystemMangaer();
 private:
 	void InitVariables();
 	void InitConnections();
 
 	bool CheckRepeat(QString &errMsg);
+	
+//public:
+//	static bool curPreviousIndex1();//箱装 枪支类型
+//	static bool curPreviousIndex2();//单装 枪支类型
 
 private:
 	Ui::SystemManager ui;
@@ -56,6 +64,8 @@ private:
 	//1：箱装信息列表
 	//2：单装信息
 	int m_PreviousIndex; 
+
+	e_GunModel CurGunModelflag;
 
 	Mat CodeImage;
 	Mat GunImage;

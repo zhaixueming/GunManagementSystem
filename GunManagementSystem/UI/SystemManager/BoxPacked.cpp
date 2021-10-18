@@ -41,26 +41,27 @@ void CBoxPacked::InitVariables()
 	////m_GunTypeInfos.insert(QString::fromLocal8Bit("81式步枪"),"81shibuqiang");
 	////m_GunTypeInfos.insert(QString::fromLocal8Bit("92式步枪"), "92shishouqiang");
 
-	//ui.comboBox_GunType->clear();
-	//ui.comboBox_GunType->addItem("Default");
-	//ui.comboBox_GunType->addItem(QString::fromLocal8Bit("95式步枪"));
-	//ui.comboBox_GunType->addItem(QString::fromLocal8Bit("95-1式步枪"));
-	//ui.comboBox_GunType->addItem(QString::fromLocal8Bit("54式手枪"));
+	ui.comboBox_GunType->clear();
+	ui.comboBox_GunType->addItem("Default");
+	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("95式步枪"));
+	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("95-1式步枪"));
+	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("54式手枪"));
 	////ui.comboBox_GunType->addItem(QString::fromLocal8Bit("81式步枪"));
 	////ui.comboBox_GunType->addItem(QString::fromLocal8Bit("92式手枪"));
 
 
-	ui.comboBox_GunType->clear();
-	ui.comboBox_GunType->addItem("Default",DEFAULT_MODEL);
-	ui.comboBox_GunType->addItem("95shibuqiang",RIFLE_MODEL95);
-	ui.comboBox_GunType->addItem("951shibuqiang",RIFLE_MODEL951);
-	ui.comboBox_GunType->addItem("54shishouqiang",PISTOL_MODEL54);
 
-	//改变下拉框index对应的文本
-	ui.comboBox_GunType->setItemText(0, "Default");
-	ui.comboBox_GunType->setItemText(1, QString::fromLocal8Bit("95式步枪"));
-	ui.comboBox_GunType->setItemText(2, QString::fromLocal8Bit("95-1式步枪"));
-	ui.comboBox_GunType->setItemText(3, QString::fromLocal8Bit("54式手枪"));
+	//ui.comboBox_GunType->clear();
+	//ui.comboBox_GunType->addItem("Default",DEFAULT_MODEL);
+	//ui.comboBox_GunType->addItem("95shibuqiang",RIFLE_MODEL95);
+	//ui.comboBox_GunType->addItem("951shibuqiang",RIFLE_MODEL951);
+	//ui.comboBox_GunType->addItem("54shishouqiang",PISTOL_MODEL54);
+
+	////改变下拉框index对应的文本
+	//ui.comboBox_GunType->setItemText(0, "Default");
+	//ui.comboBox_GunType->setItemText(1, QString::fromLocal8Bit("95式步枪"));
+	//ui.comboBox_GunType->setItemText(2, QString::fromLocal8Bit("95-1式步枪"));
+	//ui.comboBox_GunType->setItemText(3, QString::fromLocal8Bit("54式手枪"));
 
 
 
@@ -78,7 +79,7 @@ void CBoxPacked::SetControllerEnabled(bool enabled)//type==1时，enabled==false
 	
 }
 
-//创建表单的内容
+//修改表单的内容
 void CBoxPacked::SetControllContent(QList<QVariant> data)
 {
 	if (data.size() != 11)
@@ -101,25 +102,37 @@ void CBoxPacked::SetControllContent(QList<QVariant> data)
 }
 
 
-
-void CBoxPacked::ConnectGunType()
+//箱装 枪支类型名字
+QString CBoxPacked::ConnectGunType1()
 {
 	QString GunType = ui.comboBox_GunType->currentText();
+
 	//QString GTModule = m_GunTypeInfos.value(GunType);
+	//int ConnectType = ui.comboBox_GunType->currentIndex();
+	
+	if (!GunType.isEmpty())
+	{
+		return GunType;
+	}
+	else
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置枪支类型"));
+		//return;
+	}
 
 }
 
 
-
+//创建或编辑表单信息类型
 void CBoxPacked::SetOperatorType(int type, QList<QVariant> data)
 {
-	m_Type = type;
+	m_Type = type;//添加
 	if (type == 0)
 	{
 		SetControllerEnabled(true);
 		ui.pushButton_QueDing->setText(QString::fromLocal8Bit("添加"));
 	}
-	else if (type == 1)
+	else if (type == 1)//修改
 	{
 		SetControllContent(data);
 		SetControllerEnabled(false);
@@ -279,10 +292,10 @@ void CBoxPacked::ConfirmModification()
 			for (; i < n - 1; ++i)
 			{
 				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'\',\'\'," + "\'"+ JianShiZhuangTai + "\'),";
-				sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + "\',\'" + GunType + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",null,null," + "\'" + JianShiZhuangTai + "\'),";
+				sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") +  GunType + "\',\'" + RuKuDateTime + "\'" + ",null,null," + "\'" + JianShiZhuangTai + "\'),";
 			}
 			//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",\'\',\'\',"+ "\'" + JianShiZhuangTai+ "\')";
-			sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing+ "\',\'" + GunType + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") + RuKuDateTime + "\'" + ",null,null," + "\'" + JianShiZhuangTai + "\')";
+			sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'未出库\',\'") +  GunType + "\',\'" + RuKuDateTime + "\'" + ",null,null," + "\'" + JianShiZhuangTai + "\')";
 			
 			rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
 			if (!rv)

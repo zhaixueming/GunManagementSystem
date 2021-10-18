@@ -260,6 +260,23 @@ public:
         label_Info->setMinimumSize(QSize(60, 30));
         label_Info->setMaximumSize(QSize(1000, 30));
         label_Info->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 0);"));
+        QWidget::setTabOrder(lineEdit_DatabaseName, lineEdit_UserName);
+        QWidget::setTabOrder(lineEdit_UserName, lineEdit_Password);
+        QWidget::setTabOrder(lineEdit_Password, pushButton_Login);
+        QWidget::setTabOrder(pushButton_Login, comboBox_Camera1);
+        QWidget::setTabOrder(comboBox_Camera1, pushButton_OpenCamera1);
+        QWidget::setTabOrder(pushButton_OpenCamera1, radioButton_FreeRun1);
+        QWidget::setTabOrder(radioButton_FreeRun1, radioButton_SoftTrigger1);
+        QWidget::setTabOrder(radioButton_SoftTrigger1, radioButton_ExternalTrigger1);
+        QWidget::setTabOrder(radioButton_ExternalTrigger1, comboBox_Camera2);
+        QWidget::setTabOrder(comboBox_Camera2, pushButton_OpenCamera2);
+        QWidget::setTabOrder(pushButton_OpenCamera2, radioButton_FreeRun2);
+        QWidget::setTabOrder(radioButton_FreeRun2, radioButton_SoftTrigger2);
+        QWidget::setTabOrder(radioButton_SoftTrigger2, radioButton_ExternalTrigger2);
+        QWidget::setTabOrder(radioButton_ExternalTrigger2, lineEdit_SaveImagePath);
+        QWidget::setTabOrder(lineEdit_SaveImagePath, pushButton_SaveImagePath);
+        QWidget::setTabOrder(pushButton_SaveImagePath, checkBox_Debug);
+        QWidget::setTabOrder(checkBox_Debug, pushButton_SaveConfig);
 
         retranslateUi(ParameterSetting);
         QObject::connect(pushButton_Login, SIGNAL(clicked()), ParameterSetting, SLOT(ConnectDatabase()));

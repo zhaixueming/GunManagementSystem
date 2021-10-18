@@ -75,7 +75,8 @@ void CParameterSettings::InitVariables()
 	m_CameraCapture2->start();
 	m_bOpenCamera1 = false;//初始化为False
 	m_bOpenCamera2 = false;
-	m_Camera1Type = 3;//编码拍照初始化为3，硬触发
+	//m_Camera1Type = 3;//编码拍照初始化为3，硬触发，记得修改
+	m_Camera1Type = 2;//编码拍照初始化为3，硬触发
 	m_Camera2Type = 2;//整枪拍照初始化为2，软触发
 	InitCameraInfo();
 }

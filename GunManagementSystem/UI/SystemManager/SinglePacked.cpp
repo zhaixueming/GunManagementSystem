@@ -36,20 +36,20 @@ void CSinglePacked::InitVariables()
 		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
 		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
 
-	m_GunTypeInfos.insert(QString::fromLocal8Bit("Default"), "default");
-	m_GunTypeInfos.insert(QString::fromLocal8Bit("95式步枪"), "95shibuqiang");
-	m_GunTypeInfos.insert(QString::fromLocal8Bit("95-1式步枪"), "951shibuqiang");
-	m_GunTypeInfos.insert(QString::fromLocal8Bit("54式步枪"), "54shishouqiang");
-	//m_GunTypeInfos.insert(QString::fromLocal8Bit("81式步枪"), "81shibuqiang");
-	//m_GunTypeInfos.insert(QString::fromLocal8Bit("92式步枪"), "92shishouqiang");
+	//m_GunTypeInfos.insert(QString::fromLocal8Bit("Default"), "default");
+	//m_GunTypeInfos.insert(QString::fromLocal8Bit("95式步枪"), "95shibuqiang");
+	//m_GunTypeInfos.insert(QString::fromLocal8Bit("95-1式步枪"), "951shibuqiang");
+	//m_GunTypeInfos.insert(QString::fromLocal8Bit("54式步枪"), "54shishouqiang");
+	////m_GunTypeInfos.insert(QString::fromLocal8Bit("81式步枪"), "81shibuqiang");
+	////m_GunTypeInfos.insert(QString::fromLocal8Bit("92式步枪"), "92shishouqiang");
 
 	ui.comboBox_GunType->clear();
 	ui.comboBox_GunType->addItem("Default");
 	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("95式步枪"));
 	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("95-1式步枪"));
 	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("54式手枪"));
-	//ui.comboBox_GunType->addItem(QString::fromLocal8Bit("81式步枪"));
-	//ui.comboBox_GunType->addItem(QString::fromLocal8Bit("92式手枪"));
+	////ui.comboBox_GunType->addItem(QString::fromLocal8Bit("81式步枪"));
+	////ui.comboBox_GunType->addItem(QString::fromLocal8Bit("92式手枪"));
 
 
 	ui.dateEdit_ChuChang->setDateTime(QDateTime::fromString("1900-1-1", "yyyy-M-d"));
@@ -81,6 +81,29 @@ void CSinglePacked::SetControllContent(QList<QVariant> data)
 	DTime = QDate::fromString(data.at(9).toString(), "yyyy/MM/dd");
 	ui.dateEdit_ZhuangBei->setDate(DTime);
 }
+
+
+//单装 枪支类型名字
+QString CSinglePacked::ConnectGunType2()
+{
+
+	QString GunType = ui.comboBox_GunType->currentText();
+
+	//QString GTModule = m_GunTypeInfos.value(GunType);
+	//int ConnectType = ui.comboBox_GunType->currentIndex();
+
+	if (!GunType.isEmpty())
+	{
+		return GunType;
+	}
+	else
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置枪支类型"));
+		//return;
+	}
+
+}
+
 
 bool CSinglePacked::CheckSinglePackedRepeat(QString &errMsg)
 {
