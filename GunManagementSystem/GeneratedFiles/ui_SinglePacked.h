@@ -231,6 +231,7 @@ public:
 
         comboBox_GunType = new QComboBox(SinglePackedDialog);
         comboBox_GunType->setObjectName(QString::fromUtf8("comboBox_GunType"));
+        comboBox_GunType->setMaximumSize(QSize(16777215, 29));
 
         gridLayout->addWidget(comboBox_GunType, 4, 1, 1, 1);
 
@@ -273,7 +274,7 @@ public:
         dateEdit_ChuChang->setDisplayFormat(QCoreApplication::translate("SinglePackedDialog", "yyyy-M-d", nullptr));
         label_38->setText(QCoreApplication::translate("SinglePackedDialog", "\350\243\205\345\244\207\346\227\266\351\227\264", nullptr));
         dateEdit_ZhuangBei->setDisplayFormat(QCoreApplication::translate("SinglePackedDialog", "yyyy-M-d", nullptr));
-        label_36->setText(QCoreApplication::translate("SinglePackedDialog", "\347\256\241\347\220\206\345\215\225\344\275\215", nullptr));
+        label_36->setText(QCoreApplication::translate("SinglePackedDialog", "\346\236\252\346\224\257\347\261\273\345\236\213", nullptr));
         pushButton_QueDing->setText(QCoreApplication::translate("SinglePackedDialog", "\346\267\273\345\212\240", nullptr));
     } // retranslateUi
 

@@ -8,6 +8,7 @@
 #include "speech.h"
 
 
+
 //Êä³öÈÕÖ¾
 void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {

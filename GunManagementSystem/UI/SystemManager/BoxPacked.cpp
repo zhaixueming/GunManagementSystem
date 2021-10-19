@@ -33,15 +33,11 @@ void CBoxPacked::InitVariables()
 	ui.pushButton_QueDing->setStyleSheet("QPushButton{font: 75 15pt '微软雅黑';background-color:rgb(190, 190, 190);color: rgb(34, 139, 34);border:2px groove gray;border-radius:50px;padding:2px 4px;border-style: outset;}"
 		"QPushButton:hover{background-color:gray; color: rgb(10, 10, 10);}"
 		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
+	
 
-	//m_GunTypeInfos.insert(QString::fromLocal8Bit("Default"), "default");
-	//m_GunTypeInfos.insert(QString::fromLocal8Bit("95式步枪"), "95shibuqiang");
-	//m_GunTypeInfos.insert(QString::fromLocal8Bit("95-1式步枪"), "951shibuqiang");
-	//m_GunTypeInfos.insert(QString::fromLocal8Bit("54式步枪"), "54shishouqiang");
-	////m_GunTypeInfos.insert(QString::fromLocal8Bit("81式步枪"),"81shibuqiang");
-	////m_GunTypeInfos.insert(QString::fromLocal8Bit("92式步枪"), "92shishouqiang");
-
+	
 	ui.comboBox_GunType->clear();
+	ui.comboBox_GunType->setFixedSize(QSize(200, 30));
 	ui.comboBox_GunType->addItem("Default");
 	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("95式步枪"));
 	ui.comboBox_GunType->addItem(QString::fromLocal8Bit("95-1式步枪"));
@@ -49,24 +45,18 @@ void CBoxPacked::InitVariables()
 	////ui.comboBox_GunType->addItem(QString::fromLocal8Bit("81式步枪"));
 	////ui.comboBox_GunType->addItem(QString::fromLocal8Bit("92式手枪"));
 
+	ui.comboBox_GunType->setStyleSheet("QComboBox{font: 75 15pt '微软雅黑';border-radius:3px;color:black;background:white;padding-left:5px;padding-right:12px;border:1px solid #b5b5b5;}\
+                            QComboBox:hover{border:1px solid gray;}");
 
-
-	//ui.comboBox_GunType->clear();
-	//ui.comboBox_GunType->addItem("Default",DEFAULT_MODEL);
-	//ui.comboBox_GunType->addItem("95shibuqiang",RIFLE_MODEL95);
-	//ui.comboBox_GunType->addItem("951shibuqiang",RIFLE_MODEL951);
-	//ui.comboBox_GunType->addItem("54shishouqiang",PISTOL_MODEL54);
-
-	////改变下拉框index对应的文本
-	//ui.comboBox_GunType->setItemText(0, "Default");
-	//ui.comboBox_GunType->setItemText(1, QString::fromLocal8Bit("95式步枪"));
-	//ui.comboBox_GunType->setItemText(2, QString::fromLocal8Bit("95-1式步枪"));
-	//ui.comboBox_GunType->setItemText(3, QString::fromLocal8Bit("54式手枪"));
-
-
-
+	ui.dateEdit_ChuChang->setFixedSize(QSize(200, 30));
+	ui.dateEdit_ZhuangBei->setFixedSize(QSize(200, 30));
 	ui.dateEdit_ChuChang->setDateTime(QDateTime::fromString("1900-1-1", "yyyy-M-d"));
 	ui.dateEdit_ZhuangBei->setDateTime(QDateTime::fromString("1900-1-1", "yyyy-M-d"));
+	/*ui.dateEdit_ChuChang->setStyleSheet("QDateEdit{font: 75 15pt '微软雅黑';border-radius:3px;color:black;background:white;padding-left:5px;padding-right:12px;border:1px solid #b5b5b5;}\
+                            QDateEdit:hover{border:1px solid gray;}");
+	ui.dateEdit_ZhuangBei->setStyleSheet("QDateEdit{font: 75 15pt '微软雅黑';border-radius:3px;color:black;background:white;padding-left:5px;padding-right:12px;border:1px solid #b5b5b5;}\
+                            QDateEdit:hover{border:1px solid gray;}");*/
+
 
 }
 

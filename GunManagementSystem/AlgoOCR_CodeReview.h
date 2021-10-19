@@ -68,6 +68,4 @@ private:
 	QString Myresult;
 	
 
-	//e_GunModel m_GunModel;
-	//bool curIndex;//单装 箱装 枪支类型
 };

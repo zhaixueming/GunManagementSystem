@@ -42,7 +42,6 @@ public:
     QLabel *label_35;
     QLineEdit *lineEdit_GuanLiDanWei;
     QLabel *label_39;
-    QComboBox *comboBox_GunType;
     QLabel *label_37;
     QDateEdit *dateEdit_ChuChang;
     QLabel *label_38;
@@ -50,6 +49,7 @@ public:
     QLabel *label_36;
     QSpinBox *spinBox;
     QPushButton *pushButton_QueDing;
+    QComboBox *comboBox_GunType;
 
     void setupUi(QDialog *BoxPackedDialog)
     {
@@ -215,13 +215,6 @@ public:
 
         gridLayout->addWidget(label_39, 3, 2, 1, 1);
 
-        comboBox_GunType = new QComboBox(BoxPackedDialog);
-        comboBox_GunType->setObjectName(QString::fromUtf8("comboBox_GunType"));
-        comboBox_GunType->setEnabled(true);
-        comboBox_GunType->setEditable(false);
-
-        gridLayout->addWidget(comboBox_GunType, 3, 3, 1, 2);
-
         label_37 = new QLabel(BoxPackedDialog);
         label_37->setObjectName(QString::fromUtf8("label_37"));
         label_37->setMinimumSize(QSize(100, 30));
@@ -290,6 +283,14 @@ public:
 
         gridLayout->addWidget(pushButton_QueDing, 5, 4, 1, 1);
 
+        comboBox_GunType = new QComboBox(BoxPackedDialog);
+        comboBox_GunType->setObjectName(QString::fromUtf8("comboBox_GunType"));
+        comboBox_GunType->setEnabled(true);
+        comboBox_GunType->setMaximumSize(QSize(200, 30));
+        comboBox_GunType->setEditable(false);
+
+        gridLayout->addWidget(comboBox_GunType, 3, 3, 1, 2);
+
         QWidget::setTabOrder(lineEdit_WenJianHao, lineEdit_PingZhengHao);
         QWidget::setTabOrder(lineEdit_PingZhengHao, lineEdit_DanHao);
         QWidget::setTabOrder(lineEdit_DanHao, lineEdit_DaiMa);
@@ -326,13 +327,13 @@ public:
         label_35->setText(QCoreApplication::translate("BoxPackedDialog", "\347\256\241\347\220\206\345\215\225\344\275\215", nullptr));
         lineEdit_GuanLiDanWei->setPlaceholderText(QString());
         label_39->setText(QCoreApplication::translate("BoxPackedDialog", "\346\236\252\346\224\257\347\261\273\345\236\213", nullptr));
-        comboBox_GunType->setCurrentText(QString());
         label_37->setText(QCoreApplication::translate("BoxPackedDialog", "\345\207\272\345\216\202\346\227\266\351\227\264", nullptr));
         dateEdit_ChuChang->setDisplayFormat(QCoreApplication::translate("BoxPackedDialog", "yyyy-M-d", nullptr));
         label_38->setText(QCoreApplication::translate("BoxPackedDialog", "\350\243\205\345\244\207\346\227\266\351\227\264", nullptr));
         dateEdit_ZhuangBei->setDisplayFormat(QCoreApplication::translate("BoxPackedDialog", "yyyy-M-d", nullptr));
         label_36->setText(QCoreApplication::translate("BoxPackedDialog", "\350\243\205\347\256\261\346\225\260\351\207\217", nullptr));
         pushButton_QueDing->setText(QCoreApplication::translate("BoxPackedDialog", "\346\267\273\345\212\240", nullptr));
+        comboBox_GunType->setCurrentText(QString());
     } // retranslateUi
 
 };
