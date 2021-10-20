@@ -795,7 +795,7 @@ void CSystemMangaer::EditPackedListInfo()
 		return;
 	}
 
-	int row = ui.tableWidget_PackedInfo->indexAt(QPoint(senderObj->frameGeometry().x(), senderObj->frameGeometry().y())).row();//行
+	int row = ui.tableWidget_PackedInfo->indexAt(QPoint(senderObj->frameGeometry().x(), senderObj->frameGeometry().y())).row();//行编号，从0开始
 
 	QString DanHao = ui.tableWidget_PackedInfo->item(row, 0)->text();//获取箱装列表的第1列为箱装单号
 	ui.label_DanHao->setText(DanHao);
@@ -876,8 +876,6 @@ void CSystemMangaer::DeletePackedListInfo()
 		QString sql = "delete from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("序号 = \'") + QString::number(m_curMsg.index) + "\'"; 
 		sql += QString::fromLocal8Bit(" and 装箱单号 = \'") + DanHao + "\'";
 		sql += QString::fromLocal8Bit(" and 单装编号 = \'") + BianHao + "\'";
-		//QMessageBox::information(this, "check", QString::fromLocal8Bit("看看4是啥 ") + sql);
-		//QMessageBox::information(this, "check", QString::fromLocal8Bit("确认删除行为 ") + QString::number(m_curMsg.index));
 		
 
 		QString errMsg;
@@ -1685,7 +1683,7 @@ void CSystemMangaer::ExportGridA9()
 		{
 			QString rowStr = "";//str
 			out << ",";
-			for (int j = 6; j < col - 5; j++)
+			for (int j = 5; j < 9; j++)
 			{
 				
 				rowStr = ui.tableWidget_Delivery->item(i, j)->text();
@@ -1999,8 +1997,9 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 
 			QString result;
 			//cvtColor(image, image, COLOR_GRAY2BGR);
-			CodeImage = image.clone();
-			image1 = imread("81shi.bmp");
+			//CodeImage = image.clone();
+			//image1 = imread("./Image54/2505265566.bmp");
+			image1 = imread("./Image54/10112662code(1).bmp"); 
 			bool bAlgoSuccess = CAlgoCodeReview::GetInstance()->RunAlog(image1, result);//调用OCR检测
 			if (bAlgoSuccess)
 			{
@@ -2013,7 +2012,7 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 				{
 					if (m_CurDZBianHao.size() != 8)
 					{
-						QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合95式步枪标准，请重新识别或人工修改！"));
+						QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合95式步枪规范，请重新识别或人工修改！"));
 					}
 
 				}
@@ -2021,22 +2020,24 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 				{
 					if (m_CurDZBianHao.size() != 6)
 					{
-						QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合95-1式步枪标准，请重新识别或手动修改！"));
+						QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合95-1式步枪规范，请重新识别或手动修改！"));
 					}
+
 
 				}
 				if (CurGunModelflag == PISTOL_MODEL54)
 				{
 					if (m_CurDZBianHao.size() != 8)
 					{
-						QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合54式手枪标准，请重新识别或手动修改！"));
+						QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合54式手枪规范，请重新识别或手动修改！"));
 					}
 
 				}
 			}		
 				
 		}
-		//CodeImage = image.clone();
+		
+		CodeImage = image1.clone();
 		//DetectImage = image.clone();
 		QImage img = matToQImage(image1);
 		//QImage img = matToQImage(image);//调用matToQImage函数，获取图像数据，行。列，格式等(改)
@@ -2144,7 +2145,7 @@ void CSystemMangaer::SaveRecognizeResult()
 	//对编码的重复性和匹配性进行检验，若发现数据库中编码重复，立即给出警告提示
 	QString errMsg;
 	bool rv = CheckRepeat(errMsg); //调用 检查是否重复函数
-	if (!errMsg.isEmpty())//判别数据库是否初始化，即是否为空。。。。。我不太懂
+	if (!errMsg.isEmpty())
 	{
 		QMessageBox::information(this, QString::fromLocal8Bit("数据库错误"), errMsg);
 		return;
@@ -2157,7 +2158,7 @@ void CSystemMangaer::SaveRecognizeResult()
 
 	//存放图片
 	QString path = CParameterSettings::GetInstance()->GetSavePath();
-	path += "/" + QDateTime::currentDateTime().toString("yyyy-MM-dd") + "/" + m_CurDZBianHao;
+	path += "/" + QDateTime::currentDateTime().toString("yyyy-MM-dd") + "/"+ m_CurDZBianHao;
 	QDir dir;
 	//bool rv = dir.mkpath(path);
 	rv = dir.mkpath(path);
@@ -2183,8 +2184,8 @@ void CSystemMangaer::SaveRecognizeResult()
 	bool saveImage1 = CParameterSettings::GetInstance()->saveCodeImage;
 	if (saveImage1)
 	{
-		QString CodeImagePath = path + m_CurDZBianHao + "/_code.jpg";
-		//QString CodeImagePath = path + "/code.bmp";
+		QString CodeImagePath = path + "_code.jpg";
+		//QString CodeImagePath = path + "/code.jpg";
 		//QString CodeImagePath = path + "/"+ m_CurDZBianHao+"code.bmp";
 		QByteArray ba = CodeImagePath.toLocal8Bit();
 		char *file = ba.data();
@@ -2205,7 +2206,7 @@ void CSystemMangaer::SaveRecognizeResult()
 	//bool saveImage2 = CParameterSettings::GetInstance()->saveGunImage;
 	if (saveImage2)
 	{
-		QString GunImagePath = path + m_CurDZBianHao + "/_gun.jpg";
+		QString GunImagePath = path + "/_gun.jpg";
 		//QString GunImagePath = path + "/"+ m_CurDZBianHao+"gun.jpg";
 		QByteArray ba = GunImagePath.toLocal8Bit();
 		char *file = ba.data();
@@ -2218,13 +2219,6 @@ void CSystemMangaer::SaveRecognizeResult()
 		//return;
 	}
 
-	//QString GunImagePath = path + "/gun.bmp";
-	//QString GunImagePath = path + "/gun.jpg";
-	//QByteArray ba = GunImagePath.toLocal8Bit();
-	//char *file = ba.data();
-	//imwrite(file, GunImage);
-
-	
 	//检视状态更改
 	if (mymsgbox->clickedButton() == okbtn)//点击了OK按钮
 	{
@@ -2243,8 +2237,8 @@ void CSystemMangaer::SaveRecognizeResult()
 			sql += QString::fromLocal8Bit(",检视时间 = \'") + JianShiDateTime + "\'";
 			sql += QString::fromLocal8Bit(",检视状态 = \'") + JianShiZhuangTai + "\'";
 			sql += QString::fromLocal8Bit("where GunManager.dbo.BoxPackedDetailsTable.序号 = ") + QString::number(m_curMsg.index);
-			sql += QString::fromLocal8Bit(" and GunManager.dbo.BoxPackedDetailsTable.装箱单号 = \'") + m_curMsg.PackedNum + "\'";//m_curMsg.PackedNum=DanHao
-			//sql += QString::fromLocal8Bit(" where GunManager.dbo.BoxPackedDetailsTable.序号 = ") + QString::number(m_curMsg.index);
+			sql += QString::fromLocal8Bit(" and GunManager.dbo.BoxPackedDetailsTable.装箱单号 = \'") + m_curMsg.PackedNum + "\'";
+			
 
 
 		}
@@ -2277,9 +2271,7 @@ void CSystemMangaer::SaveRecognizeResult()
 			{
 				QTableWidgetItem *item = new QTableWidgetItem(m_CurDZBianHao);
 				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 3, item);
-				//ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 3, item);
 				item = new QTableWidgetItem(LostMeg);
-				//ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 4, item);
 				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 4, item);
 				
 				item = new QTableWidgetItem(m_QiangGuanHao);

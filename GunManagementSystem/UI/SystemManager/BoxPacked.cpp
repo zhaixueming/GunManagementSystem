@@ -281,10 +281,9 @@ void CBoxPacked::ConfirmModification()
 			int i = 0;
 			for (; i < n - 1; ++i)
 			{
-				//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'Î´³ö¿â\',\'") + RuKuDateTime + "\'" + ",\'\',\'\'," + "\'"+ JianShiZhuangTai + "\'),";
+
 				sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'Î´³ö¿â\',\'") +  GunType + "\',\'" + RuKuDateTime + "\'" + ",null,null," + "\'" + JianShiZhuangTai + "\'),";
 			}
-			//sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'Î´³ö¿â\',\'") + RuKuDateTime + "\'" + ",\'\',\'\',"+ "\'" + JianShiZhuangTai+ "\')";
 			sql += "(" + QString::number(i + 1) + ",\'" + DanHao + "\',\'" + DaiMa + "\',\'" + ZhuangBeiMing + QString::fromLocal8Bit("\',\'\',\'\',\'\',\'\',\'\',\'\',\'Î´³ö¿â\',\'") +  GunType + "\',\'" + RuKuDateTime + "\'" + ",null,null," + "\'" + JianShiZhuangTai + "\')";
 			
 			rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
