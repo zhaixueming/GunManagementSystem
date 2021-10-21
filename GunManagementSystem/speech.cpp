@@ -16,7 +16,7 @@ void speech(std::wstring input)
 	if (SUCCEEDED(hr))
 	{
 		//pVoice->SetVolume(80);//0~100
-		pVoice->SetRate(0);//-10~10
+		pVoice->SetRate(-2);//-10~10
 		hr = pVoice->Speak(input.c_str(), 0, NULL);
 		pVoice->Release();
 		pVoice = NULL;

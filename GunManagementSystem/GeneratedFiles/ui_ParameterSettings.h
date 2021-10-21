@@ -292,7 +292,7 @@ public:
     {
         ParameterSetting->setWindowTitle(QCoreApplication::translate("ParameterSetting", "\345\217\202\346\225\260\350\256\276\347\275\256", nullptr));
         groupBox->setTitle(QString());
-        groupBox_3->setTitle(QCoreApplication::translate("ParameterSetting", "\347\274\226\345\217\267\346\213\215\347\205\247", nullptr));
+        groupBox_3->setTitle(QCoreApplication::translate("ParameterSetting", "\347\274\226\347\240\201\346\213\215\347\205\247", nullptr));
         label_23->setText(QCoreApplication::translate("ParameterSetting", "\347\233\270\346\234\272\351\200\211\346\213\251", nullptr));
         pushButton_OpenCamera1->setText(QCoreApplication::translate("ParameterSetting", "\346\211\223\345\274\200\347\233\270\346\234\272", nullptr));
         radioButton_FreeRun1->setText(QCoreApplication::translate("ParameterSetting", "\350\207\252\347\224\261\351\207\207\351\233\206", nullptr));

@@ -189,12 +189,12 @@ bool CParameterSettings::OpenCamera(MV_CC_DEVICE_INFO device_info,int index)
 		int nRet = m_MvCamera1.Open(&device_info);//.2创建句柄,打开设备   int Open(MV_CC_DEVICE_INFO* pstDeviceInfo);
 		if (nRet != MV_OK)
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("编号拍照相机打开失败:") + QString::number(nRet));
+			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("编码拍照相机打开失败:") + QString::number(nRet));
 			m_bOpenCamera1 = false;
 		}
 		else
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("编号拍照相机打开成功"));
+			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("编码拍照相机打开成功"));
 			unsigned int PackSize = 0;
 			int nRet = m_MvCamera1.GetOptimalPacketSize(&PackSize);//ch:探测网络最佳包大小(只对GigE相机有效)
 			if (nRet == MV_OK)
@@ -759,7 +759,7 @@ void CParameterSettings::SwitchCamera1Type(int index, bool checked)
 }
 
 //切换相机2类型
-void CParameterSettings::SwitchCamera2Type(int index, bool checked)
+void CParameterSettings::SwitchCamera2Type(int index, bool checked)//index=1,2,3
 {
 	if (checked)
 	{
@@ -774,19 +774,19 @@ void CParameterSettings::SwitchCamera2Type(int index, bool checked)
 		case 1:
 		{
 			SetFreeFrame(2);
-			m_Camera1Type = 1;
+			m_Camera2Type = 1;
 			break;
 		}
 		case 2:
 		{
 			SetSoftTrigger(2);
-			m_Camera1Type = 2;
+			m_Camera2Type = 2;
 			break;
 		}
 		case 3:
 		{
 			SetExternalTrigger(2);
-			m_Camera1Type = 3;
+			m_Camera2Type = 3;
 			break;
 		}
 		}
@@ -799,7 +799,7 @@ void CParameterSettings::ReceiveSoftTrigger(int index)
 	if (index == 1 && m_bOpenCamera1)//相机1&&相机打开
 	{  
 		QString errMsg;
-		bool rv =SoftTriggerOnce(index,errMsg);//相机1，软出发
+		bool rv =SoftTriggerOnce(index,errMsg);//相机1，软触发
 		if (!rv)
 		{
 			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("编码拍照:")+errMsg);

@@ -1400,7 +1400,7 @@ void CSystemMangaer::QueryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ
 void CSystemMangaer::QueryDeliveryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖÐÓÒ±ßµÄ"²éÑ¯"°´Å¥---¡·´Ë²Ûº¯Êý
 {
 
-	QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼þºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t2.Ç¹¹ÜºÅ,t2.Ç¹»÷»òÌ×Í²ºÅ,t2.»úÇ¹¿òºÅ,t2.±¸·ÝÇ¹¹ÜºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t1.×°ÏäÊýÁ¿,t2.Èë¿âÊ±¼ä");
+	QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼þºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t2.Ç¹¹ÜºÅ,t2.Ç¹»ú»òÌ×Í²ºÅ,t2.»úÇ¹¿òºÅ,t2.±¸·ÝÇ¹¹ÜºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t1.×°ÏäÊýÁ¿,t2.Èë¿âÊ±¼ä");
 	sql += " from GunManager.dbo.BoxPackedTable t1 right join GunManager.dbo.BoxPackedDetailsTable t2 on";
 	sql += QString::fromLocal8Bit(" t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t1.×°±¸´úÂë = t2.×°±¸´úÂë and t1.×°±¸Ãû³Æ = t2.×°±¸Ãû³Æ");
 	sql += " where " + QString::fromLocal8Bit("t1.ÍËÒÛ±¨·ÏÎÄ¼þºÅ like \'%") + ui.lineEdit_DeliveryBFWenJianHao->text() + "%\'";
@@ -1432,7 +1432,7 @@ void CSystemMangaer::QueryDeliveryInformations()//ÐÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖÐÓÒ
 	}
 
 	sql.clear();
-	sql = QString::fromLocal8Bit("select ÍËÒÛ±¨·ÏÎÄ¼þºÅ,µ÷²¦Æ¾Ö¤ºÅ,\'-\' as ×°Ïäµ¥ºÅ,×°±¸´úÂë,×°±¸Ãû³Æ,µ¥×°±àºÅ,Ç¹¹ÜºÅ,Ç¹»÷»òÌ×Í²ºÅ,»úÇ¹¿òºÅ,±¸·ÝÇ¹¹ÜºÅ,³ö³§Ê±¼ä,×°±¸Ê±¼ä,\'-\' as ×°ÏäÊýÁ¿,Èë¿âÊ±¼ä from GunManager.dbo.SinglePackedTable");
+	sql = QString::fromLocal8Bit("select ÍËÒÛ±¨·ÏÎÄ¼þºÅ,µ÷²¦Æ¾Ö¤ºÅ,\'-\' as ×°Ïäµ¥ºÅ,×°±¸´úÂë,×°±¸Ãû³Æ,µ¥×°±àºÅ,Ç¹¹ÜºÅ,Ç¹»ú»òÌ×Í²ºÅ,»úÇ¹¿òºÅ,±¸·ÝÇ¹¹ÜºÅ,³ö³§Ê±¼ä,×°±¸Ê±¼ä,\'-\' as ×°ÏäÊýÁ¿,Èë¿âÊ±¼ä from GunManager.dbo.SinglePackedTable");
 	sql += " where " + QString::fromLocal8Bit("ÍËÒÛ±¨·ÏÎÄ¼þºÅ like \'%") + ui.lineEdit_DeliveryBFWenJianHao->text() + "%\'";
 	sql += " and " + QString::fromLocal8Bit("µ÷²¦Æ¾Ö¤ºÅ like \'%") + ui.lineEdit_DeliveryDBPingZhengHao->text() + "%\'";
 	sql += " and " + QString::fromLocal8Bit("×°±¸´úÂë like \'%") + ui.lineEdit_DeliveryZBDaima->text() + "%\'";
@@ -1610,7 +1610,7 @@ void CSystemMangaer::DoDelivery()//ÐÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°³ö¿â¡±°´Å¥
 
 void CSystemMangaer::Remainder()//ÐÅÏ¢¹ÜÀí½çÃæ-¡·¡°³ö¿â¡±½çÃæµÄ×óÉÏ¡°²éÑ¯¡±°´Å¥ºó£¬ÏÔÊ¾¿â´æÊýÁ¿
 {
-	QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼þºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t2.Ç¹¹ÜºÅ,t2.Ç¹»÷»òÌ×Í²ºÅ,t2.»úÇ¹¿òºÅ,t2.±¸·ÝÇ¹¹ÜºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t1.×°ÏäÊýÁ¿,t2.Èë¿âÊ±¼ä");
+	QString sql = QString::fromLocal8Bit("select t1.ÍËÒÛ±¨·ÏÎÄ¼þºÅ,t1.µ÷²¦Æ¾Ö¤ºÅ,t1.×°Ïäµ¥ºÅ,t1.×°±¸´úÂë,t1.×°±¸Ãû³Æ,t2.µ¥×°±àºÅ,t2.Ç¹¹ÜºÅ,t2.Ç¹»ú»òÌ×Í²ºÅ,t2.»úÇ¹¿òºÅ,t2.±¸·ÝÇ¹¹ÜºÅ,t1.³ö³§Ê±¼ä,t1.×°±¸Ê±¼ä,t1.×°ÏäÊýÁ¿,t2.Èë¿âÊ±¼ä");
 	sql += " from GunManager.dbo.BoxPackedTable t1 right join GunManager.dbo.BoxPackedDetailsTable t2 on";
 	sql += QString::fromLocal8Bit(" t1.×°Ïäµ¥ºÅ = t2.×°Ïäµ¥ºÅ and t1.×°±¸´úÂë = t2.×°±¸´úÂë and t1.×°±¸Ãû³Æ = t2.×°±¸Ãû³Æ");
 	sql += " where " + QString::fromLocal8Bit("t2.³ö¿â×´Ì¬ = \'Î´³ö¿â\'");
@@ -2101,7 +2101,7 @@ void CSystemMangaer::SaveRecognizeResult()
 	QString message = QString::fromLocal8Bit("µ¥×°±àÂë:") + m_CurDZBianHao + "\n";
 	QString LostMeg;
 	QString message_QiangGuanHao = QString::fromLocal8Bit("Ç¹¹ÜºÅ:") + m_QiangGuanHao + "\n";
-	QString message_QiangJiHao = QString::fromLocal8Bit("Ç¹»÷/Ì×Í²ºÅ:") + m_QiangJiHao + "\n";
+	QString message_QiangJiHao = QString::fromLocal8Bit("Ç¹»ú/Ì×Í²ºÅ:") + m_QiangJiHao + "\n";
 	QString message_QiangKuangHao = QString::fromLocal8Bit("»úÇ¹¿òºÅ:") + m_QiangKuangHao + "\n";
 	QString message_BeiFenHao = QString::fromLocal8Bit("±¸·ÝÇ¹¹ÜºÅ:") + m_BeiFenHao;
 
@@ -2278,7 +2278,7 @@ void CSystemMangaer::SaveRecognizeResult()
 			sql = QString::fromLocal8Bit("update GunManager.dbo.BoxPackedDetailsTable set µ¥×°±àºÅ = \'") + m_CurDZBianHao + "\'";
 			sql += QString::fromLocal8Bit(",È±Ê§Çé¿ö = \'") + LostMeg + "\'";
 			sql += QString::fromLocal8Bit(",Ç¹¹ÜºÅ = \'") + m_QiangGuanHao + "\'";
-			sql += QString::fromLocal8Bit(",Ç¹»÷»òÌ×Í²ºÅ = \'") + m_QiangJiHao + "\'";
+			sql += QString::fromLocal8Bit(",Ç¹»ú»òÌ×Í²ºÅ = \'") + m_QiangJiHao + "\'";
 			sql += QString::fromLocal8Bit(",»úÇ¹¿òºÅ = \'") + m_QiangKuangHao + "\'";
 			sql += QString::fromLocal8Bit(",±¸·ÝÇ¹¹ÜºÅ = \'") + m_BeiFenHao + "\'";
 			sql += QString::fromLocal8Bit(",¼ìÊÓÊ±¼ä = \'") + JianShiDateTime + "\'";
@@ -2294,7 +2294,7 @@ void CSystemMangaer::SaveRecognizeResult()
 			sql = QString::fromLocal8Bit("update GunManager.dbo.SinglePackedTable set µ¥×°±àºÅ = \'") + m_CurDZBianHao + "\'";
 			sql += QString::fromLocal8Bit(",È±Ê§Çé¿ö = \'") + LostMeg + "\'";
 			sql += QString::fromLocal8Bit(",Ç¹¹ÜºÅ = \'") + m_QiangGuanHao + "\'";
-			sql += QString::fromLocal8Bit(",Ç¹»÷»òÌ×Í²ºÅ = \'") + m_QiangJiHao + "\'";
+			sql += QString::fromLocal8Bit(",Ç¹»ú»òÌ×Í²ºÅ = \'") + m_QiangJiHao + "\'";
 			sql += QString::fromLocal8Bit(",»úÇ¹¿òºÅ = \'") + m_QiangKuangHao + "\'";
 			sql += QString::fromLocal8Bit(",±¸·ÝÇ¹¹ÜºÅ = \'") + m_BeiFenHao + "\'";
 			sql += QString::fromLocal8Bit(",¼ìÊÓÊ±¼ä = \'") + JianShiDateTime + "\'";
