@@ -39,7 +39,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>编码拍照</string>
+     <string>编号拍照</string>
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">

@@ -9,7 +9,7 @@ class CParameterSettings :public QDialog
 	Q_OBJECT
 public:
 	static CParameterSettings *GetInstance();
-    QString GetSavePath();/////////
+    QString GetSavePath();
 
 	//设置硬触发
 	//bool SetExternalTrigger(int index);//修改0927
@@ -17,13 +17,12 @@ public:
 	bool SoftTriggerOnce(int index,QString &errMsg);
 	void closeAllCamera();
 
-	bool saveCodeImage = false;//修改0927
-	bool saveGunImage = false;//修改0927
+
 
 
 
 private:
-	CParameterSettings(QDialog *parent = NULL);//私有构造函数，不允许使用者自己生成对象。单例模式
+	CParameterSettings(QDialog *parent = NULL);
 	~CParameterSettings();
 private:
 	Ui::ParameterSetting ui;

@@ -8,8 +8,8 @@ class CSinglePacked :public QDialog
 public:
 	static CSinglePacked *GetInstance();
 
-	//连接 单装 枪支类型
-	QString ConnectGunType2();
+	////连接 单装 枪支类型
+	//QString ConnectGunType2();
 
 	~CSinglePacked();
 private:

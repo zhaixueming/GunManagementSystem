@@ -92,25 +92,25 @@ void CBoxPacked::SetControllContent(QList<QVariant> data)
 }
 
 
-//箱装 枪支类型名字
-QString CBoxPacked::ConnectGunType1()
-{
-	QString GunType = ui.comboBox_GunType->currentText();
-
-	//QString GTModule = m_GunTypeInfos.value(GunType);
-	//int ConnectType = ui.comboBox_GunType->currentIndex();
-	
-	if (!GunType.isEmpty())
-	{
-		return GunType;
-	}
-	else
-	{
-		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置枪支类型"));
-		//return;
-	}
-
-}
+////箱装 枪支类型名字
+//QString CBoxPacked::ConnectGunType1()
+//{
+//	QString GunType = ui.comboBox_GunType->currentText();
+//
+//	//QString GTModule = m_GunTypeInfos.value(GunType);
+//	//int ConnectType = ui.comboBox_GunType->currentIndex();
+//	
+//	if (!GunType.isEmpty())
+//	{
+//		return GunType;
+//	}
+//	else
+//	{
+//		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置枪支类型"));
+//		//return;
+//	}
+//
+//}
 
 
 //创建或编辑表单信息类型

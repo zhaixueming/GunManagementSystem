@@ -88,26 +88,26 @@ void CSinglePacked::SetControllContent(QList<QVariant> data)
 }
 
 
-//单装 枪支类型名字
-QString CSinglePacked::ConnectGunType2()
-{
-
-	QString GunType = ui.comboBox_GunType->currentText();
-
-	//QString GTModule = m_GunTypeInfos.value(GunType);
-	//int ConnectType = ui.comboBox_GunType->currentIndex();
-
-	if (!GunType.isEmpty())
-	{
-		return GunType;
-	}
-	else
-	{
-		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置枪支类型"));
-		//return;
-	}
-
-}
+////单装 枪支类型名字
+//QString CSinglePacked::ConnectGunType2()
+//{
+//
+//	QString GunType = ui.comboBox_GunType->currentText();
+//
+//	//QString GTModule = m_GunTypeInfos.value(GunType);
+//	//int ConnectType = ui.comboBox_GunType->currentIndex();
+//
+//	if (!GunType.isEmpty())
+//	{
+//		return GunType;
+//	}
+//	else
+//	{
+//		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置枪支类型"));
+//		//return;
+//	}
+//
+//}
 
 
 bool CSinglePacked::CheckSinglePackedRepeat(QString &errMsg)

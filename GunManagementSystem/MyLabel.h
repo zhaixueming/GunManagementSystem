@@ -10,6 +10,7 @@ class MyLabel : public QLabel
 	Q_OBJECT
 public:
 	explicit MyLabel(QWidget *parent = 0);
+	~MyLabel();
 	void SetImage(QImage image);
 protected:
 	void paintEvent(QPaintEvent *event);                        //QPaint»­Í¼

@@ -1,18 +1,7 @@
 #pragma once
 #include "ui_BoxPacked.h"
 #include "DatabaseOperator.h"
-//#include "AlgoOCR_CodeReview.h"
 
-
-//typedef enmu
-//{
-//	DEFUALT=0,
-//	81SHIBUQIANG,
-//	95SHIBUQIANG,
-//	95-1SHIBUQIANG,
-//	54SHISHOUQIANG,
-//	92SHISHOUQIANG
-//}m_GunType;
 
 
 
@@ -22,8 +11,8 @@ class CBoxPacked :public QDialog
 public:
 	static CBoxPacked *GetInstance();
 
-	//连接 箱装枪支类型
-	QString ConnectGunType1();
+	////连接 箱装枪支类型
+	//QString ConnectGunType1();
 
 	void SetOperatorType(int type, QList<QVariant> data);
 	~CBoxPacked();
@@ -53,18 +42,14 @@ private:
 	static GarbageCollection m_Collection;
 	int m_Type;
 
-	 
-
 	//枪支类型
 	//QMap<QString, QString> m_GunTypeInfos;
 
 private slots:
-	
 
 	void ConfirmModification();
 	
-	
-signals:
-	void SendConnectType(int index);
+//signals:
+//	void SendConnectType(int index);
 
 };

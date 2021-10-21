@@ -10,6 +10,11 @@ MyLabel::MyLabel(QWidget *parent) :QLabel(parent)
 
 }
 
+MyLabel::~MyLabel()
+{
+
+}
+
 //QPainter»­Í¼
 void MyLabel::paintEvent(QPaintEvent *event)
 {

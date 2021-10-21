@@ -22,7 +22,6 @@ CParameterSettings::CParameterSettings(QDialog *parent /* = NULL */)
 		"QPushButton:pressed{background-color:rgb(210, 20, 20);border-style: inset;}");
 
 	InitVariables();
-
 	InitConnections();
 	LoadConfig();
 }
@@ -33,11 +32,11 @@ CParameterSettings::~CParameterSettings()
 
 CParameterSettings *CParameterSettings::GetInstance()//单例模式
 {
-	if (m_Instance == NULL)// 先检查对象是否存在
+	if (m_Instance == NULL)
 	{
-		m_Instance = new CParameterSettings();//不存
+		m_Instance = new CParameterSettings();
 	}
-	return m_Instance;//注意：然而，在多线程的情况下这种方法是不安全的；Lock lock; //伪代码 加锁
+	return m_Instance;
 }
 
 void CParameterSettings::InitVariables()
@@ -75,8 +74,7 @@ void CParameterSettings::InitVariables()
 	m_CameraCapture2->start();
 	m_bOpenCamera1 = false;//初始化为False
 	m_bOpenCamera2 = false;
-	//m_Camera1Type = 3;//编码拍照初始化为3，硬触发，记得修改
-	m_Camera1Type = 2;//编码拍照初始化为3，硬触发
+	m_Camera1Type = 3;//编码拍照初始化为3，硬触发，记得修改
 	m_Camera2Type = 2;//整枪拍照初始化为2，软触发
 	InitCameraInfo();
 }
@@ -162,23 +160,25 @@ void CParameterSettings::InitCameraInfo()
 	for (int i = 0; i < m_stDevList.nDeviceNum; ++i)
 	{
 		MV_CC_DEVICE_INFO* pDeviceInfo = m_stDevList.pDeviceInfo[i];//设备信息
-		char strUserName[256] = { 0 };
-		char strUserName1[256] = { 0 };
-		sprintf_s(strUserName, "%s_%s", pDeviceInfo->SpecialInfo.stUsb3VInfo.chModelName,
+		char strUserNameBianMa[256] = { 0 };
+		char strUserNameZhengQiang[256] = { 0 };
+		sprintf_s(strUserNameBianMa, "%s_%s", pDeviceInfo->SpecialInfo.stUsb3VInfo.chModelName,
 		pDeviceInfo->SpecialInfo.stUsb3VInfo.chSerialNumber);// chModelName[32]; 型号名称。chSerialNumber[16];序列号
 		
-		sprintf_s(strUserName1, "%s_%s", pDeviceInfo->SpecialInfo.stGigEInfo.chModelName,
+		sprintf_s(strUserNameZhengQiang, "%s_%s", pDeviceInfo->SpecialInfo.stGigEInfo.chModelName,
 		pDeviceInfo->SpecialInfo.stGigEInfo.chSerialNumber);// chModelName[32]; 型号名称。chSerialNumber[16];序列号
 
-		ui.comboBox_Camera1->addItem(strUserName);//下拉框中添加新数据
-		ui.comboBox_Camera2->addItem(strUserName1);
+		ui.comboBox_Camera1->addItem(strUserNameBianMa);//下拉框中添加新数据
+		ui.comboBox_Camera2->addItem(strUserNameZhengQiang);
 
 		/*if(strUserName[0] != '_') 
 			ui.comboBox_Camera1->addItem(strUserName);
 		if (strUserName1[0] != '_')
 			ui.comboBox_Camera2->addItem(strUserName1);*/
 
-		qDebug() << "CameraName;" << strUserName;
+		qDebug() << "CameraName;" << strUserNameBianMa;
+		qDebug() << "CameraName;" << strUserNameZhengQiang;
+
 	}
 }
 
@@ -189,11 +189,12 @@ bool CParameterSettings::OpenCamera(MV_CC_DEVICE_INFO device_info,int index)
 		int nRet = m_MvCamera1.Open(&device_info);//.2创建句柄,打开设备   int Open(MV_CC_DEVICE_INFO* pstDeviceInfo);
 		if (nRet != MV_OK)
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("打开相机失败:") + QString::number(nRet));
+			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("编号拍照相机打开失败:") + QString::number(nRet));
 			m_bOpenCamera1 = false;
 		}
 		else
 		{
+			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("编号拍照相机打开成功"));
 			unsigned int PackSize = 0;
 			int nRet = m_MvCamera1.GetOptimalPacketSize(&PackSize);//ch:探测网络最佳包大小(只对GigE相机有效)
 			if (nRet == MV_OK)
@@ -214,11 +215,12 @@ bool CParameterSettings::OpenCamera(MV_CC_DEVICE_INFO device_info,int index)
 		int nRet = m_MvCamera2.Open(&device_info);
 		if (nRet != MV_OK)
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("打开相机失败:") + QString::number(nRet));
+			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("整枪拍照相机打开失败:") + QString::number(nRet));
 			m_bOpenCamera2 = false;
 		}
 		else
 		{
+			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("整枪拍照相机打开成功"));
 			unsigned int PackSize = 0;
 			int nRet = m_MvCamera2.GetOptimalPacketSize(&PackSize);
 			if (nRet == MV_OK)
@@ -351,11 +353,7 @@ bool CParameterSettings::SetExternalTrigger(int index)
 			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("设置触发源失败:") + QString::number(nRet));
 			return false;
 		}
-		else
-		{
-			saveCodeImage = true;//修改0927
-		}
-		
+	
 	}
 	else if (index == 2 && m_bOpenCamera2)
 	{
@@ -371,10 +369,7 @@ bool CParameterSettings::SetExternalTrigger(int index)
 			QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("设置触发源失败:") + QString::number(nRet));
 			return false;
 		}
-		else
-		{
-			saveGunImage = true;//修改0927
-		}
+
 		
 	}
 	return true;
@@ -398,10 +393,7 @@ bool CParameterSettings::SoftTriggerOnce(int index, QString &errMsg)
 			return false;
 			
 		}
-		else
-		{
-			saveCodeImage = true;//修改0927
-		}
+
 		
 	}
 	else if (index == 2 && m_bOpenCamera2)//相机2
@@ -417,11 +409,7 @@ bool CParameterSettings::SoftTriggerOnce(int index, QString &errMsg)
 			errMsg = QString::fromLocal8Bit("软触发失败:") + QString::number(nRet);
 			return false;
 		}
-		else
-		{
-			saveGunImage = true;//修改0927
-		}
-		
+
 	}
 	return true;
 }

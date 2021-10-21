@@ -705,79 +705,6 @@ void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ
 	}
 }
 
-//µã»÷¡°±£´æ¡±£¬·µ»Øµ½Ïä×°ÁĞ±íĞÅÏ¢½çÃæ£¬½çÃæÏÔÊ¾×îĞÂµÄÊı¾İ
-//void CSystemMangaer::PackedListInfo()
-//{
-//	QToolButton *senderObj = qobject_cast<QToolButton*>(sender());//·µ»ØĞÅºÅÀ´Ô´µÄ¶ÔÏó
-//	if (senderObj == nullptr)
-//	{
-//		return;
-//	}
-//	QString text = senderObj->text();
-//	QString sql = "select * from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("×°Ïäµ¥ºÅ = \'") + text + "\'";
-//	QTableData TableData;
-//	QString errMsg;
-//	bool rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
-//	if (rv)
-//	{
-//		if (TableData.size() > 0)
-//		{
-//			int rows = ui.tableWidget_PackedInfo->rowCount();//±í¸ñĞĞÊı
-//			for (int i = 0; i < rows; ++i)
-//			{
-//				ui.tableWidget_PackedInfo->removeRow(rows);//É¾³ıĞĞ
-//			}
-//			ui.tableWidget_PackedInfo->setRowCount(TableData.size());//Ïä×°ÁĞ±íĞÅÏ¢³¤¶È
-//
-//			ui.tableWidget_PackedInfo->setSortingEnabled(false);//ÉèÖÃÎª²»¿É×Ô¶¯ÅÅĞò
-//			ui.tableWidget_PackedInfo->horizontalHeader()->setSortIndicatorShown(true);
-//			ui.tableWidget_PackedInfo->horizontalHeader()->setSortIndicator(0, Qt::DescendingOrder);
-//			connect(ui.tableWidget_PackedInfo->horizontalHeader(), SIGNAL(sectionClicked(int)), ui.tableWidget_Box, SLOT(sortByColumn(int)));
-//
-//			for (int row = 0; row < TableData.size(); ++row)
-//			{
-//				QList<QVariant> RowData = TableData.at(row);//Ã¿Ò»ĞĞÊı¾İÓĞ¼¸ÁĞ£¨16£©
-//				//int col = 1;
-//				int col = 0;//col=0ÊÇĞòºÅ
-//				for (; col < RowData.size() - 1; ++col)
-//				{
-//					QString data = RowData.at(col).toString();
-//					QTableWidgetItem *item = new QTableWidgetItem(data);
-//					item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-//					//ui.tableWidget_PackedInfo->setItem(row, col - 1, item);
-//					ui.tableWidget_PackedInfo->setItem(row, col, item);
-//
-//				}
-//				QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("¼ìÊÓ"));
-//				EditButton->setStyleSheet("color:rgb(41,136,41)");
-//				EditButton->setMinimumHeight(20);
-//				QPushButton *DeleteButton = new QPushButton(QString::fromLocal8Bit("É¾³ı"));
-//				DeleteButton->setStyleSheet("color:rgb(255,0,0)");
-//				DeleteButton->setMinimumHeight(20);
-//
-//				ui.tableWidget_PackedInfo->setCellWidget(row, col - 3, EditButton);
-//				ui.tableWidget_PackedInfo->setCellWidget(row, col - 2, DeleteButton);
-//
-//				connect(EditButton, SIGNAL(clicked()), this, SLOT(EditPackedListInfo()));//Ïä×°ÁĞ±í¡°¼ìÊÓ¡±--¡·¼ìÊÓ½çÃæ
-//				connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeletePackedListInfo()));
-//			}
-//
-//
-//
-//			//ui.tableWidget_PackedInfo->setSortingEnabled(false);//ÉèÖÃ×Ô¶¯ÅÅÁĞ
-//			//ui.tableWidget_PackedInfo->sortByColumn(0, Qt::AscendingOrder);//°´ÁĞÅÅĞòÄ£Ê½
-//
-//		}
-//		else
-//		{
-//			return;
-//		}
-//	}
-//	else
-//	{
-//		QMessageBox::information(this, QString::fromLocal8Bit("²éÑ¯Ïä×°ÁĞ±íÊ§°Ü"), errMsg);
-//	}
-//}
 
 
 
@@ -839,8 +766,6 @@ void CSystemMangaer::slotClickToolButton()
 				connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeletePackedListInfo()));
 			}
 			
-
-
 			//ui.tableWidget_PackedInfo->setSortingEnabled(false);//ÉèÖÃ×Ô¶¯ÅÅÁĞ
 			//ui.tableWidget_PackedInfo->sortByColumn(0, Qt::AscendingOrder);//°´ÁĞÅÅĞòÄ£Ê½
 
@@ -1989,7 +1914,8 @@ void CSystemMangaer::ExportExcel()//ĞÅÏ¢¹ÜÀí½çÃæ-¡·¡°²éÑ¯¡±½çÃæµÄ×óÉÏ¡°µ¼³öExcel
 	{
 		return;
 	}
-	QString filepath = QFileDialog::getSaveFileName(this, ("Save as..."),QString(), tr("EXCEL files (*.xls *.xlsx)"));
+	//QString filepath = QFileDialog::getSaveFileName(this, ("Save as..."),QString(), tr("EXCEL files (*.xls *.xlsx)"));
+	QString filepath = QFileDialog::getSaveFileName(this, tr("Excel file"),qApp->applicationDirPath(), tr("Files (*.xls *.xlsx)"));
 	if (filepath.isEmpty())
 	{
 		return;
@@ -2078,7 +2004,7 @@ void CSystemMangaer::SoftTriggerCodeCamera()//ÅÄÕÕ¼ìÊÓ½çÃæ-¡·×óÏÂ¡°±àÂëÅÄÕÕ¡±°´Å
 void CSystemMangaer::SoftTriggerWholeCamera()//ÅÄÕÕ¼ìÊÓ½çÃæ-¡·ÓÒÏÂ¡°ÕûÇ¹ÅÄÕÕ¡±°´Å¥--¡·´Ë²Ûº¯Êı
 {
 
-	saveImage2 = true;//ĞŞ¸Ä0928
+	//saveImage2 = true;//ĞŞ¸Ä0928
 	emit SendSoftTrigger(2);
 
 }
@@ -2117,7 +2043,7 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 				{
 					if (m_CurDZBianHao.size() != 8)
 					{
-						QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ95Ê½²½Ç¹¹æ·¶£¬ÇëÖØĞÂÊ¶±ğ»òÈË¹¤ĞŞ¸Ä£¡"));
+						QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ95Ê½²½Ç¹¹æ·¶£¬ÇëÖØĞÂÊ¶±ğ»òÈË¹¤ĞŞÕı£¡"));
 					}
 
 				}
@@ -2125,7 +2051,7 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 				{
 					if (m_CurDZBianHao.size() != 6)
 					{
-						QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ95-1Ê½²½Ç¹¹æ·¶£¬ÇëÖØĞÂÊ¶±ğ»òÊÖ¶¯ĞŞ¸Ä£¡"));
+						QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ95-1Ê½²½Ç¹¹æ·¶£¬ÇëÖØĞÂÊ¶±ğ»òÊÖ¶¯ĞŞÕı£¡"));
 					}
 
 
@@ -2134,7 +2060,7 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 				{
 					if (m_CurDZBianHao.size() != 8)
 					{
-						QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ54Ê½ÊÖÇ¹¹æ·¶£¬ÇëÖØĞÂÊ¶±ğ»òÊÖ¶¯ĞŞ¸Ä£¡"));
+						QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ54Ê½ÊÖÇ¹¹æ·¶£¬ÇëÖØĞÂÊ¶±ğ»òÊÖ¶¯ĞŞÕı£¡"));
 					}
 
 				}
@@ -2271,34 +2197,13 @@ void CSystemMangaer::SaveRecognizeResult()
 		return;
 	}
 
-	//QString CodeImagePath = path + "/code.bmp";
-	/*QString CodeImagePath = path + "/code.jpg";
-	QByteArray ba = CodeImagePath.toLocal8Bit();
-	char *file = ba.data();*/
-	//imwrite(file, CodeImage);
-
-
-	//ĞŞ¸Ä0927
-	//¸üĞÂÍ¼Ïñ±£´æµ¥¸ö²»»áÉÁÍË
-
-	/*bool saveImage1 = CParameterSettings::GetInstance()->saveCodeImage;
-	bool saveImage2 = CParameterSettings::GetInstance()->saveGunImage;*/
-	
-	bool saveImage1 = CParameterSettings::GetInstance()->saveCodeImage;
-	if (saveImage1)
+	if (!CodeImage.empty())
 	{
-		//QString CodeImagePath = path + "_code.jpg";
 		QString CodeImagePath = path + "/code.jpg";
 		//QString CodeImagePath = path + "/"+ m_CurDZBianHao+"code.bmp";
 		QByteArray ba = CodeImagePath.toLocal8Bit();
 		char *file = ba.data();
 		imwrite(file, CodeImage);
-
-		/*QString DetectImagePath = path + "/" + m_CurDZBianHao + "detect.jpg";
-		ba = DetectImagePath.toLocal8Bit();
-		file = ba.data();
-		imwrite(file, DetectImage);*/
-
 	}
 	else
 	{
@@ -2306,21 +2211,60 @@ void CSystemMangaer::SaveRecognizeResult()
 		//return;
 	}
 
-	//bool saveImage2 = CParameterSettings::GetInstance()->saveGunImage;
-	if (saveImage2)
+
+	if (!GunImage.empty())
 	{
-		//QString GunImagePath = path + "/_gun.jpg";
 		QString GunImagePath = path + "/gun.jpg";
 		QByteArray ba = GunImagePath.toLocal8Bit();
 		char *file = ba.data();
 		imwrite(file, GunImage);
-
 	}
 	else
 	{
 		QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("ÕûÇ¹ÅÄÕÕÃ»ÓĞ²É¼¯±£´æÍ¼Æ¬"));
 		//return;
 	}
+
+
+
+
+	//bool saveImage1 = CParameterSettings::GetInstance()->saveCodeImage;
+	//if (saveImage1)
+	//{
+	//	//QString CodeImagePath = path + "_code.jpg";
+	//	QString CodeImagePath = path + "/code.jpg";
+	//	//QString CodeImagePath = path + "/"+ m_CurDZBianHao+"code.bmp";
+	//	QByteArray ba = CodeImagePath.toLocal8Bit();
+	//	char *file = ba.data();
+	//	imwrite(file, CodeImage);
+
+	//	/*QString DetectImagePath = path + "/" + m_CurDZBianHao + "detect.jpg";
+	//	ba = DetectImagePath.toLocal8Bit();
+	//	file = ba.data();
+	//	imwrite(file, DetectImage);*/
+
+	//}
+	//else
+	//{
+	//	QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("±àÂëÅÄÕÕÃ»ÓĞ²É¼¯±£´æÍ¼Æ¬"));
+	//	//return;
+	//}
+
+	////bool saveImage2 = CParameterSettings::GetInstance()->saveGunImage;
+	//if (saveImage2)
+	//{
+	//	//QString GunImagePath = path + "/_gun.jpg";
+	//	QString GunImagePath = path + "/gun.jpg";
+	//	QByteArray ba = GunImagePath.toLocal8Bit();
+	//	char *file = ba.data();
+	//	imwrite(file, GunImage);
+
+	//}
+	//else
+	//{
+	//	QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("ÕûÇ¹ÅÄÕÕÃ»ÓĞ²É¼¯±£´æÍ¼Æ¬"));
+	//	//return;
+	//}
 
 	//¼ìÊÓ×´Ì¬¸ü¸Ä
 	if (mymsgbox->clickedButton() == okbtn)//µã»÷ÁËOK°´Å¥
@@ -2461,7 +2405,7 @@ void CSystemMangaer::DoCorrection()//ÅÄÕÕ¼ìÊÓ½çÃæ->ÓÒÏÂ½Ç"ĞŞÕı"°´Å¥--¡·´Ë²Ûº¯Êı
 	{
 		if (m_CurDZBianHao.size() != 8)
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ95Ê½²½Ç¹±ê×¼£¬ÇëÖØĞÂÊ¶±ğ»òÈË¹¤ĞŞÕı£¡"));
+			QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ95Ê½²½Ç¹¹æ·¶£¬ÇëÖØĞÂÊ¶±ğ»òÈË¹¤ĞŞÕı£¡"));
 		}
 
 	}
@@ -2469,7 +2413,7 @@ void CSystemMangaer::DoCorrection()//ÅÄÕÕ¼ìÊÓ½çÃæ->ÓÒÏÂ½Ç"ĞŞÕı"°´Å¥--¡·´Ë²Ûº¯Êı
 	{
 		if (m_CurDZBianHao.size() != 6)
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ95-1Ê½²½Ç¹±ê×¼£¬ÇëÖØĞÂÊ¶±ğ»òÈË¹¤ĞŞÕı£¡"));
+			QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ95-1Ê½²½Ç¹¹æ·¶£¬ÇëÖØĞÂÊ¶±ğ»òÈË¹¤ĞŞÕı£¡"));
 		}
 
 	}
@@ -2477,7 +2421,7 @@ void CSystemMangaer::DoCorrection()//ÅÄÕÕ¼ìÊÓ½çÃæ->ÓÒÏÂ½Ç"ĞŞÕı"°´Å¥--¡·´Ë²Ûº¯Êı
 	{
 		if (m_CurDZBianHao.size() != 8)
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ54Ê½ÊÖÇ¹±ê×¼£¬ÇëÖØĞÂÊ¶±ğ»òÈË¹¤ĞŞÕı£¡"));
+			QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("Ê¶±ğ±àºÅ²»·ûºÏ54Ê½ÊÖÇ¹¹æ·¶£¬ÇëÖØĞÂÊ¶±ğ»òÈË¹¤ĞŞÕı£¡"));
 		}
 
 	}
