@@ -21,6 +21,7 @@ typedef struct
 	QString BFWenJianHao; //数据库表-SinglePackedTable-退役报废文件号
 	QString DBPingZhengHao;//数据库表-SinglePackedTable-调拨凭证号
 	QString ZBDaiMa;//数据库表-SinglePackedTable-装备代码
+	QString SerialNumber;//数据库表-BoxPackedDetailsTable-序号
 
 	void clear()
 	{
@@ -30,6 +31,7 @@ typedef struct
 		BFWenJianHao.clear();
 		DBPingZhengHao.clear();
 		ZBDaiMa.clear();
+		SerialNumber.clear();
 
 	}
 }s_CurrentMessage;
@@ -45,12 +47,9 @@ public:
 private:
 	void InitVariables();
 	void InitConnections();
-
 	bool CheckRepeat(QString &errMsg);
 	
-//public:
-//	static bool curPreviousIndex1();//箱装 枪支类型
-//	static bool curPreviousIndex2();//单装 枪支类型
+	void PackedListInfo();
 
 private:
 	Ui::SystemManager ui;

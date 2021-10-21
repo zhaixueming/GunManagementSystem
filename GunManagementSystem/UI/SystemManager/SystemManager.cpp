@@ -182,8 +182,8 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_PackedInfo->horizontalHeader()->setFont(font);
 	ui.tableWidget_PackedInfo->horizontalHeader()->setHighlightSections(false);
 	ui.tableWidget_PackedInfo->horizontalHeader()->setStyleSheet("QHeaderView::section{color:rgb(255,255,255);background:rgb(41,136,41);}");
-	ui.tableWidget_PackedInfo->setColumnCount(13);
-	ui.tableWidget_PackedInfo->setColumnWidth(0, 170);
+	ui.tableWidget_PackedInfo->setColumnCount(14);
+	ui.tableWidget_PackedInfo->setColumnWidth(0, 80);//ĞòºÅ
 	ui.tableWidget_PackedInfo->setColumnWidth(1, 170);
 	ui.tableWidget_PackedInfo->setColumnWidth(2, 170);
 	ui.tableWidget_PackedInfo->setColumnWidth(3, 160);
@@ -193,11 +193,12 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_PackedInfo->setColumnWidth(7, 120);
 	ui.tableWidget_PackedInfo->setColumnWidth(8, 120);
 	ui.tableWidget_PackedInfo->setColumnWidth(9, 100);
-	ui.tableWidget_PackedInfo->setColumnWidth(10, 110);//Ç¹Ö§ÀàĞÍ
-	ui.tableWidget_PackedInfo->setColumnWidth(11, 100);
+	ui.tableWidget_PackedInfo->setColumnWidth(10, 110);
+	ui.tableWidget_PackedInfo->setColumnWidth(11, 100);//Ç¹Ö§ÀàĞÍ
 	ui.tableWidget_PackedInfo->setColumnWidth(12, 100);
+	ui.tableWidget_PackedInfo->setColumnWidth(13, 100);
 	header.clear();
-	header <<QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë") << QString::fromLocal8Bit("×°±¸(²¿¼ş)Ãû³Æ") ;
+	header << QString::fromLocal8Bit("ĞòºÅ") << QString::fromLocal8Bit("×°Ïäµ¥ºÅ") << QString::fromLocal8Bit("×°±¸´úÂë") << QString::fromLocal8Bit("×°±¸(²¿¼ş)Ãû³Æ") ;
 	header << QString::fromLocal8Bit("µ¥×°±àºÅ")<< QString::fromLocal8Bit("ÖØÒª²¿¼şÈ±Ê§Çé¿ö")<<QString::fromLocal8Bit("Ç¹¹ÜºÅ");
 	header <<QString::fromLocal8Bit("Ç¹»ú»òÌ×Í²ºÅ")<<QString::fromLocal8Bit("»úÇ¹¿òºÅ")<<QString::fromLocal8Bit("±¸·İÇ¹¹ÜºÅ");
 	header  << QString::fromLocal8Bit("³ö¿â×´Ì¬") << QString::fromLocal8Bit("Ç¹Ö§ÀàĞÍ") << QString::fromLocal8Bit("¼ìÊÓ") << QString::fromLocal8Bit("É¾³ı");
@@ -325,15 +326,6 @@ void CSystemMangaer::InitConnections()
 
 
 
-//void CSystemMangaer::ReceiveStackWidgetIndex(int index)//
-//{
-//	setWindowState(Qt::WindowMaximized);
-//	ui.tabWidget->setCurrentIndex(index);//¶à´°¿Ú
-//	update();
-//}
-
-
-
 
 void CSystemMangaer::ReceiveStackWidgetIndex(int index)//Ö÷½çÃæÈı¸ö°´Å¥·¢ÉäĞÅºÅ£º---¡·ÏµÍ³¹ÜÀí½çÃæµ¯´°
 {
@@ -381,10 +373,8 @@ void CSystemMangaer::QueryUserInfo()//ÕËºÅ¹ÜÀí½çÃæµÄÓÒ±ß¡°²éÑ¯¡±°´Å¥---¡·´Ë²Ûº¯Ê
 
 		//ÉèÖÃĞĞÊı
 		ui.tableWidget_User->setRowCount(TableData.size());
-
-		ui.tableWidget_User->setSortingEnabled(false);//µã»÷±íÍ·£¬ÅÅĞò£¨·ñ£©£¬µ«ÊÇÓĞÎÊÌâ
-		
-	   //´úÌæ±íÍ·ÅÅĞò
+		//µã»÷±íÍ·ÅÅĞò
+		ui.tableWidget_User->setSortingEnabled(false);
 		ui.tableWidget_User->horizontalHeader()->setSortIndicatorShown(true);
 		ui.tableWidget_User->horizontalHeader()->setSortIndicator(0, Qt::DescendingOrder);
 		connect(ui.tableWidget_User->horizontalHeader(), SIGNAL(sectionClicked(int)), ui.tableWidget_User, SLOT(sortByColumn(int)));
@@ -443,9 +433,14 @@ void CSystemMangaer::QueryUserInfo()//ÕËºÅ¹ÜÀí½çÃæµÄÓÒ±ß¡°²éÑ¯¡±°´Å¥---¡·´Ë²Ûº¯Ê
 			ui.tableWidget_User->setCellWidget(row, col, DeleteButton);
 			connect(EditButton, SIGNAL(clicked()), this, SLOT(ModifyUser()));
 			connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeleteUser()));
+			
 		}
-		ui.tableWidget_User->setSortingEnabled(true);
-		ui.tableWidget_User->sortByColumn(0, Qt::AscendingOrder);
+		/*ui.tableWidget_User->setSortingEnabled(false);
+		ui.tableWidget_User->sortByColumn(0, Qt::AscendingOrder);*/
+
+	
+
+
 	}
 	else
 	{
@@ -642,7 +637,12 @@ void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ
 			ui.tableWidget_Box->removeRow(0);
 		}
 		ui.tableWidget_Box->setRowCount(TableData.size());
+
 		ui.tableWidget_Box->setSortingEnabled(false);
+		ui.tableWidget_Box->horizontalHeader()->setSortIndicatorShown(true);
+		ui.tableWidget_Box->horizontalHeader()->setSortIndicator(0, Qt::DescendingOrder);
+		connect(ui.tableWidget_Box->horizontalHeader(), SIGNAL(sectionClicked(int)), ui.tableWidget_Box, SLOT(sortByColumn(int)));
+
 		for (int row = 0; row < TableData.size(); ++row)
 		{
 			QList<QVariant> RowData = TableData.at(row);
@@ -700,10 +700,85 @@ void CSystemMangaer::QueryBoxPacked()//±àÂë¼ìÊÓ½çÃæ->¡°Ïä×°Èë¿â¡±½çÃæ£¬ÓÒ±ß¡°²éÑ
 			connect(EditButton, SIGNAL(clicked()), this, SLOT(ModifyBoxPackedInfo()));
 			connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeleteBoxPackedInfo()));
 		}
-		ui.tableWidget_Box->setSortingEnabled(true);
-		ui.tableWidget_Box->sortByColumn(0, Qt::AscendingOrder);
+		/*ui.tableWidget_Box->setSortingEnabled(false);
+		ui.tableWidget_Box->sortByColumn(0, Qt::AscendingOrder);*/
 	}
 }
+
+//µã»÷¡°±£´æ¡±£¬·µ»Øµ½Ïä×°ÁĞ±íĞÅÏ¢½çÃæ£¬½çÃæÏÔÊ¾×îĞÂµÄÊı¾İ
+//void CSystemMangaer::PackedListInfo()
+//{
+//	QToolButton *senderObj = qobject_cast<QToolButton*>(sender());//·µ»ØĞÅºÅÀ´Ô´µÄ¶ÔÏó
+//	if (senderObj == nullptr)
+//	{
+//		return;
+//	}
+//	QString text = senderObj->text();
+//	QString sql = "select * from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("×°Ïäµ¥ºÅ = \'") + text + "\'";
+//	QTableData TableData;
+//	QString errMsg;
+//	bool rv = CDatabaseOperator::GetInstance()->execSql(sql, TableData, errMsg);
+//	if (rv)
+//	{
+//		if (TableData.size() > 0)
+//		{
+//			int rows = ui.tableWidget_PackedInfo->rowCount();//±í¸ñĞĞÊı
+//			for (int i = 0; i < rows; ++i)
+//			{
+//				ui.tableWidget_PackedInfo->removeRow(rows);//É¾³ıĞĞ
+//			}
+//			ui.tableWidget_PackedInfo->setRowCount(TableData.size());//Ïä×°ÁĞ±íĞÅÏ¢³¤¶È
+//
+//			ui.tableWidget_PackedInfo->setSortingEnabled(false);//ÉèÖÃÎª²»¿É×Ô¶¯ÅÅĞò
+//			ui.tableWidget_PackedInfo->horizontalHeader()->setSortIndicatorShown(true);
+//			ui.tableWidget_PackedInfo->horizontalHeader()->setSortIndicator(0, Qt::DescendingOrder);
+//			connect(ui.tableWidget_PackedInfo->horizontalHeader(), SIGNAL(sectionClicked(int)), ui.tableWidget_Box, SLOT(sortByColumn(int)));
+//
+//			for (int row = 0; row < TableData.size(); ++row)
+//			{
+//				QList<QVariant> RowData = TableData.at(row);//Ã¿Ò»ĞĞÊı¾İÓĞ¼¸ÁĞ£¨16£©
+//				//int col = 1;
+//				int col = 0;//col=0ÊÇĞòºÅ
+//				for (; col < RowData.size() - 1; ++col)
+//				{
+//					QString data = RowData.at(col).toString();
+//					QTableWidgetItem *item = new QTableWidgetItem(data);
+//					item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//					//ui.tableWidget_PackedInfo->setItem(row, col - 1, item);
+//					ui.tableWidget_PackedInfo->setItem(row, col, item);
+//
+//				}
+//				QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("¼ìÊÓ"));
+//				EditButton->setStyleSheet("color:rgb(41,136,41)");
+//				EditButton->setMinimumHeight(20);
+//				QPushButton *DeleteButton = new QPushButton(QString::fromLocal8Bit("É¾³ı"));
+//				DeleteButton->setStyleSheet("color:rgb(255,0,0)");
+//				DeleteButton->setMinimumHeight(20);
+//
+//				ui.tableWidget_PackedInfo->setCellWidget(row, col - 3, EditButton);
+//				ui.tableWidget_PackedInfo->setCellWidget(row, col - 2, DeleteButton);
+//
+//				connect(EditButton, SIGNAL(clicked()), this, SLOT(EditPackedListInfo()));//Ïä×°ÁĞ±í¡°¼ìÊÓ¡±--¡·¼ìÊÓ½çÃæ
+//				connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeletePackedListInfo()));
+//			}
+//
+//
+//
+//			//ui.tableWidget_PackedInfo->setSortingEnabled(false);//ÉèÖÃ×Ô¶¯ÅÅÁĞ
+//			//ui.tableWidget_PackedInfo->sortByColumn(0, Qt::AscendingOrder);//°´ÁĞÅÅĞòÄ£Ê½
+//
+//		}
+//		else
+//		{
+//			return;
+//		}
+//	}
+//	else
+//	{
+//		QMessageBox::information(this, QString::fromLocal8Bit("²éÑ¯Ïä×°ÁĞ±íÊ§°Ü"), errMsg);
+//	}
+//}
+
 
 
 //µã»÷×°Ïäµ¥ºÅ,½øÈëÏä×°µ¥ºÅ½çÃæ£¬¿´µ½µÄÊÇÏä×°ÁĞ±í,È»ºó½øĞĞ±à¼­ºÍÉ¾³ı²Ù×÷
@@ -729,19 +804,26 @@ void CSystemMangaer::slotClickToolButton()
 			{
 				ui.tableWidget_PackedInfo->removeRow(rows);//É¾³ıĞĞ
 			}
-			ui.tableWidget_PackedInfo->setRowCount(TableData.size());//³¤¶È
+			ui.tableWidget_PackedInfo->setRowCount(TableData.size());//Ïä×°ÁĞ±íĞÅÏ¢³¤¶È
+
 			ui.tableWidget_PackedInfo->setSortingEnabled(false);//ÉèÖÃÎª²»¿É×Ô¶¯ÅÅĞò
+			ui.tableWidget_PackedInfo->horizontalHeader()->setSortIndicatorShown(true);
+			ui.tableWidget_PackedInfo->horizontalHeader()->setSortIndicator(0, Qt::DescendingOrder);
+			connect(ui.tableWidget_PackedInfo->horizontalHeader(), SIGNAL(sectionClicked(int)), ui.tableWidget_Box, SLOT(sortByColumn(int)));
 
 			for (int row = 0; row < TableData.size(); ++row)
 			{
-				QList<QVariant> RowData = TableData.at(row);//Ã¿Ò»ĞĞÊı¾İÓĞ¼¸ÁĞ
-				int col = 1;
+				QList<QVariant> RowData = TableData.at(row);//Ã¿Ò»ĞĞÊı¾İÓĞ¼¸ÁĞ£¨16£©
+				//int col = 1;
+				int col = 0;//col=0ÊÇĞòºÅ
 				for (; col < RowData.size() - 1; ++col)
 				{
 					QString data = RowData.at(col).toString();
 					QTableWidgetItem *item = new QTableWidgetItem(data);
 					item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-					ui.tableWidget_PackedInfo->setItem(row, col - 1, item);
+					//ui.tableWidget_PackedInfo->setItem(row, col - 1, item);
+					ui.tableWidget_PackedInfo->setItem(row, col, item);
+					
 				}
 				QPushButton *EditButton = new QPushButton(QString::fromLocal8Bit("¼ìÊÓ"));
 				EditButton->setStyleSheet("color:rgb(41,136,41)");
@@ -749,16 +831,19 @@ void CSystemMangaer::slotClickToolButton()
 				QPushButton *DeleteButton = new QPushButton(QString::fromLocal8Bit("É¾³ı"));
 				DeleteButton->setStyleSheet("color:rgb(255,0,0)");
 				DeleteButton->setMinimumHeight(20);
-				//ui.tableWidget_PackedInfo->setCellWidget(row, col - 1, EditButton);
-				//ui.tableWidget_PackedInfo->setCellWidget(row, col, DeleteButton);
-				ui.tableWidget_PackedInfo->setCellWidget(row, col - 4, EditButton);
-				ui.tableWidget_PackedInfo->setCellWidget(row, col-3, DeleteButton);
+				
+				ui.tableWidget_PackedInfo->setCellWidget(row, col - 3, EditButton);
+				ui.tableWidget_PackedInfo->setCellWidget(row, col-2, DeleteButton);
 
 				connect(EditButton, SIGNAL(clicked()), this, SLOT(EditPackedListInfo()));//Ïä×°ÁĞ±í¡°¼ìÊÓ¡±--¡·¼ìÊÓ½çÃæ
 				connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeletePackedListInfo()));
 			}
-			ui.tableWidget_PackedInfo->setSortingEnabled(true);//ÉèÖÃ×Ô¶¯ÅÅÁĞ
-			ui.tableWidget_PackedInfo->sortByColumn(0, Qt::AscendingOrder);//°´ÁĞÅÅĞòÄ£Ê½
+			
+
+
+			//ui.tableWidget_PackedInfo->setSortingEnabled(false);//ÉèÖÃ×Ô¶¯ÅÅÁĞ
+			//ui.tableWidget_PackedInfo->sortByColumn(0, Qt::AscendingOrder);//°´ÁĞÅÅĞòÄ£Ê½
+
 		}
 		else
 		{
@@ -773,8 +858,6 @@ void CSystemMangaer::slotClickToolButton()
 
 
 }
-
-
 
 
 
@@ -797,10 +880,11 @@ void CSystemMangaer::EditPackedListInfo()
 
 	int row = ui.tableWidget_PackedInfo->indexAt(QPoint(senderObj->frameGeometry().x(), senderObj->frameGeometry().y())).row();//ĞĞ±àºÅ£¬´Ó0¿ªÊ¼
 
-	QString DanHao = ui.tableWidget_PackedInfo->item(row, 0)->text();//»ñÈ¡Ïä×°ÁĞ±íµÄµÚ1ÁĞÎªÏä×°µ¥ºÅ
+	QString XuHao = ui.tableWidget_PackedInfo->item(row, 0)->text();//»ñÈ¡Ïä×°ÁĞ±íµÄµÚ1ÁĞÎªĞòºÅ
+	QString DanHao = ui.tableWidget_PackedInfo->item(row, 1)->text();//»ñÈ¡Ïä×°ÁĞ±íµÄµÚ2ÁĞÎªÏä×°µ¥ºÅ
 	ui.label_DanHao->setText(DanHao);
 
-	QString QiangZhiType = ui.tableWidget_PackedInfo->item(row, 10)->text();//»ñÈ¡Ïä×°ÁĞ±íµÄµÚ11ÁĞÎªÏä×°µ¥ºÅÏÔÊ¾
+	QString QiangZhiType = ui.tableWidget_PackedInfo->item(row, 11)->text();//»ñÈ¡Ïä×°ÁĞ±íµÄµÚ11ÁĞÎªÏä×°µ¥ºÅÏÔÊ¾
 	ui.label_GunType->setText(QiangZhiType);
 
 	e_GunModel CurGunModel;
@@ -845,8 +929,9 @@ void CSystemMangaer::EditPackedListInfo()
 	m_QSQingKuang.clear();//È±Ê§Çé¿ö
 	m_curMsg.clear();//Çå¿Õµ±Ç°ĞÅÏ¢
 	m_curMsg.type = 1;//1ÎªÏä×°
-	m_curMsg.index = row+1;//Êı¾İ¿â±í-BoxPackedDetailsTable-ĞòºÅ
+	m_curMsg.index = row + 1;//Êı¾İ¿â±í-BoxPackedDetailsTable-ĞòºÅ
 	m_curMsg.PackedNum = DanHao;//Êı¾İ¿â±í- BoxPackedDetailsTable-×°Ïäµ¥ºÅ
+	m_curMsg.SerialNumber = XuHao;//Êı¾İ¿â±í- BoxPackedDetailsTable-ĞòºÅ
 	CAlgoCodeReview::GetInstance()->SetGunModel(CurGunModel);
 	ui.tabWidget->setCurrentIndex(4);//µÚ4tab
 	m_PreviousIndex = 1; //1£ºÏä×°ĞÅÏ¢ÁĞ
@@ -870,10 +955,15 @@ void CSystemMangaer::DeletePackedListInfo()
 	if (QMessageBox::question(this, QString::fromLocal8Bit("ÌáÊ¾"), QString::fromLocal8Bit("È·ÊµÒªÉ¾³ıÂğ?"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
 		m_curMsg.index = row+1;
-		QString DanHao = ui.tableWidget_PackedInfo->item(row, 0)->text();
-		QString BianHao = ui.tableWidget_PackedInfo->item(row, 3)->text();
+		m_curMsg.SerialNumber = ui.tableWidget_PackedInfo->item(row, 0)->text();//ĞòºÅ
+		//QString SerialNumber = ui.tableWidget_PackedInfo->item(row, 0)->text();//ĞòºÅ
+		QString DanHao = ui.tableWidget_PackedInfo->item(row, 1)->text();
+		QString BianHao = ui.tableWidget_PackedInfo->item(row, 4)->text();//µ¥×°±àºÅ
+		
 		//QMessageBox::information(this, "check", QString::fromLocal8Bit("¿´¿´4ÊÇÉ¶ ") + BianHao);
-		QString sql = "delete from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("ĞòºÅ = \'") + QString::number(m_curMsg.index) + "\'"; 
+		//QString sql = "delete from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("ĞòºÅ = \'") + QString::number(m_curMsg.index) + "\'"; 
+		//QString sql = "delete from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("ĞòºÅ = \'") + m_curMsg.SerialNumber + "\'";
+		QString sql = "delete from GunManager.dbo.BoxPackedDetailsTable where " + QString::fromLocal8Bit("ĞòºÅ = ") + m_curMsg.SerialNumber;
 		sql += QString::fromLocal8Bit(" and ×°Ïäµ¥ºÅ = \'") + DanHao + "\'";
 		sql += QString::fromLocal8Bit(" and µ¥×°±àºÅ = \'") + BianHao + "\'";
 		
@@ -906,12 +996,9 @@ void CSystemMangaer::PrintBoxList()//×°ÏäĞÅÏ¢ÁĞ±í½çÃæµÄ×óÏÂ½ÇµÄ"´òÓ¡×°ÏäÇåµ¥"°´Å
 	{
 		QStringList oneRow;
 		oneRow.push_back(QString::number(i + 1));
-		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 1)->text());
 		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
 		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
-		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 2)->text());
-		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 3)->text());
-		//oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 4)->text());
+		oneRow.push_back(ui.tableWidget_PackedInfo->item(i, 4)->text());
 		oneRow.push_back(QString::fromLocal8Bit("Ö§"));
 		oneRow.push_back("1");
 		content.push_back(oneRow);
@@ -928,8 +1015,6 @@ void CSystemMangaer::AddSinglePacked()//±àÂë¼ìÊÓ½çÃæ-¡·¡°µ¥×°Èë¿â¡±½çÃæµÄ×óÉÏ¡°Ğ
 //±à¼­¡°±àÂë¼ìÊÓ¡±--µ¥×°Èë¿â--¡·±à¼­--¸÷¸ö¸´Ñ¡¿òµÄÈ¨ÏŞ£¨ÅÄÕÕ¼ìÊÓÏÂ£©
 void CSystemMangaer::EditSinglePacked()
 {
-
-	//curPreviousIndex2();//µ¥×°  Ç¹Ö§ÀàĞÍ
 
 	QPushButton *senderObj = qobject_cast<QPushButton*>(sender());
 	if (senderObj == nullptr)
@@ -1075,7 +1160,13 @@ void CSystemMangaer::QuerySinglePacked()//¡°±àÂë¼ìÊÓ¡±½çÃæÏÂ£¬µ¥×°Èë¿â½çÃæÏÂÓÒ±ß
 			ui.tableWidget_Single->removeRow(0);
 		}
 		ui.tableWidget_Single->setRowCount(TableData.size());
+
+		//ÉèÖÃµ¥»÷±íÍ·¿ÉÒÔµ÷ÕûÅÅĞò
 		ui.tableWidget_Single->setSortingEnabled(false);
+		ui.tableWidget_Single->horizontalHeader()->setSortIndicatorShown(true);
+		ui.tableWidget_Single->horizontalHeader()->setSortIndicator(0, Qt::DescendingOrder);
+		connect(ui.tableWidget_Single->horizontalHeader(), SIGNAL(sectionClicked(int)), ui.tableWidget_Single, SLOT(sortByColumn(int)));
+
 		for (int row = 0; row < TableData.size(); ++row)
 		{
 			QList<QVariant> RowData = TableData.at(row);
@@ -1100,8 +1191,8 @@ void CSystemMangaer::QuerySinglePacked()//¡°±àÂë¼ìÊÓ¡±½çÃæÏÂ£¬µ¥×°Èë¿â½çÃæÏÂÓÒ±ß
 			connect(EditButton, SIGNAL(clicked()), this, SLOT(EditSinglePacked()));
 			connect(DeleteButton, SIGNAL(clicked()), this, SLOT(DeleteSinglePacked()));
 		}
-		ui.tableWidget_Single->setSortingEnabled(true);
-		ui.tableWidget_Single->sortByColumn(0, Qt::AscendingOrder);
+		/*ui.tableWidget_Single->setSortingEnabled(false);
+		ui.tableWidget_Single->sortByColumn(0, Qt::AscendingOrder);*/
 	}
 }
 
@@ -1299,7 +1390,14 @@ void CSystemMangaer::QueryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖĞÓÒ±ßµÄ"²éÑ
 		ui.tableWidget_Search->removeRow(0);
 	}
 	ui.tableWidget_Search->setRowCount(AllTableData.size());
+	
+	//ÉèÖÃµ¥»÷±íÍ·¿ÉÒÔµ÷ÕûÅÅĞò
 	ui.tableWidget_Search->setSortingEnabled(false);
+	ui.tableWidget_Search->horizontalHeader()->setSortIndicatorShown(true);
+	ui.tableWidget_Search->horizontalHeader()->setSortIndicator(0, Qt::DescendingOrder);
+	connect(ui.tableWidget_Search->horizontalHeader(), SIGNAL(sectionClicked(int)), ui.tableWidget_Search, SLOT(sortByColumn(int)));
+
+
 	for (int row = 0; row < AllTableData.size(); ++row)
 	{
 		QList<QVariant> RowData = AllTableData.at(row);
@@ -1368,8 +1466,8 @@ void CSystemMangaer::QueryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°²éÑ¯¡±½çÃæÖĞÓÒ±ßµÄ"²éÑ
 		widget->setLayout(hLayout);
 		ui.tableWidget_Search->setCellWidget(row, col + 3, widget);
 	}
-	ui.tableWidget_Search->setSortingEnabled(true);
-	ui.tableWidget_Search->sortByColumn(0, Qt::AscendingOrder);
+	/*ui.tableWidget_Search->setSortingEnabled(false);
+	ui.tableWidget_Search->sortByColumn(0, Qt::AscendingOrder);*/
 	
 }
 
@@ -1441,7 +1539,13 @@ void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ
 		ui.tableWidget_Delivery->removeRow(0);
 	}
 	ui.tableWidget_Delivery->setRowCount(AllTableData.size());
+	
+	//ÉèÖÃµ¥»÷±íÍ·¿ÉÒÔµ÷ÕûÅÅĞò
 	ui.tableWidget_Delivery->setSortingEnabled(false);
+	ui.tableWidget_Delivery->horizontalHeader()->setSortIndicatorShown(true);
+	ui.tableWidget_Delivery->horizontalHeader()->setSortIndicator(0, Qt::DescendingOrder);
+	connect(ui.tableWidget_Delivery->horizontalHeader(), SIGNAL(sectionClicked(int)), ui.tableWidget_Delivery, SLOT(sortByColumn(int)));
+
 	for (int row = 0; row < AllTableData.size(); ++row)
 	{
 		QList<QVariant> RowData = AllTableData.at(row);
@@ -1508,8 +1612,8 @@ void CSystemMangaer::QueryDeliveryInformations()//ĞÅÏ¢¹ÜÀí½çÃæ->¡°³ö¿â¡±½çÃæÖĞÓÒ
 		ui.tableWidget_Delivery->setCellWidget(row, col, widget);
 		//ui.tableWidget_Delivery->setCellWidget(row, col++, widget);
 	}
-	ui.tableWidget_Delivery->setSortingEnabled(true);
-	ui.tableWidget_Delivery->sortByColumn(0, Qt::AscendingOrder);
+	/*ui.tableWidget_Delivery->setSortingEnabled(false);
+	ui.tableWidget_Delivery->sortByColumn(0, Qt::AscendingOrder);*/
 	//Remainder();
 }
 
@@ -1866,11 +1970,13 @@ void CSystemMangaer::ExportGridA9()
 
 void CSystemMangaer::ImageGrabberReturn()//ÅÄÕÕ¼ìÊÓ½çÃæ-¡·ÓÒÏÂ¡°·µ»Ø¡±°´Å¥--¡·´Ë²Ûº¯Êı
 {
-	if (m_PreviousIndex == 1)
+	if (m_PreviousIndex == 1)//Ïä×°
 	{
 		ui.tabWidget->setCurrentIndex(3);
+		
+		
 	}
-	else if (m_PreviousIndex == 2)
+	else if (m_PreviousIndex == 2)//µ¥×°
 	{
 		ui.tabWidget->setCurrentIndex(1);
 	}
@@ -1997,10 +2103,9 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 
 			QString result;
 			//cvtColor(image, image, COLOR_GRAY2BGR);
-			//CodeImage = image.clone();
-			//image1 = imread("./Image54/2505265566.bmp");
-			image1 = imread("./Image54/10112662code(1).bmp"); 
-			bool bAlgoSuccess = CAlgoCodeReview::GetInstance()->RunAlog(image1, result);//µ÷ÓÃOCR¼ì²â
+			CodeImage = image.clone();
+			//image1 = imread("./Image54/10112662code(1).bmp"); 
+			bool bAlgoSuccess = CAlgoCodeReview::GetInstance()->RunAlog(image, result);//µ÷ÓÃOCR¼ì²â
 			if (bAlgoSuccess)
 			{
 				ui.lineEdit_Ocr->setText(result);//ÅÄÕÕ¼ìÊÓ½çÃæ-µÄÓÒÉÏ¡°Í¼ÏñÊ¶±ğ¡±±à¼­¿ò£¬ÏÔÊ¾½á¹û
@@ -2037,10 +2142,10 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 				
 		}
 		
-		CodeImage = image1.clone();
+		//CodeImage = image1.clone();
 		//DetectImage = image.clone();
-		QImage img = matToQImage(image1);
-		//QImage img = matToQImage(image);//µ÷ÓÃmatToQImageº¯Êı£¬»ñÈ¡Í¼ÏñÊı¾İ£¬ĞĞ¡£ÁĞ£¬¸ñÊ½µÈ(¸Ä)
+		//QImage img = matToQImage(image1);
+		QImage img = matToQImage(image);//µ÷ÓÃmatToQImageº¯Êı£¬»ñÈ¡Í¼ÏñÊı¾İ£¬ĞĞ¡£ÁĞ£¬¸ñÊ½µÈ(¸Ä)
 		ui.label_Image1->SetImage(img);
 	}
 	else if (index == 2)
@@ -2138,7 +2243,6 @@ void CSystemMangaer::SaveRecognizeResult()
 	mymsgbox->addButton(okbtn, QMessageBox::AcceptRole);
 	mymsgbox->addButton(cancelbtn, QMessageBox::RejectRole);
 	mymsgbox->show();
-
 	mymsgbox->exec();//×èÈûµÈ´ıÓÃ»§ÊäÈë
 
 
@@ -2160,7 +2264,6 @@ void CSystemMangaer::SaveRecognizeResult()
 	QString path = CParameterSettings::GetInstance()->GetSavePath();
 	path += "/" + QDateTime::currentDateTime().toString("yyyy-MM-dd") + "/"+ m_CurDZBianHao;
 	QDir dir;
-	//bool rv = dir.mkpath(path);
 	rv = dir.mkpath(path);
 	if (!rv)
 	{
@@ -2184,8 +2287,8 @@ void CSystemMangaer::SaveRecognizeResult()
 	bool saveImage1 = CParameterSettings::GetInstance()->saveCodeImage;
 	if (saveImage1)
 	{
-		QString CodeImagePath = path + "_code.jpg";
-		//QString CodeImagePath = path + "/code.jpg";
+		//QString CodeImagePath = path + "_code.jpg";
+		QString CodeImagePath = path + "/code.jpg";
 		//QString CodeImagePath = path + "/"+ m_CurDZBianHao+"code.bmp";
 		QByteArray ba = CodeImagePath.toLocal8Bit();
 		char *file = ba.data();
@@ -2206,8 +2309,8 @@ void CSystemMangaer::SaveRecognizeResult()
 	//bool saveImage2 = CParameterSettings::GetInstance()->saveGunImage;
 	if (saveImage2)
 	{
-		QString GunImagePath = path + "/_gun.jpg";
-		//QString GunImagePath = path + "/"+ m_CurDZBianHao+"gun.jpg";
+		//QString GunImagePath = path + "/_gun.jpg";
+		QString GunImagePath = path + "/gun.jpg";
 		QByteArray ba = GunImagePath.toLocal8Bit();
 		char *file = ba.data();
 		imwrite(file, GunImage);
@@ -2236,10 +2339,9 @@ void CSystemMangaer::SaveRecognizeResult()
 			sql += QString::fromLocal8Bit(",±¸·İÇ¹¹ÜºÅ = \'") + m_BeiFenHao + "\'";
 			sql += QString::fromLocal8Bit(",¼ìÊÓÊ±¼ä = \'") + JianShiDateTime + "\'";
 			sql += QString::fromLocal8Bit(",¼ìÊÓ×´Ì¬ = \'") + JianShiZhuangTai + "\'";
-			sql += QString::fromLocal8Bit("where GunManager.dbo.BoxPackedDetailsTable.ĞòºÅ = ") + QString::number(m_curMsg.index);
-			sql += QString::fromLocal8Bit(" and GunManager.dbo.BoxPackedDetailsTable.×°Ïäµ¥ºÅ = \'") + m_curMsg.PackedNum + "\'";
-			
-
+			//sql += QString::fromLocal8Bit("where GunManager.dbo.BoxPackedDetailsTable.ĞòºÅ = ") + QString::number(m_curMsg.index);
+			sql += QString::fromLocal8Bit("where GunManager.dbo.BoxPackedDetailsTable.ĞòºÅ = ") + m_curMsg.SerialNumber;
+			sql += QString::fromLocal8Bit(" and ×°Ïäµ¥ºÅ = \'") + m_curMsg.PackedNum + "\'";
 
 		}
 		else if (m_curMsg.type == 2)//µ¥×°
@@ -2269,41 +2371,70 @@ void CSystemMangaer::SaveRecognizeResult()
 		{
 			if (m_curMsg.type == 1)//Ïä×°ÁĞ±í
 			{
+			
+				/*int PackedXuHao = m_curMsg.SerialNumber.toInt();
 				QTableWidgetItem *item = new QTableWidgetItem(m_CurDZBianHao);
-				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 3, item);
+				ui.tableWidget_PackedInfo->setItem(PackedXuHao - 1, 4, item);
 				item = new QTableWidgetItem(LostMeg);
-				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 4, item);
-				
+				ui.tableWidget_PackedInfo->setItem(PackedXuHao - 1, 5, item);
 				item = new QTableWidgetItem(m_QiangGuanHao);
-				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 5, item);
+				ui.tableWidget_PackedInfo->setItem(PackedXuHao - 1, 6, item);
 				item = new QTableWidgetItem(m_QiangJiHao);
-				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 6, item);
+				ui.tableWidget_PackedInfo->setItem(PackedXuHao - 1, 7, item);
 				item = new QTableWidgetItem(m_QiangKuangHao);
-				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 7, item);
+				ui.tableWidget_PackedInfo->setItem(PackedXuHao - 1, 8, item);
 				item = new QTableWidgetItem(m_BeiFenHao);
+				ui.tableWidget_PackedInfo->setItem(PackedXuHao - 1, 9, item);*/
+
+				QTableWidgetItem *item = new QTableWidgetItem(m_CurDZBianHao);
+				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 4, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+				item = new QTableWidgetItem(LostMeg);
+				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 5, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+				item = new QTableWidgetItem(m_QiangGuanHao);
+				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 6, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+				item = new QTableWidgetItem(m_QiangJiHao);
+				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 7, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+				item = new QTableWidgetItem(m_QiangKuangHao);
 				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 8, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+				item = new QTableWidgetItem(m_BeiFenHao);
+				ui.tableWidget_PackedInfo->setItem(m_curMsg.index - 1, 9, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
 			}
 			else if (m_curMsg.type == 2)//µ¥×°
 			{
 				QTableWidgetItem *item = new QTableWidgetItem(m_CurDZBianHao);
 				ui.tableWidget_Single->setItem(m_curMsg.index, 4, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 				item = new QTableWidgetItem(LostMeg);
 				ui.tableWidget_Single->setItem(m_curMsg.index, 5, item);
-
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 				item = new QTableWidgetItem(m_QiangGuanHao);
 				ui.tableWidget_Single->setItem(m_curMsg.index, 6, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 				item = new QTableWidgetItem(m_QiangJiHao);
 				ui.tableWidget_Single->setItem(m_curMsg.index, 7, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 				item = new QTableWidgetItem(m_QiangKuangHao);
 				ui.tableWidget_Single->setItem(m_curMsg.index, 8, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 				item = new QTableWidgetItem(m_BeiFenHao);
 				ui.tableWidget_Single->setItem(m_curMsg.index, 9, item);
+				item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
 			}
 			ImageGrabberReturn();//µã»÷±£´æºó×Ô¶¯·µ»ØÉÏÒ»Ò³Ãæ
+			
+			
 		}
+		
 	}
+
 }
 
 void CSystemMangaer::DoCorrection()//ÅÄÕÕ¼ìÊÓ½çÃæ->ÓÒÏÂ½Ç"ĞŞÕı"°´Å¥--¡·´Ë²Ûº¯Êı
