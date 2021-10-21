@@ -56,6 +56,7 @@ public:
         if (BoxPackedDialog->objectName().isEmpty())
             BoxPackedDialog->setObjectName(QString::fromUtf8("BoxPackedDialog"));
         BoxPackedDialog->resize(636, 358);
+        BoxPackedDialog->setStyleSheet(QString::fromUtf8("font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
         gridLayout = new QGridLayout(BoxPackedDialog);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         label_29 = new QLabel(BoxPackedDialog);
@@ -257,8 +258,7 @@ public:
         label_36->setObjectName(QString::fromUtf8("label_36"));
         label_36->setMinimumSize(QSize(100, 30));
         label_36->setMaximumSize(QSize(100, 30));
-        label_36->setStyleSheet(QString::fromUtf8("font: 75 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
-"color: rgb(41, 136, 41);"));
+        label_36->setStyleSheet(QString::fromUtf8("color: rgb(41, 136, 41);"));
         label_36->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(label_36, 5, 2, 1, 1);
@@ -287,6 +287,7 @@ public:
         comboBox_GunType->setObjectName(QString::fromUtf8("comboBox_GunType"));
         comboBox_GunType->setEnabled(true);
         comboBox_GunType->setMaximumSize(QSize(200, 30));
+        comboBox_GunType->setStyleSheet(QString::fromUtf8(""));
         comboBox_GunType->setEditable(false);
 
         gridLayout->addWidget(comboBox_GunType, 3, 3, 1, 2);

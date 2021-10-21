@@ -45,8 +45,8 @@ void CBoxPacked::InitVariables()
 	////ui.comboBox_GunType->addItem(QString::fromLocal8Bit("81Ê½²½Ç¹"));
 	////ui.comboBox_GunType->addItem(QString::fromLocal8Bit("92Ê½ÊÖÇ¹"));
 
-	ui.comboBox_GunType->setStyleSheet("QComboBox{font: 75 15pt 'Î¢ÈíÑÅºÚ';border-radius:3px;color:black;background:white;padding-left:5px;padding-right:12px;border:1px solid #b5b5b5;}\
-                            QComboBox:hover{border:1px solid gray;}");
+	//ui.comboBox_GunType->setStyleSheet("QComboBox{font: 75 15pt 'Î¢ÈíÑÅºÚ';border-radius:3px;color:black;background:white;padding-left:5px;padding-right:12px;border:1px solid #b5b5b5;}\
+ //                           QComboBox:hover{border:1px solid gray;}");
 
 	ui.dateEdit_ChuChang->setFixedSize(QSize(200, 30));
 	ui.dateEdit_ZhuangBei->setFixedSize(QSize(200, 30));

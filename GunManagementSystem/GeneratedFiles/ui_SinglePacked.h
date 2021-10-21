@@ -53,6 +53,7 @@ public:
         if (SinglePackedDialog->objectName().isEmpty())
             SinglePackedDialog->setObjectName(QString::fromUtf8("SinglePackedDialog"));
         SinglePackedDialog->resize(638, 212);
+        SinglePackedDialog->setStyleSheet(QString::fromUtf8("font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
         gridLayout = new QGridLayout(SinglePackedDialog);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         label_29 = new QLabel(SinglePackedDialog);

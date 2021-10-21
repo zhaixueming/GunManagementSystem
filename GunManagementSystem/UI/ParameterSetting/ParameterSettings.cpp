@@ -129,7 +129,7 @@ void CParameterSettings::ConnectDatabase()
 		}
 		else
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库连接成功"));
+			//QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库连接成功"));
 			m_bConnected = true;
 			ui.pushButton_Login->setText(QString::fromLocal8Bit("断开"));
 			ui.lineEdit_DatabaseName->setEnabled(false);
@@ -194,7 +194,7 @@ bool CParameterSettings::OpenCamera(MV_CC_DEVICE_INFO device_info,int index)
 		}
 		else
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("编码拍照相机打开成功"));
+			//QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("编码拍照相机打开成功"));
 			unsigned int PackSize = 0;
 			int nRet = m_MvCamera1.GetOptimalPacketSize(&PackSize);//ch:探测网络最佳包大小(只对GigE相机有效)
 			if (nRet == MV_OK)
@@ -220,7 +220,7 @@ bool CParameterSettings::OpenCamera(MV_CC_DEVICE_INFO device_info,int index)
 		}
 		else
 		{
-			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("整枪拍照相机打开成功"));
+			//QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("整枪拍照相机打开成功"));
 			unsigned int PackSize = 0;
 			int nRet = m_MvCamera2.GetOptimalPacketSize(&PackSize);
 			if (nRet == MV_OK)

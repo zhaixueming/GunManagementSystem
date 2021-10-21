@@ -222,7 +222,7 @@ void CSystemMangaer::InitVariables()
 	ui.tableWidget_Single->setColumnWidth(4, 110);
 	ui.tableWidget_Single->setColumnWidth(5, 130);
 	ui.tableWidget_Single->setColumnWidth(6, 100);
-	ui.tableWidget_Single->setColumnWidth(7, 130);
+	ui.tableWidget_Single->setColumnWidth(7, 100);
 	ui.tableWidget_Single->setColumnWidth(8, 100);
 	ui.tableWidget_Single->setColumnWidth(9, 100);
 	ui.tableWidget_Single->setColumnWidth(10, 100);
