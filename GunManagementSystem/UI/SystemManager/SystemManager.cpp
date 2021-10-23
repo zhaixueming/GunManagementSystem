@@ -2028,7 +2028,7 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 			ui.lineEdit_BeiFen->setText("");
 
 			QString result;
-			//cvtColor(image, image, COLOR_GRAY2BGR);
+			cvtColor(image, image, COLOR_GRAY2BGR);
 			CodeImage = image.clone();
 			//image1 = imread("./Image54/10112662code(1).bmp"); 
 			bool bAlgoSuccess = CAlgoCodeReview::GetInstance()->RunAlog(image, result);//µ÷ÓÃOCR¼ì²â
