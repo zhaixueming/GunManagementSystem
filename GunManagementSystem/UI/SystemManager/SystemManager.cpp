@@ -2305,7 +2305,6 @@ void CSystemMangaer::SaveRecognizeResult()
 		}
 		QString errMsg;
 		bool rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
-		rv = CDatabaseOperator::GetInstance()->execSql(sql, QTableData(), errMsg);
 		if (!rv)
 		{
 			QMessageBox::information(this, QString::fromLocal8Bit("Êý¾Ý¿âÖ´ÐÐ´íÎó"), errMsg);

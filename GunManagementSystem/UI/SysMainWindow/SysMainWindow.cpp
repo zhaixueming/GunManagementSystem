@@ -9,7 +9,7 @@
 
 
 
-//输出日志
+//输出日志.txt
 void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
 	static QMutex mutex;
