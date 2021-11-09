@@ -830,6 +830,14 @@ void CSystemMangaer::EditPackedListInfo()
 	{
 		CurGunModel = PISTOL_MODEL54;
 	}
+	else if (QiangZhiType == QString::fromLocal8Bit("92式手枪"))
+	{
+		CurGunModel = PISTOL_MODEL92;
+	}
+	else if (QiangZhiType == QString::fromLocal8Bit("81式步枪"))
+	{
+		CurGunModel = RIFLE_MODEL81;
+	}
 	CurGunModelflag = CurGunModel;
 
 	ui.lineEdit_Ocr->setText("");//图像识别编辑框
@@ -969,7 +977,14 @@ void CSystemMangaer::EditSinglePacked()
 	{
 		CurGunModel = PISTOL_MODEL54;
 	}
-
+	else if (QiangZhiType == QString::fromLocal8Bit("92式手枪"))
+	{
+		CurGunModel = PISTOL_MODEL92;
+	}
+	else if (QiangZhiType == QString::fromLocal8Bit("81式步枪"))
+	{
+		CurGunModel = RIFLE_MODEL81;
+	}
 	CurGunModelflag = CurGunModel;
 
 	ui.label_DanHao->setText("");//单装 没有箱装单号  设为空
@@ -2028,10 +2043,11 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 			ui.lineEdit_BeiFen->setText("");
 
 			QString result;
-			cvtColor(image, image, COLOR_GRAY2BGR);
-			CodeImage = image.clone();
-			//image1 = imread("./Image54/10112662code(1).bmp"); 
-			bool bAlgoSuccess = CAlgoCodeReview::GetInstance()->RunAlog(image, result);//调用OCR检测
+			flip(image, image, -1);//图像沿x,y轴同时翻转
+			//cvtColor(image, image, COLOR_GRAY2BGR);
+			//CodeImage = image.clone();
+			image1 = imread("./Image92/1000S625922670548236code.bmp"); 
+			bool bAlgoSuccess = CAlgoCodeReview::GetInstance()->RunAlog(image1, result);//调用OCR检测
 			if (bAlgoSuccess)
 			{
 				ui.lineEdit_Ocr->setText(result);//拍照检视界面-的右上“图像识别”编辑框，显示结果
@@ -2064,14 +2080,30 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 					}
 
 				}
+				if (CurGunModelflag == PISTOL_MODEL92)
+				{
+					if (m_CurDZBianHao.size() != 6)
+					{
+						QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合92式手枪规范，请重新识别或手动修正！"));
+					}
+
+				}
+				if (CurGunModelflag == RIFLE_MODEL81)
+				{
+					if (m_CurDZBianHao.size() != 8)
+					{
+						QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合81式步枪规范，请重新识别或手动修正！"));
+					}
+
+				}
 			}		
 				
 		}
 		
-		//CodeImage = image1.clone();
+		CodeImage = image1.clone();
 		//DetectImage = image.clone();
-		//QImage img = matToQImage(image1);
-		QImage img = matToQImage(image);//调用matToQImage函数，获取图像数据，行。列，格式等(改)
+		QImage img = matToQImage(image1);
+		//QImage img = matToQImage(image);//调用matToQImage函数，获取图像数据，行。列，格式等(改)
 		ui.label_Image1->SetImage(img);
 	}
 	else if (index == 2)

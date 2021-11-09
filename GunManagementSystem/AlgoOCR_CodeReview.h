@@ -12,7 +12,9 @@ typedef enum
 	DEFAULT_MODEL,
 	RIFLE_MODEL95,
 	RIFLE_MODEL951,
-	PISTOL_MODEL54
+	PISTOL_MODEL54,
+	RIFLE_MODEL81,
+	PISTOL_MODEL92
 }e_GunModel;
 
 typedef QMap<e_GunModel, VimoOCRModule*> MapGunModle_OCRModule;
@@ -49,7 +51,8 @@ private:
 	void RifleModel95();
 	void RifleModel951();
 	void PistolModel54();
-	
+	void PistolModel92();
+	void RifleModel81();
 
 private:
 	static CAlgoCodeReview *m_Instance;
