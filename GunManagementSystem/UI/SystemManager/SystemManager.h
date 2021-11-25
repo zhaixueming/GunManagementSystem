@@ -9,6 +9,7 @@
 #include "AlgoOCR_CodeReview.h"
 #include "PrintAPI.h"
 #include "QtTextToSpeech/QTextToSpeech"
+#include "qmutex.h"
 
 using namespace std;
 using namespace cv;
@@ -67,6 +68,7 @@ private:
 	Mat CodeImage;
 	Mat GunImage;
 	Mat DetectImage;
+	QMutex m_Mutex;
 
 	//void Remainder();
 	void ExportGridA9();

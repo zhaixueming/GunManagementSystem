@@ -3,7 +3,7 @@
 #include <QObject>
 #include<QMap>
 #include "VimoOCRModule.h"
-#include "opencv2/opencv.hpp"
+#include <opencv2/opencv.hpp>
 using namespace cv;
 using namespace smartmore;
 

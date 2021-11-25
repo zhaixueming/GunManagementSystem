@@ -97,7 +97,7 @@ SysMainWindow::~SysMainWindow()
 void SysMainWindow::InitVariables()
 {
 	ui.pushButton_AcManager->setStyleSheet("QPushButton:hover{background-color: rgb(0,170,0);color:rgb(255,255,255);}"
-		                                   "QPushButton{color:rgb(0,170,0);font:75 30pt '微软雅黑'}");
+										   "QPushButton{color:rgb(0,170,0);font:75 30pt '微软雅黑'}");
 	ui.pushButton_CodeReview->setStyleSheet("QPushButton:hover{background-color: rgb(0,170,0);color:rgb(255,255,255);}"
 											"QPushButton{color:rgb(0,170,0);font:75 30pt '微软雅黑'}");
 	ui.pushButton_InfoManager->setStyleSheet("QPushButton:hover{background-color: rgb(0,170,0);color:rgb(255,255,255);}"
@@ -112,7 +112,7 @@ void SysMainWindow::InitConnections()
 	connect(CParameterSettings::GetInstance(), SIGNAL(SendCameraImage(int,Mat)), this, SLOT(ReceiveCameraImage(int,Mat)));//SendCameraImage(int,Mat),int为1，2
 	connect(this, SIGNAL(SendCameraImage(int,Mat)), &m_SystemManager, SLOT(ReceiveImage(int,Mat)));//图像数据--》系统管理，拍图或识别编码
 	
-    //拍照检视界面的中间的显示框以及下方的两个按钮：编码拍照：1；整枪拍照：2---》传给主界面ReceiveSoftTrigger(int)槽函数
+	//拍照检视界面的中间的显示框以及下方的两个按钮：编码拍照：1；整枪拍照：2---》传给主界面ReceiveSoftTrigger(int)槽函数
 	connect(&m_SystemManager, SIGNAL(SendSoftTrigger(int)),this , SLOT(ReceiveSoftTrigger(int)));
 
 	//主界面ReceiveSoftTrigger(int)槽函数中直接使用信号—》参数设置界面
@@ -141,12 +141,12 @@ void SysMainWindow::slotAccountManager()//“账号管理”按钮---》此槽函数
 
 void SysMainWindow::slotCodeReview()//“编码检视”按钮---》此槽函数
 {
- 	bool rv = CDatabaseOperator::GetInstance()->GetConnectStatus();
- 	if (!rv)
- 	{
- 		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库未连接"));
- 		return;
- 	}
+	bool rv = CDatabaseOperator::GetInstance()->GetConnectStatus();
+	if (!rv)
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库未连接"));
+		return;
+	}
 
 
 	emit SendStackWidgetIndex(1);//
@@ -162,12 +162,12 @@ void SysMainWindow::slotCodeReview()//“编码检视”按钮---》此槽函数
 
 void SysMainWindow::slotInfoManager()//“信息管理”按钮---》此槽函数
 {
- 	bool rv = CDatabaseOperator::GetInstance()->GetConnectStatus();
- 	if (!rv)
- 	{
- 		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库未连接"));
- 		return;
- 	}
+	bool rv = CDatabaseOperator::GetInstance()->GetConnectStatus();
+	if (!rv)
+	{
+		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("数据库未连接"));
+		return;
+	}
 
 	emit SendStackWidgetIndex(2);
 	CAdminWithEphorLogin::GetInstance()->ClearInfor();

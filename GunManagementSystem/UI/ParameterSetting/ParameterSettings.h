@@ -9,16 +9,10 @@ class CParameterSettings :public QDialog
 	Q_OBJECT
 public:
 	static CParameterSettings *GetInstance();
-    QString GetSavePath();
-
-	//…Ë÷√”≤¥•∑¢
-	//bool SetExternalTrigger(int index);//–ﬁ∏ƒ0927
+	QString GetSavePath();
 
 	bool SoftTriggerOnce(int index,QString &errMsg);
 	void closeAllCamera();
-
-
-
 
 
 private:

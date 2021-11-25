@@ -2028,7 +2028,7 @@ void CSystemMangaer::SoftTriggerWholeCamera()//拍照检视界面-》右下“整枪拍照”按
 //从主界面接收到图像数据
 void CSystemMangaer::ReceiveImage(int index, Mat image)
 {
-	Mat image1;
+	//Mat image1;
 	if (index == 1)//相机1
 	{
 		if (m_bInitAlogSuccess)//VimoOCRModule初始化成功
@@ -2044,22 +2044,24 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 
 			QString result;
 			flip(image, image, -1);//图像沿x,y轴同时翻转
-			//cvtColor(image, image, COLOR_GRAY2BGR);
-			//CodeImage = image.clone();
-			image1 = imread("./Image92/1000S625922670548236code.bmp"); 
-			bool bAlgoSuccess = CAlgoCodeReview::GetInstance()->RunAlog(image1, result);//调用OCR检测
+			cvtColor(image, image, COLOR_GRAY2BGR);
+			CodeImage = image.clone();
+			//image1 = imread("./Image92/18962.bmp"); 
+			bool bAlgoSuccess = CAlgoCodeReview::GetInstance()->RunAlog(image, result);//调用OCR检测
 			if (bAlgoSuccess)
 			{
 				ui.lineEdit_Ocr->setText(result);//拍照检视界面-的右上“图像识别”编辑框，显示结果
 				ui.lineEdit_XiuZheng->setText(result);//修正框也要显示出识别结果
 				m_CurDZBianHao = result;////识别的单装编号也是OCR识别的结果
-				//DoSpeaker();//小铃铛读取结果
-
-				if (CurGunModelflag == RIFLE_MODEL95)
+				//DoSpeaker();//小铃铛读取结果	
+			
+				if (CurGunModelflag == RIFLE_MODEL95 )
 				{
+					
 					if (m_CurDZBianHao.size() != 8)
 					{
 						QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合95式步枪规范，请重新识别或人工修正！"));
+						
 					}
 
 				}
@@ -2082,7 +2084,7 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 				}
 				if (CurGunModelflag == PISTOL_MODEL92)
 				{
-					if (m_CurDZBianHao.size() != 6)
+					if ( m_CurDZBianHao.size() != 6)
 					{
 						QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合92式手枪规范，请重新识别或手动修正！"));
 					}
@@ -2100,17 +2102,18 @@ void CSystemMangaer::ReceiveImage(int index, Mat image)
 				
 		}
 		
-		CodeImage = image1.clone();
+		//CodeImage = image1.clone();
 		//DetectImage = image.clone();
-		QImage img = matToQImage(image1);
-		//QImage img = matToQImage(image);//调用matToQImage函数，获取图像数据，行。列，格式等(改)
+		
+		QImage img = matToQImage(image);//调用matToQImage函数，获取图像数据，行。列，格式等(改)
 		ui.label_Image1->SetImage(img);
+		
 	}
 	else if (index == 2)
 	{
 		GunImage = image.clone();
 		QImage img = matToQImage(image);//调用matToQImage函数，获取图像数据，行。列，格式等
-		ui.label_Image2->SetImage(img);//“拍照检视”界面，中间两个显示框加上下面的两个按钮
+		ui.label_Image2->SetImage(img);//“拍照检视”界面
 	}
 }
 
@@ -2228,11 +2231,12 @@ void CSystemMangaer::SaveRecognizeResult()
 		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("创建路径失败"));
 		return;
 	}
+	
 
 	if (!CodeImage.empty())
 	{
-		QString CodeImagePath = path + "/code.jpg";
-		//QString CodeImagePath = path + "/"+ m_CurDZBianHao+"code.bmp";
+		//QString CodeImagePath = path + "/code.jpg";
+		QString CodeImagePath = path + "/"+ m_CurDZBianHao+"_code.jpg";
 		QByteArray ba = CodeImagePath.toLocal8Bit();
 		char *file = ba.data();
 		imwrite(file, CodeImage);
@@ -2246,7 +2250,7 @@ void CSystemMangaer::SaveRecognizeResult()
 
 	if (!GunImage.empty())
 	{
-		QString GunImagePath = path + "/gun.jpg";
+		QString GunImagePath = path +"/"+ m_CurDZBianHao+"_gun.jpg";
 		QByteArray ba = GunImagePath.toLocal8Bit();
 		char *file = ba.data();
 		imwrite(file, GunImage);
@@ -2259,44 +2263,6 @@ void CSystemMangaer::SaveRecognizeResult()
 
 
 
-
-	//bool saveImage1 = CParameterSettings::GetInstance()->saveCodeImage;
-	//if (saveImage1)
-	//{
-	//	//QString CodeImagePath = path + "_code.jpg";
-	//	QString CodeImagePath = path + "/code.jpg";
-	//	//QString CodeImagePath = path + "/"+ m_CurDZBianHao+"code.bmp";
-	//	QByteArray ba = CodeImagePath.toLocal8Bit();
-	//	char *file = ba.data();
-	//	imwrite(file, CodeImage);
-
-	//	/*QString DetectImagePath = path + "/" + m_CurDZBianHao + "detect.jpg";
-	//	ba = DetectImagePath.toLocal8Bit();
-	//	file = ba.data();
-	//	imwrite(file, DetectImage);*/
-
-	//}
-	//else
-	//{
-	//	QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("编码拍照没有采集保存图片"));
-	//	//return;
-	//}
-
-	////bool saveImage2 = CParameterSettings::GetInstance()->saveGunImage;
-	//if (saveImage2)
-	//{
-	//	//QString GunImagePath = path + "/_gun.jpg";
-	//	QString GunImagePath = path + "/gun.jpg";
-	//	QByteArray ba = GunImagePath.toLocal8Bit();
-	//	char *file = ba.data();
-	//	imwrite(file, GunImage);
-
-	//}
-	//else
-	//{
-	//	QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("整枪拍照没有采集保存图片"));
-	//	//return;
-	//}
 
 	//检视状态更改
 	if (mymsgbox->clickedButton() == okbtn)//点击了OK按钮
@@ -2414,14 +2380,7 @@ void CSystemMangaer::SaveRecognizeResult()
 
 void CSystemMangaer::DoCorrection()//拍照检视界面->右下角"修正"按钮--》此槽函数
 {
-	//bool saveImage1 = CParameterSettings::GetInstance()->saveCodeImage;
-	//bool saveImage2 = CParameterSettings::GetInstance()->saveGunImage;
-	//if (!saveImage1 && !saveImage1)
-	//{
-	//	QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("确定要手动输入编号吗？"));
-	//	//return;
-
-	//}
+	
 	QString result = ui.lineEdit_XiuZheng->text();
 	if (result.isEmpty())
 	{
@@ -2456,6 +2415,22 @@ void CSystemMangaer::DoCorrection()//拍照检视界面->右下角"修正"按钮--》此槽函数
 		}
 
 	}
+	if (CurGunModelflag == PISTOL_MODEL92)
+	{
+		if (m_CurDZBianHao.size() != 6)
+		{
+			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合92式手枪规范，请重新识别或手动修正！"));
+		}
+
+	}
+	if (CurGunModelflag == RIFLE_MODEL81)
+	{
+		if (m_CurDZBianHao.size() != 8)
+		{
+			QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("识别编号不符合81式步枪规范，请重新识别或手动修正！"));
+		}
+
+	}
 
 }
 
@@ -2480,9 +2455,8 @@ void CSystemMangaer::DoCorrection()//拍照检视界面->右下角"修正"按钮--》此槽函数
 
 void CSystemMangaer::DoSpeaker()//拍照检视界面的小铃铛为信号--》此槽函数
 {
-
-	
+	m_Mutex.lock();
 	wstring str_STL = m_CurDZBianHao.toStdWString();
 	speech(str_STL);
-
+	m_Mutex.unlock();
 }

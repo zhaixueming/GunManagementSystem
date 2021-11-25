@@ -176,8 +176,8 @@ void CParameterSettings::InitCameraInfo()
 		if (strUserName1[0] != '_')
 			ui.comboBox_Camera2->addItem(strUserName1);*/
 
-		qDebug() << "CameraName;" << strUserNameBianMa;
-		qDebug() << "CameraName;" << strUserNameZhengQiang;
+		qDebug() << "CameraName：" << strUserNameBianMa;
+		qDebug() << "CameraName：" << strUserNameZhengQiang;
 
 	}
 }
@@ -426,7 +426,7 @@ QString CParameterSettings::GetSavePath()
 	else
 	{
 		QMessageBox::information(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("未设置存放图片路径信息"));
-		//return;
+		return SavePath;
 	}
 }
 
@@ -448,6 +448,7 @@ void CParameterSettings::BrowseSavePath()
 //信息写入到ini文件中
 void CParameterSettings::SaveConfig()
 {
+	qDebug() << "Save Config";
 	QString IniPath = QCoreApplication::applicationDirPath() + "/parameter_cfg.ini";//创建一个ini文件
 	CConfig *cfg = new CConfig(IniPath);
 	
@@ -483,6 +484,7 @@ void CParameterSettings::SaveConfig()
 		cfg->Write(DATABASE, USER_NAME, UserName);
 		cfg->Write(DATABASE, PASSWORD, Password);
 	}
+	QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("配置已保存！"));
 
 }
 
@@ -571,12 +573,12 @@ void CParameterSettings::LoadConfig()
 
 			QString username = cfg->GetString(DATABASE, USER_NAME);
 			qDebug() << "load config database username:" << username;
-			printf("load config database username:%s\n", username.toStdString().c_str());
+			printf_s("load config database username:%s\n", username.toStdString().c_str());
 			ui.lineEdit_UserName->setText(username);
 
 			QString password = cfg->GetString(DATABASE, PASSWORD);
 			qDebug() << "load config database password:" << password;
-			printf("load config database password:%s\n", password);
+			printf("load config database password:%s\n", password.toStdString().c_str());
 			ui.lineEdit_Password->setText(password);
 			ConnectDatabase();
 
