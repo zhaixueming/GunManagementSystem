@@ -61,13 +61,13 @@ private:
 	//切换到拍照tab之前的状态
 	//1：箱装信息列表
 	//2：单装信息
-	int m_PreviousIndex; 
+	int m_PreviousIndex;
 
 	e_GunModel CurGunModelflag;
 
 	Mat CodeImage;
 	Mat GunImage;
-	Mat DetectImage;
+	//Mat DetectImage;
 	QMutex m_Mutex;
 
 	//void Remainder();
@@ -75,7 +75,7 @@ private:
 
 	//bool saveImage1 = false;
 	//bool saveImage2=false;
-	
+
 
 private slots:
 	//主界面三个入口链接相应窗口
@@ -136,7 +136,7 @@ private slots:
 	void SoftTriggerCodeCamera();
 	//整抢拍照
 	void SoftTriggerWholeCamera();
-	void ReceiveImage(int index, Mat image); 
+	void ReceiveImage(int index, Mat image);
 	//保存识别结果，修改数据库中的单装编码
 	void SaveRecognizeResult();
 	//人工修正识别结果

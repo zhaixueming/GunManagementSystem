@@ -71,7 +71,7 @@ bool CAlgoCodeReview::InitAlgo()
 		switch (Model)
 		{
 		case DEFAULT_MODEL:
-			
+
 			//模型路径
 
 			ModulePath = "Default.smartmore";
@@ -97,7 +97,7 @@ bool CAlgoCodeReview::InitAlgo()
 		path += ModulePath;
 		QByteArray ba = path.toLocal8Bit();
 		char *file = ba.data();
-		
+
 		ResultCode rv = OCRModule->Init(file, 1, 0);
 		if (rv != ResultCode::Success)
 		{
@@ -127,7 +127,7 @@ bool CAlgoCodeReview::RunAlog(Mat &image, QString &result)
 	}
 	//string a=rsp.blocks[0].text;
 	OrigenImage = image;
-	
+
 	//std::vector<std::vector<cv::Point >> contours;//contours定义二维浮点型向量,储找到的边界的（x,y）坐标储找到的边界的（x,y）坐标 如：[1,2;2,3;3,4]
 	//
 	//for (int i = 0; i < rsp.blocks.size(); ++i)
@@ -230,7 +230,7 @@ void CAlgoCodeReview::DefaultModel()
 
 	}
 	cv::polylines(OrigenImage, contours, true, cv::Scalar(255, 255, 255), 2, cv::LINE_AA);
-	
+
 }
 
 
@@ -414,7 +414,7 @@ void CAlgoCodeReview::RifleModel951()
 	/*namedWindow("mask", 0);*/
 	//cv::imshow("mask", maskImage);//绘制的包围盒二值图
 
-	
+
 	Mat element = getStructuringElement(MORPH_RECT, Size(25, 5));//自定义核
 	Mat ROIImage;
 
@@ -454,7 +454,7 @@ void CAlgoCodeReview::RifleModel951()
 			{
 				string ocrText;
 				ocrText = Tblock.text;
-				if (Myresult.size()!=6)
+				if (Myresult.size() != 6)
 				{
 					Myresult += QString::fromStdString(Tblock.text);
 					cv::putText(OrigenImage, Tblock.text, p, cv::FONT_HERSHEY_COMPLEX, 2, cv::Scalar(0, 255, 255), 2, 8, 0);//在图片上绘制文字
@@ -464,7 +464,7 @@ void CAlgoCodeReview::RifleModel951()
 				//	Myresult += QString::fromStdString(Tblock.text);
 				//	cv::putText(OrigenImage, Tblock.text, p, cv::FONT_HERSHEY_COMPLEX, 2, cv::Scalar(0, 255, 255), 2, 8, 0);//在图片上绘制文字
 				//}
-				
+
 			}
 
 			contour.push_back(p);
@@ -507,14 +507,14 @@ void CAlgoCodeReview::PistolModel54()
 	}
 	/*namedWindow("mask", 0);*/
 	//cv::imshow("mask", maskImage);//绘制的包围盒二值图
-	
+
 	Mat element = getStructuringElement(MORPH_RECT, Size(35, 3));//自定义核
 	Mat ROIImage;
 
 	//cvtColor(maskImage, maskImage, COLOR_BGR2GRAY); //Convert to gray
 	cv::morphologyEx(maskImage, ROIImage, MORPH_DILATE, element, cv::Point(-1, -1), 3);//膨胀处理
 	threshold(ROIImage, ROIImage, 127, 255, THRESH_BINARY);
-	
+
 	/*namedWindow("原图", 0);
 	resizeWindow("原图", 640, 480);
 	imshow("原图", maskImage);
@@ -561,7 +561,7 @@ void CAlgoCodeReview::PistolModel54()
 
 			contour.push_back(p);
 		}
-		
+
 		contours1.push_back(contour);
 	}
 	qDebug() << "Myresult:" << Myresult;
@@ -641,7 +641,7 @@ void CAlgoCodeReview::PistolModel54()
 //	{
 //		roiArea = contourArea(contours[i]);
 //		contourLength = arcLength(contours[i], true);
-//		if (roiArea>20000 && roiArea<32000 && contourLength>900 && contourLength <1200)
+//		if (roiArea > 20000 && roiArea < 32000 && contourLength>900 && contourLength < 1200)
 //		{
 //			box[i] = minAreaRect(Mat(contours[i]));
 //
@@ -653,10 +653,10 @@ void CAlgoCodeReview::PistolModel54()
 //				roi_index = i;
 //			}
 //
-//			
+//
 //		}
-//		
-//		
+//
+//
 //	}
 //
 //	ROIImage.setTo(0);
@@ -666,7 +666,7 @@ void CAlgoCodeReview::PistolModel54()
 //	imshow("筛选图", ROIImage);
 //	waitKey(1);
 //
-//	vector<vector<cv::Point >> contours1; 
+//	vector<vector<cv::Point >> contours1;
 //	std::vector<TextBlock> Codeblocks;
 //	for (int i = 0; i < rsp.blocks.size(); ++i)
 //	{
@@ -678,7 +678,7 @@ void CAlgoCodeReview::PistolModel54()
 //		}
 //	}
 //	sort(Codeblocks.begin(), Codeblocks.end(), [](TextBlock b1, TextBlock b2) {return b1.polygon[0].x < b2.polygon[0].x; });
-//	
+//
 //	if (Codeblocks.size() > 6)
 //	{
 //		for (int i = 1; i <= 6; i++)
@@ -728,7 +728,7 @@ void CAlgoCodeReview::PistolModel54()
 //		qDebug() << "Myresult:" << Myresult;
 //		cv::polylines(OrigenImage, contours1, true, cv::Scalar(255, 255, 255), 2, cv::LINE_AA);
 //	}
-//	
+//
 //}
 
 void CAlgoCodeReview::PistolModel92()
@@ -794,7 +794,7 @@ void CAlgoCodeReview::PistolModel92()
 	vector<RotatedRect> box(contours.size());
 	Point2f rect[4];
 	int maxRatio = 0;
-	int maxNum=0;
+	int maxNum = 0;
 	double roiArea;//连通域面积
 	for (int i = 0; i < contours.size(); i++)
 	{
@@ -807,7 +807,11 @@ void CAlgoCodeReview::PistolModel92()
 		height = box[i].size.height;
 		maxSide = (width > height) ? width : height;
 		minSide = (width < height) ? width : height;
-
+		if (maxSide / minSide > maxRatio)
+		{
+			maxRatio = maxSide / minSide;
+			maxNum = i;
+		}
 
 	}
 
@@ -833,7 +837,7 @@ void CAlgoCodeReview::PistolModel92()
 
 	if (Codeblocks.size() > 6)
 	{
-		for (int i = 1; i <= 6; i++)
+		for (int i = 0; i <= 6; i++)
 		{
 			auto b = Codeblocks[i];
 			string ocrText = b.text;
@@ -855,7 +859,7 @@ void CAlgoCodeReview::PistolModel92()
 		for (int i = 0; i < Codeblocks.size(); i++)
 		{
 			auto b = Codeblocks[i];
-			
+
 			string ocrText = b.text;
 			cv::Point p(b.polygon[0].x, b.polygon[0].y);
 			cv::putText(OrigenImage, b.text, p, cv::FONT_HERSHEY_COMPLEX, 2, cv::Scalar(0, 255, 255), 2, 8, 0);//在图片上绘制文字
@@ -870,8 +874,8 @@ void CAlgoCodeReview::PistolModel92()
 		}
 		qDebug() << "Myresult:" << Myresult;
 		cv::polylines(OrigenImage, contours1, true, cv::Scalar(255, 255, 255), 2, cv::LINE_AA);
-		
-		
+
+
 	}
 
 }
@@ -939,8 +943,8 @@ void CAlgoCodeReview::RifleModel81()
 	for (int i = 0; i < contours.size(); i++)
 	{
 		box[i] = minAreaRect(Mat(contours[i]));
-		
-		int maxSide, minSide,width,height;
+
+		int maxSide, minSide, width, height;
 		width = box[i].size.width;
 		height = box[i].size.height;
 		maxSide = (width > height) ? width : height;
@@ -956,7 +960,7 @@ void CAlgoCodeReview::RifleModel81()
 
 	ROIImage.setTo(0);
 	drawContours(ROIImage, contours, maxNum, Scalar(255), -1);
-	
+
 	vector<vector<cv::Point >> contours1;
 	for (int i = 0; i < rsp.blocks.size(); ++i)
 	{
@@ -966,13 +970,13 @@ void CAlgoCodeReview::RifleModel81()
 		for (int j = 0; j < Tblock.polygon.size(); ++j)//包含字符包围盒的顶点坐标的链表，按顺时针顺序排列，第一个顶点是包围盒的左上角,所以Tblock.polygon.size()=4
 		{
 			Coordinate coord = Tblock.polygon.at(j); //coord  二维平面左边的一个点 float x, y; 左上角坐标是Tblock.polygon.at(0)
-			
+
 			cv::Point p;
 			p.x = coord.x;
 			p.y = coord.y;
 
 			double distance = pointPolygonTest(contours[maxNum], Point2f(static_cast<float>(p.x), static_cast<float>(p.y)), true);
-			if(j == 0 && distance >= 0)
+			if (j == 0 && distance >= 0)
 			{
 				cv::putText(OrigenImage, Tblock.text, p, cv::FONT_HERSHEY_COMPLEX, 2, cv::Scalar(0, 255, 255), 2, 8, 0);//在图片上绘制文字
 				Myresult += QString::fromStdString(Tblock.text);
@@ -980,7 +984,7 @@ void CAlgoCodeReview::RifleModel81()
 			}
 			contour.push_back(p);
 		}
-		
+
 		contours1.push_back(contour);
 	}
 	qDebug() << "Myresult:" << Myresult;

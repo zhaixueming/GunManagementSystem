@@ -44,7 +44,7 @@ cv::Mat CImageCapture::Convert2Mat(MV_FRAME_OUT_INFO_EX* pstImageInfo, unsigned 
 		RGB2BGR(pData, pstImageInfo->nWidth, pstImageInfo->nHeight);
 		return cv::Mat(pstImageInfo->nHeight, pstImageInfo->nWidth, CV_8UC3, pData);
 	}
-	else if(pstImageInfo->enPixelType == PixelType_Gvsp_Mono8)
+	else if (pstImageInfo->enPixelType == PixelType_Gvsp_Mono8)
 	{
 		return cv::Mat(pstImageInfo->nHeight, pstImageInfo->nWidth, CV_8UC1, pData);
 	}
@@ -167,7 +167,7 @@ void CImageCapture::run()
 				//cv::Mat curImage = img.clone();
 				curImage = img.clone();
 				emit SendCaptureImage(curImage);
-				SaveImageHadle=true;//0929¸Ä
+
 			}
 		}
 		else
@@ -181,9 +181,3 @@ void CImageCapture::run()
 		m_pGrabBuf = NULL;
 	}
 }
-
-//0929¸Ä
-//bool CImageCapture::SaveImageHadle()
-//{
-//	return true;
-//}

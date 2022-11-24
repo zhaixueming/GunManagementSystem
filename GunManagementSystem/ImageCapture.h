@@ -17,7 +17,7 @@ public:
 	void SetCameraStatus(bool bOpen);
 	void StopThread();
 
-	bool SaveImageHadle;//0929¸Ä
+
 
 
 private:
@@ -28,8 +28,6 @@ private:
 	unsigned char*  m_pGrabBuf;
 	unsigned int nDataSize;
 
-	//bool saveFlag=false;;//0929¸Ä
-	
 private:
 	void run();
 	cv::Mat Convert2Mat(MV_FRAME_OUT_INFO_EX* pstImageInfo, unsigned char * pData);
